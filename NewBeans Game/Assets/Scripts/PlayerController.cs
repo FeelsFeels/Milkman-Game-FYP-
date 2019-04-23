@@ -11,10 +11,15 @@ public class PlayerController : MonoBehaviour
     private float gravity = 0.4f;
     private Vector3 angle;
 
-
-    public bool fallIntoHole = false;
+    public bool isDead = false;
 
     public Transform respawnPosition;
+    public float respawnDelay;
+
+    // Object's Components
+    private MeshRenderer boxRenderer;
+    private BoxCollider boxCollider;
+    private Rigidbody rb;
 
     void Reset()
     {
@@ -25,7 +30,11 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+       
+        // Components
+        boxRenderer = GetComponent<MeshRenderer>();
+        boxCollider = GetComponent<BoxCollider>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -46,26 +55,49 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // If collide with "Hole", player dies.
         if (other.tag == "Hole")
         {
-            fallIntoHole = true;
+            isDead = true;
+            Die();
         }
     }
 
-    void Die()
+    // This hides the player when dead, and makes it reappear when alive.
+    public void HidePlayerWhenDead()
     {
-        if (fallIntoHole == true)
+        if (isDead == true)
         {
-            // Player disappears
-            gameObject.SetActive(false);
-            // Player respawns at 0,0,0
-
+            boxRenderer.enabled = false;
+            boxCollider.enabled = false;
         }
+
+        if (isDead == false)
+        {
+            boxRenderer.enabled = true;
+            boxCollider.enabled = true;
+        }
+
+    }
+
+    public void Die()
+    {
+        // Makes player disappear
+        HidePlayerWhenDead();
+
+        // Respawns player
+        StartCoroutine(RespawnPlayer());
     }
 
     IEnumerator RespawnPlayer()
     {
-        gameObject.transform.position = respawnPosition;
+        if (isDead == true)
+        {
+            yield return new WaitForSeconds(respawnDelay);
+            gameObject.transform.position = respawnPosition.transform.position;
+            isDead = false;
+            HidePlayerWhenDead();
+        }
     }
 }
 
