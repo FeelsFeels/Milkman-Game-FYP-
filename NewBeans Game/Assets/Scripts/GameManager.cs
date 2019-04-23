@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        // Don't destroy this object otherwise.
         DontDestroyOnLoad(gameObject);
     }
 
