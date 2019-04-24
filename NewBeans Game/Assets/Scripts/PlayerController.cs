@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     // Object's Components
     private MeshRenderer boxRenderer;
     private BoxCollider boxCollider;
-    private Rigidbody rb;
+    public Rigidbody rb;
 
     void Reset()
     {
