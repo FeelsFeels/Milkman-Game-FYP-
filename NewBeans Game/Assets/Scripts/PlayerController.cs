@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Player Control")]
     private float translateSpeed = 2.0f;
     private float rotateSpeed = 2.0f;
     public CharacterController playController;
@@ -11,6 +12,11 @@ public class PlayerController : MonoBehaviour
     private float gravity = 0.4f;
     private Vector3 angle;
 
+    public string HorizontalInput;
+    public string VerticalInput;
+    //public static int PlayerNo; //may wanna ++ whenever new player join... etc etc hm.
+
+    [Header("Player Die")]
     public bool isDead = false;
 
     public Transform respawnPosition;
@@ -41,13 +47,13 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //move front
-        moveDirection = new Vector3(0, 0, Input.GetAxis("Vertical (Player 1)"));
+        moveDirection = new Vector3(0, 0, Input.GetAxis(VerticalInput));
         moveDirection = transform.TransformDirection(moveDirection);
         moveDirection *= translateSpeed;
 
         //rotate and change direction
         angle = transform.eulerAngles;
-        angle.y += Input.GetAxis("Horizontal (Player 1)") * rotateSpeed;
+        angle.y += Input.GetAxis(HorizontalInput) * rotateSpeed;
         transform.eulerAngles = angle;
         moveDirection.y -= gravity * Time.deltaTime;
         playController.Move(moveDirection * Time.deltaTime);
