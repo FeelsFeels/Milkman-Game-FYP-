@@ -120,6 +120,31 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &872568093 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 352000604527013799, guid: 443a44745ff7bbe4b804e822137392e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 352000604384887999}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &872568094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872568093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19bb6b71694c5db4fbe4eb3c89c42cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VerticalMoveInputAxis: Vertical (Player 1)
+  HorizontalMoveInputAxis: Horizontal (Player 1)
+  HorizontalTurnInputAxis: Horizontal (Player 1)
+  rotationRate: 360
+  moveRate: 30
+  rotAngle: 0
+  turnSmoothTime: 0.2
 --- !u!1 &1040281928
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,11 +249,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 149790, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 408730, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.86
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 408730, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
       propertyPath: m_LocalPosition.y
@@ -236,7 +261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 408730, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.53
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 408730, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
       propertyPath: m_LocalRotation.x
@@ -270,8 +295,53 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5426510, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5426510, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 13615390, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444856, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11469404, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
+--- !u!1 &1220768819 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 149790, guid: 7737647c22c1fc64a88d5cd030c352ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 1211174323}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1220768826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220768819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19bb6b71694c5db4fbe4eb3c89c42cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VerticalMoveInputAxis: Vertical
+  HorizontalMoveInputAxis: Horizontal
+  HorizontalTurnInputAxis: Horizontal
+  rotationRate: 360
+  moveRate: 10
+  rotAngle: 0
+  turnSmoothTime: 0.2
 --- !u!1 &1550985888
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,6 +674,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 352000604527013799, guid: 443a44745ff7bbe4b804e822137392e3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 352000604527013794, guid: 443a44745ff7bbe4b804e822137392e3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -668,6 +743,20 @@ PrefabInstance:
         type: 3}
       propertyPath: VerticalInput
       value: Vertical (Player 1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 352000604527013793, guid: 443a44745ff7bbe4b804e822137392e3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 352000604527013798, guid: 443a44745ff7bbe4b804e822137392e3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1698832150, guid: 443a44745ff7bbe4b804e822137392e3, type: 3}
+      propertyPath: m_Drag
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 443a44745ff7bbe4b804e822137392e3, type: 3}
