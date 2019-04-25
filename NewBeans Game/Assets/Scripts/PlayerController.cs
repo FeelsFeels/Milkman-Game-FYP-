@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
+    UnityEvent playerDied = new UnityEvent();
+
+    public int playerNumber;
+
     [Header("Player Control")]
     private float translateSpeed = 2.0f;
     private float rotateSpeed = 2.0f;
@@ -65,6 +70,7 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Hole")
         {
             isDead = true;
+            GameManager.onePlayerIsKilled = true;
             Die();
         }
     }
@@ -90,9 +96,9 @@ public class PlayerController : MonoBehaviour
     {
         // Makes player disappear
         HidePlayerWhenDead();
-
         // Respawns player
         StartCoroutine(RespawnPlayer());
+        
     }
 
     IEnumerator RespawnPlayer()
