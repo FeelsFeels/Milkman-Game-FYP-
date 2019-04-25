@@ -105,11 +105,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51b44d3ad4620e541ab554e19e995d5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hookStatus: 0
+  hookOwner: {fileID: 0}
   nodePrefab: {fileID: 9194299461667926688, guid: 342873c25d4f3ec43923a1834b8a3fc2,
     type: 3}
   direction: {x: 0, y: 0, z: 0}
-  speed: 0.3
+  speed: 1
   maxNodes: 50
   lastNodeUpdateTime: 0
   nodeUpdateTime: 0.01
+  nodeToMoveTo: {fileID: 0}
   nodes: []
