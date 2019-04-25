@@ -56,7 +56,9 @@ public class Shoot : MonoBehaviour
 
     private void ShootHook()
     {
-
+        GrapplingHook projectile = Instantiate(hookProjectile, new Vector3(shootOrigin.transform.position.x, 0, shootOrigin.transform.position.z), Quaternion.identity).GetComponent<GrapplingHook>();
+        projectile.direction = shootOrigin.forward;
+        projectile.hookOwner = gameObject;
     }
 
 

@@ -170,8 +170,8 @@ GameObject:
   - component: {fileID: 538064464}
   - component: {fileID: 538064468}
   m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
+  m_Name: Grabbable Object
+  m_TagString: GrabbableEnvironment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -242,7 +242,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 538064463}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.917, y: 0.08000499, z: -3.76}
+  m_LocalPosition: {x: -3.917, y: 0.08000499, z: 1.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -557,7 +557,8 @@ MonoBehaviour:
   shootOrigin: {fileID: 104051776}
   waterProjectile: {fileID: 4402436895365813739, guid: 932048ea04b212f4185d60a0f97e6ae8,
     type: 3}
-  hookProjectile: {fileID: 0}
+  hookProjectile: {fileID: 1181466533355402987, guid: 10e2bd65e7f148249b8d7f346627176a,
+    type: 3}
 --- !u!1 &1769314294
 GameObject:
   m_ObjectHideFlags: 0
