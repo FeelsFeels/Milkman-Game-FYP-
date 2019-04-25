@@ -7,7 +7,7 @@ public class Controls : MonoBehaviour
 
     public string VerticalMoveInputAxis = "Vertical";
     public string HorizontalMoveInputAxis = "Horizontal";
-    public string HorizontalTurnInputAxis = "Horizontal";
+    //public string HorizontalTurnInputAxis = "Horizontal";
 
     // rotation that occurs in angles per second holding down input
     public float rotationRate = 360;
@@ -32,7 +32,7 @@ public class Controls : MonoBehaviour
     {
         float moveAxis = Input.GetAxis(VerticalMoveInputAxis);
         float moveHorizontalAxis = Input.GetAxis(HorizontalMoveInputAxis);
-        float turnAxis = Input.GetAxis(HorizontalTurnInputAxis);
+        //float turnAxis = Input.GetAxis(HorizontalTurnInputAxis);
 
 
 
@@ -43,7 +43,7 @@ public class Controls : MonoBehaviour
             Move(moveHorizontalAxis);
 
         if (Input.GetAxis(HorizontalMoveInputAxis) != 0 && Input.GetAxis(VerticalMoveInputAxis) != 0)
-            Turn(turnAxis);
+            Turn(moveHorizontalAxis);
 
     }
 
@@ -61,7 +61,7 @@ public class Controls : MonoBehaviour
     private void Turn(float input)
     {
         Vector3 from = new Vector3(0f, 0f, 1f);
-        Vector3 to = new Vector3(Input.GetAxis(HorizontalTurnInputAxis), 0f, Input.GetAxis(VerticalMoveInputAxis));
+        Vector3 to = new Vector3(Input.GetAxis(HorizontalMoveInputAxis), 0f, Input.GetAxis(VerticalMoveInputAxis));
         //transform.Rotate(0, input * rotationRate * Time.deltaTime, 0);
         rotAngle = Vector3.SignedAngle(from, to, Vector3.up);
         transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, rotAngle, ref turnSmoothVelocity, turnSmoothTime);

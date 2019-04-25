@@ -10,16 +10,19 @@ public class PlayerController : MonoBehaviour
     public int playerNumber;
 
     [Header("Player Control")]
-    private float translateSpeed = 2.0f;
-    private float rotateSpeed = 2.0f;
-    public CharacterController playController;
-    private Vector3 moveDirection = Vector3.zero;
-    private float gravity = 0.4f;
-    private Vector3 angle;
+    //private float translateSpeed = 2.0f;
+    //private float rotateSpeed = 2.0f;
+    //public CharacterController playController;
+    //private Vector3 moveDirection = Vector3.zero;
+    //private float gravity = 0.4f;
+    //private Vector3 angle;
 
-    public string HorizontalInput;
-    public string VerticalInput;
-    //public static int PlayerNo; //may wanna ++ whenever new player join... etc etc hm.
+    public float rotAngle = 0;
+    public string HorizontalInputAxis;
+    public string VerticalInputAxis;
+    public float turnSmoothTime = 0.2f;
+    float turnSmoothVelocity;
+    public float moveRate = 10;  // units moved per second holding down move input
 
     [Header("Player Die")]
     public bool isDead = false;
@@ -34,7 +37,11 @@ public class PlayerController : MonoBehaviour
 
     void Reset()
     {
-        playController = GetComponent<CharacterController>();
+        //playController = GetComponent<CharacterController>();
+
+        boxRenderer = GetComponent<MeshRenderer>();
+        boxCollider = GetComponent<BoxCollider>();
+        rb = GetComponent<Rigidbody>();
     }
 
 
@@ -51,18 +58,76 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //move front
-        moveDirection = new Vector3(0, 0, Input.GetAxis(VerticalInput));
-        moveDirection = transform.TransformDirection(moveDirection);
-        moveDirection *= translateSpeed;
+        ////move front
+        //moveDirection = new Vector3(0, 0, Input.GetAxis(VerticalInput));
+        //moveDirection = transform.TransformDirection(moveDirection);
+        //moveDirection *= translateSpeed;
 
-        //rotate and change direction
-        angle = transform.eulerAngles;
-        angle.y += Input.GetAxis(HorizontalInput) * rotateSpeed;
-        transform.eulerAngles = angle;
-        moveDirection.y -= gravity * Time.deltaTime;
-        playController.Move(moveDirection * Time.deltaTime);
+        ////rotate and change direction
+        //angle = transform.eulerAngles;
+        //angle.y += Input.GetAxis(HorizontalInput) * rotateSpeed;
+        //transform.eulerAngles = angle;
+        //moveDirection.y -= gravity * Time.deltaTime;
+        //playController.Move(moveDirection * Time.deltaTime);
+
+        /// ***********
+        /// Move controls (above is obsolete)
+        /// ***********
+
+        float moveVerticalAxis = Input.GetAxis(VerticalInputAxis);
+        float moveHorizontalAxis = Input.GetAxis(HorizontalInputAxis);
+
+        //if (Input.GetAxis(HorizontalInputAxis) == 0 && Input.GetAxis(VerticalInputAxis) != 0) //if there is vertical input but no horizontal input
+        //    Move(moveVerticalAxis);
+
+        if (Input.GetAxis(VerticalInputAxis) != 0) //if there is vertical input
+            Move(moveVerticalAxis);
+
+        if (Input.GetAxis(VerticalInputAxis) != 0 && Input.GetAxis(HorizontalInputAxis) == 0) //if there is vertical input but no horizontal input
+            Turn(moveVerticalAxis); //turn to face front or back
+
+        if (Input.GetAxis(HorizontalInputAxis) != 0) //if there is horizontal input
+            Turn(moveHorizontalAxis); //turn
+            //Move(moveHorizontalAxis);
     }
+
+
+    /// ***********
+    /// Moving character methods
+    /// ***********
+    private void Move(float input)
+    {
+        // Make sure to set drag high so the sliding effect is very minimal (5 drag is acceptable for now)
+
+        // mention this trash function automatically converts to local space
+        
+        rb.AddForce(Vector3.forward * input * moveRate, ForceMode.Force); 
+        print("moving");
+    }
+
+    private void Turn(float input)
+    {
+        Vector3 from = new Vector3(0f, 0f, 1f);
+        Vector3 to = new Vector3(Input.GetAxis(HorizontalInputAxis), 0f, Input.GetAxis(VerticalInputAxis));
+      
+        rotAngle = Vector3.SignedAngle(from, to, Vector3.up); //find the direction/angle player faces (based on world view and axis input)
+        transform.eulerAngles = transform.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, -rotAngle, ref turnSmoothVelocity, turnSmoothTime); //turn the player
+
+
+        // move forward in the direction it faces
+        if (input>0)
+            rb.AddForce(transform.forward * input * moveRate, ForceMode.Force);
+
+        if (input<0)
+            rb.AddForce(transform.forward * -input * moveRate, ForceMode.Force); //since input < 0, must make positive so that force exerted is positive
+
+        print("turning and moving");
+    }
+
+
+    // *********************************
+
+
 
     private void OnTriggerEnter(Collider other)
     {

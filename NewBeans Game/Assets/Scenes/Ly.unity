@@ -133,14 +133,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 872568093}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19bb6b71694c5db4fbe4eb3c89c42cff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   VerticalMoveInputAxis: Vertical (Player 1)
   HorizontalMoveInputAxis: Horizontal (Player 1)
-  HorizontalTurnInputAxis: Horizontal (Player 1)
   rotationRate: 360
   moveRate: 30
   rotAngle: 0
@@ -212,7 +211,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -229,13 +228,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1040281928}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalRotation: {x: 0.75662786, y: -0.25872248, z: -0.0070707602, w: 0.60043895}
+  m_LocalPosition: {x: 1.64, y: 6.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 64.818, y: -130.945, z: -109.934006}
 --- !u!1001 &1211174323
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -297,7 +296,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5426510, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
       propertyPath: m_Drag
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5426510, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
       propertyPath: m_Constraints
@@ -323,7 +322,31 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1211174323}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &1220768823 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 5426510, guid: 7737647c22c1fc64a88d5cd030c352ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 1211174323}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1220768826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220768819}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19bb6b71694c5db4fbe4eb3c89c42cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VerticalMoveInputAxis: Vertical
+  HorizontalMoveInputAxis: Horizontal
+  rotationRate: 360
+  moveRate: 10
+  rotAngle: 0
+  turnSmoothTime: 0.2
+--- !u!114 &1220768827
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -332,16 +355,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1220768819}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19bb6b71694c5db4fbe4eb3c89c42cff, type: 3}
+  m_Script: {fileID: 11500000, guid: edfb36d739354394cb7f4887e1376ee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VerticalMoveInputAxis: Vertical
-  HorizontalMoveInputAxis: Horizontal
-  HorizontalTurnInputAxis: Horizontal
-  rotationRate: 360
-  moveRate: 10
+  playerNumber: 0
   rotAngle: 0
+  HorizontalInputAxis: Horizontal (Player 1)
+  VerticalInputAxis: Vertical (Player 1)
   turnSmoothTime: 0.2
+  moveRate: 10
+  isDead: 0
+  respawnPosition: {fileID: 0}
+  respawnDelay: 0
+  rb: {fileID: 1220768823}
 --- !u!1 &1550985888
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,7 +455,7 @@ Transform:
   m_GameObject: {fileID: 1550985888}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -445,6 +471,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TestPlayer 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 352000604527013799, guid: 443a44745ff7bbe4b804e822137392e3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 352000604527013794, guid: 443a44745ff7bbe4b804e822137392e3,
         type: 3}
@@ -655,13 +686,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1814739843}
-  m_LocalRotation: {x: 0.38473287, y: -0, z: -0, w: 0.923028}
-  m_LocalPosition: {x: 1.29, y: 5.84, z: -10}
+  m_LocalRotation: {x: -0, y: 0.9618118, z: -0.27371177, w: 0}
+  m_LocalPosition: {x: -0.22, y: 5.84, z: 11.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 45.254, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 31.771002, y: 180.00002, z: 0}
 --- !u!1001 &352000604384887999
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -747,7 +778,17 @@ PrefabInstance:
     - target: {fileID: 352000604527013793, guid: 443a44745ff7bbe4b804e822137392e3,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 352000604527013793, guid: 443a44745ff7bbe4b804e822137392e3,
+        type: 3}
+      propertyPath: HorizontalInputAxis
+      value: Vertical (Player 1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 352000604527013793, guid: 443a44745ff7bbe4b804e822137392e3,
+        type: 3}
+      propertyPath: VerticalInputAxis
+      value: Horizontal (Player 1)
       objectReference: {fileID: 0}
     - target: {fileID: 352000604527013798, guid: 443a44745ff7bbe4b804e822137392e3,
         type: 3}
