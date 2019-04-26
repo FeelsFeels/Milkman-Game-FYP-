@@ -31,6 +31,9 @@ public class GameManager : MonoBehaviour
     public bool playerOneDied;
     public bool playerTwoDied;
 
+    [Header("Timer")]
+    public float timeLeftInSeconds;
+    public Text timerText;
 
     // Awake is always called before any Start functions
     void Awake()
@@ -56,6 +59,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartTimerCount();
 
         playerScript = FindObjectsOfType<PlayerController>();
 
@@ -68,9 +72,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print("Player One Has Died: " + playerOneDied);
-        print("Player Two Has Died: " + playerTwoDied);
-        print("A Player Is Dead: " + onePlayerIsKilled);
 
         if (onePlayerIsKilled == true)
         {
@@ -104,5 +105,23 @@ public class GameManager : MonoBehaviour
                 return;
             }
         }
+    }
+
+    // Starts the count down of round time.
+    public void StartTimerCount()
+    {
+        timerText.text = ("Time Left: :00:000");
+        InvokeRepeating("UpdateTimer", 0.0f, 0.01667f);
+
+    }
+
+    // Updates the timer every millisecond.
+    public void UpdateTimer()
+    {
+        timeLeftInSeconds -= Time.deltaTime;
+        string minutes = Mathf.Floor(timeLeftInSeconds / 60).ToString("00");
+        string seconds = (timeLeftInSeconds % 60).ToString("00");
+        string fraction = ((timeLeftInSeconds * 100) % 100).ToString("000");
+        timerText.text = "Time Left: " + minutes + ":" + seconds + ":" + fraction;
     }
 }
