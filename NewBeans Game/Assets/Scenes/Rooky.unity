@@ -427,6 +427,21 @@ PrefabInstance:
       propertyPath: respawnPosition
       value: 
       objectReference: {fileID: 242146989}
+    - target: {fileID: 352000604527013793, guid: 443a44745ff7bbe4b804e822137392e3,
+        type: 3}
+      propertyPath: HorizontalInputAxis
+      value: Horizontal (Player 1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 352000604527013793, guid: 443a44745ff7bbe4b804e822137392e3,
+        type: 3}
+      propertyPath: VerticalInputAxis
+      value: Vertical (Player 1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 352000604527013798, guid: 443a44745ff7bbe4b804e822137392e3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8443124338086025191, guid: 443a44745ff7bbe4b804e822137392e3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -442,7 +457,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 352000604527013798, guid: 443a44745ff7bbe4b804e822137392e3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 443a44745ff7bbe4b804e822137392e3, type: 3}
 --- !u!1 &1550985888
 GameObject:
@@ -880,9 +896,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edfb36d739354394cb7f4887e1376ee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playController: {fileID: 0}
-  HorizontalInput: Horizontal (Player 2)
-  VerticalInput: Vertical (Player 2)
+  playerNumber: 0
+  rotAngle: 0
+  HorizontalInputAxis: 
+  VerticalInputAxis: 
+  turnSmoothTime: 0.2
+  moveRate: 10
   isDead: 0
   respawnPosition: {fileID: 242146989}
   respawnDelay: 1
