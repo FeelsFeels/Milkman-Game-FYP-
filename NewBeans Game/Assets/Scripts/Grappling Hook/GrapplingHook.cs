@@ -10,18 +10,19 @@ public class GrapplingHook : MonoBehaviour
         shooting,
         takeback,
         reverse,
-        latch
+        latching
     }
     /// shooting: Going Forwards
     /// takeback: Coming back towards player
     /// reverse: Bringing player towards the hook leader(the pointier part)
-    /// latch: hooked onto an object.
+    /// latching: hooked onto an object.
 
     
     public HookStatus hookStatus = HookStatus.shooting;
 
     public GameObject hookOwner;        //This refers to the "first node";
-    public GameObject player;
+    public GameObject player;           //Player gameobject
+    public GameObject latchedObject;    
 
     public GameObject nodePrefab;       //This is the nodes
 
@@ -95,7 +96,7 @@ public class GrapplingHook : MonoBehaviour
                 {
                     //lastNodeUpdateTime = Time.time;
                     nodes.Remove(nodeToMoveTo);
-                    Destroy(nodeToMoveTo); //Unless we wanna add object pooling coolbeans😎🆒 stuff
+                    Destroy(nodeToMoveTo);
                 }
                 if (nodes.Count == 0)
                 {
@@ -118,7 +119,7 @@ public class GrapplingHook : MonoBehaviour
                 if (nodeToMoveTo != null)
                 {
                     nodes.Remove(nodeToMoveTo);
-                    Destroy(nodeToMoveTo); //Unless we wanna add object pooling coolbeans😎🆒 stuff
+                    Destroy(nodeToMoveTo);
                 }
                 if (nodes.Count == 0)
                 {
@@ -133,6 +134,10 @@ public class GrapplingHook : MonoBehaviour
             }
         }
 
+        //if (hookStatus == HookStatus.latching)
+        //{
+        //    transform.position = latchedObject.transform.position;
+        //}
 
         //if (hookStatus != HookStatus.reverse && nodes.Count >= 5)
         //{
@@ -199,11 +204,6 @@ public class GrapplingHook : MonoBehaviour
     }
 
 
-
-
-
-
-
     private void StartTakeBack()
     {
         //nodes.Reverse();
@@ -224,14 +224,17 @@ public class GrapplingHook : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player" && other.gameObject != hookOwner)
-        {            
+        {
+            latchedObject = other.gameObject;
             StartTakeBack();
             other.transform.parent = transform;
             return;
         }
         if (other.tag == "GrabbableEnvironment")
         {
-            StartReverse();
+            latchedObject = other.gameObject;
+            hookStatus = HookStatus.latching;
+            //StartReverse();
             gameObject.transform.position = other.transform.position;
             return;
         }

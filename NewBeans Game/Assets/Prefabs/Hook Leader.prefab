@@ -107,13 +107,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hookStatus: 0
   hookOwner: {fileID: 0}
+  player: {fileID: 0}
   nodePrefab: {fileID: 9194299461667926688, guid: 342873c25d4f3ec43923a1834b8a3fc2,
     type: 3}
   direction: {x: 0, y: 0, z: 0}
   speed: 0.3
   maxNodes: 50
   lastNodeUpdateTime: 0
-  nodeUpdateTime: 0.1
+  nodeUpdateTime: 0.07
   nodeToMoveTo: {fileID: 0}
   nodeBondDistance: 0.3
   nodeBondDamping: 100
