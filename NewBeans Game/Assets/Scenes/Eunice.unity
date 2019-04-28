@@ -521,7 +521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holePrefab: {fileID: 644275160949951014, guid: 88bb98c986237cd418d0f722900291cf,
     type: 3}
-  maxHoles: 11
+  maxHoles: 12
   nextHoleSpawn: 0
   spawnCoolDown: 2
   canSpawnHole: 1
@@ -1868,7 +1868,7 @@ MonoBehaviour:
   player1WinText: {fileID: 497108255}
   player2WinText: {fileID: 1423798642}
   roundEndWithDraw: {fileID: 315583018}
-  timeLeftInSeconds: 3
+  timeLeftInSeconds: 333
   timerText: {fileID: 805424058}
 --- !u!1 &2034155187
 GameObject:
