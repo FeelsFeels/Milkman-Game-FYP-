@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
             {
                 playerOneDied = true;
                 player2CurrentScore += killScoreToAdd;
-                instance.player2ScoreText.text = "Player 2: " + player2CurrentScore;
+                instance.player2ScoreText.text = player2CurrentScore.ToString();
                 return;
             }
 
@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
             {
                 playerTwoDied = true;
                 player1CurrentScore += killScoreToAdd;
-                instance.player1ScoreText.text = "Player 1: " + player1CurrentScore;
+                instance.player1ScoreText.text = player1CurrentScore.ToString();
                 return;
             }
         }
