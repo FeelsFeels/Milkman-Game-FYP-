@@ -118,10 +118,22 @@ public class GameManager : MonoBehaviour
     // Updates the timer every millisecond.
     public void UpdateTimer()
     {
-        timeLeftInSeconds -= Time.deltaTime;
-        string minutes = Mathf.Floor(timeLeftInSeconds / 60).ToString("00");
-        string seconds = (timeLeftInSeconds % 60).ToString("00");
-        string fraction = ((timeLeftInSeconds * 100) % 100).ToString("000");
-        timerText.text = "Time Left: " + minutes + ":" + seconds + ":" + fraction;
+        string minutes, seconds, fraction;
+
+        if (timeLeftInSeconds > 0)
+        {
+            timeLeftInSeconds -= Time.deltaTime;
+            minutes = Mathf.Floor(timeLeftInSeconds / 60).ToString("00");
+            seconds = (timeLeftInSeconds % 60).ToString("00");
+            fraction = ((timeLeftInSeconds * 100) % 100).ToString("000");
+            timerText.text = "Time Left: " + minutes + ":" + seconds + ":" + fraction;
+        }
+        else
+        {
+            minutes = "00";
+            seconds = "00";
+            fraction = "000";
+            timerText.text = "Time Left: " + minutes + ":" + seconds + ":" + fraction;
+        }
     }
 }

@@ -10,7 +10,7 @@ public class HoleSpawner : MonoBehaviour
     //public GameObject[] newHole;
 
     public int maxHoles;
-    public int currentHoles;
+    static public int currentHoles;
 
     public float nextHoleSpawn;
     public float spawnCoolDown;
@@ -25,9 +25,9 @@ public class HoleSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentHoles < maxHoles)
+        if (currentHoles < maxHoles && canSpawnHole)
         {
-            canSpawnHole = true;
+            canSpawnHole = false;
             StartCoroutine("SpawnHole");
         }
 
@@ -70,16 +70,16 @@ public class HoleSpawner : MonoBehaviour
 
     IEnumerator SpawnHole()
     {
-        
+        yield return new WaitForSeconds(spawnCoolDown);
+        print("Test");
         Vector3 randomSpawnPosition = new Vector3(Random.Range(-10f, 10f), -0.355f, Random.Range(-10f, 10f));
 
-        yield return new WaitForSeconds(spawnCoolDown);
-
-        if (canSpawnHole)
+        if (!canSpawnHole)
         {
-            Instantiate(holePrefab, randomSpawnPosition, Quaternion.identity);
+            GameObject hole = Instantiate(holePrefab, randomSpawnPosition, Quaternion.identity);
             currentHoles += 1;
-            canSpawnHole = false;
+            canSpawnHole = true;
         }
+
     }
 }

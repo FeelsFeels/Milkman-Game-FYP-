@@ -9,18 +9,26 @@ public class AutoDestroyOverTime : MonoBehaviour
     public float minTimeToDestroy;
     public float maxTimeToDestroy;
 
+    private bool isDestroyed;
+
     // Start is called before the first frame update
     void Start()
     {
         lifeTime = Random.Range(minTimeToDestroy, maxTimeToDestroy);
 
-        Destroy(gameObject, lifeTime);
-          
+        // This calls DestroyThis function after 'lifetime' seconds
+        Invoke("DestroyThis", lifeTime);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    void DestroyThis()
+    {
+        Destroy(gameObject);
+        HoleSpawner.currentHoles -= 1;
     }
 }
