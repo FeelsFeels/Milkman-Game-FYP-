@@ -290,7 +290,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 408730, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.1
+      value: 15.1
       objectReference: {fileID: 0}
     - target: {fileID: 408730, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
       propertyPath: m_LocalRotation.x
@@ -375,6 +375,8 @@ MonoBehaviour:
     type: 3}
   hookProjectile: {fileID: 1181466533355402987, guid: 10e2bd65e7f148249b8d7f346627176a,
     type: 3}
+  waterGunCooldown: 1
+  canHook: 0
   watergunInput: Fire1 (Player 1)
   hookInput: Fire2 (Player 1)
 --- !u!54 &1220768823 stripped
@@ -486,6 +488,10 @@ MonoBehaviour:
     type: 3}
   hookProjectile: {fileID: 1181466533355402987, guid: 10e2bd65e7f148249b8d7f346627176a,
     type: 3}
+  waterGunCooldown: 0
+  canHook: 0
+  watergunInput: 
+  hookInput: 
 --- !u!54 &1355969076 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 5426510, guid: 7737647c22c1fc64a88d5cd030c352ce,
@@ -842,7 +848,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1775039467}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.917, y: 1.44, z: 1.47}
+  m_LocalPosition: {x: -5.6, y: 1.44, z: 9.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -930,6 +936,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1927738746
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -955,7 +962,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 408730, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.72
+      value: 11.4
       objectReference: {fileID: 0}
     - target: {fileID: 408730, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1011,7 +1018,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
-  m_LocalEulerAnglesHint: {x: 31.771002, y: 180, z: 0}
 --- !u!1 &1978033519
 GameObject:
   m_ObjectHideFlags: 0

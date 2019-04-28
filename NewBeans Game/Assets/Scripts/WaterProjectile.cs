@@ -5,6 +5,8 @@ using UnityEngine;
 public class WaterProjectile : MonoBehaviour
 {
     public Vector3 direction;
+    public GameObject ownerPlayer;
+
     public float speed;
 
     public float knockbackStrength;
@@ -20,11 +22,12 @@ public class WaterProjectile : MonoBehaviour
     {
         Destroy(gameObject, 3);
         rb = GetComponent<Rigidbody>();
+        rb.velocity = direction * speed;
     }
 
     private void Update()
     {
-        transform.Translate(direction * speed);
+        //transform.Translate(direction * speed);
     }
 
     private void Explode()
@@ -37,13 +40,16 @@ public class WaterProjectile : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         PlayerController player = collision.transform.GetComponent<PlayerController>();
-        if (player)
+        if (player && collision.gameObject != ownerPlayer)
         {
             playerHit = player;
 
             Explode();
             print(playerHit);
         }
+
+        if (!player)
+            Destroy(gameObject);
     }
 
 

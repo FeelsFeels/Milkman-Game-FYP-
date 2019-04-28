@@ -993,17 +993,17 @@ PrefabInstance:
       propertyPath: VerticalInputAxis
       value: Vertical (Player 1)
       objectReference: {fileID: 0}
+    - target: {fileID: 352000604527013798, guid: 443a44745ff7bbe4b804e822137392e3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 352000604527013796, guid: 443a44745ff7bbe4b804e822137392e3,
         type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 352000604527013797, guid: 443a44745ff7bbe4b804e822137392e3,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 352000604527013798, guid: 443a44745ff7bbe4b804e822137392e3,
         type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -1801,13 +1801,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1814739843}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.2222018, y: -0, z: -0, w: 0.97500074}
+  m_LocalPosition: {x: 0, y: 5.17, z: -9.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 25.677002, y: 0, z: 0}
 --- !u!1 &1891508919
 GameObject:
   m_ObjectHideFlags: 0

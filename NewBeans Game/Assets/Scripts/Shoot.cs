@@ -10,7 +10,9 @@ public class Shoot : MonoBehaviour
     public GameObject hookProjectile;
 
 
-    private float shootCooldown;
+    private float waterGunCooldownTimer;
+    public float waterGunCooldown;
+    public bool canHook;
 
 
     ///If we want to use the Input Manager
@@ -23,26 +25,29 @@ public class Shoot : MonoBehaviour
     private void Start()
     {
         //shootOrigin = transform.Find("ShootOrigin");
-        
-        shootCooldown = 0;
+        waterGunCooldownTimer = 0;
+        canHook = true;
     }
 
     private void Update()
     {
-        if (shootCooldown <= 0)
+        print(waterGunCooldownTimer);
+        waterGunCooldownTimer -= Time.deltaTime;
+        //Shoot Watergun
+        if (Input.GetButtonDown(watergunInput) && waterGunCooldownTimer <= 0)
         {
-            //Shoot Watergun
-            if (Input.GetButtonDown(watergunInput))
-            {
-                ShootWaterGun();
-            }
-
-            //Shoot Grappling Hook
-            if (Input.GetButtonDown(hookInput))
-            {
-                ShootHook();
-            }
+            ShootWaterGun();
+            waterGunCooldownTimer = waterGunCooldown;
         }
+
+
+        //Shoot Grappling Hook
+        if (Input.GetButtonDown(hookInput) && canHook)
+        {
+            ShootHook();
+            canHook = false;
+        }
+
     }
 
     private void ShootWaterGun()
@@ -50,8 +55,8 @@ public class Shoot : MonoBehaviour
         //Bloody bugs
         //WaterProjectile projectile = Instantiate(waterProjectile, shootOrigin.transform.position, Quaternion.identity).GetComponent<WaterProjectile>();
         WaterProjectile projectile = Instantiate(waterProjectile, new Vector3(shootOrigin.transform.position.x, shootOrigin.transform.position.y, shootOrigin.transform.position.z), Quaternion.identity).GetComponent<WaterProjectile>();
-        print(shootOrigin.position);
         projectile.direction = shootOrigin.forward;
+        projectile.ownerPlayer = gameObject;
     }
 
     private void ShootHook()

@@ -38,9 +38,12 @@ public class GrapplingHook : MonoBehaviour
 
 
     public List<GameObject> nodes = new List<GameObject>();
+    //public LineRenderer lineRenderer;
 
     private void Start()
     {
+        //lineRenderer = GetComponent<LineRenderer>();
+        //lineRenderer.enabled = false;
         player = hookOwner;    
     }
 
@@ -61,6 +64,17 @@ public class GrapplingHook : MonoBehaviour
                 FollowPreviousNode(i == 0 ? player.transform : nodes[i - 1].transform, nodes[i].transform);
             }
         }
+
+        //if(nodes.Count > 5)
+        //{
+        //    lineRenderer.enabled = true;
+        //    var points = new Vector3[nodes.Count];
+        //    for (int i = 0; i < nodes.Count; i++)
+        //    {
+        //        points[i] = nodes[i].transform.position;
+        //    }
+        //    lineRenderer.SetPositions(points);
+        //}
     }
 
     private void HookLogic()
@@ -101,7 +115,7 @@ public class GrapplingHook : MonoBehaviour
                 if (nodes.Count == 0)
                 {
                     transform.DetachChildren();
-                    Destroy(gameObject);
+                    FinishHookSequence();
                 }
                 else if (nodes.Count > 0)
                     nodeToMoveTo = nodes.Last();
@@ -123,7 +137,7 @@ public class GrapplingHook : MonoBehaviour
                 }
                 if (nodes.Count == 0)
                 {
-                    Destroy(gameObject);
+                    FinishHookSequence();
                 }
                 else if (nodes.Count > 0)
                     nodeToMoveTo = nodes.Last();
@@ -203,7 +217,6 @@ public class GrapplingHook : MonoBehaviour
         }
     }
 
-
     private void StartTakeBack()
     {
         //nodes.Reverse();
@@ -217,7 +230,12 @@ public class GrapplingHook : MonoBehaviour
         hookOwner = gameObject; 
     }
 
-
+    //Call before destroying hook
+    private void FinishHookSequence()
+    {
+        player.GetComponent<Shoot>().canHook = true;
+        Destroy(gameObject);
+    }
 
 
 
@@ -226,6 +244,7 @@ public class GrapplingHook : MonoBehaviour
         if (other.tag == "Player" && other.gameObject != hookOwner)
         {
             latchedObject = other.gameObject;
+            //hookStatus = HookStatus.latching;
             StartTakeBack();
             other.transform.parent = transform;
             return;
@@ -233,8 +252,8 @@ public class GrapplingHook : MonoBehaviour
         if (other.tag == "GrabbableEnvironment")
         {
             latchedObject = other.gameObject;
-            hookStatus = HookStatus.latching;
-            //StartReverse();
+            //hookStatus = HookStatus.latching;
+            StartReverse();
             gameObject.transform.position = other.transform.position;
             return;
         }

@@ -58,7 +58,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(transform.eulerAngles.y);
         ////move front
         //moveDirection = new Vector3(0, 0, Input.GetAxis(VerticalInput));
         //moveDirection = transform.TransformDirection(moveDirection);
