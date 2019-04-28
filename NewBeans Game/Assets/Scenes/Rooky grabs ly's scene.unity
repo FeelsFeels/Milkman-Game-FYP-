@@ -375,6 +375,8 @@ MonoBehaviour:
     type: 3}
   hookProjectile: {fileID: 1181466533355402987, guid: 10e2bd65e7f148249b8d7f346627176a,
     type: 3}
+  watergunInput: Fire1 (Player 1)
+  hookInput: Fire2 (Player 1)
 --- !u!54 &1220768823 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 5426510, guid: 7737647c22c1fc64a88d5cd030c352ce,
@@ -922,13 +924,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1814739843}
-  m_LocalRotation: {x: 0.27357414, y: 0.03057917, z: -0.008702213, w: 0.96132535}
-  m_LocalPosition: {x: -0.22, y: 5.84, z: -17.6}
+  m_LocalRotation: {x: 0, y: 0.96181065, z: -0.27371588, w: 0}
+  m_LocalPosition: {x: -0.22, y: 5.84, z: 19.08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 31.771002, y: 3.6440003, z: 0}
 --- !u!1001 &1927738746
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1010,6 +1011,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
+  m_LocalEulerAnglesHint: {x: 31.771002, y: 180, z: 0}
 --- !u!1 &1978033519
 GameObject:
   m_ObjectHideFlags: 0

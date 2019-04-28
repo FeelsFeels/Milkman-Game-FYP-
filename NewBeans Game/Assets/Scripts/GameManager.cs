@@ -22,14 +22,21 @@ public class GameManager : MonoBehaviour
     public int player2CurrentScore;
     public Text player2ScoreText;
 
-    [Header("UI Variables")]
+    [Header("Check For Player Deaths")]
+    public static bool onePlayerIsKilled;
+    public bool playerOneDied;
+    public bool playerTwoDied;
+
+    [Header("GUI Variables")]
     public int killScoreToAdd;
     public int deathScoreToDeduct;
 
-    public static bool onePlayerIsKilled;
-
-    public bool playerOneDied;
-    public bool playerTwoDied;
+    [Header("Round End Variables")]
+    public Image roundEndScreen;
+    public bool roundHasEnded;
+    public Text player1WinText;
+    public Text player2WinText;
+    public Text roundEndWithDraw;
 
     [Header("Timer")]
     public float timeLeftInSeconds;
@@ -59,6 +66,11 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player1WinText.gameObject.SetActive(false);
+        player2WinText.gameObject.SetActive(false);
+        roundEndWithDraw.gameObject.SetActive(false);
+
+
         StartTimerCount();
 
         playerScript = FindObjectsOfType<PlayerController>();
@@ -130,10 +142,40 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            roundHasEnded = true;
+
             minutes = "00";
             seconds = "00";
             fraction = "000";
             timerText.text = "Time Left: " + minutes + ":" + seconds + ":" + fraction;
+
+            RoundEnd();
+        }
+    }
+
+    public void RoundEnd()
+    {
+        if (roundHasEnded == true)
+        {
+            Time.timeScale = 0;
+            roundEndScreen.gameObject.SetActive(true);
+
+            if (player1CurrentScore > player2CurrentScore)
+            {
+                player1WinText.text = ("Player 1 has won with a kill count of " + player1CurrentScore + ".");
+                player1WinText.gameObject.SetActive(true);
+            }
+
+            else if (player2CurrentScore > player1CurrentScore)
+            {
+                player2WinText.text = ("Player 2 has won with a kill count of " + player2CurrentScore + ".");
+                player2WinText.gameObject.SetActive(true);
+            }
+
+            else
+            {
+                roundEndWithDraw.gameObject.SetActive(true);
+            }
         }
     }
 }
