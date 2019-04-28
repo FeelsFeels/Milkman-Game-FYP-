@@ -14,8 +14,8 @@ public class Shoot : MonoBehaviour
 
 
     ///If we want to use the Input Manager
-    //public string watergunInput;
-    //public string hookInput;
+    public string watergunInput;
+    public string hookInput;
     /// //////////////////////////////////
 
 
@@ -32,13 +32,13 @@ public class Shoot : MonoBehaviour
         if (shootCooldown <= 0)
         {
             //Shoot Watergun
-            if (Input.GetKeyDown(KeyCode.J))
+            if (Input.GetButtonDown(watergunInput))
             {
                 ShootWaterGun();
             }
 
             //Shoot Grappling Hook
-            if (Input.GetKeyDown(KeyCode.K))
+            if (Input.GetButtonDown(hookInput))
             {
                 ShootHook();
             }
