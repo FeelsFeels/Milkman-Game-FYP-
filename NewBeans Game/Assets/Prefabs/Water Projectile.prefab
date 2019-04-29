@@ -124,7 +124,7 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   ownerPlayer: {fileID: 0}
   speed: 25
-  knockbackStrength: 520
+  knockbackStrength: 620
   knockbackRadius: 50
   upwardsModifier: 1.2
   playerHit: {fileID: 0}

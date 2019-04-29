@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
 
     // Object's Components
     private MeshRenderer boxRenderer;
-    private BoxCollider boxCollider;
+    private CapsuleCollider boxCollider;
     public Rigidbody rb;
 
     void Reset()
@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
         //playController = GetComponent<CharacterController>();
 
         boxRenderer = GetComponent<MeshRenderer>();
-        boxCollider = GetComponent<BoxCollider>();
+        boxCollider = GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
        
         // Components
         boxRenderer = GetComponent<MeshRenderer>();
-        boxCollider = GetComponent<BoxCollider>();
+        boxCollider = GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -145,14 +145,32 @@ public class PlayerController : MonoBehaviour
     {
         if (isDead == true)
         {
-            boxRenderer.enabled = false;
-            boxCollider.enabled = false;
+            foreach (Transform trans in transform)
+            {
+                SkinnedMeshRenderer smr = trans.GetComponent<SkinnedMeshRenderer>();
+                if (smr)
+                {
+                    smr.enabled = false;
+                    //boxRenderer.enabled = false;
+                    boxCollider.enabled = false;
+
+                }
+            }
         }
 
         if (isDead == false)
         {
-            boxRenderer.enabled = true;
-            boxCollider.enabled = true;
+            foreach (Transform trans in transform)
+            {
+                SkinnedMeshRenderer smr = trans.GetComponent<SkinnedMeshRenderer>();
+                if (smr)
+                {
+                    smr.enabled = true;
+                    //boxRenderer.enabled = false;
+                    boxCollider.enabled = true;
+
+                }
+            }
         }
 
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -92,6 +93,10 @@ public class GameManager : MonoBehaviour
             playerOneDied = false;
             playerTwoDied = false;
             onePlayerIsKilled = false;
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            SceneManager.LoadScene("Michelle_LevelDesign But testing");
         }
     }
 

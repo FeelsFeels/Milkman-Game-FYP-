@@ -72,7 +72,7 @@ public class HoleSpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(spawnCoolDown);
         print("Test");
-        Vector3 randomSpawnPosition = new Vector3(Random.Range(-25f, 50f), -2.3f, Random.Range(-50f, 20f));
+        Vector3 randomSpawnPosition = new Vector3(Random.Range(-5f, 20f), -1.1f, Random.Range(-25f, 0f));
 
         if (!canSpawnHole)
         {
