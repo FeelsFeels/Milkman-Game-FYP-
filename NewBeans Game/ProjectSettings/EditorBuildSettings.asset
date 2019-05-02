@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Michelle_LevelDesign But testing.unity
+    path: Assets/Scenes/Demo Game (Ortho Cam).unity
     guid: 80b725b81feffe2448e4e1b3d72a5051
   m_configObjects: {}

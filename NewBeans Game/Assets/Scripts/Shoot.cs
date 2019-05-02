@@ -9,6 +9,8 @@ public class Shoot : MonoBehaviour
     public GameObject waterProjectile;
     public GameObject hookProjectile;
 
+    public GrapplingHook hProjectile;
+
 
     private float waterGunCooldownTimer;
     public float waterGunCooldown;
@@ -42,10 +44,17 @@ public class Shoot : MonoBehaviour
 
 
         //Shoot Grappling Hook
-        if (Input.GetButtonDown(hookInput) && canHook)
+        if (Input.GetButtonDown(hookInput))
         {
-            ShootHook();
-            canHook = false;
+            if (hProjectile == null && canHook)
+            {
+                ShootHook();
+                canHook = false;
+            }
+            else
+            {
+                hProjectile.PullFromLatch();
+            }
         }
 
     }
@@ -62,8 +71,10 @@ public class Shoot : MonoBehaviour
     private void ShootHook()
     {
         GrapplingHook projectile = Instantiate(hookProjectile, new Vector3(shootOrigin.transform.position.x, shootOrigin.transform.position.y, shootOrigin.transform.position.z), Quaternion.identity).GetComponent<GrapplingHook>();
+        //projectile.Init();
         projectile.direction = shootOrigin.forward;
         projectile.hookOwner = gameObject;
+        hProjectile = projectile;
     }
 
 

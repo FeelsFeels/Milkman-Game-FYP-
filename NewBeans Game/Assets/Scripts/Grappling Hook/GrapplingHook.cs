@@ -28,6 +28,9 @@ public class GrapplingHook : MonoBehaviour
 
     public Vector3 direction;           //where the hook leader is going towards
     public float speed;                 //How fast hook leader goes when travelling forwards
+    public float latchTimeWindow;       //Time window in which you can decide to pull the enemy back
+    private float latchCurrentTime;
+
     //public float retract;
     public float maxNodes;              //Max number of nodes before hook returns
     public float lastNodeUpdateTime;    //The time that a node was last spawned
@@ -44,8 +47,13 @@ public class GrapplingHook : MonoBehaviour
     {
         //lineRenderer = GetComponent<LineRenderer>();
         //lineRenderer.enabled = false;
-        player = hookOwner;    
+        player = hookOwner;
     }
+    
+    //public void Init()
+    //{
+
+    //}
 
     private void Update()
     {
@@ -102,7 +110,21 @@ public class GrapplingHook : MonoBehaviour
             }
         }
 
-        if(hookStatus == HookStatus.takeback)
+        if (hookStatus == HookStatus.latching)
+        {
+            if (Time.time - latchCurrentTime < latchTimeWindow) //Continue latching onto the target
+            {
+                transform.position = latchedObject.transform.position;
+                nodes[0].transform.position = player.transform.position;                
+            }
+            else
+            {
+                latchedObject = null;
+                StartTakeBack();
+            }
+        }
+
+        if (hookStatus == HookStatus.takeback)
         {
             if(Time.time - lastNodeUpdateTime > nodeUpdateTime)
             {
@@ -147,11 +169,6 @@ public class GrapplingHook : MonoBehaviour
                 player.transform.position = Vector3.Lerp(player.transform.position, nodeToMoveTo.transform.position, Time.deltaTime * 20);
             }
         }
-
-        //if (hookStatus == HookStatus.latching)
-        //{
-        //    transform.position = latchedObject.transform.position;
-        //}
 
         //if (hookStatus != HookStatus.reverse && nodes.Count >= 5)
         //{
@@ -217,6 +234,30 @@ public class GrapplingHook : MonoBehaviour
         }
     }
 
+    public void PullFromLatch()
+    {
+        if(latchedObject.tag == "Player")
+        {
+            transform.parent = null;
+            latchedObject.transform.parent = transform;
+            StartTakeBack();
+        }
+        else if(latchedObject.tag == "GrabbableEnvironment")
+        {
+            StartReverse();
+        }
+    }
+
+    private void StartLatching(GameObject grabbedObject)
+    {
+        if (latchedObject == null)
+        {
+            latchedObject = grabbedObject;
+            hookStatus = HookStatus.latching;
+            latchCurrentTime = Time.time;
+        }
+    }
+
     private void StartTakeBack()
     {
         //nodes.Reverse();
@@ -243,35 +284,19 @@ public class GrapplingHook : MonoBehaviour
     {
         if (other.tag == "Player" && other.gameObject != hookOwner)
         {
-            latchedObject = other.gameObject;
-            //hookStatus = HookStatus.latching;
-            StartTakeBack();
-            other.transform.parent = transform;
+            StartLatching(other.gameObject);
+            //StartTakeBack();
+            //other.transform.parent = transform;
+            transform.parent = other.transform;
             return;
         }
         if (other.tag == "GrabbableEnvironment")
         {
-            latchedObject = other.gameObject;
-            //hookStatus = HookStatus.latching;
-            StartReverse();
+            StartLatching(other.gameObject);
+            //StartReverse();
             gameObject.transform.position = other.transform.position;
             return;
         }
     }
 
 }
-
-//private void FollowPrev (Transform prevNode, Transform node)
-//	{
-//		// Set node's rotation and position by the previous node
-
-//		Quaternion targetRotation = Quaternion.LookRotation(prevNode.position - node.position, prevNode.up);
-//targetRotation.x = 0;
-//		targetRotation.z = 0;
-//		node.rotation = Quaternion.Slerp(node.rotation, targetRotation, Time.deltaTime* bondDamping);
-		
-//		Vector3 targetPosition = prevNode.position;
-//targetPosition -= node.transform.rotation* Vector3.forward * bondDistance;
-//targetPosition.y = node.position.y;
-//		node.position = Vector3.Lerp(node.position, targetPosition, Time.deltaTime* bondDamping); 
-//	}

@@ -96,7 +96,11 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
-            SceneManager.LoadScene("Michelle_LevelDesign But testing");
+            SceneManager.LoadScene("Demo Game (Ortho Cam)");
+            StartTimerCount();
+            player1CurrentScore = 0;
+            player2CurrentScore = 0;
+
         }
     }
 
