@@ -20,9 +20,9 @@ public class GrapplingHook : MonoBehaviour
     
     public HookStatus hookStatus = HookStatus.shooting;
 
-    public GameObject hookOwner;        //This refers to the "first node";
-    public GameObject player;           //Player gameobject
-    public GameObject latchedObject;    
+    public GameObject hookOwner;        //This refers to the "first node", can change depending on the state
+    public GameObject player;           //Player gameobject. Does NOT change.
+    public GameObject latchedObject;
 
     public GameObject nodePrefab;       //This is the nodes
 
@@ -59,16 +59,47 @@ public class GrapplingHook : MonoBehaviour
     {
         HookLogic();
 
-        //Update the position of each hook node.
-
-        for (int i = 0; i < nodes.Count; i++)
+        //Update the hook nodes position
+        if(hookStatus == HookStatus.reverse)
         {
-            if (hookStatus == HookStatus.reverse)
+            for (int i = 0; i < nodes.Count; i++)
             {
+                //HookOwner is now the latched onto object, the nodes will follow the grabbable wall
                 FollowPreviousNode(i == 0 ? hookOwner.transform : nodes[i - 1].transform, nodes[i].transform);
             }
-            else
+        }
+        else if (hookStatus == HookStatus.latching && latchedObject.tag == "GrabbableEnvironment")
+        {
+            //The idea is to not allow player to move using a hinge joint between the first node and the player
+            //WHen the distance between them gets too wide.
+            //if (Vector3.Distance(latchedObject.transform.position, LastNode().position) <= nodeBondDistance)
+            //{
+            //    FollowPreviousNode(i == 0 ? player.transform : nodes[i - 1].transform, nodes[i].transform);
+            //    //FollowPreviousNode(i == 0 ? latchedObject.transform : nodes[i - 1].transform, nodes[i].transform);
+            //}
+            bool stretched = true;
+            for (int i = 0; i < nodes.Count; i++)
             {
+                float dot = Vector3.Dot(player.transform.forward, -nodes[i].transform.forward);
+                if (dot > -0.9f)
+                {
+                    stretched = false;
+                    break;
+                }                
+            }
+            if(stretched == false)
+            {
+                for (int i = 0; i < nodes.Count; i++)
+                {
+                    FollowPreviousNode(i == 0 ? player.transform : nodes[i - 1].transform, nodes[i].transform);
+                }
+            }
+    }
+        else
+        {
+            for (int i = 0; i < nodes.Count; i++)
+            {
+                //The nodes follows the player
                 FollowPreviousNode(i == 0 ? player.transform : nodes[i - 1].transform, nodes[i].transform);
             }
         }
@@ -86,8 +117,7 @@ public class GrapplingHook : MonoBehaviour
     }
 
     private void HookLogic()
-    {
-        
+    {        
         if (hookStatus == HookStatus.shooting)
         {
             transform.Translate(direction * speed);
@@ -115,7 +145,8 @@ public class GrapplingHook : MonoBehaviour
             if (Time.time - latchCurrentTime < latchTimeWindow) //Continue latching onto the target
             {
                 transform.position = latchedObject.transform.position;
-                nodes[0].transform.position = player.transform.position;                
+                //nodes[0].transform.position = player.transform.position;
+                //nodes[0].transform.position = nodes[1].transform.forward * nodeBondDistance;
             }
             else
             {
@@ -175,8 +206,7 @@ public class GrapplingHook : MonoBehaviour
         //    float angle = Quaternion.Angle(hookOwner.transform.rotation, transform.rotation);
         //    if (angle < 110f)
         //    {
-        //        bool updateNodeOrder = false;
-
+        //      //Probably when you walk towards the node, it destroys and spawns a new one at the end?
         //    }
         //}
     }
@@ -196,6 +226,11 @@ public class GrapplingHook : MonoBehaviour
         node.position = Vector3.Lerp(node.position, targetPosition, Time.deltaTime * nodeBondDamping);
     }
 
+    //private void FollowNextNode(Transform nextNode, Transform node)
+    //{
+
+    //}
+
     private void AddNode()
     {
         Transform lastNode = LastNode();
@@ -210,7 +245,6 @@ public class GrapplingHook : MonoBehaviour
     private Vector3 NextNodePosition(Transform previousNode)
     {
         Quaternion currentRotation = Quaternion.Euler(0, previousNode.eulerAngles.y, 0);
-        print(currentRotation);
         Vector3 position = previousNode.position;
         position -= previousNode.forward * nodeBondDistance;
         return position;
@@ -234,6 +268,8 @@ public class GrapplingHook : MonoBehaviour
         }
     }
 
+    //Called when the player uses the grappling hook while already latched onto something
+    //Called from the Shoot Script :(
     public void PullFromLatch()
     {
         if(latchedObject.tag == "Player")
@@ -244,10 +280,12 @@ public class GrapplingHook : MonoBehaviour
         }
         else if(latchedObject.tag == "GrabbableEnvironment")
         {
+            nodes.Reverse();
             StartReverse();
         }
     }
 
+    //Initialised Latching
     private void StartLatching(GameObject grabbedObject)
     {
         if (latchedObject == null)
@@ -255,6 +293,52 @@ public class GrapplingHook : MonoBehaviour
             latchedObject = grabbedObject;
             hookStatus = HookStatus.latching;
             latchCurrentTime = Time.time;
+
+            //Initialise the Hinge joint
+            if (!LastNode().GetComponent<HingeJoint>())
+            {
+                LastNode().position = latchedObject.gameObject.transform.position;
+
+                if (latchedObject.gameObject.tag == "Player")
+                {
+                    HingeJoint hinge = LastNode().gameObject.AddComponent<HingeJoint>() as HingeJoint;
+                    hinge.connectedBody = latchedObject.GetComponent<Rigidbody>();
+                }
+                else if (latchedObject.gameObject.tag == "GrabbableEnvironment")
+                {
+                    //Connect a hinge joint between the grabbable wall and its closest node
+                    HingeJoint hinge = latchedObject.AddComponent<HingeJoint>() as HingeJoint;
+                    hinge.connectedBody = LastNode().GetComponent<Rigidbody>();
+
+                    //Connect a hinge joint between the player and the closest node
+                    //SpringJoint ownerHinge = nodes[0].AddComponent<SpringJoint>() as SpringJoint;
+                    //ownerHinge.connectedBody = player.GetComponent<Rigidbody>();
+                    //ownerHinge.spring = 1000;
+                    //ownerHinge.GetComponent<Rigidbody>().mass = 1000;
+
+                    //Reverse the node order such that the wall is the "owner" now
+                    //nodes.Reverse();
+                }
+            }
+
+
+            ////Initialise the spring joint
+            //if (!LastNode().GetComponent<SpringJoint>())
+            //{
+            //    SpringJoint spring = LastNode().gameObject.AddComponent<SpringJoint>() as SpringJoint;
+            //    spring.maxDistance = nodeBondDistance / 2;
+            //    spring.minDistance = 0;
+
+            //    spring.connectedBody = latchedObject.GetComponent<Rigidbody>();
+            //    spring.spring = 50;
+
+            //    SpringJoint ownerSpring = nodes[0].AddComponent<SpringJoint>() as SpringJoint;
+            //    ownerSpring.maxDistance = nodeBondDistance / 2;
+            //    ownerSpring.minDistance = 0;
+
+            //    ownerSpring.connectedBody = latchedObject.GetComponent<Rigidbody>();
+            //    ownerSpring.spring = 50;
+            //}
         }
     }
 
@@ -266,7 +350,7 @@ public class GrapplingHook : MonoBehaviour
 
     private void StartReverse()
     {
-        nodes.Reverse();
+        //nodes.Reverse();
         hookStatus = HookStatus.reverse;
         hookOwner = gameObject; 
     }
@@ -282,20 +366,23 @@ public class GrapplingHook : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player" && other.gameObject != hookOwner)
+        if (latchedObject == null)
         {
-            StartLatching(other.gameObject);
-            //StartTakeBack();
-            //other.transform.parent = transform;
-            transform.parent = other.transform;
-            return;
-        }
-        if (other.tag == "GrabbableEnvironment")
-        {
-            StartLatching(other.gameObject);
-            //StartReverse();
-            gameObject.transform.position = other.transform.position;
-            return;
+            if (other.tag == "Player" && other.gameObject != hookOwner)
+            {
+                StartLatching(other.gameObject);
+                //StartTakeBack();
+                //other.transform.parent = transform;
+                transform.parent = other.transform;
+                return;
+            }
+            if (other.tag == "GrabbableEnvironment")
+            {
+                StartLatching(other.gameObject);
+                //StartReverse();
+                gameObject.transform.position = other.transform.position;
+                return;
+            }
         }
     }
 
