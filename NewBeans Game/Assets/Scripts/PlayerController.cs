@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
         // mention this trash function automatically converts to local space
         
         rb.AddForce(Vector3.forward * input * moveRate, ForceMode.Force); 
-        print("moving");
+        //print("moving");
     }
 
     private void Turn(float input)
@@ -121,7 +121,7 @@ public class PlayerController : MonoBehaviour
         if (input<0)
             rb.AddForce(transform.forward * -input * moveRate, ForceMode.Force); //since input < 0, must make positive so that force exerted is positive
 
-        print("turning and moving");
+        //print("turning and moving");
     }
 
 

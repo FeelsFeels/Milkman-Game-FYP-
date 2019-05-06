@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class GrapplingHook : MonoBehaviour
+public class GrapplingHook2 : MonoBehaviour
 {
     public enum HookStatus
     {
@@ -59,45 +59,27 @@ public class GrapplingHook : MonoBehaviour
     {
         HookLogic();
 
-        //Update the hook nodes position
-        if(hookStatus == HookStatus.reverse)
+        //Update the position of each hook node.
+        for (int i = 0; i < nodes.Count; i++)
         {
-            for (int i = 0; i < nodes.Count; i++)
+            if (hookStatus == HookStatus.reverse)
             {
                 //HookOwner is now the latched onto object, the nodes will follow the grabbable wall
                 FollowPreviousNode(i == 0 ? hookOwner.transform : nodes[i - 1].transform, nodes[i].transform);
             }
-        }
-        else if (hookStatus == HookStatus.latching && latchedObject.tag == "GrabbableEnvironment")
-        {
-            //The idea is to not allow player to move using a hinge joint between the first node and the player
-            //WHen the distance between them gets too wide.
-            //if (Vector3.Distance(latchedObject.transform.position, LastNode().position) <= nodeBondDistance)
-            //{
-            //    FollowPreviousNode(i == 0 ? player.transform : nodes[i - 1].transform, nodes[i].transform);
-            //    //FollowPreviousNode(i == 0 ? latchedObject.transform : nodes[i - 1].transform, nodes[i].transform);
-            //}
-            bool stretched = true;
-            for (int i = 0; i < nodes.Count; i++)
+            else if (hookStatus == HookStatus.latching && latchedObject.tag == "GrabbableEnvironment")
             {
-                float dot = Vector3.Dot(player.transform.forward, -nodes[i].transform.forward);
-                if (dot > -0.9f)
-                {
-                    stretched = false;
-                    break;
-                }                
-            }
-            if(stretched == false)
-            {
-                for (int i = 0; i < nodes.Count; i++)
+                if (Vector3.Distance(latchedObject.transform.position, LastNode().position) <= nodeBondDistance)
                 {
                     FollowPreviousNode(i == 0 ? player.transform : nodes[i - 1].transform, nodes[i].transform);
+                    //FollowPreviousNode(i == 0 ? latchedObject.transform : nodes[i - 1].transform, nodes[i].transform);
+                }
+                else
+                {
+                
                 }
             }
-    }
-        else
-        {
-            for (int i = 0; i < nodes.Count; i++)
+            else
             {
                 //The nodes follows the player
                 FollowPreviousNode(i == 0 ? player.transform : nodes[i - 1].transform, nodes[i].transform);
@@ -117,7 +99,8 @@ public class GrapplingHook : MonoBehaviour
     }
 
     private void HookLogic()
-    {        
+    {
+        
         if (hookStatus == HookStatus.shooting)
         {
             transform.Translate(direction * speed);
@@ -245,6 +228,7 @@ public class GrapplingHook : MonoBehaviour
     private Vector3 NextNodePosition(Transform previousNode)
     {
         Quaternion currentRotation = Quaternion.Euler(0, previousNode.eulerAngles.y, 0);
+        print(currentRotation);
         Vector3 position = previousNode.position;
         position -= previousNode.forward * nodeBondDistance;
         return position;
@@ -280,7 +264,6 @@ public class GrapplingHook : MonoBehaviour
         }
         else if(latchedObject.tag == "GrabbableEnvironment")
         {
-            nodes.Reverse();
             StartReverse();
         }
     }
@@ -314,10 +297,9 @@ public class GrapplingHook : MonoBehaviour
                     //SpringJoint ownerHinge = nodes[0].AddComponent<SpringJoint>() as SpringJoint;
                     //ownerHinge.connectedBody = player.GetComponent<Rigidbody>();
                     //ownerHinge.spring = 1000;
-                    //ownerHinge.GetComponent<Rigidbody>().mass = 1000;
 
                     //Reverse the node order such that the wall is the "owner" now
-                    //nodes.Reverse();
+                    nodes.Reverse();
                 }
             }
 

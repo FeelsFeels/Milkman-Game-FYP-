@@ -33,7 +33,6 @@ public class Shoot : MonoBehaviour
 
     private void Update()
     {
-        print(waterGunCooldownTimer);
         waterGunCooldownTimer -= Time.deltaTime;
         //Shoot Watergun
         if (Input.GetButtonDown(watergunInput) && waterGunCooldownTimer <= 0)
