@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
     public float timeLeftInSeconds;
     public Text timerText;
 
+    public Image pauseScreen;
+
     // Awake is always called before any Start functions
     void Awake()
     {
@@ -85,6 +87,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            PauseGame();
+        }
 
         if (onePlayerIsKilled == true)
         {
@@ -160,6 +166,18 @@ public class GameManager : MonoBehaviour
 
             RoundEnd();
         }
+    }
+
+    public void PauseGame()
+    {
+        pauseScreen.gameObject.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        pauseScreen.gameObject.SetActive(false);
     }
 
     public void RoundEnd()
