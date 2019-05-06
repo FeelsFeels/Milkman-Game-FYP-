@@ -341,34 +341,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootOrigin: {fileID: 1211174324}
-  waterProjectile: {fileID: 0}
-  hookProjectile: {fileID: 0}
-  watergunInput: 
-  hookInput: 
+  waterProjectile: {fileID: 911820511316881503, guid: 1e6b70115c467bb4c81b5a32b6fe6afd,
+    type: 3}
+  hookProjectile: {fileID: 9194299461667926688, guid: 342873c25d4f3ec43923a1834b8a3fc2,
+    type: 3}
+  hProjectile: {fileID: 0}
+  waterGunCooldown: 0
+  canHook: 0
+  watergunInput: AButton (Controller 1)
+  hookInput: BButton (Controller 1)
 --- !u!54 &1220768823 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 5426510, guid: 7737647c22c1fc64a88d5cd030c352ce,
     type: 3}
   m_PrefabInstance: {fileID: 1211174323}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1220768826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1220768819}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19bb6b71694c5db4fbe4eb3c89c42cff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  VerticalMoveInputAxis: Vertical
-  HorizontalMoveInputAxis: Horizontal
-  rotationRate: 360
-  moveRate: 10
-  rotAngle: 0
-  turnSmoothTime: 0.2
 --- !u!114 &1220768827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,8 +370,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNumber: 0
   rotAngle: 0
-  HorizontalInputAxis: Horizontal (Player 1)
-  VerticalInputAxis: Vertical (Player 1)
+  HorizontalInputAxis: Horizontal (Controller 1)
+  VerticalInputAxis: Vertical (Controller 1)
   turnSmoothTime: 0.2
   moveRate: 10
   isDead: 0

@@ -18,8 +18,13 @@ public class PlayerController : MonoBehaviour
     //private Vector3 angle;
 
     public float rotAngle = 0;
+
+    private int ControllerNumber;
     public string HorizontalInputAxis;
     public string VerticalInputAxis;
+    public string AButtonInput;
+    public string BButtonInput;
+
     public float turnSmoothTime = 0.2f;
     float turnSmoothVelocity;
     public float moveRate = 10;  // units moved per second holding down move input
@@ -53,6 +58,15 @@ public class PlayerController : MonoBehaviour
         boxRenderer = GetComponent<MeshRenderer>();
         boxCollider = GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
+    }
+
+    public void SetControllerNumber (int controllerNo)
+    {
+        ControllerNumber = controllerNo; //get the controller number that will control this player (to which this script is attached to)
+        HorizontalInputAxis = "Horizontal (Controller " + controllerNo + ")";
+        VerticalInputAxis = "Vertical (Controller " + controllerNo + ")";
+        AButtonInput = "AButton (Controller " + controllerNo + ")";
+        BButtonInput = "BButton (Controller " + controllerNo + ")";
     }
 
     // Update is called once per frame
@@ -102,7 +116,7 @@ public class PlayerController : MonoBehaviour
         // mention this trash function automatically converts to local space
         
         rb.AddForce(Vector3.forward * input * moveRate, ForceMode.Force); 
-        print("moving");
+        //print("moving");
     }
 
     private void Turn(float input)
@@ -121,7 +135,7 @@ public class PlayerController : MonoBehaviour
         if (input<0)
             rb.AddForce(transform.forward * -input * moveRate, ForceMode.Force); //since input < 0, must make positive so that force exerted is positive
 
-        print("turning and moving");
+        //print("turning and moving");
     }
 
 

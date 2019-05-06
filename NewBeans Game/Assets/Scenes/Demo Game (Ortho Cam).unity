@@ -24144,19 +24144,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1220768820, guid: 0de5147ea4d0ce0458608f357c054973, type: 3}
       propertyPath: watergunInput
-      value: Fire1 (Player 2)
+      value: AButton (Controller 2)
       objectReference: {fileID: 0}
     - target: {fileID: 1220768820, guid: 0de5147ea4d0ce0458608f357c054973, type: 3}
       propertyPath: hookInput
-      value: Fire2 (Player 2)
+      value: BButton (Controller 2)
       objectReference: {fileID: 0}
     - target: {fileID: 1220768827, guid: 0de5147ea4d0ce0458608f357c054973, type: 3}
       propertyPath: HorizontalInputAxis
-      value: Horizontal (Player 2)
+      value: Horizontal (Controller 2)
       objectReference: {fileID: 0}
     - target: {fileID: 1220768827, guid: 0de5147ea4d0ce0458608f357c054973, type: 3}
       propertyPath: VerticalInputAxis
-      value: Vertical (Player 2)
+      value: Vertical (Controller 2)
       objectReference: {fileID: 0}
     - target: {fileID: 1220768827, guid: 0de5147ea4d0ce0458608f357c054973, type: 3}
       propertyPath: respawnPosition
@@ -24175,7 +24175,8 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 6a3163e6e05c4b844b59ac674c839c92, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1220768826, guid: 0de5147ea4d0ce0458608f357c054973, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0de5147ea4d0ce0458608f357c054973, type: 3}
 --- !u!1 &847134488
 GameObject:
@@ -93806,6 +93807,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1220768820, guid: 0de5147ea4d0ce0458608f357c054973, type: 3}
+      propertyPath: watergunInput
+      value: AButton (Controller 1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220768820, guid: 0de5147ea4d0ce0458608f357c054973, type: 3}
+      propertyPath: hookInput
+      value: BButton (Controller 1)
+      objectReference: {fileID: 0}
     - target: {fileID: 1220768827, guid: 0de5147ea4d0ce0458608f357c054973, type: 3}
       propertyPath: respawnPosition
       value: 
@@ -93818,6 +93827,14 @@ PrefabInstance:
       propertyPath: playerNumber
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1220768827, guid: 0de5147ea4d0ce0458608f357c054973, type: 3}
+      propertyPath: HorizontalInputAxis
+      value: Horizontal (Controller 1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220768827, guid: 0de5147ea4d0ce0458608f357c054973, type: 3}
+      propertyPath: VerticalInputAxis
+      value: Vertical (Controller 1)
+      objectReference: {fileID: 0}
     - target: {fileID: 934878710067766867, guid: 0de5147ea4d0ce0458608f357c054973,
         type: 3}
       propertyPath: m_Enabled
@@ -93828,7 +93845,8 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a73abd6b39a5bc041b57439548857d95, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1220768826, guid: 0de5147ea4d0ce0458608f357c054973, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0de5147ea4d0ce0458608f357c054973, type: 3}
 --- !u!1 &2004062315
 GameObject:
