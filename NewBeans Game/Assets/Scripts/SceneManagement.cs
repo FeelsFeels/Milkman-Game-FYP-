@@ -7,8 +7,21 @@ using UnityEngine.SceneManagement;
 public class SceneManagement : MonoBehaviour
 {
 
+    private void Update()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            if (Input.anyKey)
+            {
+                SceneManager.LoadScene("MainMenu");
+            }
+        }
+        
+    }
+
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
     }
+
 }
