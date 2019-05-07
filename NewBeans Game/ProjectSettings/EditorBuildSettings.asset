@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 82fafd753b56cd94786511b8e37db171
-  - enabled: 1
-    path: Assets/Scenes/Demo Game (Ortho Cam).unity
+  - enabled: 0
+    path: Assets/__DELETED_GUID_Trash/1514d6ab13da77849b1b6f2247675f7b
     guid: 1514d6ab13da77849b1b6f2247675f7b
   m_configObjects: {}

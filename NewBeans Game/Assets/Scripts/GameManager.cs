@@ -12,15 +12,9 @@ public class GameManager : MonoBehaviour
     private PlayerController[] playerScript;
 
     [Header("Player 1 UI")]
-    public int killCount1;
-    public int deathCount1;
-    public int player1CurrentScore;
     public Text player1ScoreText;
 
     [Header("Player 2 UI")]
-    public int killCount2;
-    public int deathCount2;
-    public int player2CurrentScore;
     public Text player2ScoreText;
 
     [Header("Check For Player Deaths")]
@@ -78,8 +72,6 @@ public class GameManager : MonoBehaviour
 
         playerScript = FindObjectsOfType<PlayerController>();
 
-        player1CurrentScore = 0;
-        player2CurrentScore = 0;
 
 
     }
@@ -94,7 +86,6 @@ public class GameManager : MonoBehaviour
 
         if (onePlayerIsKilled == true)
         {
-            CheckWhichPlayerDied();
 
             playerOneDied = false;
             playerTwoDied = false;
@@ -104,33 +95,7 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("Demo Game (Ortho Cam)");
             StartTimerCount();
-            player1CurrentScore = 0;
-            player2CurrentScore = 0;
 
-        }
-    }
-
-    // Checks which player died, to add score.
-    public void CheckWhichPlayerDied()
-    {
-
-        foreach (PlayerController player in playerScript)
-        {
-            if (player.playerNumber == 1 && player.isDead)
-            {
-                playerOneDied = true;
-                player2CurrentScore += killScoreToAdd;
-                instance.player2ScoreText.text = player2CurrentScore.ToString();
-                return;
-            }
-
-            if (player.playerNumber == 2 && player.isDead)
-            {
-                playerTwoDied = true;
-                player1CurrentScore += killScoreToAdd;
-                instance.player1ScoreText.text = player1CurrentScore.ToString();
-                return;
-            }
         }
     }
 
@@ -186,23 +151,6 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0;
             roundEndScreen.gameObject.SetActive(true);
-
-            if (player1CurrentScore > player2CurrentScore)
-            {
-                player1WinText.text = ("Player 1 has won with a kill count of " + player1CurrentScore + ".");
-                player1WinText.gameObject.SetActive(true);
-            }
-
-            else if (player2CurrentScore > player1CurrentScore)
-            {
-                player2WinText.text = ("Player 2 has won with a kill count of " + player2CurrentScore + ".");
-                player2WinText.gameObject.SetActive(true);
-            }
-
-            else
-            {
-                roundEndWithDraw.gameObject.SetActive(true);
-            }
         }
     }
 }

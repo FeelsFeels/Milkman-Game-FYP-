@@ -240,6 +240,7 @@ public class GrapplingHook : MonoBehaviour
         {
             transform.parent = null;
             latchedObject.transform.parent = transform;
+            latchedObject.GetComponent<PlayerController>().hookedBy = this; // Hooked player gets hooked by the hook owner.
             StartTakeBack();
         }
         else if(latchedObject.tag == "GrabbableEnvironment")
@@ -321,8 +322,14 @@ public class GrapplingHook : MonoBehaviour
     //Call before destroying hook
     private void FinishHookSequence()
     {
+        if (latchedObject)
+        {
+            latchedObject.GetComponent<PlayerController>().hookedBy = null;
+        }
+
         player.GetComponent<Shoot>().canHook = true;
         Destroy(gameObject);
+        
     }
 
 

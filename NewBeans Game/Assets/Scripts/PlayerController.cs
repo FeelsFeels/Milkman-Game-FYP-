@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
     UnityEvent playerDied = new UnityEvent();
 
     public int playerNumber;
+    public int killCount;
+    public int deathCount;
+    public int currentScore;
 
     [Header("Player Control")]
     //private float translateSpeed = 2.0f;
@@ -34,6 +37,8 @@ public class PlayerController : MonoBehaviour
 
     public Transform respawnPosition;
     public float respawnDelay;
+
+    public GrapplingHook hookedBy;
 
     // Object's Components
     private MeshRenderer boxRenderer;
@@ -191,6 +196,13 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
+        if (hookedBy)
+        {
+            hookedBy.hookOwner.GetComponent<PlayerController>().currentScore += GameManager.instance.killScoreToAdd;
+        }
+
+        hookedBy.hookOwner = null;
+
         // Makes player disappear
         HidePlayerWhenDead();
         // Respawns player

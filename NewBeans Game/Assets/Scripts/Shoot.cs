@@ -11,6 +11,7 @@ public class Shoot : MonoBehaviour
 
     public GrapplingHook hProjectile;
 
+    public PlayerController playerScript;
 
     private float waterGunCooldownTimer;
     public float waterGunCooldown;
@@ -23,12 +24,15 @@ public class Shoot : MonoBehaviour
     /// //////////////////////////////////
 
 
-
     private void Start()
     {
         //shootOrigin = transform.Find("ShootOrigin");
         waterGunCooldownTimer = 0;
         canHook = true;
+
+        playerScript = GetComponent<PlayerController>();
+
+       // hProjectile.GetComponent<Shoot>().castedByPlayer = player;
     }
 
     private void Update()
@@ -74,6 +78,8 @@ public class Shoot : MonoBehaviour
         projectile.direction = shootOrigin.forward;
         projectile.hookOwner = gameObject;
         hProjectile = projectile;
+
+        
     }
 
 
