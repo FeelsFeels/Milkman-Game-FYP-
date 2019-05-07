@@ -68,36 +68,9 @@ public class GrapplingHook : MonoBehaviour
                 FollowPreviousNode(i == 0 ? hookOwner.transform : nodes[i - 1].transform, nodes[i].transform);
             }
         }
-        else if (hookStatus == HookStatus.latching && latchedObject.tag == "GrabbableEnvironment")
+        else if (hookStatus == HookStatus.latching)
         {
             return;
-            ///The idea is to not allow player to move using a hinge joint between the first node and the player
-            ///WHen the distance between them gets too wide.
-            //if (Vector3.Distance(latchedObject.transform.position, LastNode().position) <= nodeBondDistance)
-            //{
-            //    FollowPreviousNode(i == 0 ? player.transform : nodes[i - 1].transform, nodes[i].transform);
-            //    //FollowPreviousNode(i == 0 ? latchedObject.transform : nodes[i - 1].transform, nodes[i].transform);
-            //}
-
-            ///This Idea is to calculate the angle where the player is moving in relation to the hook rope
-            ///When angle is of the away direction, stop following
-            //bool stretched = true;
-            //for (int i = 0; i < nodes.Count; i++)
-            //{
-            //    float dot = Vector3.Dot(player.transform.forward, -nodes[i].transform.forward);
-            //    if (dot > -0.9f)
-            //    {
-            //        stretched = false;
-            //        break;
-            //    }                
-            //}
-            //if(stretched == false)
-            //{
-            //    for (int i = 0; i < nodes.Count; i++)
-            //    {
-            //        FollowPreviousNode(i == 0 ? player.transform : nodes[i - 1].transform, nodes[i].transform);
-            //    }
-            //}
         }
         else
         {
@@ -138,8 +111,6 @@ public class GrapplingHook : MonoBehaviour
             if (Time.time - latchCurrentTime < latchTimeWindow) //Continue latching onto the target
             {
                 transform.position = latchedObject.transform.position;
-                //nodes[0].transform.position = player.transform.position;
-                //nodes[0].transform.position = nodes[1].transform.forward * nodeBondDistance;
             }
             else
             {
@@ -287,64 +258,39 @@ public class GrapplingHook : MonoBehaviour
             hookStatus = HookStatus.latching;
             latchCurrentTime = Time.time;
 
-            //Initialise the Hinge joint
-            //if (!LastNode().GetComponent<HingeJoint>())
-            //{
-            LastNode().position = latchedObject.gameObject.transform.position;
-
             if (latchedObject.gameObject.tag == "Player")
             {
-                //ConfigurableJoint hinge = LastNode().gameObject.AddComponent<ConfigurableJoint>() as ConfigurableJoint;
-                ConfigurableJoint hinge = LastNode().gameObject.GetComponent<ConfigurableJoint>();
-                hinge.connectedBody = latchedObject.GetComponent<Rigidbody>();
+                for (int i = 0; i <= nodes.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        nodes[i].GetComponent<ConfigurableJoint>().connectedBody = player.GetComponent<Rigidbody>();
+                    }
+                    else if (i < nodes.Count)
+                    {
+                        nodes[i].GetComponent<ConfigurableJoint>().connectedBody = nodes[i - 1].GetComponent<Rigidbody>();
+                    }
+                    else
+                        latchedObject.GetComponent<ConfigurableJoint>().connectedBody = nodes[i - 1].GetComponent<Rigidbody>(); //Connect the node to the object
+                }
             }
             else if (latchedObject.gameObject.tag == "GrabbableEnvironment")
             {
-                //Connect a hinge joint between the grabbable wall and its closest node
-                //HingeJoint hinge = latchedObject.AddComponent<HingeJoint>() as HingeJoint;
-                //hinge.connectedBody = LastNode().GetComponent<Rigidbody>();
-
-                //Connect a hinge joint between the player and the closest node
-                //SpringJoint ownerHinge = nodes[0].AddComponent<SpringJoint>() as SpringJoint;
-                //ownerHinge.connectedBody = player.GetComponent<Rigidbody>();
-                //ownerHinge.spring = 1000;
-                //ownerHinge.GetComponent<Rigidbody>().mass = 1000;
-
                 //Connect a series of configurable joints
-                for (int i = 0; i < nodes.Count; i++)
+                for (int i = 0; i <= nodes.Count; i++)
                 {
-                    if (!(i++ >= nodes.Count))
+                    if(i == 0)
                     {
-                        nodes[i].GetComponent<ConfigurableJoint>().connectedBody = nodes[i + 1].GetComponent<Rigidbody>();
+                        nodes[i].GetComponent<ConfigurableJoint>().connectedBody = player.GetComponent<Rigidbody>();
+                    }
+                    else if(i < nodes.Count)
+                    {
+                        nodes[i].GetComponent<ConfigurableJoint>().connectedBody = nodes[i - 1].GetComponent<Rigidbody>();
                     }
                     else
-                    {
-                        nodes[i].GetComponent<ConfigurableJoint>().connectedBody = latchedObject.GetComponent<Rigidbody>();
-                    }
+                        latchedObject.GetComponent<ConfigurableJoint>().connectedBody = nodes[i - 1].GetComponent<Rigidbody>(); //Connect the node to the object
                 }
-                //Reverse the node order such that the wall is the "owner" now
-                //nodes.Reverse();
             }
-            //}
-
-
-            ////Initialise the spring joint
-            //if (!LastNode().GetComponent<SpringJoint>())
-            //{
-            //    SpringJoint spring = LastNode().gameObject.AddComponent<SpringJoint>() as SpringJoint;
-            //    spring.maxDistance = nodeBondDistance / 2;
-            //    spring.minDistance = 0;
-
-            //    spring.connectedBody = latchedObject.GetComponent<Rigidbody>();
-            //    spring.spring = 50;
-
-            //    SpringJoint ownerSpring = nodes[0].AddComponent<SpringJoint>() as SpringJoint;
-            //    ownerSpring.maxDistance = nodeBondDistance / 2;
-            //    ownerSpring.minDistance = 0;
-
-            //    ownerSpring.connectedBody = latchedObject.GetComponent<Rigidbody>();
-            //    ownerSpring.spring = 50;
-            //}
         }
     }
 
