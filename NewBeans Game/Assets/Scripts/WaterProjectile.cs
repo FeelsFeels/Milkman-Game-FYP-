@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WaterProjectile : MonoBehaviour
 {
-    public Vector3 direction;
+    public Vector3 knockbackDirection;
     public GameObject ownerPlayer;
 
     public float speed;
@@ -22,7 +22,7 @@ public class WaterProjectile : MonoBehaviour
     {
         Destroy(gameObject, 3);
         rb = GetComponent<Rigidbody>();
-        rb.velocity = direction * speed;
+        rb.velocity = knockbackDirection * speed;
     }
 
     private void Update()
@@ -30,21 +30,28 @@ public class WaterProjectile : MonoBehaviour
         //transform.Translate(direction * speed);
     }
 
-    private void Explode()
-    {
-        playerHit.rb.AddExplosionForce(knockbackStrength, transform.position, knockbackRadius, upwardsModifier);
+    // Rocky's non-AddForce Explode()
+    //private void Explode()
+    //{
+    //    playerHit.rb.AddExplosionForce(knockbackStrength, transform.position, knockbackRadius, upwardsModifier);
 
-        Destroy(gameObject);    //Unless we wanna add object pooling coolbeans😎🆒 stuff
-    }
+    //    Destroy(gameObject);    //Unless we wanna add object pooling coolbeans😎🆒 stuff
+    //}
+    
 
     private void OnCollisionEnter(Collision collision)
     {
+
         PlayerController player = collision.transform.GetComponent<PlayerController>();
+
+        Vector3 direction = collision.transform.position - transform.position;
+        direction = -direction.normalized;
+
         if (player && collision.gameObject != ownerPlayer)
         {
             playerHit = player;
-
-            Explode();
+            player.GetComponent<Rigidbody>().AddForce(direction * knockbackStrength);
+            //Explode();
             print(playerHit);
         }
 
