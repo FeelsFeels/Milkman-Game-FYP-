@@ -105,8 +105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 638c37b758f3496449f7e09bd70e6570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minTimeToDestroy: 5
-  maxTimeToDestroy: 10
+  minTimeToDestroy: 10
+  maxTimeToDestroy: 18
 --- !u!114 &644275159636870068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbbde8ad617a6404bb42a4fe0a4dffe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondsTillActivation: 2
+  secondsTillActivation: 3.5
   deactivatedMaterial: {fileID: 2100000, guid: 0436ec24f2bb23b499ce3b0ecc0c0c14, type: 2}
   activatedMaterial: {fileID: 2100000, guid: 6a3163e6e05c4b844b59ac674c839c92, type: 2}

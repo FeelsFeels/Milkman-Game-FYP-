@@ -3,18 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class GrapplingHook : MonoBehaviour
+public class GrapplingHookOld : MonoBehaviour
 {
     public enum HookStatus
     {
         shooting,
         takeback,
         reverse,
-        latching,
-        none
+        latching
     }
-
-    ///Latching is currently obsoltete
     /// shooting: Going Forwards
     /// takeback: Coming back towards player
     /// reverse: Bringing player towards the hook leader(the pointier part)
@@ -42,7 +39,6 @@ public class GrapplingHook : MonoBehaviour
     public float nodeBondDistance;      //The distance between each node
     public float nodeBondDamping;       //The damping for each connected node
 
-    public bool willReturn;
 
     public List<GameObject> nodes = new List<GameObject>();
     //public LineRenderer lineRenderer;
@@ -54,19 +50,31 @@ public class GrapplingHook : MonoBehaviour
         player = hookOwner;
     }
 
+    //public void Init()
+    //{
+
+    //}
+
     private void Update()
     {
         HookLogic();
 
-        //Update the position of each hook node.
-        for (int i = 0; i < nodes.Count; i++)
+        //Update the hook nodes position
+        if (hookStatus == HookStatus.reverse)
         {
-            if (hookStatus == HookStatus.reverse)
+            for (int i = 0; i < nodes.Count; i++)
             {
                 //HookOwner is now the latched onto object, the nodes will follow the grabbable wall
                 FollowPreviousNode(i == 0 ? hookOwner.transform : nodes[i - 1].transform, nodes[i].transform);
             }
-            else
+        }
+        else if (hookStatus == HookStatus.latching)
+        {
+            return;
+        }
+        else
+        {
+            for (int i = 0; i < nodes.Count; i++)
             {
                 //The nodes follows the player
                 FollowPreviousNode(i == 0 ? player.transform : nodes[i - 1].transform, nodes[i].transform);
@@ -80,22 +88,34 @@ public class GrapplingHook : MonoBehaviour
         {
             transform.Translate(direction * speed);
 
-            if(nodes.Count >= maxNodes)
-            {
-                if (willReturn)
-                    StartTakeBack();
-                else
-                {
-                    FinishHookSequence();
-                    return;
-                }
-            }
             if (nodes.Count < maxNodes)
             {
                 if (Vector3.Distance(transform.position, LastNode().position) > nodeBondDistance)
                 {
                     AddNode();
                 }
+                //if (Time.time - lastNodeUpdateTime > nodeUpdateTime)
+                //{
+                //    AddNode();
+                //    lastNodeUpdateTime = Time.time;
+                //}
+            }
+            else
+            {
+                StartTakeBack();
+            }
+        }
+
+        if (hookStatus == HookStatus.latching)
+        {
+            if (Time.time - latchCurrentTime < latchTimeWindow) //Continue latching onto the target
+            {
+                transform.position = latchedObject.transform.position;
+            }
+            else
+            {
+                latchedObject = null;
+                StartTakeBack();
             }
         }
 
@@ -119,7 +139,7 @@ public class GrapplingHook : MonoBehaviour
             }
             if (nodeToMoveTo != null)
             {
-                transform.position = Vector3.Lerp(transform.position, nodeToMoveTo.transform.position, Time.deltaTime * 20);
+                transform.position = Vector3.Lerp(transform.position, nodeToMoveTo.transform.position, 20);
             }
         }
 
@@ -144,6 +164,15 @@ public class GrapplingHook : MonoBehaviour
                 player.transform.position = Vector3.Lerp(player.transform.position, nodeToMoveTo.transform.position, Time.deltaTime * 20);
             }
         }
+
+        //if (hookStatus != HookStatus.reverse && nodes.Count >= 5)
+        //{
+        //    float angle = Quaternion.Angle(hookOwner.transform.rotation, transform.rotation);
+        //    if (angle < 110f)
+        //    {
+        //      //Probably when you walk towards the node, it destroys and spawns a new one at the end?
+        //    }
+        //}
     }
 
     private void FollowPreviousNode(Transform prevNode, Transform node)
@@ -161,6 +190,11 @@ public class GrapplingHook : MonoBehaviour
         node.position = Vector3.Lerp(node.position, targetPosition, Time.deltaTime * nodeBondDamping);
     }
 
+    //private void FollowNextNode(Transform nextNode, Transform node)
+    //{
+
+    //}
+
     private void AddNode()
     {
         Transform lastNode = LastNode();
@@ -175,7 +209,6 @@ public class GrapplingHook : MonoBehaviour
     private Vector3 NextNodePosition(Transform previousNode)
     {
         Quaternion currentRotation = Quaternion.Euler(0, previousNode.eulerAngles.y, 0);
-        print(currentRotation);
         Vector3 position = previousNode.position;
         position -= previousNode.forward * nodeBondDistance;
         return position;
@@ -184,6 +217,7 @@ public class GrapplingHook : MonoBehaviour
     private Quaternion NextNodeRotation(Transform previousNode, Vector3 position)
     {
         return Quaternion.LookRotation(previousNode.position - position, previousNode.up);
+        //return Quaternion.Euler(0, previousNode.eulerAngles.y, 0);
     }
 
     private Transform LastNode()
@@ -198,15 +232,90 @@ public class GrapplingHook : MonoBehaviour
         }
     }
 
+    //Called when the player uses the grappling hook while already latched onto something
+    //Called from the Shoot Script :(
+    public void PullFromLatch()
+    {
+        if (latchedObject.tag == "Player")
+        {
+            transform.parent = null;
+            latchedObject.transform.parent = transform;
+            latchedObject.GetComponent<PlayerController>().hookedBy = gameObject.GetComponent<GrapplingHook>();
+            //latchedObject.GetComponent<PlayerController>().hookedBy = this; // Hooked player gets hooked by the hook owner.
+            StartTakeBack();
+        }
+        else if (latchedObject.tag == "GrabbableEnvironment")
+        {
+            nodes.Reverse();
+            StartReverse();
+        }
+    }
+
+    //Initialised Latching
+    private void StartLatching(GameObject grabbedObject)
+    {
+        if (latchedObject == null)
+        {
+            latchedObject = grabbedObject;
+            hookStatus = HookStatus.latching;
+            latchCurrentTime = Time.time;
+
+            if (latchedObject.gameObject.tag == "Player")
+            {
+                for (int i = 0; i <= nodes.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        nodes[i].GetComponent<ConfigurableJoint>().connectedBody = player.GetComponent<Rigidbody>();
+                    }
+                    else if (i < nodes.Count)
+                    {
+                        nodes[i].GetComponent<ConfigurableJoint>().connectedBody = nodes[i - 1].GetComponent<Rigidbody>();
+                    }
+                    else
+                        latchedObject.GetComponent<ConfigurableJoint>().connectedBody = nodes[i - 1].GetComponent<Rigidbody>(); //Connect the node to the object
+                }
+            }
+            else if (latchedObject.gameObject.tag == "GrabbableEnvironment")
+            {
+                //Connect a series of configurable joints
+                for (int i = 0; i <= nodes.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        nodes[i].GetComponent<ConfigurableJoint>().connectedBody = player.GetComponent<Rigidbody>();
+                    }
+                    else if (i < nodes.Count)
+                    {
+                        nodes[i].GetComponent<ConfigurableJoint>().connectedBody = nodes[i - 1].GetComponent<Rigidbody>();
+                    }
+                    else
+                        latchedObject.GetComponent<ConfigurableJoint>().connectedBody = nodes[i - 1].GetComponent<Rigidbody>(); //Connect the node to the object
+                }
+            }
+        }
+    }
+
     private void StartTakeBack()
     {
         //nodes.Reverse();
+
+        for (int i = 0; i < nodes.Count; i++)
+        {
+            Destroy(nodes[i].GetComponent<ConfigurableJoint>());
+        }
+
         hookStatus = HookStatus.takeback;
     }
 
     private void StartReverse()
     {
-        nodes.Reverse();
+        //nodes.Reverse();
+        for (int i = 0; i < nodes.Count; i++)
+        {
+            Destroy(nodes[i].GetComponent<ConfigurableJoint>());
+        }
+
         hookStatus = HookStatus.reverse;
         hookOwner = gameObject;
     }
@@ -214,17 +323,16 @@ public class GrapplingHook : MonoBehaviour
     //Call before destroying hook
     private void FinishHookSequence()
     {
-        hookStatus = HookStatus.none;
-        if (nodes.Count >= 0)
+        if (latchedObject)
         {
-            foreach(GameObject node in nodes)
-            {
-                Destroy(node);
-            }
+            latchedObject.GetComponent<PlayerController>().hookedBy = null;
         }
+
         player.GetComponent<Shoot>().canHook = true;
         Destroy(gameObject);
+
     }
+
 
 
     private void OnTriggerEnter(Collider other)
@@ -233,17 +341,20 @@ public class GrapplingHook : MonoBehaviour
         {
             if (other.tag == "Player" && other.gameObject != hookOwner)
             {
-                other.transform.parent = transform;
-                StartTakeBack();
-                //transform.parent = other.transform;
+                StartLatching(other.gameObject);
+                //StartTakeBack();
+                //other.transform.parent = transform;
+                transform.parent = other.transform;
                 return;
             }
             if (other.tag == "GrabbableEnvironment")
             {
-                StartReverse();
+                StartLatching(other.gameObject);
+                //StartReverse();
                 gameObject.transform.position = other.transform.position;
                 return;
             }
         }
     }
+
 }

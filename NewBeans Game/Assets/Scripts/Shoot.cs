@@ -54,10 +54,10 @@ public class Shoot : MonoBehaviour
                 ShootHook();
                 canHook = false;
             }
-            else
-            {
-                hProjectile.PullFromLatch();
-            }
+            //else
+            //{
+            //    hProjectile.PullFromLatch();
+            //}
         }
 
     }
@@ -67,7 +67,7 @@ public class Shoot : MonoBehaviour
         //Bloody bugs
         //WaterProjectile projectile = Instantiate(waterProjectile, shootOrigin.transform.position, Quaternion.identity).GetComponent<WaterProjectile>();
         WaterProjectile projectile = Instantiate(waterProjectile, new Vector3(shootOrigin.transform.position.x, shootOrigin.transform.position.y, shootOrigin.transform.position.z), Quaternion.identity).GetComponent<WaterProjectile>();
-        projectile.direction = shootOrigin.forward;
+        projectile.knockbackDirection = shootOrigin.forward;
         projectile.ownerPlayer = gameObject;
     }
 

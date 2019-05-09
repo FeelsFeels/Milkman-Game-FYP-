@@ -121,6 +121,7 @@ MonoBehaviour:
   nodeToMoveTo: {fileID: 0}
   nodeBondDistance: 0.3
   nodeBondDamping: 100
+  willReturn: 1
   nodes: []
 --- !u!120 &-1902548525286551653
 LineRenderer:
