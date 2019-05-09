@@ -10,12 +10,11 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
 
     private PlayerController[] playerScript;
-
-    [Header("Player 1 UI")]
+    
     public Text player1ScoreText;
-
-    [Header("Player 2 UI")]
     public Text player2ScoreText;
+    public Text player3ScoreText;
+    public Text player4ScoreText;
 
     [Header("Check For Player Deaths")]
     public static bool onePlayerIsKilled;
@@ -31,6 +30,8 @@ public class GameManager : MonoBehaviour
     public bool roundHasEnded;
     public Text player1WinText;
     public Text player2WinText;
+    public Text player3WinText;
+    public Text player4WinText;
     public Text roundEndWithDraw;
 
     [Header("Timer")]
@@ -90,7 +91,7 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
-            SceneManager.LoadScene("Demo Game (Ortho Cam)");
+            SceneManager.LoadScene("Rooky's Voxel Scene");
             StartTimerCount();
 
         }
@@ -99,6 +100,7 @@ public class GameManager : MonoBehaviour
     // Starts the count down of round time.
     public void StartTimerCount()
     {
+        timeLeftInSeconds = 60;
         timerText.text = ("Time Left: :00:000");
         InvokeRepeating("UpdateTimer", 0.0f, 0.01667f);
 
@@ -134,6 +136,8 @@ public class GameManager : MonoBehaviour
     {
         player1ScoreText.text = playerScript[0].currentScore.ToString();
         player2ScoreText.text = playerScript[1].currentScore.ToString();
+        player3ScoreText.text = playerScript[2].currentScore.ToString();
+        //player2ScoreText.text = playerScript[3].currentScore.ToString();
     }
 
     public void PauseGame()

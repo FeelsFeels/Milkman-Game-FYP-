@@ -52,7 +52,7 @@ public class WaterProjectile : MonoBehaviour
             playerHit = player;
             //player.GetComponent<Rigidbody>().AddForce(direction * knockbackStrength);
             player.GetComponent<Rigidbody>().AddForce(knockbackDirection * knockbackStrength);
-            playerHit.shotBy = ownerPlayer.GetComponent<PlayerController>();
+            playerHit.lastHitBy = ownerPlayer;
             Destroy(gameObject);
             //Explode();
         }

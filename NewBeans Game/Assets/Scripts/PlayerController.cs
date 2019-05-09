@@ -36,8 +36,7 @@ public class PlayerController : MonoBehaviour
     public Transform respawnPosition;
     public float respawnDelay;
 
-    public GrapplingHook hookedBy;
-    public PlayerController shotBy;
+    public GameObject lastHitBy;
 
     // Object's Components
     private MeshRenderer boxRenderer;
@@ -195,18 +194,30 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
-        if (hookedBy)
-        {
-            hookedBy.hookOwner.GetComponent<PlayerController>().currentScore += GameManager.instance.killScoreToAdd;
-            GameManager.instance.UpdateScore();
-            hookedBy.hookOwner = null;
-        }
-        else if (shotBy)
-        {
-            shotBy.currentScore += GameManager.instance.killScoreToAdd;
-            GameManager.instance.UpdateScore();
-            shotBy = null;
-        }
+        //GrapplingHook hook = lastHitBy.GetComponent<GrapplingHook>();
+        //WaterProjectile projectile = lastHitBy.GetComponent<WaterProjectile>();
+
+        //if(hook != null)
+        //{
+        //    GrapplingHook hook = lastHitBy.GetComponent<GrapplingHook>();
+        //    hook.hookOwner.GetComponent<PlayerController>().currentScore += GameManager.instance.killScoreToAdd;
+        //    GameManager.instance.UpdateScore();
+        //    hook.hookOwner = null;
+        //    lastHitBy = null;
+        //}
+        //else if (projectile != null)
+        //{
+        //    WaterProjectile projectile = lastHitBy.GetComponent<WaterProjectile>();
+        //    projectile.ownerPlayer.GetComponent<PlayerController>().currentScore += GameManager.instance.killScoreToAdd;
+        //    GameManager.instance.UpdateScore();
+        //    lastHitBy = null;
+        //}
+        if(lastHitBy != null)
+            lastHitBy.GetComponent<PlayerController>().currentScore += GameManager.instance.killScoreToAdd;
+
+        lastHitBy = null;
+
+        GameManager.instance.UpdateScore();
 
         // Makes player disappear
         HidePlayerWhenDead();

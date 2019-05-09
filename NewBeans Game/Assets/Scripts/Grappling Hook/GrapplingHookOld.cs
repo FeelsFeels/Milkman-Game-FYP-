@@ -240,7 +240,7 @@ public class GrapplingHookOld : MonoBehaviour
         {
             transform.parent = null;
             latchedObject.transform.parent = transform;
-            latchedObject.GetComponent<PlayerController>().hookedBy = gameObject.GetComponent<GrapplingHook>();
+            //latchedObject.GetComponent<PlayerController>().hookedBy = gameObject.GetComponent<GrapplingHook>();
             //latchedObject.GetComponent<PlayerController>().hookedBy = this; // Hooked player gets hooked by the hook owner.
             StartTakeBack();
         }
@@ -325,7 +325,7 @@ public class GrapplingHookOld : MonoBehaviour
     {
         if (latchedObject)
         {
-            latchedObject.GetComponent<PlayerController>().hookedBy = null;
+            //latchedObject.GetComponent<PlayerController>().hookedBy = null;
         }
 
         player.GetComponent<Shoot>().canHook = true;
