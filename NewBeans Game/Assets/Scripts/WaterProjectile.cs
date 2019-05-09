@@ -50,9 +50,11 @@ public class WaterProjectile : MonoBehaviour
         if (player && collision.gameObject != ownerPlayer)
         {
             playerHit = player;
-            player.GetComponent<Rigidbody>().AddForce(direction * knockbackStrength);
+            //player.GetComponent<Rigidbody>().AddForce(direction * knockbackStrength);
+            player.GetComponent<Rigidbody>().AddForce(knockbackDirection * knockbackStrength);
+            playerHit.shotBy = ownerPlayer.GetComponent<PlayerController>();
+            Destroy(gameObject);
             //Explode();
-            print(playerHit);
         }
 
         if (!player)

@@ -71,9 +71,6 @@ public class GameManager : MonoBehaviour
         StartTimerCount();
 
         playerScript = FindObjectsOfType<PlayerController>();
-
-
-
     }
 
     // Update is called once per frame
@@ -131,6 +128,12 @@ public class GameManager : MonoBehaviour
 
             RoundEnd();
         }
+    }
+
+    public void UpdateScore()
+    {
+        player1ScoreText.text = playerScript[0].currentScore.ToString();
+        player2ScoreText.text = playerScript[1].currentScore.ToString();
     }
 
     public void PauseGame()

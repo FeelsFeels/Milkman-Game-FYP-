@@ -5,8 +5,6 @@ using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
-    UnityEvent playerDied = new UnityEvent();
-
     public int playerNumber;
     public int killCount;
     public int deathCount;
@@ -39,6 +37,7 @@ public class PlayerController : MonoBehaviour
     public float respawnDelay;
 
     public GrapplingHook hookedBy;
+    public PlayerController shotBy;
 
     // Object's Components
     private MeshRenderer boxRenderer;
@@ -199,9 +198,15 @@ public class PlayerController : MonoBehaviour
         if (hookedBy)
         {
             hookedBy.hookOwner.GetComponent<PlayerController>().currentScore += GameManager.instance.killScoreToAdd;
+            GameManager.instance.UpdateScore();
+            hookedBy.hookOwner = null;
         }
-
-        hookedBy.hookOwner = null;
+        else if (shotBy)
+        {
+            shotBy.currentScore += GameManager.instance.killScoreToAdd;
+            GameManager.instance.UpdateScore();
+            shotBy = null;
+        }
 
         // Makes player disappear
         HidePlayerWhenDead();
