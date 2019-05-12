@@ -20,6 +20,11 @@ public class PlayerController : MonoBehaviour
 
     public float rotAngle = 0;
 
+    [Header("Visual Effects")]
+    public GameObject playerDieEffect;
+    public GameObject playerPushedEffect;
+    public GameObject playerPulledEffect;
+
     private int ControllerNumber;
     public string HorizontalInputAxis;
     public string VerticalInputAxis;
@@ -212,6 +217,9 @@ public class PlayerController : MonoBehaviour
         //    GameManager.instance.UpdateScore();
         //    lastHitBy = null;
         //}
+
+        Instantiate(playerDieEffect, gameObject.transform.position, gameObject.transform.rotation);
+
         if(lastHitBy != null)
             lastHitBy.GetComponent<PlayerController>().currentScore += GameManager.instance.killScoreToAdd;
 

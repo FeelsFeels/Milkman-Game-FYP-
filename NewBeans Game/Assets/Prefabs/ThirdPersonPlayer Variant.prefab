@@ -47,6 +47,8 @@ MonoBehaviour:
     type: 3}
   hookProjectile: {fileID: 1181466533355402987, guid: 10e2bd65e7f148249b8d7f346627176a,
     type: 3}
+  hProjectile: {fileID: 0}
+  playerScript: {fileID: 0}
   waterGunCooldown: 1
   canHook: 0
   watergunInput: Fire1 (Player 1)
@@ -82,14 +84,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 0
+  killCount: 0
+  deathCount: 0
+  currentScore: 0
   rotAngle: 0
+  playerDieEffect: {fileID: 5321603115026070672, guid: 9a30751c44ecdd54996aa1f0cd0781f2,
+    type: 3}
+  playerPushedEffect: {fileID: 5866095184590232605, guid: 8d2c5bcf5e9fb5d44b06b03bcde18e45,
+    type: 3}
+  playerPulledEffect: {fileID: 8333770546263437678, guid: 23df1b9a80ad06d42a5727b3cbd1e62e,
+    type: 3}
   HorizontalInputAxis: Horizontal (Player 1)
   VerticalInputAxis: Vertical (Player 1)
+  AButtonInput: 
+  BButtonInput: 
   turnSmoothTime: 0.1
   moveRate: 10
   isDead: 0
   respawnPosition: {fileID: 0}
   respawnDelay: 0
+  lastHitBy: {fileID: 0}
   rb: {fileID: 934878710059416175}
 --- !u!1001 &934878710064510753
 PrefabInstance:
@@ -100,11 +114,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 149790, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
       propertyPath: m_Name
-      value: ThirdPersonPlayer
+      value: ThirdPersonPlayer Variant
       objectReference: {fileID: 0}
     - target: {fileID: 149790, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5426510, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
+      propertyPath: m_Drag
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5426510, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
+      propertyPath: m_Constraints
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 408730, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
       propertyPath: m_LocalPosition.x
@@ -149,14 +171,6 @@ PrefabInstance:
     - target: {fileID: 408730, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5426510, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
-      propertyPath: m_Drag
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5426510, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
-      propertyPath: m_Constraints
-      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 13615390, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
       propertyPath: m_Enabled
