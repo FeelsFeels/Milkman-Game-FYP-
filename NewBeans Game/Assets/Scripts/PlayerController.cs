@@ -225,13 +225,14 @@ public class PlayerController : MonoBehaviour
 
         lastHitBy = null;
 
-        GameManager.instance.UpdateScore();
 
         // Makes player disappear
         HidePlayerWhenDead();
         // Respawns player
         StartCoroutine(RespawnPlayer());
-        
+
+        GameManager.instance.UpdateScore();
+
     }
 
     IEnumerator RespawnPlayer()
