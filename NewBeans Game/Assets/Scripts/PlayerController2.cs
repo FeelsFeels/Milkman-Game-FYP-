@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController2 : MonoBehaviour
 {
     public int playerNumber;
     public int killCount;
@@ -225,14 +225,13 @@ public class PlayerController : MonoBehaviour
 
         lastHitBy = null;
 
+        GameManager.instance.UpdateScore();
 
         // Makes player disappear
         HidePlayerWhenDead();
         // Respawns player
         StartCoroutine(RespawnPlayer());
-
-        GameManager.instance.UpdateScore();
-
+        
     }
 
     IEnumerator RespawnPlayer()

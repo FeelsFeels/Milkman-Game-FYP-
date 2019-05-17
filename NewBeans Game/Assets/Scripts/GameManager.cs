@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
 
     private PlayerController[] playerScript;
-    
+
     public Text player1ScoreText;
     public Text player2ScoreText;
     public Text player3ScoreText;
@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
 
     public Image pauseScreen;
 
+
     // Awake is always called before any Start functions
     void Awake()
     {
@@ -58,7 +59,7 @@ public class GameManager : MonoBehaviour
         }
 
         // Don't destroy this object otherwise.
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     // Start is called before the first frame update
@@ -95,6 +96,7 @@ public class GameManager : MonoBehaviour
             StartTimerCount();
 
         }
+
     }
 
     // Starts the count down of round time.
