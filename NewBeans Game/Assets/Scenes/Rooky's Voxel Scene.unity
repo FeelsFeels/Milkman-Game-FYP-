@@ -15294,6 +15294,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f044a37d78cf7b644b51493e41665e3e, type: 3}
+--- !u!1 &994968496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 994968497}
+  m_Layer: 0
+  m_Name: Center Stage
+  m_TagString: Untagged
+  m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &994968497
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994968496}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: 7.61, y: 0, z: -8.59}
+  m_LocalScale: {x: 100, y: 99.99994, z: 99.99994}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1001858461 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9194299461667926688, guid: 1dbb3c8147e034a40a8032b40cfd6857,
@@ -19153,8 +19183,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hazardList:
   - {fileID: 4304984064137597223, guid: df1723a1acb1ad347b95d890fc327725, type: 3}
-  centreStage: {fileID: 1186409544}
-  spawnRadius: 20
+  centreStage: {fileID: 994968497}
+  spawnRadius: 15
 --- !u!1 &1293995665 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: f044a37d78cf7b644b51493e41665e3e,

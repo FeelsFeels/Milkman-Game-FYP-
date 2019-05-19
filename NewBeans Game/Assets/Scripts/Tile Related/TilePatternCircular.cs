@@ -11,8 +11,11 @@ public class TilePatternCircular : MonoBehaviour
 
     private EventsManager eventsManager;
 
+    private bool crRunning;
+
     private void Awake()
     {
+        crRunning = false;
         eventsManager = FindObjectOfType<EventsManager>();
     }
 
@@ -22,37 +25,76 @@ public class TilePatternCircular : MonoBehaviour
 
         foreach(Tile tile in initTiles)
         {
-            tile.MoveDown();
+            tile.tileState = Tile.TileState.goingDown;
             outerTiles.Add(tile);
         }
     }
 
-    public void Expand()    //This method causes the hole to expand in all directions
+    public void Expand()
     {
+        if(!crRunning)
+            StartCoroutine(ExpandOverTime());
+    }
+
+    public IEnumerator ExpandOverTime()
+    {
+        crRunning = true;
+
         List<Tile> newTiles = new List<Tile>(); //A list containing the next outermost tiles for future calls
-        foreach(Tile tile in outerTiles)
+
+        foreach (Tile tile in outerTiles)
         {
             Collider[] hitColliders = Physics.OverlapSphere(tile.upPos, 1.5f, groundLayerMask); //Check which tiles are in radius of outermost tiles
-            if(hitColliders != null)
+            if (hitColliders != null)
             {
                 foreach(Collider hit in hitColliders)
                 {
                     Tile hitTile = hit.GetComponent<Tile>();
-                    if(hitTile.tileState == Tile.TileState.up)  //If the tiles that are in its radius are up, make them go down
+                    if (hitTile.tileState == Tile.TileState.up) //If the tiles that are in its radius are up, make them go down
                     {
-                        hitTile.tileState = Tile.TileState.goingDown;   
+                        hitTile.tileState = Tile.TileState.goingDown;
                         newTiles.Add(hitTile);
                     }
+                    yield return new WaitForSeconds(1f);
                 }
             }
         }
-        
-        if(newTiles.Count > 0)
+
+        if (newTiles.Count > 0)
         {
             outerTiles.Clear();
             outerTiles = newTiles;
         }
 
+        crRunning = false;
     }
+
+    //public void Expand()    //This method causes the hole to expand in all directions
+    //{
+    //    List<Tile> newTiles = new List<Tile>(); //A list containing the next outermost tiles for future calls
+    //    foreach(Tile tile in outerTiles)
+    //    {
+    //        Collider[] hitColliders = Physics.OverlapSphere(tile.upPos, 1.5f, groundLayerMask); //Check which tiles are in radius of outermost tiles
+    //        if(hitColliders != null)
+    //        {
+    //            foreach(Collider hit in hitColliders)
+    //            {
+    //                Tile hitTile = hit.GetComponent<Tile>();
+    //                if(hitTile.tileState == Tile.TileState.up)  //If the tiles that are in its radius are up, make them go down
+    //                {
+    //                    hitTile.tileState = Tile.TileState.goingDown;   
+    //                    newTiles.Add(hitTile);
+    //                }
+    //            }
+    //        }
+    //    }
+
+    //    if(newTiles.Count > 0)
+    //    {
+    //        outerTiles.Clear();
+    //        outerTiles = newTiles;
+    //    }
+
+    //}
 
 }

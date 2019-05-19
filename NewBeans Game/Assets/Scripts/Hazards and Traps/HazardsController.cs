@@ -23,7 +23,7 @@ public class HazardsController : MonoBehaviour
 
     private void SpawnHazard()
     {
-        Instantiate(hazardList[0], FindRandomPosition(), Quaternion.identity);
+        Instantiate(GetRandomHazard(), FindRandomPosition(), Quaternion.identity);
     }
 
     private Vector3 FindRandomPosition()
@@ -31,6 +31,11 @@ public class HazardsController : MonoBehaviour
         Vector3 spawnPosition;
         spawnPosition = centreStage.position + new Vector3(Random.Range(-spawnRadius, spawnRadius), 10, Random.Range(-spawnRadius, spawnRadius));
         return spawnPosition;
+    }
+
+    private GameObject GetRandomHazard()
+    {
+        return hazardList[Random.Range(0, hazardList.Count)];        
     }
 
 }
