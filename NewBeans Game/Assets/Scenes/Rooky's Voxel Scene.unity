@@ -19080,6 +19080,7 @@ GameObject:
   - component: {fileID: 1284920647}
   - component: {fileID: 1284920648}
   - component: {fileID: 1284920649}
+  - component: {fileID: 1284920650}
   m_Layer: 0
   m_Name: Platform Manager
   m_TagString: Untagged
@@ -19138,6 +19139,22 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &1284920650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284920646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc777b090f391b146ac925418d96d58d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hazardList:
+  - {fileID: 4304984064137597223, guid: df1723a1acb1ad347b95d890fc327725, type: 3}
+  centreStage: {fileID: 1186409544}
+  spawnRadius: 20
 --- !u!1 &1293995665 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: f044a37d78cf7b644b51493e41665e3e,
@@ -26582,7 +26599,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f044a37d78cf7b644b51493e41665e3e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.1876557
+      value: -3.187656
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f044a37d78cf7b644b51493e41665e3e, type: 3}
       propertyPath: m_LocalPosition.z

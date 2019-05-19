@@ -9,16 +9,16 @@ public class TilePatternCircular : MonoBehaviour
 
     public LayerMask groundLayerMask;
 
-    private PlatformManager platformManager;
+    private EventsManager eventsManager;
 
     private void Awake()
     {
-        platformManager = FindObjectOfType<PlatformManager>();
+        eventsManager = FindObjectOfType<EventsManager>();
     }
 
     private void Start()
     {
-        platformManager.OnNewPhase += Expand;
+        eventsManager.OnNewPhase += Expand;
 
         foreach(Tile tile in initTiles)
         {
