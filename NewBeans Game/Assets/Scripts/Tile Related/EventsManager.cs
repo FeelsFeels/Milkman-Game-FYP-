@@ -8,16 +8,21 @@ using System;
 /// 
 /// </summary> 
 
-public class PlatformManager : MonoBehaviour
+public class EventsManager : MonoBehaviour
 {
     public event Action OnNewPhase;
+    public event Action OnSpawnHazard;
 
     private void Update()
     {
         //Hacks
-        if (Input.GetKeyDown(KeyCode.Backspace))
+        if (Input.GetKeyDown(KeyCode.Keypad1))
         {
             NewPhase();
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            SpawnHazard();
         }
     }
 
@@ -29,6 +34,12 @@ public class PlatformManager : MonoBehaviour
         }
     }
 
-
+    void SpawnHazard()
+    {
+        if (OnSpawnHazard != null)
+        {
+            OnSpawnHazard();
+        }
+    }
 
 }
