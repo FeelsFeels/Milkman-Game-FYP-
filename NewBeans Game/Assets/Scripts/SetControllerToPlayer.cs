@@ -15,6 +15,7 @@ public class SetControllerToPlayer : MonoBehaviour
     public string startGameScene;
 
     public int PlayersReady;
+    public bool ReadyToStart = false;
 
     // Start is called before the first frame update
     void Awake()
@@ -40,10 +41,18 @@ public class SetControllerToPlayer : MonoBehaviour
            
         }
 
-        if (assignedControllers.Count >= 2)
+        if (assignedControllers.Count >= 2 && PlayersReady == assignedControllers.Count)
         {
             PressToPlay.SetActive(true); //if more than 2 assigned controllers, tell players that game can be started
 
+        }
+
+        if (ReadyToStart)
+        {
+            if (Input.GetButton("AButton (Controller " + i + ")")
+                {
+                SceneManager.LoadScene(startGameScene);
+            }
         }
     }
 

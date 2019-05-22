@@ -48,9 +48,14 @@ public class PlayerController2 : MonoBehaviour
     private CapsuleCollider boxCollider;
     public Rigidbody rb;
 
+    [Header("Player Movement")]
     //Player movement
     public Vector3 CorrectionAngle; //y should be -45... about there. This rotates the movement, such that it is somewhat parallel to camera view
     private float averageInput;
+    public int PressCounter = 0; //how many times you pressed the movement key/input
+    public float PressCooldownTimer; //you have to press movement input again within this time in order to activate dash; countdown before reset thingy
+    public float angleTolerance = 30;
+    public float lastInputAngle;
 
     void Reset()
     {
@@ -87,7 +92,7 @@ public class PlayerController2 : MonoBehaviour
     
 
         /// ***********
-        /// Move controls (above is obsolete)
+        /// Move controls
         /// ***********
 
         float moveVerticalAxis = Input.GetAxis(VerticalInputAxis);
@@ -115,8 +120,58 @@ public class PlayerController2 : MonoBehaviour
             //print(averageInput);
         }
 
-    
+        /// ***********
+        /// DASH DASH DASH
+        /// if add dash, need to add a button used for dashing instead of double tap
+        /// ***********
 
+        //if (Input.GetAxis(HorizontalInputAxis) != 0 || Input.GetAxis(VerticalInputAxis) != 0 ) //if there is input
+        //{
+        //    //get the angle of analog stick 
+        //    float angle = Mathf.Atan2(moveVerticalAxis, moveHorizontalAxis) * Mathf.Rad2Deg;
+
+        //    if (PressCooldownTimer > 0 && PressCounter == 1) //if timer has not reset and player has already tapped movement input ONCE
+        //    {
+        //        //check if the angle of input is within range of tolerance or leeway of previous input
+
+        //        //if true = Has double tapped so do STH
+        //        //if (Mathf.Clamp(lastInputAngle, -angleTolerance, angleTolerance) == angle)
+        //        if (Mathf.Abs(angle - lastInputAngle) <= angleTolerance)
+        //        {
+        //            Dash();
+        //            //also reset presscounter, timer(?)
+        //        }
+
+        //        //if false = treat as first tap and set presscounter as 1, reset timer, set angle of last input
+        //        //if (Mathf.Clamp(lastInputAngle, -angleTolerance, angleTolerance) != angle)
+        //        if(Mathf.Abs(angle - lastInputAngle) >= angleTolerance)
+        //        {
+        //            PressCooldownTimer = 1.0f; //set timer for countdown till next tap or reset (which is 1s)
+        //            PressCounter = 1; //increase tap counter to 1
+
+
+        //            lastInputAngle = angle;
+        //        }
+        //    }
+
+        //    else //if this is the FIRST tap
+        //    {
+        //        PressCooldownTimer = 1.0f; //set timer for countdown till next tap or reset (which is 0.5s)
+        //        PressCounter += 1; //increase tap counter to 1
+
+        //        //set angle of last input
+        //        lastInputAngle = angle;
+        //    }
+        //}
+
+        //if (PressCooldownTimer > 0) //if timer is more than 0
+        //{
+        //    PressCooldownTimer -= 1 * Time.deltaTime; //timer will count down
+        //}
+        //else //if time is 0 
+        //{
+        //    PressCounter = 0; //reset press counter
+        //}
     }
 
 
@@ -148,18 +203,23 @@ public class PlayerController2 : MonoBehaviour
         rotAngle = Vector3.SignedAngle(from, to, Vector3.up) ; //find the direction/angle player faces (based on world view and axis input)
         transform.eulerAngles =  transform.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, -rotAngle, ref turnSmoothVelocity, turnSmoothTime) ; //turn the player
 
-
- 
-
-        //print("turning and moving");
     }
 
+    /// ***********
+    /// Dashing in progress
+    /// ***********
 
-    // *********************************
-    // Player Die
-    // *********************************
+    //private void Dash()
+    //{
+    //    rb.AddForce(transform.forward * 10, ForceMode.Force); //push player forward
+    //    print("dashing");
+    //    PressCounter = 0;
+    //}
 
 
+    /// *********************************
+    /// Player Die
+    /// *********************************
 
     private void OnTriggerEnter(Collider other)
     {
