@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour
     // Starts the count down of round time.
     public void StartTimerCount()
     {
-        timeLeftInSeconds = 60;
+        timeLeftInSeconds = 10000;
         timerText.text = ("Time Left: :00:000");
         InvokeRepeating("UpdateTimer", 0.0f, 0.01667f);
 

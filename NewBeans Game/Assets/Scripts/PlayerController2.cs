@@ -89,7 +89,8 @@ public class PlayerController2 : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-    
+
+        rb.AddForce(Physics.gravity * 2);
 
         /// ***********
         /// Move controls
