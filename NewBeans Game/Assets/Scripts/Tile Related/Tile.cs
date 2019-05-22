@@ -34,7 +34,7 @@ public class Tile : MonoBehaviour
     }
 
     private void Update()
-    {
+    {        
         //Hacks
         if (Input.GetKeyDown(KeyCode.Equals))
         {
@@ -46,6 +46,7 @@ public class Tile : MonoBehaviour
             tileState = TileState.goingDown;
         }
 
+        //Must change this to coroutines in the future
         if (tileState == TileState.goingDown)
         {
             MoveDown();

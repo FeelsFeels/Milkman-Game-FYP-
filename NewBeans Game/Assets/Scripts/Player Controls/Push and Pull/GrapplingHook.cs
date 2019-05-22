@@ -287,7 +287,7 @@ public class GrapplingHook : MonoBehaviour
 
     private IEnumerator Release()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         transform.DetachChildren();
         yield return new WaitForSeconds(0.1f);
         latchedObject = null;

@@ -47,13 +47,13 @@ public class SetControllerToPlayer : MonoBehaviour
 
         }
 
-        if (ReadyToStart)
-        {
-            if (Input.GetButton("AButton (Controller " + i + ")")
-                {
-                SceneManager.LoadScene(startGameScene);
-            }
-        }
+        //if (ReadyToStart)
+        //{
+        //    if (Input.GetButton("AButton (Controller " + i + ")")
+        //        {
+        //        SceneManager.LoadScene(startGameScene);
+        //    }
+        //}
     }
 
 

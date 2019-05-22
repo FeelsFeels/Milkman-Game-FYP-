@@ -21,7 +21,7 @@ public class DisasterMeteor : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
-        randomPos = new Vector3(transform.position.x, -0.7f, transform.position.z);
+        randomPos = new Vector3(transform.position.x, 1.5f, transform.position.z);
     }
 
 
