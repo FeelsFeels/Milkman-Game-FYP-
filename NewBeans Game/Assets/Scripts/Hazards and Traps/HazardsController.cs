@@ -29,7 +29,7 @@ public class HazardsController : MonoBehaviour
     private Vector3 FindRandomPosition()
     {
         Vector3 spawnPosition;
-        spawnPosition = centreStage.position + new Vector3(Random.Range(-spawnRadius, spawnRadius), 10, Random.Range(-spawnRadius, spawnRadius));
+        spawnPosition = centreStage.position + new Vector3(Random.Range(-spawnRadius, spawnRadius), 50, Random.Range(-spawnRadius, spawnRadius));
         return spawnPosition;
     }
 

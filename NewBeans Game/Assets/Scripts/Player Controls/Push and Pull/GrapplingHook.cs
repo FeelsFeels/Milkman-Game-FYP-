@@ -44,17 +44,20 @@ public class GrapplingHook : MonoBehaviour
 
     public bool willReturn;
 
+    private bool releaseOnNext;         //If true and an object is latched, release it the next time a node is removed.
+
     public List<GameObject> nodes = new List<GameObject>();
-    //public LineRenderer lineRenderer;
+    private LineRenderer lineRenderer;
 
     private void Start()
     {
-        //lineRenderer = GetComponent<LineRenderer>();
-        //lineRenderer.enabled = false;
+        lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer.enabled = false;
+
         player = hookOwner;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         HookLogic();
 
@@ -72,6 +75,17 @@ public class GrapplingHook : MonoBehaviour
                 FollowPreviousNode(i == 0 ? player.transform : nodes[i - 1].transform, nodes[i].transform);
             }
         }
+
+        //if(lineRenderer && nodes.Count >= 5)
+        //{
+        //    lineRenderer.enabled = true;
+        //    lineRenderer.positionCount = nodes.Count;
+
+        //    for (int i = 0; i < nodes.Count; i++)
+        //    {
+        //        lineRenderer.SetPosition(i, nodes[i].transform.position);
+        //    }
+        //}
     }
 
     private void HookLogic()
@@ -108,6 +122,27 @@ public class GrapplingHook : MonoBehaviour
                     //lastNodeUpdateTime = Time.time;
                     nodes.Remove(nodeToMoveTo);
                     Destroy(nodeToMoveTo);
+
+                    if (latchedObject != null)
+                    {
+                        if (!releaseOnNext)
+                        {
+                            RaycastHit hit;
+
+                            if (Physics.Raycast(transform.position, Vector3.down, out hit, 100f, 1 << LayerMask.NameToLayer("Ground")))
+                            {
+                                Tile tile = hit.collider.GetComponent<Tile>();
+                                if (tile)
+                                {
+                                    if (tile.tileState == Tile.TileState.down)
+                                    {
+                                        releaseOnNext = true;
+                                        StartCoroutine(Release());
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
                 if (nodes.Count == 0)
                 {
@@ -235,6 +270,7 @@ public class GrapplingHook : MonoBehaviour
             {
                 other.transform.parent = transform;
                 other.GetComponent<PlayerController>().lastHitBy = player; // Hooked player gets hooked by the hook owner.
+                latchedObject = other.gameObject;
                 StartTakeBack();
 
                 //transform.parent = other.transform;
@@ -247,5 +283,13 @@ public class GrapplingHook : MonoBehaviour
                 return;
             }
         }
+    }
+
+    private IEnumerator Release()
+    {
+        yield return new WaitForSeconds(0.1f);
+        transform.DetachChildren();
+        yield return new WaitForSeconds(0.1f);
+        latchedObject = null;
     }
 }

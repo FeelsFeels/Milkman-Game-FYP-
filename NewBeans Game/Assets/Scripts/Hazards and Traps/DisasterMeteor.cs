@@ -5,6 +5,7 @@ using UnityEngine;
 public class DisasterMeteor : MonoBehaviour
 {
     public float moveSpeed;
+    public float groundBreakRadius;
 
     private Rigidbody rb;
 
@@ -20,14 +21,9 @@ public class DisasterMeteor : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
-        randomPos = new Vector3(Random.Range(-5f, 20f), -0.7f, Random.Range(-25f, 0f));
+        randomPos = new Vector3(transform.position.x, -0.7f, transform.position.z);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     private void FixedUpdate()
     {
@@ -57,15 +53,30 @@ public class DisasterMeteor : MonoBehaviour
         }
     }
 
+    void DestroyGround()
+    {
+        int layermask = 1 << LayerMask.NameToLayer("Ground");
+
+        Collider[] collidersInRange = Physics.OverlapSphere(transform.position, groundBreakRadius, layermask);
+        foreach (Collider hit in collidersInRange)
+        {
+            Tile tile = hit.GetComponent<Tile>();
+            if (tile)
+            {
+                if (tile.tileState == Tile.TileState.up)
+                    tile.tileState = Tile.TileState.goingDown;
+            }
+        }
+    }
 
     void OnCollisionEnter(Collision other)
     {
-        print("collisionsoto");
         if (other.gameObject.tag == "Player")
         {
             other.gameObject.GetComponent<PlayerController>().Die();
             print("Player died");
         }
+        DestroyGround();
         Destroy(spawnedMarking);
         Destroy(gameObject);
     }

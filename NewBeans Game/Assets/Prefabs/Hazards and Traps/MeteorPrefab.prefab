@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
+  groundBreakRadius: 0
   meteorMarking: {fileID: 6993882294710183482, guid: 94f9ed1f004f39b4781366d79dfa227e,
     type: 3}
   instantiatingMarker: 0
