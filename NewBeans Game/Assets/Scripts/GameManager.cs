@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance = null;
 
+    private AudioSource theAudio;
+
     private PlayerController[] playerScript;
 
     public Text player1ScoreText;
@@ -39,6 +41,7 @@ public class GameManager : MonoBehaviour
     public Text timerText;
 
     public Image pauseScreen;
+    public bool isPaused;
 
 
     // Awake is always called before any Start functions
@@ -73,17 +76,37 @@ public class GameManager : MonoBehaviour
         StartTimerCount();
 
         playerScript = FindObjectsOfType<PlayerController>();
+        theAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X))
+        // Pause & Resume Game
+        if (Input.GetButtonDown("Start (All Controllers)"))
         {
-            PauseGame();
+            if (isPaused == false)
+            {
+                PauseGame();
+                isPaused = true;
+                return;
+            }
+            else
+            {
+                ResumeGame();
+                isPaused = false;
+                return;
+            }
         }
 
-        if (onePlayerIsKilled == true)
+        //else if (Input.GetAxis("Start (All Controllers)") > 0 && isPaused == true)
+        //{
+        //    print("XBox Resume Button Pressed");
+        //    ResumeGame();
+        //    isPaused = false;
+        //}
+
+            if (onePlayerIsKilled == true)
         {
 
             playerOneDied = false;
