@@ -7,6 +7,10 @@ using UnityEngine.SceneManagement;
 public class SceneManagement : MonoBehaviour
 {
 
+    private void Start()
+    {
+
+    }
     private void Update()
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
@@ -20,7 +24,8 @@ public class SceneManagement : MonoBehaviour
     }
 
     public void LoadScene(string sceneName)
-    {
+
+    { 
         SceneManager.LoadScene(sceneName);
     }
 

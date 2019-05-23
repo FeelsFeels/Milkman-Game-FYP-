@@ -45,6 +45,8 @@ public class GameManager : MonoBehaviour
     public float timeLeftInSeconds;
     public Text timerText;
 
+    public Text commentaryText;
+
     public Image pauseScreen;
     public bool isPaused;
 
@@ -83,20 +85,23 @@ public class GameManager : MonoBehaviour
         roundEndWithDraw.gameObject.SetActive(false);
 
         StartTimerCount();
+        commentaryText.text = (" ");
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Pause & Resume Game
+        // Pause & Resume Game.
         if (Input.GetButtonDown("Start (All Controllers)"))
         {
+            // Pause game.
             if (isPaused == false)
             {
                 PauseGame();
                 isPaused = true;
                 return;
             }
+            // Resume game.
             else
             {
                 ResumeGame();
@@ -105,14 +110,12 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        //else if (Input.GetAxis("Start (All Controllers)") > 0 && isPaused == true)
-        //{
-        //    print("XBox Resume Button Pressed");
-        //    ResumeGame();
-        //    isPaused = false;
-        //}
+        if (onePlayerIsKilled == true)
+        {
+        }
 
-            if (onePlayerIsKilled == true)
+        // Setting players as alive after dying
+        if (onePlayerIsKilled == true)
         {
 
             playerOneDied = false;
