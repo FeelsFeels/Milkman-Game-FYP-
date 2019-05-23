@@ -119,10 +119,7 @@ public class GrapplingHook : MonoBehaviour
             {
                 if (nodeToMoveTo != null)
                 {
-                    //lastNodeUpdateTime = Time.time;
-                    nodes.Remove(nodeToMoveTo);
-                    Destroy(nodeToMoveTo);
-
+                    //This block controls when to let go of a player if hooked
                     if (latchedObject != null)
                     {
                         if (!releaseOnNext)
@@ -143,6 +140,9 @@ public class GrapplingHook : MonoBehaviour
                             }
                         }
                     }
+
+                    nodes.Remove(nodeToMoveTo);
+                    Destroy(nodeToMoveTo);
                 }
                 if (nodes.Count == 0)
                 {
@@ -287,9 +287,11 @@ public class GrapplingHook : MonoBehaviour
 
     private IEnumerator Release()
     {
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(0.1f);
         transform.DetachChildren();
+        latchedObject.GetComponent<PlayerController2>().rb.AddForce(Vector3.down * 1000);
         yield return new WaitForSeconds(0.1f);
         latchedObject = null;
+        releaseOnNext = false;
     }
 }

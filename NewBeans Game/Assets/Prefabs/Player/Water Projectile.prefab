@@ -123,8 +123,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knockbackDirection: {x: 0, y: 0, z: 0}
   ownerPlayer: {fileID: 0}
-  speed: 25
-  knockbackStrength: 620
+  speed: 35
+  knockbackStrength: 1400
   knockbackRadius: 50
   upwardsModifier: 1.2
   playerHit: {fileID: 0}

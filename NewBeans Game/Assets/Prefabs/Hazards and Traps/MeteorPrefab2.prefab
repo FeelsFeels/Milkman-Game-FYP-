@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65d21932807189e448fe11e8458cfcea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.15
+  moveSpeed: 0.5
   groundBreakRadius: 2
   meteorMarking: {fileID: 6993882294710183482, guid: aa136b57dc42fe64e8071a14a8b50e2c,
     type: 3}

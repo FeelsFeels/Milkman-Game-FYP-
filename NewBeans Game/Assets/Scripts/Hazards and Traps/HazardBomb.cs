@@ -9,6 +9,7 @@ public class HazardBomb : MonoBehaviour
 
     public float explosionForce;
     public float explosionRadius;
+    public float groundDestroyRadius;
     //public float upwardsForce;
 
     public GameObject bombFX;
@@ -18,6 +19,12 @@ public class HazardBomb : MonoBehaviour
     private void Start()
     {
         StartCoroutine(WaitBeforeExploding());
+    }
+
+    void OnDrawGizmos()
+    {        
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(transform.position, explosionRadius);
     }
 
     public void Explode()
@@ -36,7 +43,7 @@ public class HazardBomb : MonoBehaviour
             {
                 print("Tilehit");
                 Tile tile = hit.GetComponent<Tile>();
-                if (Vector3.Distance(transform.position, tile.transform.position) < explosionRadius * 4/5)
+                if (Vector3.Distance(transform.position, tile.transform.position) < groundDestroyRadius)
                 {
                     if (tile.tileState == Tile.TileState.up)
                         tile.tileState = Tile.TileState.goingDown;

@@ -12,6 +12,11 @@ public class GameManager : MonoBehaviour
     private AudioSource theAudio;
 
     private PlayerController[] playerScript;
+    
+    [Header("Events")]
+    private EventsManager eventsManager;
+    public float timeSinceLastHazard;
+    
 
     public Text player1ScoreText;
     public Text player2ScoreText;
@@ -63,6 +68,11 @@ public class GameManager : MonoBehaviour
 
         // Don't destroy this object otherwise.
         //DontDestroyOnLoad(gameObject);
+
+
+        eventsManager = FindObjectOfType<EventsManager>();
+        playerScript = FindObjectsOfType<PlayerController>();
+        theAudio = GetComponent<AudioSource>();
     }
 
     // Start is called before the first frame update
@@ -72,11 +82,7 @@ public class GameManager : MonoBehaviour
         player2WinText.gameObject.SetActive(false);
         roundEndWithDraw.gameObject.SetActive(false);
 
-
         StartTimerCount();
-
-        playerScript = FindObjectsOfType<PlayerController>();
-        theAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -115,7 +121,7 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
-            SceneManager.LoadScene("Rooky's Voxel Scene");
+            SceneManager.LoadScene("Compilation 22-5-19");
             StartTimerCount();
 
         }
@@ -125,8 +131,8 @@ public class GameManager : MonoBehaviour
     // Starts the count down of round time.
     public void StartTimerCount()
     {
-        timeLeftInSeconds = 10000;
-        timerText.text = ("Time Left: :00:000");
+        timeLeftInSeconds = 180;
+        timerText.text = ("Time Left: 0:00");
         InvokeRepeating("UpdateTimer", 0.0f, 0.01667f);
 
     }
@@ -134,15 +140,16 @@ public class GameManager : MonoBehaviour
     // Updates the timer every millisecond.
     public void UpdateTimer()
     {
-        string minutes, seconds, fraction;
+        Debug.Log("fucker");
+        string minutes, seconds;
 
         if (timeLeftInSeconds > 0)
         {
             timeLeftInSeconds -= Time.deltaTime;
-            minutes = Mathf.Floor(timeLeftInSeconds / 60).ToString("00");
+            minutes = Mathf.Floor(timeLeftInSeconds / 60).ToString("0");
             seconds = (timeLeftInSeconds % 60).ToString("00");
-            fraction = ((timeLeftInSeconds * 100) % 100).ToString("000");
-            timerText.text = "Time Left: " + minutes + ":" + seconds + ":" + fraction;
+            timerText.text = "Time Left: " + minutes + ":" + seconds;
+            timeSinceLastHazard += Time.deltaTime;
         }
         else
         {
@@ -150,11 +157,10 @@ public class GameManager : MonoBehaviour
 
             minutes = "00";
             seconds = "00";
-            fraction = "000";
-            timerText.text = "Time Left: " + minutes + ":" + seconds + ":" + fraction;
+            timerText.text = "Time Left: " + minutes + ":" + seconds;
 
             RoundEnd();
-        }
+        }        
     }
 
     public void UpdateScore()

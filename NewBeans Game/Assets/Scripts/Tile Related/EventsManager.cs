@@ -26,7 +26,7 @@ public class EventsManager : MonoBehaviour
         }
     }
 
-    void NewPhase()
+    public void NewPhase()
     {
         if(OnNewPhase != null)
         {
@@ -34,7 +34,7 @@ public class EventsManager : MonoBehaviour
         }
     }
 
-    void SpawnHazard()
+    public void SpawnHazard()
     {
         if (OnSpawnHazard != null)
         {
