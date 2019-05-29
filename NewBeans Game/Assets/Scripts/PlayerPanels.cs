@@ -8,7 +8,7 @@ public class PlayerPanels : MonoBehaviour
     public PlayerController2 Player;
     public int PlayerNumber;
     public Text Header;
-    public GameObject PressToJoin;
+    public Text PlayerText;
 
     public bool HasControllerAssigned = false;
     public int controllerNumber;
@@ -51,7 +51,7 @@ public class PlayerPanels : MonoBehaviour
     {
         Debug.Log("Setting player to controller");
         Player.SetControllerNumber(controllerNo);
-        PressToJoin.SetActive(false);
+        PlayerText.text = "Press A when ready";
         HasControllerAssigned = true;
         controllerNumber = controllerNo;
 
