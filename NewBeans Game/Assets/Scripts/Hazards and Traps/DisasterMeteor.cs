@@ -32,14 +32,10 @@ public class DisasterMeteor : MonoBehaviour
 
     public void MoveTowardsLevel()
     {
+        meteorMarking.transform.position = randomPos;
+
         Vector3 targetPos = randomPos;
         // print("Target Position: " + targetPos);
-
-        if (instantiatingMarker == false)
-        {
-            spawnedMarking = Instantiate(meteorMarking, targetPos, Quaternion.identity);
-            instantiatingMarker = true;
-        }
 
         float step = moveSpeed * Time.deltaTime;
 

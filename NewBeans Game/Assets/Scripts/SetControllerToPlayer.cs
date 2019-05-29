@@ -21,6 +21,7 @@ public class SetControllerToPlayer : MonoBehaviour
     void Awake()
     {
         playerPanels = FindObjectsOfType<PlayerPanels>().OrderBy(t => t.PlayerNumber).ToArray(); //find the player panel selection
+        PlayerPrefs.DeleteAll();
     }
 
     // Update is called once per frame
@@ -30,7 +31,7 @@ public class SetControllerToPlayer : MonoBehaviour
         {
             if (assignedControllers.Contains(i))
             {
-                continue; //if it contains this shit, then skip the number
+                continue; //if it contains this, then skip the number
             }
 
             if (Input.GetButton("AButton (Controller " + i + ")")) //if there's an A button input from one of the controllers
@@ -44,17 +45,22 @@ public class SetControllerToPlayer : MonoBehaviour
         if (assignedControllers.Count >= 2 && PlayersReady == assignedControllers.Count)
         {
             PressToPlay.SetActive(true); //if more than 2 assigned controllers, tell players that game can be started
-
+            ReadyToStart = true;
         }
 
-        //if (ReadyToStart)
-        //{
-        //    if (Input.GetButton("AButton (Controller " + i + ")")
-        //        {
-        //        SceneManager.LoadScene(startGameScene);
-        //    }
-        //}
+        if (ReadyToStart)
+        { 
+            for (int i = 1; i <= 4; i++)
+            {
+                if (Input.GetButton("BButton (Controller " + i + ")"))
+                {
+                    print("start game");
+                    SceneManager.LoadScene(startGameScene);
+                }
+            }
+        }
     }
+    
 
 
     public void AddPlayerController(int controllerNo)
@@ -66,6 +72,10 @@ public class SetControllerToPlayer : MonoBehaviour
             if (playerPanels[i].HasControllerAssigned == false) //if there are no controllers assigned to that player panel, then
             {
                 playerPanels[i].AssignController(controllerNo); //assign a controller to that player
+
+
+                PlayerPrefs.SetInt("Player " + (i+1), controllerNo);
+                print("Player " + (i+1) + " controller is set");
                 break;
             }
         }

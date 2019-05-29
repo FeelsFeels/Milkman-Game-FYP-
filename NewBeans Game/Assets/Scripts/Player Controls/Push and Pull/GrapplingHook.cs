@@ -92,8 +92,9 @@ public class GrapplingHook : MonoBehaviour
     {
         if (hookStatus == HookStatus.shooting)
         {
+            //Movement. Direction is set by Shoot.cs
             transform.Translate(direction * speed);
-
+            //If the hook nodes are at its maximum, bring back the hook.
             if(nodes.Count >= maxNodes)
             {
                 if (willReturn)
@@ -104,13 +105,18 @@ public class GrapplingHook : MonoBehaviour
                     return;
                 }
             }
+            //Continue adding nodes while the maximum is not reached.
             if (nodes.Count < maxNodes)
             {
+                //If the hook travels [nodeBondDistance] away from the previous node, add another node.
                 if (Vector3.Distance(transform.position, LastNode().position) > nodeBondDistance)
                 {
                     AddNode();
                 }
             }
+
+            //float angle = Quaternion.Angle();
+
         }
 
         if (hookStatus == HookStatus.takeback)
@@ -210,7 +216,6 @@ public class GrapplingHook : MonoBehaviour
     private Vector3 NextNodePosition(Transform previousNode)
     {
         Quaternion currentRotation = Quaternion.Euler(0, previousNode.eulerAngles.y, 0);
-        print(currentRotation);
         Vector3 position = previousNode.position;
         position -= previousNode.forward * nodeBondDistance;
         return position;
@@ -266,6 +271,7 @@ public class GrapplingHook : MonoBehaviour
     {
         if (latchedObject == null)
         {
+            print("hitsomething");
             if (other.tag == "Player" && other.gameObject != hookOwner)
             {
                 other.transform.parent = transform;

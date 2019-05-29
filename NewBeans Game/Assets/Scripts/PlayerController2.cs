@@ -2,23 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class PlayerController2 : MonoBehaviour
 {
     public int playerNumber;
+   
+
+    [Header("Player Score")]
     public int killCount;
     public int deathCount;
     public int currentScore;
 
-    [Header("Player Control")]
-    //private float translateSpeed = 2.0f;
-    //private float rotateSpeed = 2.0f;
-    //public CharacterController playController;
-    //private Vector3 moveDirection = Vector3.zero;
-    //private float gravity = 0.4f;
-    //private Vector3 angle;
-
-    public float rotAngle = 0;
 
     [Header("Visual Effects")]
     public GameObject playerDieEffect;
@@ -50,6 +45,7 @@ public class PlayerController2 : MonoBehaviour
 
     [Header("Player Movement")]
     //Player movement
+    public float rotAngle = 0;
     public Vector3 CorrectionAngle; //y should be -45... about there. This rotates the movement, such that it is somewhat parallel to camera view
     private float averageInput;
     public int PressCounter = 0; //how many times you pressed the movement key/input
@@ -67,6 +63,28 @@ public class PlayerController2 : MonoBehaviour
     }
 
 
+    private void Awake()
+    {
+        if (PlayerPrefs.HasKey("Player "+ playerNumber))
+        {
+            int controllerNo = PlayerPrefs.GetInt("Player " + playerNumber);
+            SetControllerNumber(controllerNo);
+        }
+
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+
+        if (ControllerNumber == 0 && currentScene.name != "Player Select")
+        {
+            if(sceneName == "Compilation 22-5-19")
+            {
+                return;
+            }
+            this.gameObject.SetActive(false);
+        }
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -75,6 +93,7 @@ public class PlayerController2 : MonoBehaviour
         boxRenderer = GetComponent<MeshRenderer>();
         boxCollider = GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
+
     }
 
     public void SetControllerNumber (int controllerNo)

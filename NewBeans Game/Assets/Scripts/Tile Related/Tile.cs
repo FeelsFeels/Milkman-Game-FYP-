@@ -30,7 +30,7 @@ public class Tile : MonoBehaviour
     {
         upPos = transform.position;
         float initialYCoord = transform.position.y;
-        downPos = new Vector3(transform.position.x, initialYCoord - 10, transform.position.z);
+        downPos = new Vector3(transform.position.x, initialYCoord - 30, transform.position.z);
     }
 
     private void Update()

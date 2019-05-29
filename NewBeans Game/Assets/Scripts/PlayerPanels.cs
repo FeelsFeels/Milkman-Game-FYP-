@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class PlayerPanels : MonoBehaviour
 {
-    public PlayerController Player;
+    public PlayerController2 Player;
     public int PlayerNumber;
     public Text Header;
-    public GameObject PressToJoin;
+    public Text PlayerText;
 
     public bool HasControllerAssigned = false;
     public int controllerNumber;
@@ -34,15 +34,7 @@ public class PlayerPanels : MonoBehaviour
 
         if (CharacterSelect.activeInHierarchy)
         {
-            //Choices = GetComponentInChildren<Scrollbar>();
-            //if (Input.GetAxisRaw("Horizontal (Controller "+ controllerNumber + ")") > 0)
-            //{
-            //    Choices.value += 0.25f;
-            //}
-            //if (Input.GetAxisRaw("Horizontal (Controller " + controllerNumber + ")") < 0)
-            //{
-            //    Choices.value -= 0.25f;
-            //}
+           
 
             if (Input.GetButton("AButton (Controller " + controllerNumber + ")"))
             {
@@ -59,7 +51,7 @@ public class PlayerPanels : MonoBehaviour
     {
         Debug.Log("Setting player to controller");
         Player.SetControllerNumber(controllerNo);
-        PressToJoin.SetActive(false);
+        PlayerText.text = "Press A when ready";
         HasControllerAssigned = true;
         controllerNumber = controllerNo;
 
