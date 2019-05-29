@@ -21,6 +21,7 @@ public class SetControllerToPlayer : MonoBehaviour
     void Awake()
     {
         playerPanels = FindObjectsOfType<PlayerPanels>().OrderBy(t => t.PlayerNumber).ToArray(); //find the player panel selection
+        PlayerPrefs.DeleteAll();
     }
 
     // Update is called once per frame
@@ -47,13 +48,13 @@ public class SetControllerToPlayer : MonoBehaviour
 
         }
 
-        //if (ReadyToStart)
-        //{
-        //    if (Input.GetButton("AButton (Controller " + i + ")")
-        //        {
-        //        SceneManager.LoadScene(startGameScene);
-        //    }
-        //}
+        if (ReadyToStart)
+        {
+            if (Input.GetButton("AButton (Controller " + i + ")"))
+            {
+                SceneManager.LoadScene(startGameScene);
+            }
+        }
     }
 
 
@@ -66,6 +67,9 @@ public class SetControllerToPlayer : MonoBehaviour
             if (playerPanels[i].HasControllerAssigned == false) //if there are no controllers assigned to that player panel, then
             {
                 playerPanels[i].AssignController(controllerNo); //assign a controller to that player
+
+
+                PlayerPrefs.SetInt("Player " + i, controllerNo);
                 break;
             }
         }
