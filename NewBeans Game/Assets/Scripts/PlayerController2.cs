@@ -76,6 +76,10 @@ public class PlayerController2 : MonoBehaviour
 
         if (ControllerNumber == 0 && currentScene.name != "Player Select")
         {
+            if(sceneName == "Compilation 22-5-19")
+            {
+                return;
+            }
             this.gameObject.SetActive(false);
         }
     }

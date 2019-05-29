@@ -46,7 +46,6 @@ public class HazardBomb : MonoBehaviour
             }
             else
             {
-                print("Tilehit");
                 Tile tile = hit.GetComponent<Tile>();
                 if (Vector3.Distance(transform.position, tile.transform.position) < groundDestroyRadius)
                 {
@@ -61,6 +60,8 @@ public class HazardBomb : MonoBehaviour
 
     public IEnumerator WaitBeforeExploding()
     {
+        GetComponent<Rigidbody>().drag = 1.5f;
+
         canvas.SetActive(true);
 
         countdownAlpha.fillAmount = 1;

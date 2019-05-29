@@ -143,7 +143,6 @@ public class GameManager : MonoBehaviour
     // Updates the timer every millisecond.
     public void UpdateTimer()
     {
-        Debug.Log("fucker");
         string minutes, seconds;
 
         if (timeLeftInSeconds > 0)

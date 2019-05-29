@@ -216,7 +216,6 @@ public class GrapplingHook : MonoBehaviour
     private Vector3 NextNodePosition(Transform previousNode)
     {
         Quaternion currentRotation = Quaternion.Euler(0, previousNode.eulerAngles.y, 0);
-        print(currentRotation);
         Vector3 position = previousNode.position;
         position -= previousNode.forward * nodeBondDistance;
         return position;
@@ -272,6 +271,7 @@ public class GrapplingHook : MonoBehaviour
     {
         if (latchedObject == null)
         {
+            print("hitsomething");
             if (other.tag == "Player" && other.gameObject != hookOwner)
             {
                 other.transform.parent = transform;
