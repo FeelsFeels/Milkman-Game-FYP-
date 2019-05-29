@@ -15,6 +15,7 @@ public class SceneManagement : MonoBehaviour
     }
     private void Update()
     {
+        // For loading MainMenu screen from TitleScreen only.
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             if (Input.anyKey)

@@ -35,11 +35,16 @@ public class GameManager : MonoBehaviour
     [Header("Round End Variables")]
     public Image roundEndScreen;
     public bool roundHasEnded;
-    public Text player1WinText;
-    public Text player2WinText;
-    public Text player3WinText;
-    public Text player4WinText;
-    public Text roundEndWithDraw;
+    public Text player1FinalScore;
+    public Text player2FinalScore;
+    public Text player3FinalScore;
+    public Text player4FinalScore;
+
+    //public Text player1WinText;
+    //public Text player2WinText;
+    //public Text player3WinText;
+    //public Text player4WinText;
+    //public Text roundEndWithDraw;
 
     [Header("Timer")]
     public float timeLeftInSeconds;
@@ -82,9 +87,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player1WinText.gameObject.SetActive(false);
-        player2WinText.gameObject.SetActive(false);
-        roundEndWithDraw.gameObject.SetActive(false);
+        //player1WinText.gameObject.SetActive(false);
+        //player2WinText.gameObject.SetActive(false);
+        //roundEndWithDraw.gameObject.SetActive(false);
 
         StartTimerCount();
         commentaryText.text = (" ");
@@ -191,6 +196,11 @@ public class GameManager : MonoBehaviour
     {
         if (roundHasEnded == true)
         {
+            player1FinalScore.text = ("Player 1: " + playerScript[0].currentScore.ToString());
+            player2FinalScore.text = ("Player 2: " + playerScript[1].currentScore.ToString());
+            player3FinalScore.text = ("Player 3: " + playerScript[2].currentScore.ToString());
+            //player4ScoreText.text = ("Player 4: " + playerScript[3].currentScore.ToString());
+            
             Time.timeScale = 0;
             roundEndScreen.gameObject.SetActive(true);
         }
