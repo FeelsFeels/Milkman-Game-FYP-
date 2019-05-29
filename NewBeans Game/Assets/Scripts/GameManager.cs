@@ -50,6 +50,8 @@ public class GameManager : MonoBehaviour
     public Image pauseScreen;
     public bool isPaused;
 
+    [Header ("Audio")]
+    public AudioClip bgm;
 
     // Awake is always called before any Start functions
     void Awake()

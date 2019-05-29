@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class SceneManagement : MonoBehaviour
 {
 
+    public Animator anim;
+
     private void Start()
     {
 
@@ -25,7 +27,9 @@ public class SceneManagement : MonoBehaviour
 
     public void LoadScene(string sceneName)
 
-    { 
+    {
+        anim.SetTrigger("FadeOut");
+        print("Fading out");
         SceneManager.LoadScene(sceneName);
     }
 
