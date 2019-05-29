@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HazardBomb : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class HazardBomb : MonoBehaviour
     public float explosionForce;
     public float explosionRadius;
     public float groundDestroyRadius;
+
+    public GameObject canvas;
+    public Image countdownAlpha;
+    
     //public float upwardsForce;
 
     public GameObject bombFX;
@@ -18,7 +23,7 @@ public class HazardBomb : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(WaitBeforeExploding());
+        canvas.SetActive(false);
     }
 
     void OnDrawGizmos()
@@ -56,7 +61,26 @@ public class HazardBomb : MonoBehaviour
 
     public IEnumerator WaitBeforeExploding()
     {
-        yield return new WaitForSeconds(timeBeforeExploding);
+        canvas.SetActive(true);
+
+        countdownAlpha.fillAmount = 1;
+
+        //Controls timing of countdown visuals
+        float explodeTime = Time.time + timeBeforeExploding;
+
+        //This loop controls the countdown visuals
+        while (Time.time < explodeTime)
+        {
+            countdownAlpha.fillAmount = ((explodeTime - Time.time) / timeBeforeExploding);
+            yield return null;
+        }
+
+        //yield return new WaitForSeconds(timeBeforeExploding);
         Explode();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        StartCoroutine(WaitBeforeExploding());
     }
 }
