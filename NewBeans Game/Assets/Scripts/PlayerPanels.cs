@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerPanels : MonoBehaviour
 {
-    public PlayerController2 Player;
+    public PlayerController Player;
     public int PlayerNumber;
     public Text Header;
     public Text PlayerText;

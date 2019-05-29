@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shield : MonoBehaviour
 {
-    private PlayerController2 player;
+    private PlayerController player;
     private MeshRenderer shieldRenderer;
     private SphereCollider shieldCollider;
 
@@ -12,7 +12,7 @@ public class Shield : MonoBehaviour
 
     private void Awake()
     {
-        player = GetComponentInParent<PlayerController2>();
+        player = GetComponentInParent<PlayerController>();
         shieldRenderer = GetComponent<MeshRenderer>();
         shieldCollider = GetComponent<SphereCollider>();
     }

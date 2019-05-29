@@ -271,7 +271,6 @@ public class GrapplingHook : MonoBehaviour
     {
         if (latchedObject == null)
         {
-            print("hitsomething");
             if (other.tag == "Player" && other.gameObject != hookOwner)
             {
                 other.transform.parent = transform;
@@ -295,7 +294,7 @@ public class GrapplingHook : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         transform.DetachChildren();
-        latchedObject.GetComponent<PlayerController2>().rb.AddForce(Vector3.down * 1000);
+        latchedObject.GetComponent<PlayerController>().rb.AddForce(Vector3.down * 1000);
         yield return new WaitForSeconds(0.1f);
         latchedObject = null;
         releaseOnNext = false;

@@ -11,12 +11,12 @@ public class GameManager : MonoBehaviour
 
     private AudioSource theAudio;
 
-    private PlayerController[] playerScript;
-    
+    private List<PlayerController> playerScript = new List<PlayerController>();
+
     [Header("Events")]
     private EventsManager eventsManager;
     public float timeSinceLastHazard;
-    
+
 
     public Text player1ScoreText;
     public Text player2ScoreText;
@@ -35,10 +35,10 @@ public class GameManager : MonoBehaviour
     [Header("Round End Variables")]
     public Image roundEndScreen;
     public bool roundHasEnded;
-    public Text player1FinalScore;
-    public Text player2FinalScore;
-    public Text player3FinalScore;
-    public Text player4FinalScore;
+    public Text firstPlaceScore;
+    public Text secondPlaceScore;
+    public Text thirdPlaceScore;
+    public Text fourthPlaceScore;
 
     //public Text player1WinText;
     //public Text player2WinText;
@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
     public Image pauseScreen;
     public bool isPaused;
 
-    [Header ("Audio")]
+    [Header("Audio")]
     public AudioClip bgm;
 
     // Awake is always called before any Start functions
@@ -80,8 +80,12 @@ public class GameManager : MonoBehaviour
 
 
         eventsManager = FindObjectOfType<EventsManager>();
-        playerScript = FindObjectsOfType<PlayerController>();
         theAudio = GetComponent<AudioSource>();
+        PlayerController[] tempPCList = FindObjectsOfType<PlayerController>();
+
+        foreach (PlayerController pc in tempPCList)
+            playerScript.Add(pc);
+        playerScript.Sort(delegate (PlayerController p1, PlayerController p2) { return p1.playerNumber.CompareTo(p2.playerNumber); });
     }
 
     // Start is called before the first frame update
@@ -92,7 +96,7 @@ public class GameManager : MonoBehaviour
         //roundEndWithDraw.gameObject.SetActive(false);
 
         StartTimerCount();
-        commentaryText.text = (" ");
+        //commentaryText.text = (" ");
     }
 
     // Update is called once per frame
@@ -131,9 +135,7 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
-            SceneManager.LoadScene("Compilation 22-5-19");
-            StartTimerCount();
-
+            SceneManager.LoadScene("Alpha Game");
         }
 
     }
@@ -141,7 +143,7 @@ public class GameManager : MonoBehaviour
     // Starts the count down of round time.
     public void StartTimerCount()
     {
-        timeLeftInSeconds = 180;
+        //timeLeftInSeconds = 180;
         timerText.text = ("Time Left: 0:00");
         InvokeRepeating("UpdateTimer", 0.0f, 0.01667f);
 
@@ -169,7 +171,7 @@ public class GameManager : MonoBehaviour
             timerText.text = "Time Left: " + minutes + ":" + seconds;
 
             RoundEnd();
-        }        
+        }
     }
 
     public void UpdateScore()
@@ -196,13 +198,29 @@ public class GameManager : MonoBehaviour
     {
         if (roundHasEnded == true)
         {
-            player1FinalScore.text = ("Player 1: " + playerScript[0].currentScore.ToString());
-            player2FinalScore.text = ("Player 2: " + playerScript[1].currentScore.ToString());
-            player3FinalScore.text = ("Player 3: " + playerScript[2].currentScore.ToString());
+            //player1FinalScore.text = ("Player 1: " + playerScript[0].currentScore.ToString());
+            //player2FinalScore.text = ("Player 2: " + playerScript[1].currentScore.ToString());
+            //player3FinalScore.text = ("Player 3: " + playerScript[2].currentScore.ToString());
             //player4ScoreText.text = ("Player 4: " + playerScript[3].currentScore.ToString());
-            
-            Time.timeScale = 0;
+
+
+            playerScript.Sort(delegate (PlayerController p1, PlayerController p2) { return p1.currentScore.CompareTo(p2.currentScore); });
+            playerScript.Reverse();
+
             roundEndScreen.gameObject.SetActive(true);
+
+            firstPlaceScore.text = string.Format("Player {0}: {1}", playerScript[0].playerNumber, playerScript[0].currentScore);
+            secondPlaceScore.text = string.Format("Player {0}: {1}", playerScript[1].playerNumber, playerScript[1].currentScore);
+            thirdPlaceScore.text = string.Format("Player {0}: {1}", playerScript[2].playerNumber, playerScript[2].currentScore);
+            //fourthPlaceScore.text = string.Format("Player {0}: {1}", playerScript[3].playerNumber, playerScript[3].currentScore);
+
+            Time.timeScale = 0;
         }
+    }
+
+    public void LoadScene(string sceneName)
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(sceneName);
     }
 }
