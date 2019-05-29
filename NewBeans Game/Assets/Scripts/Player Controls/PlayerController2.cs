@@ -42,6 +42,7 @@ public class PlayerController2 : MonoBehaviour
     private MeshRenderer boxRenderer;
     private CapsuleCollider boxCollider;
     public Rigidbody rb;
+    private Shield invincibilityShield;
 
     [Header("Player Movement")]
     //Player movement
@@ -76,6 +77,7 @@ public class PlayerController2 : MonoBehaviour
 
         if (ControllerNumber == 0 && currentScene.name != "Player Select")
         {
+            //Testing purposes, do not forrget to erase
             if(sceneName == "Compilation 22-5-19")
             {
                 return;
@@ -87,13 +89,12 @@ public class PlayerController2 : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-       
+    {       
         // Components
         boxRenderer = GetComponent<MeshRenderer>();
         boxCollider = GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
-
+        invincibilityShield = GetComponentInChildren<Shield>();
     }
 
     public void SetControllerNumber (int controllerNo)
@@ -280,7 +281,7 @@ public class PlayerController2 : MonoBehaviour
                     smr.enabled = true;
                     //boxRenderer.enabled = false;
                     boxCollider.enabled = true;
-
+                    invincibilityShield.ActivateShield();
                 }
             }
         }

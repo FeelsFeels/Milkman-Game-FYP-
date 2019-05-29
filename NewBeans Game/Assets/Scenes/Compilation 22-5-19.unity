@@ -520,6 +520,7 @@ MonoBehaviour:
   commentaryText: {fileID: 0}
   pauseScreen: {fileID: 0}
   isPaused: 0
+  bgm: {fileID: 0}
 --- !u!4 &61573805
 Transform:
   m_ObjectHideFlags: 0
