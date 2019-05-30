@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour
     public bool isPaused;
 
     [Header("Audio")]
+    private AudioSource audioSource;
     public AudioClip bgm;
 
     // Awake is always called before any Start functions
@@ -94,7 +95,7 @@ public class GameManager : MonoBehaviour
         //player1WinText.gameObject.SetActive(false);
         //player2WinText.gameObject.SetActive(false);
         //roundEndWithDraw.gameObject.SetActive(false);
-
+        audioSource = GetComponent<AudioSource>();
         StartTimerCount();
         //commentaryText.text = (" ");
     }

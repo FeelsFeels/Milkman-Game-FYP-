@@ -365,7 +365,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: X. Olympics
+  m_Text: Holeympics
 --- !u!222 &383327925
 CanvasRenderer:
   m_ObjectHideFlags: 0
