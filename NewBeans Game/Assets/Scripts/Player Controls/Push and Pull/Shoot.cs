@@ -32,7 +32,9 @@ public class Shoot : MonoBehaviour
 
         playerScript = GetComponent<PlayerController>();
 
-       // hProjectile.GetComponent<Shoot>().castedByPlayer = player;
+        // hProjectile.GetComponent<Shoot>().castedByPlayer = player;
+        watergunInput = playerScript.AButtonInput;
+        hookInput = playerScript.BButtonInput;
     }
 
     private void Update()
