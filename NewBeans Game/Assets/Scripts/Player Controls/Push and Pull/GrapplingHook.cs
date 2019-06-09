@@ -242,6 +242,7 @@ public class GrapplingHook : MonoBehaviour
     {
         //nodes.Reverse();
         hookStatus = HookStatus.takeback;
+
     }
 
     private void StartReverse()

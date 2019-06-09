@@ -7,7 +7,12 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     public int playerNumber;
-   
+
+    public float killCountTimer;
+    public float deathCountTimer;
+
+    public int killSpreeCount;
+    public int deathSpreeCount;
 
     [Header("Player Score")]
     public int killCount;
@@ -105,7 +110,11 @@ public class PlayerController : MonoBehaviour
         AButtonInput = "AButton (Controller " + controllerNo + ")";
         BButtonInput = "BButton (Controller " + controllerNo + ")";
     }
-
+    private void Update()
+    {
+        killCountTimer -= Time.deltaTime;
+        deathCountTimer -= Time.deltaTime;
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -308,11 +317,31 @@ public class PlayerController : MonoBehaviour
         //    GameManager.instance.UpdateScore();
         //    lastHitBy = null;
         //}
+        deathCount += 1;
+        deathCountTimer = GameManager.instance.deathCountDownTimer;
 
         Instantiate(playerDieEffect, gameObject.transform.position, gameObject.transform.rotation);
 
-        if(lastHitBy != null)
+        if (lastHitBy != null)
+        {
+
+            if (lastHitBy.GetComponent<PlayerController>().killCountTimer > 0)
+            {
+                lastHitBy.GetComponent<PlayerController>().killSpreeCount += 1;
+            }
+
             lastHitBy.GetComponent<PlayerController>().currentScore += GameManager.instance.killScoreToAdd;
+            lastHitBy.GetComponent<PlayerController>().killCount += 1;
+
+            lastHitBy.GetComponent<PlayerController>().killCountTimer = GameManager.instance.killCountDownTimer;
+            GameManager.instance.CheckPlayerKill(this, lastHitBy.GetComponent<PlayerController>());
+
+        }
+
+        else
+        {
+            GameManager.instance.CheckPlayerKill(this, null);
+        }
 
         lastHitBy = null;
 
@@ -324,6 +353,7 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(RespawnPlayer());
         
     }
+    
 
     IEnumerator RespawnPlayer()
     {

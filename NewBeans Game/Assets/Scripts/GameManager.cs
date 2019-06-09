@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public float killCountDownTimer;
+    public float deathCountDownTimer;
 
     public static GameManager instance = null;
 
@@ -122,18 +124,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (onePlayerIsKilled == true)
-        {
-        }
-
-        // Setting players as alive after dying
-        if (onePlayerIsKilled == true)
-        {
-
-            playerOneDied = false;
-            playerTwoDied = false;
-            onePlayerIsKilled = false;
-        }
+     
         if (Input.GetKeyDown(KeyCode.P))
         {
             SceneManager.LoadScene("Alpha Game");
@@ -182,6 +173,20 @@ public class GameManager : MonoBehaviour
         player3ScoreText.text = playerScript[2].currentScore.ToString();
         //player2ScoreText.text = playerScript[3].currentScore.ToString();
     }
+
+    public void CheckPlayerKill(PlayerController player, PlayerController killer)
+    {
+        
+        if (killer == null)
+        {
+            commentaryText.text = ("Player " + player.playerNumber + " has suicided!");
+        }
+        else 
+        {
+            commentaryText.text = ("Player " + player.playerNumber + " has been killed by Player " + killer.playerNumber);
+        }
+    }
+
 
     public void PauseGame()
     {
