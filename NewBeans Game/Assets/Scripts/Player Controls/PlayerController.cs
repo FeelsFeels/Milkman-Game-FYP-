@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
     //Player movement
     public float rotAngle = 0;
     public Vector3 CorrectionAngle; //y should be -45... about there. This rotates the movement, such that it is somewhat parallel to camera view
-    private float averageInput;
+    public float averageInput;
     public int PressCounter = 0; //how many times you pressed the movement key/input
     public float PressCooldownTimer; //you have to press movement input again within this time in order to activate dash; countdown before reset thingy
     public float angleTolerance = 30;
@@ -143,7 +143,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetAxis(VerticalInputAxis) != 0 && Input.GetAxis(HorizontalInputAxis) != 0) //if there is vertical input AND horizontal input
         {
-            averageInput = Mathf.Sqrt(moveHorizontalAxis * moveHorizontalAxis + moveVerticalAxis * moveVerticalAxis); //find the hypotenuse input; can you bELIEVE iM DOING MATH??? cause im also in disbelief
+            averageInput = Mathf.Sqrt(moveHorizontalAxis * moveHorizontalAxis + moveVerticalAxis * moveVerticalAxis); //find the hypotenuse input; can you bELIEVE iM DOING MATH??? cause im also in disbelief like, oh mai gawddd this is insane btw lily u r insane and cool and I wish i could math like u
 
             Turn(averageInput); //turn 
             Move(averageInput);
