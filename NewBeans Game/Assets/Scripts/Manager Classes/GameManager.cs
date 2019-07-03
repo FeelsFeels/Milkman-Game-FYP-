@@ -25,11 +25,6 @@ public class GameManager : MonoBehaviour
     public Text player3ScoreText;
     public Text player4ScoreText;
 
-    [Header("Check For Player Deaths")]
-    public static bool onePlayerIsKilled;
-    public bool playerOneDied;
-    public bool playerTwoDied;
-
     [Header("GUI Variables")]
     public int killScoreToAdd;
     public int deathScoreToDeduct;
@@ -42,18 +37,6 @@ public class GameManager : MonoBehaviour
     public Text thirdPlaceScore;
     public Text fourthPlaceScore;
 
-    //public Text player1WinText;
-    //public Text player2WinText;
-    //public Text player3WinText;
-    //public Text player4WinText;
-    //public Text roundEndWithDraw;
-
-    [Header("Timer")]
-    public float timeLeftInSeconds;
-    public Text timerText;
-
-    public Text commentaryText;
-
     public Image pauseScreen;
     public bool isPaused;
 
@@ -61,7 +44,9 @@ public class GameManager : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip bgm;
 
-    // Awake is always called before any Start functions
+    public delegate void PlayerDeathDel(PlayerController deadPlayer, PlayerController killer);
+    public PlayerDeathDel playerDeath;
+
     void Awake()
     {
         // Check if instance already exists;
@@ -81,28 +66,22 @@ public class GameManager : MonoBehaviour
         // Don't destroy this object otherwise.
         //DontDestroyOnLoad(gameObject);
 
-
+        //Find References
         eventsManager = FindObjectOfType<EventsManager>();
         theAudio = GetComponent<AudioSource>();
+        //Sort PlayerList
         PlayerController[] tempPCList = FindObjectsOfType<PlayerController>();
-
         foreach (PlayerController pc in tempPCList)
             playerScript.Add(pc);
         playerScript.Sort(delegate (PlayerController p1, PlayerController p2) { return p1.playerNumber.CompareTo(p2.playerNumber); });
+        //Instantiate delegate
     }
-
-    // Start is called before the first frame update
+    
     void Start()
     {
-        //player1WinText.gameObject.SetActive(false);
-        //player2WinText.gameObject.SetActive(false);
-        //roundEndWithDraw.gameObject.SetActive(false);
         audioSource = GetComponent<AudioSource>();
-        StartTimerCount();
-        //commentaryText.text = (" ");
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         // Pause & Resume Game.
@@ -132,42 +111,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-    // Starts the count down of round time.
-    public void StartTimerCount()
-    {
-        //timeLeftInSeconds = 180;
-        timerText.text = ("Time Left: 0:00");
-        InvokeRepeating("UpdateTimer", 0.0f, 0.01667f);
-
-    }
-
-    // Updates the timer every millisecond.
-    public void UpdateTimer()
-    {
-        string minutes, seconds;
-
-        if (timeLeftInSeconds > 0)
-        {
-            timeLeftInSeconds -= Time.deltaTime;
-            minutes = Mathf.Floor(timeLeftInSeconds / 60).ToString("0");
-            seconds = (timeLeftInSeconds % 60).ToString("00");
-            timerText.text = "Time Left: " + minutes + ":" + seconds;
-            timeSinceLastHazard += Time.deltaTime;
-        }
-        else
-        {
-            roundHasEnded = true;
-
-            minutes = "00";
-            seconds = "00";
-            timerText.text = "Time Left: " + minutes + ":" + seconds;
-
-            RoundEnd();
-        }
-    }
-
-
-
     public void PauseGame()
     {
         pauseScreen.gameObject.SetActive(true);
@@ -184,11 +127,6 @@ public class GameManager : MonoBehaviour
     {
         if (roundHasEnded == true)
         {
-            //player1FinalScore.text = ("Player 1: " + playerScript[0].currentScore.ToString());
-            //player2FinalScore.text = ("Player 2: " + playerScript[1].currentScore.ToString());
-            //player3FinalScore.text = ("Player 3: " + playerScript[2].currentScore.ToString());
-            //player4ScoreText.text = ("Player 4: " + playerScript[3].currentScore.ToString());
-
 
             playerScript.Sort(delegate (PlayerController p1, PlayerController p2) { return p1.currentScore.CompareTo(p2.currentScore); });
             playerScript.Reverse();
@@ -209,4 +147,10 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene(sceneName);
     }
+    
+    public void OnPlayerDeath(PlayerController playerDead, PlayerController killer)
+    {
+        playerDeath(playerDead, killer);
+    }
+
 }

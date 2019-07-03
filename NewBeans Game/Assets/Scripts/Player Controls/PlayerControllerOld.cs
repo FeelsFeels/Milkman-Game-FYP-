@@ -157,7 +157,6 @@ public class PlayerControllerOld : MonoBehaviour
         if (other.tag == "Hole")
         {
             isDead = true;
-            GameManager.onePlayerIsKilled = true;
             Die();
         }
     }

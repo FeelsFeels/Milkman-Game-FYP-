@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Level1Timing : MonoBehaviour
 {
 
     private EventsManager eventsManager;
     private GameManager gameManager;
+    private TimerManager timerManager;
 
     private float timeLeft;
     private float timeSinceLastHazard = 0;
@@ -14,14 +16,14 @@ public class Level1Timing : MonoBehaviour
     private void Awake()
     {
         eventsManager = FindObjectOfType<EventsManager>();
-        gameManager = FindObjectOfType<GameManager>();
+        timerManager = FindObjectOfType<TimerManager>();
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        timeLeft = gameManager.timeLeftInSeconds;
+        timeLeft = timerManager.timeLeftInSeconds;
         timeSinceLastHazard += Time.deltaTime;
 
         if (timeLeft <= 30)

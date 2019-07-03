@@ -596,9 +596,6 @@ MonoBehaviour:
   secondPlaceScore: {fileID: 1749915017}
   thirdPlaceScore: {fileID: 954001365}
   fourthPlaceScore: {fileID: 1255190644}
-  timeLeftInSeconds: 180
-  timerText: {fileID: 1562759416}
-  commentaryText: {fileID: 0}
   pauseScreen: {fileID: 1859145466}
   isPaused: 0
   bgm: {fileID: 8300000, guid: 645c8893ae655724fb1e6d8c574a8a3b, type: 3}
@@ -8393,6 +8390,53 @@ MonoBehaviour:
   upPos: {x: 0, y: 0, z: 0}
   downPos: {x: 0, y: 0, z: 0}
   tileState: 3
+--- !u!1 &896305054
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 896305055}
+  - component: {fileID: 896305056}
+  m_Layer: 0
+  m_Name: TimerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &896305055
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896305054}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1526705727}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &896305056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896305054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a2c82efa4792804983cb9853c2801e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingTime: 180
+  timeLeftInSeconds: 0
+  timeElapsedSinceStart: 0
+  timerText: {fileID: 1562759416}
 --- !u!1 &897904317 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6675130196714840596, guid: 2233148f47914e84e8d57a90d96d5d9b,
@@ -17933,6 +17977,7 @@ Transform:
   - {fileID: 1336939692}
   - {fileID: 240912116}
   - {fileID: 345911209}
+  - {fileID: 896305055}
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -18251,7 +18296,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Time Left: 00:00:000'
+  m_Text: 'Time Left: 0:00'
 --- !u!222 &1562759417
 CanvasRenderer:
   m_ObjectHideFlags: 0

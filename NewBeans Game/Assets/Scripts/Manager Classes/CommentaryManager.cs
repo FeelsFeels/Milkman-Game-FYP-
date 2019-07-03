@@ -14,6 +14,15 @@ public class CommentaryManager : MonoBehaviour
         instance = this;
     }
 
+    public void Start()
+    {
+        GameManager GM = FindObjectOfType<GameManager>();
+        if (GM)
+        {
+            GM.playerDeath += CheckPlayerKill;
+        }
+    }
+
     public void CheckPlayerKill(PlayerController player, PlayerController killer)
     {
 

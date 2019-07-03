@@ -27,6 +27,15 @@ public class ScoreManager : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        GameManager GM = FindObjectOfType<GameManager>();
+        if (GM)
+        {
+            GM.playerDeath += ChangeScore;
+        }
+    }
+
     public void ChangeScore(PlayerController deadPlayer, PlayerController killerPlayer)
     {
         killerPlayer.killCount += 1;
