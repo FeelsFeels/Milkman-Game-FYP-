@@ -231,7 +231,7 @@ public class PlayerControllerOld : MonoBehaviour
         // Respawns player
         StartCoroutine(RespawnPlayer());
 
-        GameManager.instance.UpdateScore();
+        ScoreManager.instance.UpdateScore();
 
     }
 

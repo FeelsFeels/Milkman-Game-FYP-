@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public float killCountDownTimer;
     public float deathCountDownTimer;
-
+    
     public static GameManager instance = null;
 
     private AudioSource theAudio;
@@ -166,26 +166,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void UpdateScore()
-    {
-        player1ScoreText.text = playerScript[0].currentScore.ToString();
-        player2ScoreText.text = playerScript[1].currentScore.ToString();
-        player3ScoreText.text = playerScript[2].currentScore.ToString();
-        //player2ScoreText.text = playerScript[3].currentScore.ToString();
-    }
-
-    public void CheckPlayerKill(PlayerController player, PlayerController killer)
-    {
-        
-        if (killer == null)
-        {
-            commentaryText.text = ("Player " + player.playerNumber + " has suicided!");
-        }
-        else 
-        {
-            commentaryText.text = ("Player " + player.playerNumber + " has been killed by Player " + killer.playerNumber);
-        }
-    }
 
 
     public void PauseGame()

@@ -299,59 +299,28 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
-        //GrapplingHook hook = lastHitBy.GetComponent<GrapplingHook>();
-        //WaterProjectile projectile = lastHitBy.GetComponent<WaterProjectile>();
-
-        //if(hook != null)
-        //{
-        //    GrapplingHook hook = lastHitBy.GetComponent<GrapplingHook>();
-        //    hook.hookOwner.GetComponent<PlayerController>().currentScore += GameManager.instance.killScoreToAdd;
-        //    GameManager.instance.UpdateScore();
-        //    hook.hookOwner = null;
-        //    lastHitBy = null;
-        //}
-        //else if (projectile != null)
-        //{
-        //    WaterProjectile projectile = lastHitBy.GetComponent<WaterProjectile>();
-        //    projectile.ownerPlayer.GetComponent<PlayerController>().currentScore += GameManager.instance.killScoreToAdd;
-        //    GameManager.instance.UpdateScore();
-        //    lastHitBy = null;
-        //}
-        deathCount += 1;
         deathCountTimer = GameManager.instance.deathCountDownTimer;
 
         Instantiate(playerDieEffect, gameObject.transform.position, gameObject.transform.rotation);
 
         if (lastHitBy != null)
         {
-
-            if (lastHitBy.GetComponent<PlayerController>().killCountTimer > 0)
-            {
-                lastHitBy.GetComponent<PlayerController>().killSpreeCount += 1;
-            }
-
-            lastHitBy.GetComponent<PlayerController>().currentScore += GameManager.instance.killScoreToAdd;
-            lastHitBy.GetComponent<PlayerController>().killCount += 1;
-
-            lastHitBy.GetComponent<PlayerController>().killCountTimer = GameManager.instance.killCountDownTimer;
-            GameManager.instance.CheckPlayerKill(this, lastHitBy.GetComponent<PlayerController>());
-
+            ScoreManager.instance.ChangeScore(this, lastHitBy.GetComponent<PlayerController>());
+            CommentaryManager.instance.CheckPlayerKill(this, lastHitBy.GetComponent<PlayerController>());
         }
-
         else
         {
-            GameManager.instance.CheckPlayerKill(this, null);
+            CommentaryManager.instance.CheckPlayerKill(this, null);
         }
 
         lastHitBy = null;
 
-        GameManager.instance.UpdateScore();
+        ScoreManager.instance.UpdateScore();
 
         // Makes player disappear
         HidePlayerWhenDead();
         // Respawns player
         StartCoroutine(RespawnPlayer());
-        
     }
     
 
