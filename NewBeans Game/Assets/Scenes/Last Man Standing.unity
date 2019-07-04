@@ -2714,7 +2714,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1526705727}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &240912117
 MonoBehaviour:
@@ -3001,6 +3001,56 @@ MonoBehaviour:
   upPos: {x: 0, y: 0, z: 0}
   downPos: {x: 0, y: 0, z: 0}
   tileState: 3
+--- !u!1 &269658387
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 269658388}
+  - component: {fileID: 269658389}
+  m_Layer: 0
+  m_Name: LastManStandingManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &269658388
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269658387}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1526705727}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &269658389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269658387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df59310494d33c42b7ed9e7e14a7afc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1LivesText: {fileID: 1041494181}
+  player2LivesText: {fileID: 1927777132}
+  player3LivesText: {fileID: 604100806}
+  player4LivesText: {fileID: 1175918987}
+  startingLives: 3
+  playerLives: 00000000000000000000000000000000
+  playerLost: 00000000
 --- !u!1 &281874186 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4232740219176502565, guid: 2233148f47914e84e8d57a90d96d5d9b,
@@ -3712,7 +3762,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1526705727}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &345911210
 MonoBehaviour:
@@ -3738,6 +3788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e9df569c96bd674e8d2ddd0a013ebbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useTimeElapsed: 1
 --- !u!1 &350038366 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 934878710064627263, guid: 0de5147ea4d0ce0458608f357c054973,
@@ -3777,6 +3828,7 @@ MonoBehaviour:
   turnSmoothTime: 0.1
   moveRate: 10
   isDead: 0
+  shouldRespawn: 1
   respawnPosition: {fileID: 427376167}
   respawnDelay: 2
   lastHitBy: {fileID: 0}
@@ -4889,6 +4941,7 @@ MonoBehaviour:
   turnSmoothTime: 0.1
   moveRate: 10
   isDead: 0
+  shouldRespawn: 1
   respawnPosition: {fileID: 2084286973}
   respawnDelay: 2
   lastHitBy: {fileID: 0}
@@ -5724,6 +5777,7 @@ MonoBehaviour:
   turnSmoothTime: 0.1
   moveRate: 10
   isDead: 0
+  shouldRespawn: 1
   respawnPosition: {fileID: 1337643032}
   respawnDelay: 2
   lastHitBy: {fileID: 0}
@@ -10044,6 +10098,54 @@ MonoBehaviour:
   upPos: {x: 0, y: 0, z: 0}
   downPos: {x: 0, y: 0, z: 0}
   tileState: 3
+--- !u!1 &1145467693
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1145467694}
+  - component: {fileID: 1145467695}
+  m_Layer: 0
+  m_Name: TimerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1145467694
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145467693}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1526705727}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1145467695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145467693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a2c82efa4792804983cb9853c2801e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingTime: 0
+  timeLeftInSeconds: 0
+  timeElapsedSinceStart: 0
+  timerText: {fileID: 1562759416}
+  usingTimerCountdown: 0
 --- !u!1 &1153915161 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5387096918726432347, guid: 2233148f47914e84e8d57a90d96d5d9b,
@@ -16296,53 +16398,6 @@ MonoBehaviour:
   upPos: {x: 0, y: 0, z: 0}
   downPos: {x: 0, y: 0, z: 0}
   tileState: 3
---- !u!1 &1336939691
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1336939692}
-  - component: {fileID: 1336939693}
-  m_Layer: 0
-  m_Name: ScoreManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1336939692
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1336939691}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1526705727}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1336939693
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1336939691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 465cfdc404c6f5745926112ce9520fa5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player1ScoreText: {fileID: 1041494181}
-  player2ScoreText: {fileID: 1927777132}
-  player3ScoreText: {fileID: 604100806}
-  player4ScoreText: {fileID: 1175918987}
 --- !u!1 &1337643031
 GameObject:
   m_ObjectHideFlags: 0
@@ -17925,9 +17980,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 61573805}
-  - {fileID: 1336939692}
   - {fileID: 240912116}
   - {fileID: 345911209}
+  - {fileID: 269658388}
+  - {fileID: 1145467694}
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -18188,7 +18244,7 @@ GameObject:
   - component: {fileID: 1562759417}
   - component: {fileID: 1562759416}
   m_Layer: 5
-  m_Name: TimerText
+  m_Name: Time Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18210,7 +18266,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -21, y: -16}
+  m_AnchoredPosition: {x: 230, y: -4.100006}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1562759416
@@ -18246,7 +18302,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Time Left: 00:00:000'
+  m_Text: Last Man Standing
 --- !u!222 &1562759417
 CanvasRenderer:
   m_ObjectHideFlags: 0

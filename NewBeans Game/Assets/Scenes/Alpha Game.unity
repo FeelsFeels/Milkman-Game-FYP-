@@ -586,8 +586,6 @@ MonoBehaviour:
   player2ScoreText: {fileID: 1927777132}
   player3ScoreText: {fileID: 604100806}
   player4ScoreText: {fileID: 1175918987}
-  playerOneDied: 0
-  playerTwoDied: 0
   killScoreToAdd: 1
   deathScoreToDeduct: 0
   roundEndScreen: {fileID: 924150659}
@@ -3740,6 +3738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e9df569c96bd674e8d2ddd0a013ebbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useTimeElapsed: 0
 --- !u!1 &350038366 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 934878710064627263, guid: 0de5147ea4d0ce0458608f357c054973,
@@ -8437,6 +8436,7 @@ MonoBehaviour:
   timeLeftInSeconds: 0
   timeElapsedSinceStart: 0
   timerText: {fileID: 1562759416}
+  usingTimerCountdown: 1
 --- !u!1 &897904317 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6675130196714840596, guid: 2233148f47914e84e8d57a90d96d5d9b,
@@ -16392,6 +16392,7 @@ MonoBehaviour:
   player2ScoreText: {fileID: 1927777132}
   player3ScoreText: {fileID: 604100806}
   player4ScoreText: {fileID: 1175918987}
+  playerScore: 00000000000000000000000000000000
 --- !u!1 &1337643031
 GameObject:
   m_ObjectHideFlags: 0

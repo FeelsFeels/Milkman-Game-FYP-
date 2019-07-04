@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Player Die")]
     public bool isDead = false;
+    public bool shouldRespawn = true;
 
     public Transform respawnPosition;
     public float respawnDelay;
@@ -304,22 +305,20 @@ public class PlayerController : MonoBehaviour
 
         if (lastHitBy != null)
         {
-            ScoreManager.instance.ChangeScore(this, lastHitBy.GetComponent<PlayerController>());
-            CommentaryManager.instance.CheckPlayerKill(this, lastHitBy.GetComponent<PlayerController>());
+            GameManager.instance.OnPlayerDeath(this, lastHitBy.GetComponent<PlayerController>());
         }
         else
         {
-            CommentaryManager.instance.CheckPlayerKill(this, null);
+            GameManager.instance.OnPlayerDeath(this, null);
         }
 
         lastHitBy = null;
 
-        ScoreManager.instance.UpdateScore();
-
         // Makes player disappear
         HidePlayerWhenDead();
         // Respawns player
-        StartCoroutine(RespawnPlayer());
+        if(shouldRespawn)
+            StartCoroutine(RespawnPlayer());
     }
     
 

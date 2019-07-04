@@ -35,4 +35,13 @@ public class CommentaryManager : MonoBehaviour
             commentaryText.text = ("Player " + player.playerNumber + " has been killed by Player " + killer.playerNumber);
         }
     }
+
+    private void OnDestroy()
+    {
+        GameManager GM = FindObjectOfType<GameManager>();
+        if (GM)
+        {
+            GM.playerDeath -= CheckPlayerKill;
+        }
+    }
 }

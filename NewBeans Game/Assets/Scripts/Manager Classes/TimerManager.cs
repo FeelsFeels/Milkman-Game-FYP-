@@ -10,7 +10,8 @@ public class TimerManager : MonoBehaviour
     public float startingTime;
     public float timeLeftInSeconds;
     public float timeElapsedSinceStart;
-    public Text timerText;  //Leave null if not having a counting text
+    public Text timerText;  
+    public bool usingTimerCountdown;
 
 
     public void Start()
@@ -35,7 +36,7 @@ public class TimerManager : MonoBehaviour
         {
             timeElapsedSinceStart += Time.deltaTime;
 
-            if (timerText != null)
+            if (usingTimerCountdown)
             {
                 if (timeLeftInSeconds > 0)
                 {
@@ -54,6 +55,12 @@ public class TimerManager : MonoBehaviour
 
                     GameManager.instance.RoundEnd();
                 }
+            }
+            else
+            {
+                minutes = Mathf.Floor(timeElapsedSinceStart / 60).ToString("0");
+                seconds = (timeElapsedSinceStart % 60).ToString("00");
+                timerText.text = "Time Left: " + minutes + ":" + seconds;
             }
         }
     }

@@ -11,7 +11,10 @@ public class Level1Timing : MonoBehaviour
     private TimerManager timerManager;
 
     private float timeLeft;
+    private float timePassed;
     private float timeSinceLastHazard = 0;
+
+    public bool useTimeElapsed;
 
     private void Awake()
     {
@@ -23,6 +26,19 @@ public class Level1Timing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!useTimeElapsed)
+        {
+            TimeLeftInSecondsEvents();
+        }
+        else
+        {
+            TimeElapsedEvents();
+        }
+    }
+
+    void TimeLeftInSecondsEvents()
+    {
+
         timeLeft = timerManager.timeLeftInSeconds;
         timeSinceLastHazard += Time.deltaTime;
 
@@ -59,6 +75,37 @@ public class Level1Timing : MonoBehaviour
         {
             eventsManager.NewPhase();
         }
+    }
 
+    void TimeElapsedEvents()
+    {
+        timePassed = timerManager.timeElapsedSinceStart;
+
+        if(Mathf.Floor(timePassed) == 30)
+        {
+            eventsManager.NewPhase();
+        }
+        
+        if(Mathf.Floor(timePassed) == 70)
+        {
+            eventsManager.NewPhase();
+        }
+
+        if(timePassed >= 70)
+        {
+            if (timeSinceLastHazard >= 9)
+            {
+                eventsManager.SpawnHazard();
+                timeSinceLastHazard = 0;
+            }
+        }
+        else if(timePassed >= 30)
+        {
+            if (timeSinceLastHazard >= 15)
+            {
+                eventsManager.SpawnHazard();
+                timeSinceLastHazard = 0;
+            }
+        }
     }
 }
