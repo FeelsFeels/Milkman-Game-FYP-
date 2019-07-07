@@ -6,9 +6,6 @@ using UnityEngine.UI;
 
 public class LastManStandingManager : MonoBehaviour
 {
-
-    public static LastManStandingManager instance;
-
     public Text player1LivesText;
     public Text player2LivesText;
     public Text player3LivesText;
@@ -20,12 +17,11 @@ public class LastManStandingManager : MonoBehaviour
     public bool[] playerLost = new bool[4];
 
     private List<PlayerController> playerList = new List<PlayerController>();
-
+    public Stack<PlayerController> playerRankOrder = new Stack<PlayerController>();
+    
 
     void Awake()
     {
-        instance = this;
-
         //Sorts the players by their playerNumbers when game starts
         PlayerController[] tempPCList = FindObjectsOfType<PlayerController>();
         foreach (PlayerController pc in tempPCList)
@@ -36,10 +32,6 @@ public class LastManStandingManager : MonoBehaviour
     private void Start()
     {
         GameManager GM = FindObjectOfType<GameManager>();
-        if (GM)
-        {
-            GM.playerDeath += ReduceLives;
-        }
 
         //Set initial values
         for(int i = 0; i < playerLives.Length; i++)
@@ -63,11 +55,17 @@ public class LastManStandingManager : MonoBehaviour
     {
         playerLives[deadPlayer.playerNumber - 1] -= 1;
 
+        if (killerPlayer != null)
+        {
+            killerPlayer.killCount++;
+        }
+
         //Player has no more lives
         if(playerLives[deadPlayer.playerNumber - 1] <= 0)
         {
             playerLost[deadPlayer.playerNumber - 1] = true;
             deadPlayer.shouldRespawn = false;
+            playerRankOrder.Push(deadPlayer);
         }
 
         UpdateScore();
@@ -91,8 +89,22 @@ public class LastManStandingManager : MonoBehaviour
         }
         if(numberPlayersLeft == 1)
         {
+            print(GetWinnerPlayerReference().name);
+            playerRankOrder.Push(GetWinnerPlayerReference());
             GameManager.instance.roundHasEnded = true;
             GameManager.instance.RoundEnd();
         }
+    }
+
+    PlayerController GetWinnerPlayerReference()
+    {
+        for (int i = 0; i < playerLost.Length; i++)
+        {
+            if (playerLost[i] == true)
+                continue;
+            else
+                return playerList[i];
+        }
+        return null;
     }
 }

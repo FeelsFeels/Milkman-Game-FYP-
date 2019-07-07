@@ -579,8 +579,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57dcbb685dac0a8429782c10c6c70293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  killCountDownTimer: 0
-  deathCountDownTimer: 0
+  gameState: 0
+  scoreManager: {fileID: 1336939693}
+  LMSManager: {fileID: 0}
+  commentaryManager: {fileID: 240912117}
   timeSinceLastHazard: 0
   player1ScoreText: {fileID: 1041494181}
   player2ScoreText: {fileID: 1927777132}
@@ -597,6 +599,8 @@ MonoBehaviour:
   pauseScreen: {fileID: 1859145466}
   isPaused: 0
   bgm: {fileID: 8300000, guid: 645c8893ae655724fb1e6d8c574a8a3b, type: 3}
+  killCountDownTimer: 0
+  deathCountDownTimer: 0
 --- !u!4 &61573805
 Transform:
   m_ObjectHideFlags: 0
@@ -3778,6 +3782,7 @@ MonoBehaviour:
   turnSmoothTime: 0.1
   moveRate: 10
   isDead: 0
+  shouldRespawn: 1
   respawnPosition: {fileID: 427376167}
   respawnDelay: 2
   lastHitBy: {fileID: 0}
@@ -4890,6 +4895,7 @@ MonoBehaviour:
   turnSmoothTime: 0.1
   moveRate: 10
   isDead: 0
+  shouldRespawn: 1
   respawnPosition: {fileID: 2084286973}
   respawnDelay: 2
   lastHitBy: {fileID: 0}
@@ -5725,6 +5731,7 @@ MonoBehaviour:
   turnSmoothTime: 0.1
   moveRate: 10
   isDead: 0
+  shouldRespawn: 1
   respawnPosition: {fileID: 1337643032}
   respawnDelay: 2
   lastHitBy: {fileID: 0}
@@ -8432,7 +8439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a2c82efa4792804983cb9853c2801e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingTime: 180
+  startingTime: 20
   timeLeftInSeconds: 0
   timeElapsedSinceStart: 0
   timerText: {fileID: 1562759416}

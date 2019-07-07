@@ -60,7 +60,7 @@ public class TimerManager : MonoBehaviour
             {
                 minutes = Mathf.Floor(timeElapsedSinceStart / 60).ToString("0");
                 seconds = (timeElapsedSinceStart % 60).ToString("00");
-                timerText.text = "Time Left: " + minutes + ":" + seconds;
+                timerText.text = minutes + ":" + seconds;
             }
         }
     }

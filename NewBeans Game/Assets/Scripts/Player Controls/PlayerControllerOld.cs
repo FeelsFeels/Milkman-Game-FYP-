@@ -229,8 +229,7 @@ public class PlayerControllerOld : MonoBehaviour
         HidePlayerWhenDead();
         // Respawns player
         StartCoroutine(RespawnPlayer());
-
-        ScoreManager.instance.UpdateScore();
+        
 
     }
 

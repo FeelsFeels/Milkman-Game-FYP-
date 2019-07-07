@@ -579,8 +579,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57dcbb685dac0a8429782c10c6c70293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  killCountDownTimer: 0
-  deathCountDownTimer: 0
+  gameState: 1
+  scoreManager: {fileID: 0}
+  LMSManager: {fileID: 269658389}
+  commentaryManager: {fileID: 240912117}
   timeSinceLastHazard: 0
   player1ScoreText: {fileID: 1041494181}
   player2ScoreText: {fileID: 1927777132}
@@ -597,6 +599,8 @@ MonoBehaviour:
   pauseScreen: {fileID: 1859145466}
   isPaused: 0
   bgm: {fileID: 8300000, guid: 645c8893ae655724fb1e6d8c574a8a3b, type: 3}
+  killCountDownTimer: 0
+  deathCountDownTimer: 0
 --- !u!4 &61573805
 Transform:
   m_ObjectHideFlags: 0
@@ -18266,7 +18270,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 230, y: -4.100006}
+  m_AnchoredPosition: {x: 311.7, y: -4.100006}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1562759416
@@ -18296,7 +18300,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1

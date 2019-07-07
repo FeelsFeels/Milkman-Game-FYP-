@@ -6,8 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public float killCountDownTimer;
-    public float deathCountDownTimer;
+    public enum GameStates
+    {
+        Score,
+        LastManStanding
+    }
+
+    public GameStates gameState;
+
     
     public static GameManager instance = null;
 
@@ -15,10 +21,14 @@ public class GameManager : MonoBehaviour
 
     private List<PlayerController> playerScript = new List<PlayerController>();
 
+    [Header("Managers")]
+    public ScoreManager scoreManager;
+    public LastManStandingManager LMSManager;
+    public CommentaryManager commentaryManager;
+
     [Header("Events")]
     private EventsManager eventsManager;
     public float timeSinceLastHazard;
-
 
     public Text player1ScoreText;
     public Text player2ScoreText;
@@ -44,8 +54,10 @@ public class GameManager : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip bgm;
 
-    public delegate void PlayerDeathDel(PlayerController deadPlayer, PlayerController killer);
-    public PlayerDeathDel playerDeath;
+    [Space]
+    public float killCountDownTimer;
+    public float deathCountDownTimer;
+
 
     void Awake()
     {
@@ -127,18 +139,36 @@ public class GameManager : MonoBehaviour
     {
         if (roundHasEnded == true)
         {
+            if (gameState == GameStates.Score)
+            {
+                playerScript.Sort(delegate (PlayerController p1, PlayerController p2) { return p1.currentScore.CompareTo(p2.currentScore); });
+                playerScript.Reverse();
 
-            playerScript.Sort(delegate (PlayerController p1, PlayerController p2) { return p1.currentScore.CompareTo(p2.currentScore); });
-            playerScript.Reverse();
+                roundEndScreen.gameObject.SetActive(true);
 
-            roundEndScreen.gameObject.SetActive(true);
+                print(playerScript[0].playerNumber + "PlayerNO" + playerScript[0].currentScore + "CurrentScore");
+                print(playerScript[1].playerNumber + "PlayerNO" + playerScript[1].currentScore + "CurrentScore");
+                print(playerScript[2].playerNumber + "PlayerNO" + playerScript[2].currentScore + "CurrentScore");
 
-            firstPlaceScore.text = string.Format("Player {0}: {1}", playerScript[0].playerNumber, playerScript[0].currentScore);
-            secondPlaceScore.text = string.Format("Player {0}: {1}", playerScript[1].playerNumber, playerScript[1].currentScore);
-            thirdPlaceScore.text = string.Format("Player {0}: {1}", playerScript[2].playerNumber, playerScript[2].currentScore);
-            //fourthPlaceScore.text = string.Format("Player {0}: {1}", playerScript[3].playerNumber, playerScript[3].currentScore);
+                firstPlaceScore.text = string.Format("Player {0}: {1}", playerScript[0].playerNumber, playerScript[0].currentScore);
+                secondPlaceScore.text = string.Format("Player {0}: {1}", playerScript[1].playerNumber, playerScript[1].currentScore);
+                thirdPlaceScore.text = string.Format("Player {0}: {1}", playerScript[2].playerNumber, playerScript[2].currentScore);
+                //fourthPlaceScore.text = string.Format("Player {0}: {1}", playerScript[3].playerNumber, playerScript[3].currentScore);
 
-            Time.timeScale = 0;
+                Time.timeScale = 0;
+            }
+            else if(gameState == GameStates.LastManStanding)
+            {
+                roundEndScreen.gameObject.SetActive(true);
+
+                PlayerController playerReference = LMSManager.playerRankOrder.Pop();
+                firstPlaceScore.text = string.Format("First Place: Player {0}! Kills: {1}", playerReference.playerNumber, playerReference.killCount);
+                playerReference = LMSManager.playerRankOrder.Pop();
+                secondPlaceScore.text = string.Format("Second Place: Player {0} Kills: {1}", playerReference.playerNumber, playerReference.killCount);
+                playerReference = LMSManager.playerRankOrder.Pop();
+                thirdPlaceScore.text = string.Format("Third Place: Player {0} Kills: {1}", playerReference.playerNumber, playerReference.killCount);
+                //Fourth place
+            }
         }
     }
 
@@ -150,7 +180,16 @@ public class GameManager : MonoBehaviour
     
     public void OnPlayerDeath(PlayerController playerDead, PlayerController killer)
     {
-        playerDeath(playerDead, killer);
+        if(gameState == GameStates.Score)
+        {
+            scoreManager.ChangeScore(playerDead, killer);
+            commentaryManager.CheckPlayerKill(playerDead, killer);
+        }
+        else if (gameState == GameStates.LastManStanding)
+        {
+            LMSManager.ReduceLives(playerDead, killer);
+            commentaryManager.CheckPlayerKill(playerDead, killer);
+        }
     }
 
 }
