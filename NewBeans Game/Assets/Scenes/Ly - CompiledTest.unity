@@ -499,26 +499,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57dcbb685dac0a8429782c10c6c70293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameState: 0
+  scoreManager: {fileID: 0}
+  LMSManager: {fileID: 0}
+  commentaryManager: {fileID: 0}
   timeSinceLastHazard: 0
   player1ScoreText: {fileID: 1041494181}
   player2ScoreText: {fileID: 1927777132}
   player3ScoreText: {fileID: 604100806}
   player4ScoreText: {fileID: 1175918987}
-  playerOneDied: 0
-  playerTwoDied: 0
   killScoreToAdd: 1
   deathScoreToDeduct: 0
   roundEndScreen: {fileID: 382149949}
   roundHasEnded: 0
-  player1WinText: {fileID: 417774025}
-  player2WinText: {fileID: 1572581120}
-  player3WinText: {fileID: 0}
-  player4WinText: {fileID: 0}
-  roundEndWithDraw: {fileID: 1660961881}
-  timeLeftInSeconds: 100000
-  timerText: {fileID: 1562759416}
+  firstPlaceScore: {fileID: 0}
+  secondPlaceScore: {fileID: 0}
+  thirdPlaceScore: {fileID: 0}
+  fourthPlaceScore: {fileID: 0}
   pauseScreen: {fileID: 0}
   isPaused: 0
+  bgm: {fileID: 0}
+  killCountDownTimer: 0
+  deathCountDownTimer: 0
 --- !u!4 &61573805
 Transform:
   m_ObjectHideFlags: 0
@@ -2278,6 +2280,59 @@ PrefabInstance:
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0de5147ea4d0ce0458608f357c054973, type: 3}
+--- !u!1 &230462356
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 230462358}
+  - component: {fileID: 230462357}
+  m_Layer: 0
+  m_Name: Pooler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &230462357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230462356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0bf6e59cfd114d45858f2fa68c53b98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - tag: 
+    prefab: {fileID: 0}
+    size: 0
+  - tag: 
+    prefab: {fileID: 0}
+    size: 0
+  - tag: 
+    prefab: {fileID: 0}
+    size: 0
+--- !u!4 &230462358
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230462356}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 262.03683, y: 177.00296, z: -71.737015}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &232809188 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6549941024342614958, guid: 2233148f47914e84e8d57a90d96d5d9b,
@@ -3196,10 +3251,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 0
+  killCountTimer: 0
+  deathCountTimer: 0
+  killSpreeCount: 0
+  deathSpreeCount: 0
   killCount: 0
   deathCount: 0
   currentScore: 0
-  rotAngle: 0
   playerDieEffect: {fileID: 5321603115026070672, guid: 9a30751c44ecdd54996aa1f0cd0781f2,
     type: 3}
   playerPushedEffect: {fileID: 5866095184590232605, guid: 8d2c5bcf5e9fb5d44b06b03bcde18e45,
@@ -3213,11 +3271,14 @@ MonoBehaviour:
   turnSmoothTime: 0.1
   moveRate: 10
   isDead: 0
+  shouldRespawn: 1
   respawnPosition: {fileID: 427376167}
   respawnDelay: 0
   lastHitBy: {fileID: 0}
   rb: {fileID: 350038373}
+  rotAngle: 0
   CorrectionAngle: {x: 0, y: -35, z: 0}
+  averageInput: 0
   PressCounter: 0
   PressCooldownTimer: 0
   angleTolerance: 30
@@ -4376,10 +4437,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 2
+  killCountTimer: 0
+  deathCountTimer: 0
+  killSpreeCount: 0
+  deathSpreeCount: 0
   killCount: 0
   deathCount: 0
   currentScore: 0
-  rotAngle: 0
   playerDieEffect: {fileID: 5321603115026070672, guid: 9a30751c44ecdd54996aa1f0cd0781f2,
     type: 3}
   playerPushedEffect: {fileID: 5866095184590232605, guid: 8d2c5bcf5e9fb5d44b06b03bcde18e45,
@@ -4393,11 +4457,14 @@ MonoBehaviour:
   turnSmoothTime: 0.1
   moveRate: 10
   isDead: 0
+  shouldRespawn: 1
   respawnPosition: {fileID: 2084286973}
   respawnDelay: 0
   lastHitBy: {fileID: 0}
   rb: {fileID: 463447350}
+  rotAngle: 0
   CorrectionAngle: {x: 0, y: -35, z: 0}
+  averageInput: 0
   PressCounter: 0
   PressCooldownTimer: 0
   angleTolerance: 30
@@ -5127,10 +5194,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 1
+  killCountTimer: 0
+  deathCountTimer: 0
+  killSpreeCount: 0
+  deathSpreeCount: 0
   killCount: 0
   deathCount: 0
   currentScore: 0
-  rotAngle: 0
   playerDieEffect: {fileID: 5321603115026070672, guid: 9a30751c44ecdd54996aa1f0cd0781f2,
     type: 3}
   playerPushedEffect: {fileID: 5866095184590232605, guid: 8d2c5bcf5e9fb5d44b06b03bcde18e45,
@@ -5144,11 +5214,14 @@ MonoBehaviour:
   turnSmoothTime: 0.1
   moveRate: 10
   isDead: 0
+  shouldRespawn: 1
   respawnPosition: {fileID: 1337643032}
   respawnDelay: 0
   lastHitBy: {fileID: 0}
   rb: {fileID: 537737449}
+  rotAngle: 0
   CorrectionAngle: {x: 0, y: -35, z: 0}
+  averageInput: 0
   PressCounter: 0
   PressCooldownTimer: 0
   angleTolerance: 30
@@ -20787,10 +20860,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 4
+  killCountTimer: 0
+  deathCountTimer: 0
+  killSpreeCount: 0
+  deathSpreeCount: 0
   killCount: 0
   deathCount: 0
   currentScore: 0
-  rotAngle: 0
   playerDieEffect: {fileID: 5321603115026070672, guid: 9a30751c44ecdd54996aa1f0cd0781f2,
     type: 3}
   playerPushedEffect: {fileID: 5866095184590232605, guid: 8d2c5bcf5e9fb5d44b06b03bcde18e45,
@@ -20804,11 +20880,14 @@ MonoBehaviour:
   turnSmoothTime: 0.1
   moveRate: 10
   isDead: 0
+  shouldRespawn: 1
   respawnPosition: {fileID: 994713189}
   respawnDelay: 0
   lastHitBy: {fileID: 0}
   rb: {fileID: 1663108882}
+  rotAngle: 0
   CorrectionAngle: {x: 0, y: -35, z: 0}
+  averageInput: 0
   PressCounter: 0
   PressCooldownTimer: 0
   angleTolerance: 30
