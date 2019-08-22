@@ -23,6 +23,7 @@ public class TilePatternCircular : MonoBehaviour
     {
         eventsManager.OnNewPhase += Expand;
 
+        //Makes the initial tiles move down
         foreach(Tile tile in initTiles)
         {
             tile.tileState = Tile.TileState.goingDown;
@@ -63,7 +64,7 @@ public class TilePatternCircular : MonoBehaviour
         if (newTiles.Count > 0)
         {
             outerTiles.Clear();
-            outerTiles = newTiles;
+            outerTiles = newTiles;  //Set the outermost tiles list for the next ExpandOverTime()
         }
 
         crRunning = false;

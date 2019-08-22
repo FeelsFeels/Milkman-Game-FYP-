@@ -21,7 +21,7 @@ public class HazardsController : MonoBehaviour
         eventsManager.OnSpawnHazard += SpawnHazard;
     }
 
-    private void SpawnHazard()
+    public void SpawnHazard()
     {
         Instantiate(GetRandomHazard(), FindRandomPosition(), Quaternion.identity);
     }
