@@ -45,7 +45,7 @@ public class TimerManager : MonoBehaviour
             {
                 timeLeftInSeconds -= Time.deltaTime;
                 minutes = Mathf.Floor(timeLeftInSeconds / 60).ToString("0");
-                seconds = (timeLeftInSeconds % 60).ToString("00");
+                seconds = Mathf.Floor(timeLeftInSeconds % 60).ToString("00");
                 timerText.text = "Time Left: " + minutes + ":" + seconds;
             }
             else
@@ -62,7 +62,7 @@ public class TimerManager : MonoBehaviour
         else
         {
             minutes = Mathf.Floor(timeElapsedSinceStart / 60).ToString("0");
-            seconds = (timeElapsedSinceStart % 60).ToString("00");
+            seconds = Mathf.Floor(timeElapsedSinceStart % 60).ToString("00");
             timerText.text = minutes + ":" + seconds;
         }
 

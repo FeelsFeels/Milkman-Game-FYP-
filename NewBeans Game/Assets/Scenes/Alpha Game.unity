@@ -3687,6 +3687,8 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  crumblingParticleEffect: {fileID: 1654736843778140, guid: 78e8b38d431ddef4fa2994a3f2d6e2ff,
+    type: 3}
 --- !u!114 &345911208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8439,7 +8441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a2c82efa4792804983cb9853c2801e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingTime: 20
+  startingTime: 180
   timeLeftInSeconds: 0
   timeElapsedSinceStart: 0
   timerText: {fileID: 1562759416}
@@ -16399,7 +16401,7 @@ MonoBehaviour:
   player2ScoreText: {fileID: 1927777132}
   player3ScoreText: {fileID: 604100806}
   player4ScoreText: {fileID: 1175918987}
-  playerScore: 00000000000000000000000000000000
+  playerList: []
 --- !u!1 &1337643031
 GameObject:
   m_ObjectHideFlags: 0
