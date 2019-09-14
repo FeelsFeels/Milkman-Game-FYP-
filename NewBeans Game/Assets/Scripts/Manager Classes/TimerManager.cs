@@ -32,37 +32,40 @@ public class TimerManager : MonoBehaviour
     public void UpdateTimer()
     {
         string minutes, seconds;
-        if (GameManager.instance.roundHasEnded != true)
+
+        if (GameManager.instance.roundHasEnded == true) //Stop checking
+            return;
+
+
+        timeElapsedSinceStart += Time.deltaTime;
+
+        if (usingTimerCountdown)
         {
-            timeElapsedSinceStart += Time.deltaTime;
-
-            if (usingTimerCountdown)
+            if (timeLeftInSeconds > 0)
             {
-                if (timeLeftInSeconds > 0)
-                {
-                    timeLeftInSeconds -= Time.deltaTime;
-                    minutes = Mathf.Floor(timeLeftInSeconds / 60).ToString("0");
-                    seconds = (timeLeftInSeconds % 60).ToString("00");
-                    timerText.text = "Time Left: " + minutes + ":" + seconds;
-                }
-                else
-                {
-                    GameManager.instance.roundHasEnded = true;
-
-                    minutes = "00";
-                    seconds = "00";
-                    timerText.text = "Time Left: " + minutes + ":" + seconds;
-
-                    GameManager.instance.RoundEnd();
-                }
+                timeLeftInSeconds -= Time.deltaTime;
+                minutes = Mathf.Floor(timeLeftInSeconds / 60).ToString("0");
+                seconds = (timeLeftInSeconds % 60).ToString("00");
+                timerText.text = "Time Left: " + minutes + ":" + seconds;
             }
             else
             {
-                minutes = Mathf.Floor(timeElapsedSinceStart / 60).ToString("0");
-                seconds = (timeElapsedSinceStart % 60).ToString("00");
-                timerText.text = minutes + ":" + seconds;
+                GameManager.instance.roundHasEnded = true;
+
+                minutes = "00";
+                seconds = "00";
+                timerText.text = "Time Left: " + minutes + ":" + seconds;
+
+                GameManager.instance.RoundEnd();
             }
         }
+        else
+        {
+            minutes = Mathf.Floor(timeElapsedSinceStart / 60).ToString("0");
+            seconds = (timeElapsedSinceStart % 60).ToString("00");
+            timerText.text = minutes + ":" + seconds;
+        }
+
     }
 
 

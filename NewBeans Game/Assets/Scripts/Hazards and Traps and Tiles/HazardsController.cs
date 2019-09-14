@@ -24,6 +24,7 @@ public class HazardsController : MonoBehaviour
     public void SpawnHazard()
     {
         Instantiate(GetRandomHazard(), FindRandomPosition(), Quaternion.identity);
+        print("Lit af Bruh. Hazard is here");
     }
 
     private Vector3 FindRandomPosition()

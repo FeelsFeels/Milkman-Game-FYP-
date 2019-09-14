@@ -42,11 +42,6 @@ public class DisasterMeteor : MonoBehaviour
         gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, targetPos, moveSpeed);
 
         //rb.velocity = targetPos;
-        if (gameObject.transform.position == targetPos)
-        {
-            print("Target Position Reached");
-            
-        }
     }
 
     void DestroyGround()
