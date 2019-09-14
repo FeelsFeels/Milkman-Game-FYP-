@@ -257,7 +257,6 @@ public class PlayerController : MonoBehaviour
         // If collide with "Hole", player dies.
         if (other.tag == "Hole")
         {
-            isDead = true;
             Die();
         }
     }
@@ -299,6 +298,8 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
+        isDead = true;
+
         deathCountTimer = GameManager.instance.deathCountDownTimer;
 
         Instantiate(playerDieEffect, gameObject.transform.position, gameObject.transform.rotation);

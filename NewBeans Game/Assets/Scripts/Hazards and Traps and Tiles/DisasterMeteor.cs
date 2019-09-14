@@ -65,7 +65,6 @@ public class DisasterMeteor : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             other.gameObject.GetComponent<PlayerController>().Die();
-            print("Player died");
         }
         DestroyGround();
         Destroy(spawnedMarking);
