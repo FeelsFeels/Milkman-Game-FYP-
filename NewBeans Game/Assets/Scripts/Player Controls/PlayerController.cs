@@ -45,10 +45,12 @@ public class PlayerController : MonoBehaviour
     public GameObject lastHitBy;
 
     // Object's Components
-    private MeshRenderer boxRenderer;
-    private CapsuleCollider boxCollider;
+    Animator animator;
+    MeshRenderer boxRenderer;
+    CapsuleCollider boxCollider;
     public Rigidbody rb;
-    private Shield invincibilityShield;
+    Shield invincibilityShield;
+
 
     [Header("Player Movement")]
     //Player movement
@@ -95,8 +97,9 @@ public class PlayerController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {       
+    {
         // Components
+        animator = GetComponentInChildren<Animator>();
         boxRenderer = GetComponent<MeshRenderer>();
         boxCollider = GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
@@ -144,12 +147,18 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetAxis(VerticalInputAxis) != 0 && Input.GetAxis(HorizontalInputAxis) != 0) //if there is vertical input AND horizontal input
         {
-            averageInput = Mathf.Sqrt(moveHorizontalAxis * moveHorizontalAxis + moveVerticalAxis * moveVerticalAxis); //find the hypotenuse input; can you bELIEVE iM DOING MATH??? cause im also in disbelief like, oh mai gawddd this is insane btw lily u r insane and cool and I wish i could math like u
+            averageInput = Mathf.Sqrt(moveHorizontalAxis * moveHorizontalAxis + moveVerticalAxis * moveVerticalAxis); //find the hypotenuse input; can you bELIEVE iM DOING MATH??? cause im also in disbelief like, oh mai gawddd yessiree desu
 
             Turn(averageInput); //turn 
             Move(averageInput);
             //print(averageInput);
         }
+        if(Input.GetAxis(HorizontalInputAxis) == 0 && Input.GetAxis(VerticalInputAxis) == 0)
+        {
+            animator.SetFloat("Speed", 0);
+        }
+        else
+            animator.SetFloat("Speed", 1);
 
         /// ***********
         /// DASH DASH DASH
