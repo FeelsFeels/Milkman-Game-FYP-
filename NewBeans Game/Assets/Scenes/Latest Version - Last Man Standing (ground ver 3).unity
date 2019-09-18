@@ -1886,8 +1886,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0be643203bac58429a452d6a114b934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  curDurabilityState: 0
   tileList: []
-  sectionDurability: 10
+  maxSectionDurability: 1000
+  curSectionDurability: 0
+  materialFull: {fileID: 2100000, guid: 6492bd7b8cf6ec5458b5620fef9a360c, type: 2}
+  materialTwoThirds: {fileID: 2100000, guid: d8ebd9b449f1026488e2e92578996d86, type: 2}
+  materialOneThird: {fileID: 2100000, guid: 60e0c435b8a1c0e4a8a2c016e9299ff2, type: 2}
+  materialBroken: {fileID: 2100000, guid: 2c3bc6b2f4239a944b0c29618e26153b, type: 2}
+  crumblingParticles: {fileID: 1654736843778140, guid: 78e8b38d431ddef4fa2994a3f2d6e2ff,
+    type: 3}
 --- !u!64 &168569219
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10374,8 +10382,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0be643203bac58429a452d6a114b934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  curDurabilityState: 0
   tileList: []
-  sectionDurability: 1000
+  maxSectionDurability: 1000
+  curSectionDurability: 0
+  materialFull: {fileID: 2100000, guid: 6492bd7b8cf6ec5458b5620fef9a360c, type: 2}
+  materialTwoThirds: {fileID: 2100000, guid: d8ebd9b449f1026488e2e92578996d86, type: 2}
+  materialOneThird: {fileID: 2100000, guid: 60e0c435b8a1c0e4a8a2c016e9299ff2, type: 2}
+  materialBroken: {fileID: 2100000, guid: 2c3bc6b2f4239a944b0c29618e26153b, type: 2}
+  crumblingParticles: {fileID: 1654736843778140, guid: 78e8b38d431ddef4fa2994a3f2d6e2ff,
+    type: 3}
 --- !u!4 &1299474442
 Transform:
   m_ObjectHideFlags: 0
