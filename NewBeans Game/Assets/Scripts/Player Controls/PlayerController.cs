@@ -46,8 +46,8 @@ public class PlayerController : MonoBehaviour
 
     // Object's Components
     Animator animator;
-    MeshRenderer boxRenderer;
-    CapsuleCollider boxCollider;
+    CapsuleCollider capsuleCollider;
+    public SkinnedMeshRenderer skinnedMeshRenderer;
     public Rigidbody rb;
     Shield invincibilityShield;
 
@@ -65,9 +65,8 @@ public class PlayerController : MonoBehaviour
     void Reset()
     {
         //playController = GetComponent<CharacterController>();
-
-        boxRenderer = GetComponent<MeshRenderer>();
-        boxCollider = GetComponent<CapsuleCollider>();
+        
+        capsuleCollider = GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -100,8 +99,8 @@ public class PlayerController : MonoBehaviour
     {
         // Components
         animator = GetComponentInChildren<Animator>();
-        boxRenderer = GetComponent<MeshRenderer>();
-        boxCollider = GetComponent<CapsuleCollider>();
+        capsuleCollider = GetComponent<CapsuleCollider>();
+        skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         rb = GetComponent<Rigidbody>();
         invincibilityShield = GetComponentInChildren<Shield>();
     }
@@ -287,32 +286,15 @@ public class PlayerController : MonoBehaviour
     {
         if (isDead == true)
         {
-            foreach (Transform trans in transform)
-            {
-                SkinnedMeshRenderer smr = trans.GetComponent<SkinnedMeshRenderer>();
-                if (smr)
-                {
-                    smr.enabled = false;
-                    //boxRenderer.enabled = false;
-                    boxCollider.enabled = false;
-
-                }
-            }
+            skinnedMeshRenderer.enabled = false;
+            capsuleCollider.enabled = false;
         }
 
         if (isDead == false)
         {
-            foreach (Transform trans in transform)
-            {
-                SkinnedMeshRenderer smr = trans.GetComponent<SkinnedMeshRenderer>();
-                if (smr)
-                {
-                    smr.enabled = true;
-                    //boxRenderer.enabled = false;
-                    boxCollider.enabled = true;
-                    invincibilityShield.ActivateShield();
-                }
-            }
+            skinnedMeshRenderer.enabled = true;
+            capsuleCollider.enabled = true;
+            invincibilityShield.ActivateShield();
         }
 
     }

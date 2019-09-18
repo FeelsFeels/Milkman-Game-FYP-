@@ -1879,6 +1879,11 @@ PrefabInstance:
       propertyPath: m_WarningMessage
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3957094457893334355, guid: 0de5147ea4d0ce0458608f357c054973,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 0}
@@ -4015,7 +4020,7 @@ MonoBehaviour:
   player2LivesText: {fileID: 1927777132}
   player3LivesText: {fileID: 604100806}
   player4LivesText: {fileID: 1175918987}
-  startingLives: 3
+  startingLives: 10
   playerLives: 00000000000000000000000000000000
   playerLost: 00000000
 --- !u!1 &281874186 stripped
@@ -4691,6 +4696,7 @@ MonoBehaviour:
   respawnPosition: {fileID: 427376167}
   respawnDelay: 2
   lastHitBy: {fileID: 0}
+  skinnedMeshRenderer: {fileID: 0}
   rb: {fileID: 350038373}
   rotAngle: 0
   CorrectionAngle: {x: 0, y: -35, z: 0}
@@ -5804,6 +5810,7 @@ MonoBehaviour:
   respawnPosition: {fileID: 2084286973}
   respawnDelay: 2
   lastHitBy: {fileID: 0}
+  skinnedMeshRenderer: {fileID: 0}
   rb: {fileID: 463447350}
   rotAngle: 0
   CorrectionAngle: {x: 0, y: -35, z: 0}
@@ -6640,6 +6647,7 @@ MonoBehaviour:
   respawnPosition: {fileID: 1337643032}
   respawnDelay: 2
   lastHitBy: {fileID: 0}
+  skinnedMeshRenderer: {fileID: 0}
   rb: {fileID: 537737449}
   rotAngle: 0
   CorrectionAngle: {x: 0, y: -35, z: 0}
