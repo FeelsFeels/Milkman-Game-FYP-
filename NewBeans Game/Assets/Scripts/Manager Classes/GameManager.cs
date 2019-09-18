@@ -116,7 +116,7 @@ public class GameManager : MonoBehaviour
         }
 
      
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             SceneManager.LoadScene("Latest Version - Last Man Standing");
         }

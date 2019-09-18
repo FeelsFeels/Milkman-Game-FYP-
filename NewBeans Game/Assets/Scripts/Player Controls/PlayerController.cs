@@ -268,6 +268,18 @@ public class PlayerController : MonoBehaviour
         {
             Die();
         }
+        if(other.GetComponent<IAffectedByWeight>() != null)
+        {
+            other.GetComponent<IAffectedByWeight>().AddWeight(1);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<IAffectedByWeight>() != null)
+        {
+            other.GetComponent<IAffectedByWeight>().RemoveWeight(1);
+        }
     }
 
     // This hides the player when dead, and makes it reappear when alive.

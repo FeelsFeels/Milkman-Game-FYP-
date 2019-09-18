@@ -22,6 +22,8 @@ public class Tile : MonoBehaviour
     public Vector3 downPos;
 
     private float proximity = 0.0001f;
+    private float lerpStep = 0f;
+    private bool coroutineRunning = false;
 
     public TileState tileState = TileState.up;
 
@@ -47,6 +49,7 @@ public class Tile : MonoBehaviour
         }
 
         //Must change this to coroutines in the future
+        //Wait why i dont remember LOL
         if (tileState == TileState.goingDown)
         {
             MoveDown();
@@ -68,9 +71,32 @@ public class Tile : MonoBehaviour
         {
             tileState = TileState.down;
         }
-
     }
-    
+
+    public void MoveDown(float lerpTime)
+    {
+        if (coroutineRunning)
+            return;
+        StartCoroutine(MoveDownCoroutine(lerpTime));
+    }
+
+    IEnumerator MoveDownCoroutine(float lerpTime)
+    {
+        coroutineRunning = true;
+
+        while (lerpStep < lerpTime)
+        {
+            lerpStep += Time.deltaTime;
+            transform.position = Vector3.Lerp(upPos, downPos, lerpStep / lerpTime);
+
+            yield return null;
+        }
+        //Tile reached its target. Completely at its down position.
+        coroutineRunning = false;
+        tileState = TileState.down;
+        lerpStep = 0;   //Reset lerping
+    }
+
     public void MoveUp()
     {
         Vector3 distance = transform.position - upPos;
