@@ -64,7 +64,9 @@ public class TilePatternCircular : MonoBehaviour
         {
             foreach (Collider hit in hitColliders)
             {
-                Instantiate(crumblingParticleEffect, hit.transform.position + Vector3.up, Quaternion.identity);
+                GameObject particles = Instantiate(crumblingParticleEffect, hit.transform.position + Vector3.up, Quaternion.identity);
+                particles.transform.parent = hit.transform;
+                particles.GetComponent<AutoDestroyOverTime>().DestroyWithTime(15f);
             }
             yield return new WaitForSeconds(5f);
 
@@ -73,7 +75,7 @@ public class TilePatternCircular : MonoBehaviour
                 Tile hitTile = hit.GetComponent<Tile>();
                 if (hitTile.tileState == Tile.TileState.up) //If the tiles that are in its radius are up, make them go down
                 {
-                    hitTile.tileState = Tile.TileState.goingDown;
+                    hitTile.MoveDown(15f);
                     newTiles.Add(hitTile);
                 }
             }
@@ -113,32 +115,5 @@ public class TilePatternCircular : MonoBehaviour
         }
     }
 
-    //public void Expand()    //This method causes the hole to expand in all directions
-    //{
-    //    List<Tile> newTiles = new List<Tile>(); //A list containing the next outermost tiles for future calls
-    //    foreach(Tile tile in outerTiles)
-    //    {
-    //        Collider[] hitColliders = Physics.OverlapSphere(tile.upPos, 1.5f, groundLayerMask); //Check which tiles are in radius of outermost tiles
-    //        if(hitColliders != null)
-    //        {
-    //            foreach(Collider hit in hitColliders)
-    //            {
-    //                Tile hitTile = hit.GetComponent<Tile>();
-    //                if(hitTile.tileState == Tile.TileState.up)  //If the tiles that are in its radius are up, make them go down
-    //                {
-    //                    hitTile.tileState = Tile.TileState.goingDown;   
-    //                    newTiles.Add(hitTile);
-    //                }
-    //            }
-    //        }
-    //    }
-
-    //    if(newTiles.Count > 0)
-    //    {
-    //        outerTiles.Clear();
-    //        outerTiles = newTiles;
-    //    }
-
-    //}
 
 }

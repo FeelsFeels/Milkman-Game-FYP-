@@ -87,6 +87,8 @@ public class SectionWithWeight : MonoBehaviour, IAffectedByWeight
             state = DurabilityState.Broken;
         }
         
+        //If state is changed,
+        //Change material and instantiate breaking particles
         if(curDurabilityState != state)
         {
             curDurabilityState = state;
@@ -115,9 +117,15 @@ public class SectionWithWeight : MonoBehaviour, IAffectedByWeight
             foreach(Tile tile in tileList)
             {
                 tile.GetComponent<Renderer>().material = newMaterial;
+
+                //Display breaking particles
+                GameObject particles = Instantiate(crumblingParticles, tile.transform.position + Vector3.up, Quaternion.identity);
+                particles.transform.parent = tile.transform;
+                particles.GetComponent<AutoDestroyOverTime>().DestroyWithTime(1f);
             }
         }
     }
+
 
     IEnumerator StartCrumbling()
     {
@@ -125,7 +133,9 @@ public class SectionWithWeight : MonoBehaviour, IAffectedByWeight
         //Show smoke particle effects
         foreach (Tile tile in tileList)
         {
-            Instantiate(crumblingParticles, tile.transform.position + Vector3.up, Quaternion.identity);
+            GameObject particles = Instantiate(crumblingParticles, tile.transform.position + Vector3.up, Quaternion.identity);
+            particles.transform.parent = tile.transform;
+            particles.GetComponent<AutoDestroyOverTime>().DestroyWithTime(15f);
         }
         yield return new WaitForSeconds(5);
         //Start crumbling

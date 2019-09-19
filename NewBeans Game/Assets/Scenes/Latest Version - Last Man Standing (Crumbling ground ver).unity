@@ -1894,7 +1894,7 @@ MonoBehaviour:
   materialTwoThirds: {fileID: 2100000, guid: d8ebd9b449f1026488e2e92578996d86, type: 2}
   materialOneThird: {fileID: 2100000, guid: 60e0c435b8a1c0e4a8a2c016e9299ff2, type: 2}
   materialBroken: {fileID: 2100000, guid: 2c3bc6b2f4239a944b0c29618e26153b, type: 2}
-  crumblingParticles: {fileID: 1654736843778140, guid: 78e8b38d431ddef4fa2994a3f2d6e2ff,
+  crumblingParticles: {fileID: 1344314377593938, guid: 32954e349dd75554eb7dda03ac48f66d,
     type: 3}
 --- !u!64 &168569219
 MeshCollider:
@@ -2440,11 +2440,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 13400000, guid: 7c616bb36bb20874ea8f3390828f6117,
         type: 2}
-    - target: {fileID: 934878710071975289, guid: 0de5147ea4d0ce0458608f357c054973,
-        type: 3}
-      propertyPath: m_WarningMessage
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 779756879854318498, guid: 0de5147ea4d0ce0458608f357c054973,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3354,6 +3349,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 22.023588
+      objectReference: {fileID: 0}
+    - target: {fileID: 934878710071975289, guid: 0de5147ea4d0ce0458608f357c054973,
+        type: 3}
+      propertyPath: m_WarningMessage
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -4325,6 +4325,7 @@ MonoBehaviour:
   respawnPosition: {fileID: 427376167}
   respawnDelay: 2
   lastHitBy: {fileID: 0}
+  skinnedMeshRenderer: {fileID: 0}
   rb: {fileID: 350038373}
   rotAngle: 0
   CorrectionAngle: {x: 0, y: -35, z: 0}
@@ -5218,6 +5219,7 @@ MonoBehaviour:
   respawnPosition: {fileID: 2084286973}
   respawnDelay: 2
   lastHitBy: {fileID: 0}
+  skinnedMeshRenderer: {fileID: 0}
   rb: {fileID: 463447350}
   rotAngle: 0
   CorrectionAngle: {x: 0, y: -35, z: 0}
@@ -5905,6 +5907,7 @@ MonoBehaviour:
   respawnPosition: {fileID: 1337643032}
   respawnDelay: 2
   lastHitBy: {fileID: 0}
+  skinnedMeshRenderer: {fileID: 0}
   rb: {fileID: 537737449}
   rotAngle: 0
   CorrectionAngle: {x: 0, y: -35, z: 0}
@@ -10390,7 +10393,7 @@ MonoBehaviour:
   materialTwoThirds: {fileID: 2100000, guid: d8ebd9b449f1026488e2e92578996d86, type: 2}
   materialOneThird: {fileID: 2100000, guid: 60e0c435b8a1c0e4a8a2c016e9299ff2, type: 2}
   materialBroken: {fileID: 2100000, guid: 2c3bc6b2f4239a944b0c29618e26153b, type: 2}
-  crumblingParticles: {fileID: 1654736843778140, guid: 78e8b38d431ddef4fa2994a3f2d6e2ff,
+  crumblingParticles: {fileID: 1344314377593938, guid: 32954e349dd75554eb7dda03ac48f66d,
     type: 3}
 --- !u!4 &1299474442
 Transform:
@@ -12799,7 +12802,7 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 256
-  crumblingParticleEffect: {fileID: 1654736843778140, guid: 78e8b38d431ddef4fa2994a3f2d6e2ff,
+  crumblingParticleEffect: {fileID: 1344314377593938, guid: 32954e349dd75554eb7dda03ac48f66d,
     type: 3}
 --- !u!114 &1658703583
 MonoBehaviour:
@@ -13903,11 +13906,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 13400000, guid: 7c616bb36bb20874ea8f3390828f6117,
         type: 2}
-    - target: {fileID: 934878710071975289, guid: 0de5147ea4d0ce0458608f357c054973,
-        type: 3}
-      propertyPath: m_WarningMessage
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 934878710059416175, guid: 0de5147ea4d0ce0458608f357c054973,
         type: 3}
       propertyPath: m_Mass
@@ -13927,6 +13925,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 934878710071975289, guid: 0de5147ea4d0ce0458608f357c054973,
+        type: 3}
+      propertyPath: m_WarningMessage
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0de5147ea4d0ce0458608f357c054973, type: 3}

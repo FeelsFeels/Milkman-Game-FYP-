@@ -3687,7 +3687,7 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 256
-  crumblingParticleEffect: {fileID: 1654736843778140, guid: 78e8b38d431ddef4fa2994a3f2d6e2ff,
+  crumblingParticleEffect: {fileID: 1344314377593938, guid: 32954e349dd75554eb7dda03ac48f66d,
     type: 3}
 --- !u!114 &345911208
 MonoBehaviour:
@@ -3788,6 +3788,7 @@ MonoBehaviour:
   respawnPosition: {fileID: 427376167}
   respawnDelay: 2
   lastHitBy: {fileID: 0}
+  skinnedMeshRenderer: {fileID: 0}
   rb: {fileID: 350038373}
   rotAngle: 0
   CorrectionAngle: {x: 0, y: -35, z: 0}
@@ -4901,6 +4902,7 @@ MonoBehaviour:
   respawnPosition: {fileID: 2084286973}
   respawnDelay: 2
   lastHitBy: {fileID: 0}
+  skinnedMeshRenderer: {fileID: 0}
   rb: {fileID: 463447350}
   rotAngle: 0
   CorrectionAngle: {x: 0, y: -35, z: 0}
@@ -5737,6 +5739,7 @@ MonoBehaviour:
   respawnPosition: {fileID: 1337643032}
   respawnDelay: 2
   lastHitBy: {fileID: 0}
+  skinnedMeshRenderer: {fileID: 0}
   rb: {fileID: 537737449}
   rotAngle: 0
   CorrectionAngle: {x: 0, y: -35, z: 0}

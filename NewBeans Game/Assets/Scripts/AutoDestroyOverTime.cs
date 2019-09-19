@@ -3,32 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AutoDestroyOverTime : MonoBehaviour
-{
-    private float lifeTime;
-
-    public float minTimeToDestroy;
-    public float maxTimeToDestroy;
-
-    private bool isDestroyed;
-
-    // Start is called before the first frame update
-    void Start()
+{    
+    
+    void OnEnable()
     {
-        lifeTime = Random.Range(minTimeToDestroy, maxTimeToDestroy);
-
-        // This calls DestroyThis function after 'lifetime' seconds
-        Invoke("DestroyThis", lifeTime);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        // This calls DestroyThis function after default 5 seconds;
+        Invoke("DestroyThis", 5f);
     }
 
     void DestroyThis()
     {
         Destroy(gameObject);
         HoleSpawner.currentHoles -= 1;
+    }
+
+    public void DestroyWithTime(float timeToDestroy)
+    {
+
+        CancelInvoke("DestroyThis");
+        //Use a new destroy invoker
+        Invoke("DestroyThis", timeToDestroy);
     }
 }
