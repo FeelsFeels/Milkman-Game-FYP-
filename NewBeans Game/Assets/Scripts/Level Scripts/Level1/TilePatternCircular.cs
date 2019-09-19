@@ -24,7 +24,8 @@ public class TilePatternCircular : MonoBehaviour
 
     private void Start()
     {
-        eventsManager.OnNewPhase += Expand;
+        if(eventsManager)
+            eventsManager.OnNewPhase += Expand;
 
         //Makes the initial tiles move down
         foreach(Tile tile in initTiles)

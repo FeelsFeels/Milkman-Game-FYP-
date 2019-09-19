@@ -18,7 +18,8 @@ public class HazardsController : MonoBehaviour
 
     private void Start()
     {
-        eventsManager.OnSpawnHazard += SpawnHazard;
+        if(eventsManager)
+            eventsManager.OnSpawnHazard += SpawnHazard;
     }
 
     public void SpawnHazard()
