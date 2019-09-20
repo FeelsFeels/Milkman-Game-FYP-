@@ -6,8 +6,15 @@ using System.Linq;
 public class TilePatternBigBlocks : MonoBehaviour
 {
     Tile[] tileArray;
-    public GameObject[] patternHolders;    //Each gameobject holds the tiles wanted for the different pattern.
-    public GameObject currentPatternHolder = null;
+
+    [System.Serializable]
+    public struct TilePattern
+    {
+        public Tile[] tilesInPattern;
+    }
+
+    public List<TilePattern> patternHolders = new List<TilePattern>();    //Each gameobject holds the tiles wanted for the different pattern.
+    public int currentPatternIndex;
 
     public GameObject crumblingParticleEffect;
 
@@ -16,36 +23,47 @@ public class TilePatternBigBlocks : MonoBehaviour
         tileArray = FindObjectsOfType<Tile>();
     }
 
+    
     public void SelectNewPattern()
     {
         //Keeps randomising until a new pattern is found
-        int rand = Random.Range(0, patternHolders.Length - 1);
-        do
+        int rand = Random.Range(0, patternHolders.Count);
+        while (rand == currentPatternIndex)
         {
-            rand = Random.Range(0, patternHolders.Length) - 1;
+            rand = Random.Range(0, patternHolders.Count);
         }
-        while (patternHolders[rand] == currentPatternHolder);
         //New pattern is found
-        currentPatternHolder = patternHolders[rand];
+        currentPatternIndex = rand;
 
-        //Set all the tiles to the pattern
-        
-        foreach(Tile tile in tileArray) //Move everything up
+        //Start assembling the new pattern
+        StartCoroutine("AssembleNewPattern");
+    }
+
+    IEnumerator AssembleNewPattern()
+    {
+        foreach (Tile tile in tileArray) //Move everything up
         {
             if (tile.tileState == Tile.TileState.up || tile.tileState == Tile.TileState.goingUp)
                 continue;
             else
-                tile.MoveUp();
+                tile.MoveUp(5f);
+        }
+        //waiting for tiles to move back up
+        yield return new WaitForSeconds(7);
+
+        //Give warning to players using smoke particles
+        foreach (Tile tile in patternHolders[currentPatternIndex].tilesInPattern)  //Move desired tiles down
+        {
+            GameObject particles = Instantiate(crumblingParticleEffect, tile.transform.position + Vector3.up, Quaternion.identity);
+            particles.transform.parent = tile.transform;
+            particles.GetComponent<AutoDestroyOverTime>().DestroyWithTime(10f);
         }
 
-        foreach(Transform t in currentPatternHolder.transform)  //Move desired tiles down
-        {
-            t.GetComponent<Tile>().MoveDown(15f);
+        yield return new WaitForSeconds(5f);
 
-            GameObject particles = Instantiate(crumblingParticleEffect, t.transform.position + Vector3.up, Quaternion.identity);
-            particles.transform.parent = t.transform;
-            particles.GetComponent<AutoDestroyOverTime>().DestroyWithTime(15f);
+        foreach (Tile tile in patternHolders[currentPatternIndex].tilesInPattern)  //Move desired tiles down
+        {
+            tile.MoveDown(10f);
         }
     }
-    
 }
