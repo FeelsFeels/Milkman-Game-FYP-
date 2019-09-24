@@ -9,6 +9,7 @@ public class EventTimer : MonoBehaviour
     [System.Serializable]
     public class EventInformation
     {
+        public string EventDescription;
         //Constructor when making new events during runtime
         public EventInformation(float calltime, UnityEvent eventToCall, bool repeating, float frequency)
         {

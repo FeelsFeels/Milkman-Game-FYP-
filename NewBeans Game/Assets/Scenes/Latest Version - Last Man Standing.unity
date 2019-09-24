@@ -19986,7 +19986,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventList:
-  - timeToCall: 40
+  - EventDescription: Expand Hole
+    timeToCall: 40
     unityEvent:
       m_PersistentCalls:
         m_Calls:
@@ -20005,7 +20006,8 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
     isRepeating: 0
     repeatRate: 0
-  - timeToCall: 55
+  - EventDescription: Spawn Hazard
+    timeToCall: 55
     unityEvent:
       m_PersistentCalls:
         m_Calls:
@@ -20024,7 +20026,8 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
     isRepeating: 0
     repeatRate: 0
-  - timeToCall: 80
+  - EventDescription: Spawn Hazard
+    timeToCall: 80
     unityEvent:
       m_PersistentCalls:
         m_Calls:
@@ -20043,7 +20046,8 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
     isRepeating: 0
     repeatRate: 0
-  - timeToCall: 100
+  - EventDescription: Spawn Hazard
+    timeToCall: 100
     unityEvent:
       m_PersistentCalls:
         m_Calls:
@@ -20062,7 +20066,8 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
     isRepeating: 0
     repeatRate: 0
-  - timeToCall: 150
+  - EventDescription: Expand Hole
+    timeToCall: 150
     unityEvent:
       m_PersistentCalls:
         m_Calls:
@@ -20081,7 +20086,8 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
     isRepeating: 0
     repeatRate: 0
-  - timeToCall: 180
+  - EventDescription: Spawn Hazard
+    timeToCall: 180
     unityEvent:
       m_PersistentCalls:
         m_Calls:
