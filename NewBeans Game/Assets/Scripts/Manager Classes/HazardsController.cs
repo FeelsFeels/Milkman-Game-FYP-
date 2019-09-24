@@ -22,6 +22,12 @@ public class HazardsController : MonoBehaviour
             eventsManager.OnSpawnHazard += SpawnHazard;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+            SpawnHazard();
+    }
+
     public void SpawnHazard()
     {
         Instantiate(GetRandomHazard(), FindRandomPosition(), Quaternion.identity);

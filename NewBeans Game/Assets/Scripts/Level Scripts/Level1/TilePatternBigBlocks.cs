@@ -10,6 +10,7 @@ public class TilePatternBigBlocks : MonoBehaviour
     [System.Serializable]
     public struct TilePattern
     {
+        public string PatternDescription;   //For organisation
         public Tile[] tilesInPattern;
     }
 
