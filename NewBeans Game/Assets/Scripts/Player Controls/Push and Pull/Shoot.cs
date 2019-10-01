@@ -66,7 +66,9 @@ public class Shoot : MonoBehaviour
 
     private void ShootWaterGun()
     {
-        //Bloody bugs
+        if (playerScript.playerStunned)
+            return;
+
         //WaterProjectile projectile = Instantiate(waterProjectile, shootOrigin.transform.position, Quaternion.identity).GetComponent<WaterProjectile>();
         WaterProjectile projectile = Instantiate(waterProjectile, new Vector3(shootOrigin.transform.position.x, shootOrigin.transform.position.y, shootOrigin.transform.position.z), Quaternion.identity).GetComponent<WaterProjectile>();
         projectile.knockbackDirection = shootOrigin.forward;
@@ -75,6 +77,9 @@ public class Shoot : MonoBehaviour
 
     private void ShootHook()
     {
+        if (playerScript.playerStunned)
+            return;
+
         GrapplingHook projectile = Instantiate(hookProjectile, new Vector3(shootOrigin.transform.position.x, shootOrigin.transform.position.y, shootOrigin.transform.position.z), Quaternion.identity).GetComponent<GrapplingHook>();
         //projectile.Init();
         projectile.direction = shootOrigin.forward;

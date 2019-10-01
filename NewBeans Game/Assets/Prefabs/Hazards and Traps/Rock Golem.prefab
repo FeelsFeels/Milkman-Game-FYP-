@@ -961,9 +961,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a30c851c48d92a45a96d5b5c2a6272c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolSpeed: 60
+  patrolSpeed: 1
   knockbackStrength: 700
-  shockwaveParticles: {fileID: 0}
+  shockwaveParticles: {fileID: 1765079799062324546, guid: c873447dcbd7d8c4dbb878ba67891401,
+    type: 3}
 --- !u!1 &1731343148443287556
 GameObject:
   m_ObjectHideFlags: 0

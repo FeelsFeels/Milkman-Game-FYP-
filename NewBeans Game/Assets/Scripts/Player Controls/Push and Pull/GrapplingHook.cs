@@ -301,9 +301,17 @@ public class GrapplingHook : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //Dont need to do anything if colliding with the caster
+        if (other.gameObject == hookOwner)
+            return;
+
+        //Dont need to do anything if currently reversing
+        if (hookStatus == HookStatus.reverse)
+            return;
+
         if (latchedObject == null)
         {
-            if (other.tag == "Player" && other.gameObject != hookOwner)
+            if (other.tag == "Player")
             {
                 other.transform.parent = transform;
                 other.GetComponent<PlayerController>().lastHitBy = player; // Hooked player gets hooked by the hook owner.
@@ -313,11 +321,15 @@ public class GrapplingHook : MonoBehaviour
                 //transform.parent = other.transform;
                 return;
             }
-            if (other.tag == "GrabbableEnvironment")
+            else if (other.tag == "GrabbableEnvironment")
             {
                 StartReverse();
                 gameObject.transform.position = other.transform.position;
                 return;
+            }
+            else
+            {
+                StartTakeBack();
             }
         }
     }

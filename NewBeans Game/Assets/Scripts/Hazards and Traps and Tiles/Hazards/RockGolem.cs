@@ -58,12 +58,13 @@ public class RockGolem : MonoBehaviour
 
             //Set rotation
             Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
-            transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, 0.75f * Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, 1.5f * Time.deltaTime);
 
             //Move Golem towards position
             //rb.velocity = direction * patrolSpeed * Time.deltaTime;
-            rb.velocity = transform.forward * patrolSpeed * Time.deltaTime;
-
+            //rb.velocity = transform.forward * patrolSpeed * Time.deltaTime;
+            Vector3 movement = transform.forward * patrolSpeed * Time.deltaTime;
+            rb.MovePosition(rb.position + movement);
             //Check if Position is reached
             float distance = (targetPosition - transform.position).sqrMagnitude;
             if(distance < 2f)
@@ -122,6 +123,8 @@ public class RockGolem : MonoBehaviour
             {
                 Vector3 knockbackDirection = (player.transform.position - transform.position).normalized;
                 player.GetComponent<Rigidbody>().AddForce(knockbackStrength * knockbackDirection);
+
+                player.Hit();
             }
         }        
 

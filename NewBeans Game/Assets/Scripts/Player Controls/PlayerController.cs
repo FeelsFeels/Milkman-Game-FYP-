@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
     public int deathCount;
     public int currentScore;
 
+    //Player status
+    public bool playerStunned;
+    public float stunnedTime;   //Time passed while being stunned
 
     [Header("Visual Effects")]
     public GameObject playerDieEffect;
@@ -38,10 +41,8 @@ public class PlayerController : MonoBehaviour
     [Header("Player Die")]
     public bool isDead = false;
     public bool shouldRespawn = true;
-
     public Transform respawnPosition;
     public float respawnDelay;
-
     public GameObject lastHitBy;
 
     // Object's Components
@@ -61,6 +62,7 @@ public class PlayerController : MonoBehaviour
     public float PressCooldownTimer; //you have to press movement input again within this time in order to activate dash; countdown before reset thingy
     public float angleTolerance = 30;
     public float lastInputAngle;
+
 
     void Reset()
     {
@@ -117,6 +119,18 @@ public class PlayerController : MonoBehaviour
     {
         killCountTimer -= Time.deltaTime;
         deathCountTimer -= Time.deltaTime;
+
+        //Stunned timing
+        if (playerStunned)
+        {
+            stunnedTime += Time.deltaTime;
+            if (stunnedTime >= 0.25f)
+            {
+                animator.ResetTrigger("Hit");
+                playerStunned = false;
+                stunnedTime = 0;
+            }
+        }
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -219,6 +233,8 @@ public class PlayerController : MonoBehaviour
     /// ***********
     private void Move(float input)
     {
+        if (playerStunned)
+            return;
         if (input > 0)
         {
             Vector3 movement = transform.forward * input * moveRate * Time.deltaTime;
@@ -230,12 +246,14 @@ public class PlayerController : MonoBehaviour
             Vector3 movement = transform.forward * input * moveRate * Time.deltaTime;
             rb.MovePosition(rb.position - movement);  //if input is negative, make it positive
         }
-
+        
 
     }
 
     private void Turn(float input)
     {
+        if (playerStunned)
+            return;
         Vector3 from = new Vector3(0f, 0f, 1f);
         Vector3 to = Quaternion.Euler(CorrectionAngle) * new Vector3(Input.GetAxis(HorizontalInputAxis), 0f, Input.GetAxis(VerticalInputAxis));
       
@@ -243,6 +261,17 @@ public class PlayerController : MonoBehaviour
         transform.eulerAngles =  transform.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, -rotAngle, ref turnSmoothVelocity, turnSmoothTime) ; //turn the player
 
     }
+
+    public void Hit()
+    {
+        animator.SetTrigger("Hit");
+        playerStunned = true;
+        stunnedTime = 0;
+    }
+
+
+
+
 
     /// ***********
     /// Dashing in progress
@@ -253,33 +282,11 @@ public class PlayerController : MonoBehaviour
     //    rb.AddForce(transform.forward * 10, ForceMode.Force); //push player forward
     //    print("dashing");
     //    PressCounter = 0;
-    //}
-
+    //}    
 
     /// *********************************
     /// Player Die
     /// *********************************
-
-    private void OnTriggerEnter(Collider other)
-    {
-        // If collide with "Hole", player dies.
-        if (other.tag == "Hole")
-        {
-            Die();
-        }
-        if(other.GetComponent<IAffectedByWeight>() != null)
-        {
-            other.GetComponent<IAffectedByWeight>().AddWeight(1);
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.GetComponent<IAffectedByWeight>() != null)
-        {
-            other.GetComponent<IAffectedByWeight>().RemoveWeight(1);
-        }
-    }
 
     // This hides the player when dead, and makes it reappear when alive.
     public void HidePlayerWhenDead()
@@ -321,10 +328,10 @@ public class PlayerController : MonoBehaviour
         // Makes player disappear
         HidePlayerWhenDead();
         // Respawns player
-        if(shouldRespawn)
+        if (shouldRespawn)
             StartCoroutine(RespawnPlayer());
     }
-    
+
 
     IEnumerator RespawnPlayer()
     {
@@ -336,5 +343,27 @@ public class PlayerController : MonoBehaviour
             HidePlayerWhenDead();
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // If collide with "Hole", player dies.
+        if (other.tag == "Hole")
+        {
+            Die();
+        }
+        if(other.GetComponent<IAffectedByWeight>() != null)
+        {
+            other.GetComponent<IAffectedByWeight>().AddWeight(1);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<IAffectedByWeight>() != null)
+        {
+            other.GetComponent<IAffectedByWeight>().RemoveWeight(1);
+        }
+    }
+
 }
 
