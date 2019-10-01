@@ -15,14 +15,20 @@ public class RockGolem : MonoBehaviour
         BeingLitAFLikeASuperDuperDopeAFMasterIMeanLikeThatSkirtComplimentsYourBodySoooooWellGurlIdKillForABodyLikeYoursMode
     }
 
-    Rigidbody rb;
-
     GolemStates golemState = GolemStates.FindingNewPosition;
+
+    Rigidbody rb;
+    
+    //Movement stuffs
     public float patrolSpeed;
     float chaseSpeed;
     Vector3 targetPosition; //The place the golem wants to move to eventually
-
     bool patrolling;
+
+    //Attacking variables
+    float timeToNextShockwave = 0f;
+    public float knockbackStrength;
+    public GameObject shockwaveParticles;
 
     private void Start()
     {
@@ -45,12 +51,10 @@ public class RockGolem : MonoBehaviour
 
         if (golemState == GolemStates.Patrolling)
         {
-
             //Get direction to target position
             Vector3 direction = targetPosition - transform.position;
             direction.y = 0;
             direction.Normalize();
-
 
             //Set rotation
             Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
@@ -62,15 +66,21 @@ public class RockGolem : MonoBehaviour
 
             //Check if Position is reached
             float distance = (targetPosition - transform.position).sqrMagnitude;
-            print(targetPosition + "targetPosition");
             if(distance < 2f)
             {
                 //Nearby target position
                 FindNewTargetPosition();
             }
-
+            //Visualising position
             Debug.DrawRay(targetPosition, Vector3.up * 100f, Color.red);
-            //Debug.DrawRay(transform.position, direction * 100f, Color.green);
+
+            //Stomping behaviour
+            timeToNextShockwave += Time.deltaTime;
+            if(timeToNextShockwave >= 0.666f)
+            {
+                timeToNextShockwave = 0;
+                Shockwave();
+            }
         }
     }
 
@@ -88,15 +98,42 @@ public class RockGolem : MonoBehaviour
         {
             print("Rock Golem is going to: " + hit.collider.gameObject.name);
             if(hit.collider.tag != "Hole")
-            {
+            {   
                 targetPosition = newPosition;
                 golemState = GolemStates.Patrolling;
             }
         }
     }
 
-    void StartPatrol()
+    void Shockwave()
     {
+        AutoDestroyOverTime particles = Instantiate(shockwaveParticles, transform.position, shockwaveParticles.transform.rotation).GetComponent<AutoDestroyOverTime>();
+        particles.DestroyWithTime(0.3f);
 
+        //Gets all players in range of shockwave stomp
+        int ignoreLayerMask =~ 1 << LayerMask.NameToLayer("Ground");    //Raycasts on everything but ground
+        Collider[] inRange = Physics.OverlapSphere(transform.position, 8f, ignoreLayerMask);
+
+        //Disrupts all players in range
+        foreach(Collider collider in inRange)
+        {
+            PlayerController player = collider.GetComponent<PlayerController>();
+            if (player)
+            {
+                Vector3 knockbackDirection = (player.transform.position - transform.position).normalized;
+                player.GetComponent<Rigidbody>().AddForce(knockbackStrength * knockbackDirection);
+            }
+        }        
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Player")
+        {
+            //Knocks player back
+            Vector3 knockbackDirection = (other.transform.position - transform.position).normalized;
+            other.GetComponent<Rigidbody>().AddForce(knockbackStrength * 2 * knockbackDirection);
+        }
     }
 }
