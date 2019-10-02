@@ -15,11 +15,13 @@ public class RockGolem : MonoBehaviour
         BeingLitAFLikeASuperDuperDopeAFMasterIMeanLikeThatSkirtComplimentsYourBodySoooooWellGurlIdKillForABodyLikeYoursMode
     }
 
-    GolemStates golemState = GolemStates.FindingNewPosition;
+    GolemStates golemState = GolemStates.Idle;
 
     Rigidbody rb;
-    
+    Animator animator;
+
     //Movement stuffs
+    float timeIdling;
     public float patrolSpeed;
     float chaseSpeed;
     Vector3 targetPosition; //The place the golem wants to move to eventually
@@ -28,11 +30,16 @@ public class RockGolem : MonoBehaviour
     //Attacking variables
     float timeToNextShockwave = 0f;
     public float knockbackStrength;
+
+    //Visuals
+    bool showInitialiseParticles;
     public GameObject shockwaveParticles;
+    public GameObject crashingParticles;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -41,8 +48,30 @@ public class RockGolem : MonoBehaviour
         PatrolArea();
     }
 
+    public void Initialise()
+    {
+        showInitialiseParticles = true;
+        rb = GetComponent<Rigidbody>(); //Needed as method is called during instantiation of golem
+
+        rb.velocity = Vector3.down * 100;
+
+        timeIdling = 0;
+        golemState = GolemStates.Idle;
+
+    }
+
     void PatrolArea()
     {
+        if(golemState == GolemStates.Idle)
+        {
+            timeIdling += Time.deltaTime;
+            if(timeIdling > 5f)
+            {
+                timeIdling = 0;
+                golemState = GolemStates.FindingNewPosition;
+            }
+        }
+
         if (golemState == GolemStates.FindingNewPosition)
         {
             //Initialises finding position
@@ -82,6 +111,16 @@ public class RockGolem : MonoBehaviour
                 timeToNextShockwave = 0;
                 Shockwave();
             }
+        }
+
+        //Setting golem's animation state
+        if (golemState == GolemStates.Patrolling)
+        {
+            animator.SetFloat("Speed", 1);
+        }
+        else
+        {
+            animator.SetFloat("Speed", 0);
         }
     }
 
@@ -126,9 +165,9 @@ public class RockGolem : MonoBehaviour
 
                 player.Hit();
             }
-        }        
-
+        }
     }
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -137,6 +176,20 @@ public class RockGolem : MonoBehaviour
             //Knocks player back
             Vector3 knockbackDirection = (other.transform.position - transform.position).normalized;
             other.GetComponent<Rigidbody>().AddForce(knockbackStrength * 2 * knockbackDirection);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (showInitialiseParticles)
+        {
+            //Spawn crashing particles thrice
+            for (int i = 0; i < 50; i++)
+            {
+                AutoDestroyOverTime newParticles = Instantiate(crashingParticles, new Vector3(transform.position.x + Random.Range(-5f, 5f), 0, transform.position.z + Random.Range(-5f, 5f)), Quaternion.identity).GetComponent<AutoDestroyOverTime>();
+                newParticles.DestroyWithTime(2);
+                showInitialiseParticles = false;
+            }
         }
     }
 }
