@@ -225,6 +225,10 @@ public class PlayerController : MonoBehaviour
         //{
         //    PressCounter = 0; //reset press counter
         //}
+
+
+        OrientPlayerWithGround();
+
     }
 
 
@@ -364,6 +368,47 @@ public class PlayerController : MonoBehaviour
             other.GetComponent<IAffectedByWeight>().RemoveWeight(1);
         }
     }
+
+
+    /// <summary>
+    /// Orienting player to ground normals
+    /// </summary>
+
+    public float dist = 1.0f;
+    //public float smoothing = 0.2f;
+    public LayerMask hitLayer;
+    void OrientPlayerWithGround()
+    {
+        Vector3 pos = transform.position + transform.TransformDirection(Vector3.forward) * 0.4f + transform.TransformDirection(Vector3.up) * 0.2f;
+        Vector3 dir = transform.TransformDirection(Vector3.down);
+        Ray ray = new Ray(pos, dir);
+        RaycastHit hit;
+
+        Debug.DrawLine(ray.origin, ray.origin + ray.direction * dist, Color.red);
+
+        if (Physics.Raycast(ray, out hit, dist, hitLayer))
+        {
+            if (hit.collider.tag == "Ground")
+            {
+                Debug.Log("Hit ground");
+
+                Debug.DrawLine(hit.point, hit.point + hit.normal, Color.green);
+
+                Quaternion targetQuaternion;
+                targetQuaternion = Quaternion.FromToRotation(transform.up, hit.normal);
+
+                Quaternion correctedtarget;
+                correctedtarget = targetQuaternion;
+                correctedtarget.y = 0;
+                correctedtarget = correctedtarget.normalized;
+                correctedtarget = correctedtarget * transform.rotation;
+
+                // update rotation
+                transform.rotation = Quaternion.Slerp(transform.rotation, correctedtarget, Time.deltaTime);
+            }
+        }
+    }
+
 
 }
 
