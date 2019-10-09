@@ -16076,7 +16076,7 @@ MonoBehaviour:
     isRepeating: 1
     repeatRate: 50
   - EventDescription: Spawn Golem
-    timeToCall: 45
+    timeToCall: 40
     unityEvent:
       m_PersistentCalls:
         m_Calls:

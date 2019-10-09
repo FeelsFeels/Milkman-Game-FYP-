@@ -49,7 +49,7 @@ public class Shield : MonoBehaviour
             }
         }
 
-        WaterProjectile projectile = other.GetComponent<WaterProjectile>();
+        PushProjectile projectile = other.GetComponent<PushProjectile>();
         if (projectile)
         {
             if(projectile.ownerPlayer != player.gameObject)

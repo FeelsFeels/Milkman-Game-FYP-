@@ -70,9 +70,11 @@ public class Shoot : MonoBehaviour
             return;
 
         //WaterProjectile projectile = Instantiate(waterProjectile, shootOrigin.transform.position, Quaternion.identity).GetComponent<WaterProjectile>();
-        WaterProjectile projectile = Instantiate(waterProjectile, new Vector3(shootOrigin.transform.position.x, shootOrigin.transform.position.y, shootOrigin.transform.position.z), Quaternion.identity).GetComponent<WaterProjectile>();
+        PushProjectile projectile = Instantiate(waterProjectile, new Vector3(shootOrigin.transform.position.x, shootOrigin.transform.position.y, shootOrigin.transform.position.z), Quaternion.identity).GetComponent<PushProjectile>();
         projectile.knockbackDirection = shootOrigin.forward;
         projectile.ownerPlayer = gameObject;
+
+        //playerScript.animator.SetTrigger("Attack");
     }
 
     private void ShootHook()
@@ -86,7 +88,8 @@ public class Shoot : MonoBehaviour
         projectile.hookOwner = gameObject;
         hProjectile = projectile;
 
-        
+        //It looks terrible, dont
+        //playerScript.animator.SetTrigger("Attack");
     }
 
 

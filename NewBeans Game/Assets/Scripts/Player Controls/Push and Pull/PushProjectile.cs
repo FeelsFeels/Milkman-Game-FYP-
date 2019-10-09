@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaterProjectile : MonoBehaviour
+public class PushProjectile : MonoBehaviour
 {
     public Vector3 knockbackDirection;
     public GameObject ownerPlayer;
