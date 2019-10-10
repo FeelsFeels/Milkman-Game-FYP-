@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
     public GameObject lastHitBy;
 
     // Object's Components
-    Animator animator;
+    public Animator animator;
     CapsuleCollider capsuleCollider;
     public SkinnedMeshRenderer skinnedMeshRenderer;
     public Rigidbody rb;

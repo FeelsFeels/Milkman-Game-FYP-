@@ -16,12 +16,10 @@ public class GolemSpawner : MonoBehaviour
 
     public void SpawnGolem()
     {
-        print("rockgolem method");
         //Find an appropriate place to spawn the golem
         Vector3 spawnPoint = Vector3.zero;  //using vec3.zero as if it was a null check
         while(spawnPoint == Vector3.zero)
         {
-            print("rockgolem while loop");
             int rand = Random.Range(0, spawnPoints.Length);
 
             RaycastHit hit;
