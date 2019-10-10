@@ -29,8 +29,7 @@ public class PlayerController : MonoBehaviour
     public GameObject playerPulledEffect;
 
     private int ControllerNumber;
-    public string HorizontalInput
-        ;
+    public string HorizontalInputAxis;
     public string VerticalInputAxis;
     public string AButtonInput;
     public string BButtonInput;
