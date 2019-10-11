@@ -6871,6 +6871,7 @@ MonoBehaviour:
   respawnPosition: {fileID: 427376167}
   respawnDelay: 2
   lastHitBy: {fileID: 0}
+  animator: {fileID: 0}
   skinnedMeshRenderer: {fileID: 0}
   rb: {fileID: 350038373}
   rotAngle: 0
@@ -6880,6 +6881,10 @@ MonoBehaviour:
   PressCooldownTimer: 0
   angleTolerance: 30
   lastInputAngle: 0
+  dist: 1
+  hitLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!54 &350038373 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 934878710059416175, guid: 0de5147ea4d0ce0458608f357c054973,
@@ -7878,6 +7883,7 @@ MonoBehaviour:
   respawnPosition: {fileID: 2084286973}
   respawnDelay: 2
   lastHitBy: {fileID: 0}
+  animator: {fileID: 0}
   skinnedMeshRenderer: {fileID: 0}
   rb: {fileID: 463447350}
   rotAngle: 0
@@ -7887,6 +7893,10 @@ MonoBehaviour:
   PressCooldownTimer: 0
   angleTolerance: 30
   lastInputAngle: 0
+  dist: 1
+  hitLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!54 &463447350 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 934878710059416175, guid: 0de5147ea4d0ce0458608f357c054973,
@@ -8699,6 +8709,7 @@ MonoBehaviour:
   respawnPosition: {fileID: 1337643032}
   respawnDelay: 2
   lastHitBy: {fileID: 0}
+  animator: {fileID: 0}
   skinnedMeshRenderer: {fileID: 0}
   rb: {fileID: 537737449}
   rotAngle: 0
@@ -8708,6 +8719,10 @@ MonoBehaviour:
   PressCooldownTimer: 0
   angleTolerance: 30
   lastInputAngle: 0
+  dist: 1
+  hitLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!54 &537737449 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 934878710059416175, guid: 0de5147ea4d0ce0458608f357c054973,
@@ -10086,6 +10101,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 754260433}
+  - component: {fileID: 754260434}
   m_Layer: 0
   m_Name: Camera Rig
   m_TagString: Untagged
@@ -10100,14 +10116,30 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 754260432}
-  m_LocalRotation: {x: -0.14188878, y: 0.85279673, z: -0.4031445, w: -0.30013305}
-  m_LocalPosition: {x: 29.29403, y: 31.061888, z: 13.407156}
+  m_LocalRotation: {x: -0.14188208, y: 0.8527983, z: -0.40314323, w: -0.30013353}
+  m_LocalPosition: {x: 9, y: 0, z: -6.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1667435616}
   m_Father: {fileID: 0}
   m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 50.535004, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 50.603, y: 218.778, z: 0}
+--- !u!114 &754260434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754260432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e04363e9db4509043904aba2d433a31c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_DampTime: 0.2
+  m_ScreenEdgeBuffer: 5
+  m_MinSize: 15
+  m_Targets: []
 --- !u!64 &764756302
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16189,7 +16221,7 @@ Camera:
   far clip plane: 1000
   field of view: 70.4
   orthographic: 1
-  orthographic size: 19.2
+  orthographic size: 19
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -16213,7 +16245,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1667435613}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: -0, z: -65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 754260433}
