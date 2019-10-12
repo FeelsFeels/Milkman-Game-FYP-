@@ -17,29 +17,42 @@ public class LaserBeamCast : MonoBehaviour
     public LineRenderer warningLine;
     public LineRenderer laserLine;
 
+    private ParticleSystem laserEffects;
+
     // Start is called before the first frame update
     void Start()
     {
         collider = GetComponent<Collider>();
-        warningLine = GetComponent<LineRenderer>();
-        laserLine = GetComponent<LineRenderer>();
+        laserEffects = GetComponentInChildren<ParticleSystem>();
+
+
+        LaserWarning();
+        Invoke("ShootLaserBeam", 2);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        ShootLaserBeam();
     }
 
     public void LaserWarning()
     {
-
+        warningLine.SetWidth(2f, 2f);
+        warningLine.SetPosition(0, laserStartPos.transform.position);
+        warningLine.SetPosition(1, laserEndPos.transform.position);
     }
 
     public void ShootLaserBeam()
     {
         Vector3 colliderScale = new Vector3(2f, 2f, 2f);
         Vector3 shootLaserDir = (laserStartPos.transform.position + transform.forward * maxDistance);
+
+        laserLine.SetWidth(2f, 2f);
+        laserLine.SetPosition(0, laserStartPos.transform.position);
+        laserLine.SetPosition(1, laserEndPos.transform.position);
+
+        laserEffects.Play();
 
         float distanceDifference; // Distance between object that is hit and the laser start point.
 
