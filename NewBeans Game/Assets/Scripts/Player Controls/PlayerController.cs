@@ -173,59 +173,6 @@ public class PlayerController : MonoBehaviour
         else
             animator.SetFloat("Speed", 1);
 
-        /// ***********
-        /// DASH DASH DASH
-        /// if add dash, need to add a button used for dashing instead of double tap
-        /// ***********
-
-        //if (Input.GetAxis(HorizontalInputAxis) != 0 || Input.GetAxis(VerticalInputAxis) != 0 ) //if there is input
-        //{
-        //    //get the angle of analog stick 
-        //    float angle = Mathf.Atan2(moveVerticalAxis, moveHorizontalAxis) * Mathf.Rad2Deg;
-
-        //    if (PressCooldownTimer > 0 && PressCounter == 1) //if timer has not reset and player has already tapped movement input ONCE
-        //    {
-        //        //check if the angle of input is within range of tolerance or leeway of previous input
-
-        //        //if true = Has double tapped so do STH
-        //        //if (Mathf.Clamp(lastInputAngle, -angleTolerance, angleTolerance) == angle)
-        //        if (Mathf.Abs(angle - lastInputAngle) <= angleTolerance)
-        //        {
-        //            Dash();
-        //            //also reset presscounter, timer(?)
-        //        }
-
-        //        //if false = treat as first tap and set presscounter as 1, reset timer, set angle of last input
-        //        //if (Mathf.Clamp(lastInputAngle, -angleTolerance, angleTolerance) != angle)
-        //        if(Mathf.Abs(angle - lastInputAngle) >= angleTolerance)
-        //        {
-        //            PressCooldownTimer = 1.0f; //set timer for countdown till next tap or reset (which is 1s)
-        //            PressCounter = 1; //increase tap counter to 1
-
-
-        //            lastInputAngle = angle;
-        //        }
-        //    }
-
-        //    else //if this is the FIRST tap
-        //    {
-        //        PressCooldownTimer = 1.0f; //set timer for countdown till next tap or reset (which is 0.5s)
-        //        PressCounter += 1; //increase tap counter to 1
-
-        //        //set angle of last input
-        //        lastInputAngle = angle;
-        //    }
-        //}
-
-        //if (PressCooldownTimer > 0) //if timer is more than 0
-        //{
-        //    PressCooldownTimer -= 1 * Time.deltaTime; //timer will count down
-        //}
-        //else //if time is 0 
-        //{
-        //    PressCounter = 0; //reset press counter
-        //}
-
 
         OrientPlayerWithGround();
 
