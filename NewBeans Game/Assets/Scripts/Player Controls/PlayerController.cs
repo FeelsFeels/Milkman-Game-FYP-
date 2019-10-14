@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     //Player status
     public bool playerStunned;
     public float stunnedTime;   //Time passed while being stunned
+    private float stunDuration = 0.25f;
 
     [Header("Visual Effects")]
     public GameObject playerDieEffect;
@@ -124,7 +125,7 @@ public class PlayerController : MonoBehaviour
         if (playerStunned)
         {
             stunnedTime += Time.deltaTime;
-            if (stunnedTime >= 0.25f)
+            if (stunnedTime >= stunDuration)
             {
                 animator.ResetTrigger("Hit");
                 playerStunned = false;
@@ -271,8 +272,16 @@ public class PlayerController : MonoBehaviour
         animator.SetTrigger("Hit");
         playerStunned = true;
         stunnedTime = 0;
+        stunDuration = 0.25f;
     }
 
+    public void Hit(float timeToStun)
+    {
+        animator.SetTrigger("Hit");
+        playerStunned = true;
+        stunnedTime = 0;
+        stunDuration = timeToStun;
+    }
 
 
 
