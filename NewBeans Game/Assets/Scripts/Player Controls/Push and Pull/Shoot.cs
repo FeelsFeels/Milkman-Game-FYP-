@@ -56,11 +56,13 @@ public class Shoot : MonoBehaviour
                 ShootHook();
                 canHook = false;
             }
-            //else
-            //{
-            //    hProjectile.PullFromLatch();
-            //}
         }
+
+        if (hProjectile != null)
+            playerScript.shootingHook = true;
+        else
+            playerScript.shootingHook = false;
+
 
     }
 

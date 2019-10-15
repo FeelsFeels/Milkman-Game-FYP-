@@ -113,12 +113,12 @@ MonoBehaviour:
   nodePrefab: {fileID: 9194299461667926688, guid: 342873c25d4f3ec43923a1834b8a3fc2,
     type: 3}
   direction: {x: 0, y: 0, z: 0}
-  speed: 0.8
-  maxNodes: 40
+  speed: 1.5
+  maxNodes: 20
   lastNodeUpdateTime: 0
   nodeUpdateTime: 0.07
   nodeToMoveTo: {fileID: 0}
-  nodeBondDistance: 0.8
+  nodeBondDistance: 1.5
   nodeBondDamping: 100
   renodeDelay: 1
   willReturn: 1

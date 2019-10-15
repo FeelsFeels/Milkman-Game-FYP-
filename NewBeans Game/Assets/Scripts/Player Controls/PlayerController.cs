@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public bool playerStunned;
     public float stunnedTime;   //Time passed while being stunned
     private float stunDuration = 0.25f;
+    public bool shootingHook;
 
     [Header("Visual Effects")]
     public GameObject playerDieEffect;
@@ -181,19 +182,13 @@ public class PlayerController : MonoBehaviour
             Move(direction);
         }
 
+        OrientPlayerWithGround();
 
-
-
-        if(Input.GetAxis(HorizontalInputAxis) == 0 && Input.GetAxis(VerticalInputAxis) == 0)
+        //If Not moving, can set the animator values
+        if (Input.GetAxis(HorizontalInputAxis) == 0 && Input.GetAxis(VerticalInputAxis) == 0)
         {
             animator.SetFloat("Speed", 0);
         }
-        else
-            animator.SetFloat("Speed", 1);
-
-
-        OrientPlayerWithGround();
-
     }
 
 
@@ -202,7 +197,7 @@ public class PlayerController : MonoBehaviour
     /// ***********
     private void Move(Vector3 direction)
     {
-        if (playerStunned)
+        if (playerStunned || shootingHook)
             return;
 
         // Movement based on camera's rotation at the start.
@@ -215,6 +210,10 @@ public class PlayerController : MonoBehaviour
         correctedQ = Quaternion.LookRotation(Quaternion.AngleAxis(cameraRigRot, Vector3.up) * direction); //Correct the rotation quaternion 
 
         transform.rotation = Quaternion.Slerp(transform.rotation, correctedQ, Time.deltaTime * playerTurnSmoothing); //Rotate the player, and LERP THE ROTATION... 
+
+
+        //If Moving, can set the animator values
+        animator.SetFloat("Speed", 1);
 
     }
 

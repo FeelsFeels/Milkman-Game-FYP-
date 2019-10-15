@@ -89,6 +89,7 @@ public class GrapplingHook : MonoBehaviour
             {
                 lineRenderer.SetPosition(i, nodes[i].transform.position);
             }
+            lineRenderer.SetPosition(nodes.Count, transform.position);
         }
     }
 
