@@ -160,6 +160,7 @@ public class RockGolem : MonoBehaviour
             timeSpentChasing += Time.deltaTime;
             if (playerToChase.isDead || timeSpentChasing > 10f)
             {
+                timeSpentChasing = 0; 
                 golemState = GolemStates.Idle;
             }
         }
@@ -219,15 +220,13 @@ public class RockGolem : MonoBehaviour
         }
     }
     
-    void ChasePlayer()
-    {
-
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Player")
         {
+            if (golemState == GolemStates.FindingPlayerToChase || golemState == GolemStates.Chasing)
+                return;
+
             playerToChase = collision.gameObject.GetComponent<PlayerController>();
             golemState = GolemStates.FindingPlayerToChase;
             timeFindingPlayer = 0;
@@ -235,6 +234,9 @@ public class RockGolem : MonoBehaviour
         }
         else if(collision.gameObject.tag == "PushProjectile")
         {
+            if (golemState == GolemStates.FindingPlayerToChase || golemState == GolemStates.Chasing)
+                return;
+
             animator.SetTrigger("Hit");
             playerToChase = collision.gameObject.GetComponent<PushProjectile>().ownerPlayer.GetComponent<PlayerController>();
             golemState = GolemStates.FindingPlayerToChase;
