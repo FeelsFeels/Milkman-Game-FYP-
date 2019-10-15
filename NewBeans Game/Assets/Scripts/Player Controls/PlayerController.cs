@@ -59,11 +59,13 @@ public class PlayerController : MonoBehaviour
     public float rotAngle = 0;
     public Vector3 CorrectionAngle; //y should be -45... about there. This rotates the movement, such that it is somewhat parallel to camera view
     public float averageInput;
-    public int PressCounter = 0; //how many times you pressed the movement key/input
-    public float PressCooldownTimer; //you have to press movement input again within this time in order to activate dash; countdown before reset thingy
-    public float angleTolerance = 30;
-    public float lastInputAngle;
-
+    //public int PressCounter = 0; //how many times you pressed the movement key/input
+    //public float PressCooldownTimer; //you have to press movement input again within this time in order to activate dash; countdown before reset thingy
+    //public float angleTolerance = 30;
+    //public float lastInputAngle;
+    public GameObject cameraRigObj;
+    float cameraRigRot =0f;
+    public float playerTurnSmoothing = 10f;
 
     void Reset()
     {
@@ -106,6 +108,10 @@ public class PlayerController : MonoBehaviour
         skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         rb = GetComponent<Rigidbody>();
         invincibilityShield = GetComponentInChildren<Shield>();
+
+        //Set the camera rig rotation at the start. This will be the 'correction angle'
+        if (cameraRigObj != null)
+            cameraRigRot = cameraRigObj.transform.rotation.eulerAngles.y;
     }
 
     public void SetControllerNumber (int controllerNo)
@@ -143,30 +149,41 @@ public class PlayerController : MonoBehaviour
         /// Move controls
         /// ***********
 
-        float moveVerticalAxis = Input.GetAxis(VerticalInputAxis);
-        float moveHorizontalAxis = Input.GetAxis(HorizontalInputAxis);
+        float moveVerticalAxis = Input.GetAxisRaw(VerticalInputAxis);
+        float moveHorizontalAxis = Input.GetAxisRaw(HorizontalInputAxis);
+        Vector3 input = new Vector3(moveHorizontalAxis, 0, -moveVerticalAxis);
+        Vector3 direction = input.normalized;
+       
 
+        //if (Input.GetAxis(VerticalInputAxis) != 0 && Input.GetAxis(HorizontalInputAxis) == 0) //if there is vertical input but no horizontal input
+        //{
+        //    Move(moveVerticalAxis);
+        //    Turn(moveVerticalAxis);
+        //}
 
-        if (Input.GetAxis(VerticalInputAxis) != 0 && Input.GetAxis(HorizontalInputAxis) == 0) //if there is vertical input but no horizontal input
+        //if (Input.GetAxis(HorizontalInputAxis) != 0 && Input.GetAxis(VerticalInputAxis) == 0) //if there is horizontal input but no vertical input
+        //{
+        //    Move(moveHorizontalAxis);
+        //    Turn(moveHorizontalAxis);
+        //}
+
+        //if (Input.GetAxis(VerticalInputAxis) != 0 && Input.GetAxis(HorizontalInputAxis) != 0) //if there is vertical input AND horizontal input
+        //{
+        //    averageInput = Mathf.Sqrt(moveHorizontalAxis * moveHorizontalAxis + moveVerticalAxis * moveVerticalAxis); //find the hypotenuse input; can you bELIEVE iM DOING MATH??? cause im also in disbelief like, oh mai gawddd yessiree desu
+
+        //    Turn(averageInput); //turn 
+        //    Move(averageInput);
+        //    //print(averageInput);
+        //}
+
+        if (moveHorizontalAxis != 0 || moveVerticalAxis != 0)
         {
-            Move(moveVerticalAxis);
-            Turn(moveVerticalAxis);
+            Move(direction);
         }
 
-        if (Input.GetAxis(HorizontalInputAxis) != 0 && Input.GetAxis(VerticalInputAxis) == 0) //if there is horizontal input but no vertical input
-        {
-            Move(moveHorizontalAxis);
-            Turn(moveHorizontalAxis);
-        }
 
-        if (Input.GetAxis(VerticalInputAxis) != 0 && Input.GetAxis(HorizontalInputAxis) != 0) //if there is vertical input AND horizontal input
-        {
-            averageInput = Mathf.Sqrt(moveHorizontalAxis * moveHorizontalAxis + moveVerticalAxis * moveVerticalAxis); //find the hypotenuse input; can you bELIEVE iM DOING MATH??? cause im also in disbelief like, oh mai gawddd yessiree desu
 
-            Turn(averageInput); //turn 
-            Move(averageInput);
-            //print(averageInput);
-        }
+
         if(Input.GetAxis(HorizontalInputAxis) == 0 && Input.GetAxis(VerticalInputAxis) == 0)
         {
             animator.SetFloat("Speed", 0);
@@ -183,6 +200,25 @@ public class PlayerController : MonoBehaviour
     /// ***********
     /// Moving character methods
     /// ***********
+    private void Move(Vector3 direction)
+    {
+        if (playerStunned)
+            return;
+
+        // Movement based on camera's rotation at the start.
+        Vector3 velocity = Quaternion.AngleAxis(cameraRigRot , Vector3.up) * (direction * moveRate); //Multiply the direction by the camera rotation
+        Vector3 movement = velocity * Time.deltaTime;
+        transform.Translate(movement, Space.World);
+
+        //Rotate player
+        Quaternion correctedQ;
+        correctedQ = Quaternion.LookRotation(Quaternion.AngleAxis(cameraRigRot, Vector3.up) * direction); //Correct the rotation quaternion 
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, correctedQ, Time.deltaTime * playerTurnSmoothing); //Rotate the player, and LERP THE ROTATION... 
+
+    }
+
+
     private void Move(float input)
     {
         if (playerStunned)
@@ -198,9 +234,8 @@ public class PlayerController : MonoBehaviour
             Vector3 movement = transform.forward * input * moveRate * Time.deltaTime;
             rb.MovePosition(rb.position - movement);  //if input is negative, make it positive
         }
-        
-
     }
+
 
     private void Turn(float input)
     {
@@ -211,7 +246,6 @@ public class PlayerController : MonoBehaviour
       
         rotAngle = Vector3.SignedAngle(from, to, Vector3.up) ; //find the direction/angle player faces (based on world view and axis input)
         transform.eulerAngles =  transform.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, -rotAngle, ref turnSmoothVelocity, turnSmoothTime) ; //turn the player
-
     }
 
     public void Hit()
