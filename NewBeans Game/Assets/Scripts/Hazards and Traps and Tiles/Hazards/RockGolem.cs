@@ -11,8 +11,7 @@ public class RockGolem : MonoBehaviour
         Patrolling,
         FindingNewPosition,
         Chasing,
-        Hit,
-        BeingLitAFLikeASuperDuperDopeAFMasterIMeanLikeThatSkirtComplimentsYourBodySoooooWellGurlIdKillForABodyLikeYoursMode
+        FindingPlayerToChase
     }
 
     GolemStates golemState = GolemStates.Idle;
@@ -22,10 +21,13 @@ public class RockGolem : MonoBehaviour
 
     //Movement stuffs
     float timeIdling;
+    float timeFindingPlayer;
+    float timeSpentChasing;
     public float patrolSpeed;
-    float chaseSpeed;
+    public float chaseSpeed;
     Vector3 targetPosition; //The place the golem wants to move to eventually
     bool patrolling;
+    PlayerController playerToChase;
 
     //Attacking variables
     float timeToNextShockwave = 0f;
@@ -45,7 +47,7 @@ public class RockGolem : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        PatrolArea();
+        GolemBehaviour();
     }
 
     public void Initialise()
@@ -60,9 +62,13 @@ public class RockGolem : MonoBehaviour
 
     }
 
-    void PatrolArea()
+    void GolemBehaviour()
     {
-        if(golemState == GolemStates.Idle)
+        ////////****////////////
+        ///Prepare4Death PT 2///
+        ////////****////////////
+
+        if (golemState == GolemStates.Idle)
         {
             timeIdling += Time.deltaTime;
             if(timeIdling > 5f)
@@ -100,21 +106,66 @@ public class RockGolem : MonoBehaviour
             {
                 //Nearby target position
                 FindNewTargetPosition();
+                golemState = GolemStates.Idle;
             }
             //Visualising position
             Debug.DrawRay(targetPosition, Vector3.up * 100f, Color.red);
 
+            ////Stomping behaviour
+            //timeToNextShockwave += Time.deltaTime;
+            //if(timeToNextShockwave >= 0.666f)
+            //{
+            //    timeToNextShockwave = 0;
+            //    Shockwave();
+            //}
+        }
+
+        if (golemState == GolemStates.FindingPlayerToChase)
+        {
+            timeFindingPlayer += Time.deltaTime;
+            Vector3 direction = playerToChase.transform.position - transform.position;
+            Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
+            transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, 1.5f * Time.deltaTime);
+
+            if(timeFindingPlayer >= 2.5f)
+            {
+                golemState = GolemStates.Chasing;
+                timeFindingPlayer = 0;
+            }
+        }
+
+        if(golemState == GolemStates.Chasing)
+        {
+            //Get direction to target position
+            Vector3 direction = playerToChase.transform.position - transform.position;
+            direction.y = 0;
+            direction.Normalize();
+
+            //Set rotation
+            Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
+            transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, 4.0f * Time.deltaTime);
+
+            //Move Golem towards position
+            Vector3 movement = transform.forward * chaseSpeed * Time.deltaTime;
+            rb.MovePosition(rb.position + movement);
+
             //Stomping behaviour
             timeToNextShockwave += Time.deltaTime;
-            if(timeToNextShockwave >= 0.666f)
+            if (timeToNextShockwave >= 0.666f)
             {
                 timeToNextShockwave = 0;
                 Shockwave();
             }
+
+            timeSpentChasing += Time.deltaTime;
+            if (playerToChase.isDead || timeSpentChasing > 10f)
+            {
+                golemState = GolemStates.Idle;
+            }
         }
 
         //Setting golem's animation state
-        if (golemState == GolemStates.Patrolling)
+        if (golemState == GolemStates.Patrolling || golemState == GolemStates.Chasing)
         {
             animator.SetFloat("Speed", 1);
         }
@@ -167,20 +218,28 @@ public class RockGolem : MonoBehaviour
             }
         }
     }
-
-
-    private void OnTriggerEnter(Collider other)
+    
+    void ChasePlayer()
     {
-        if(other.tag == "Player")
-        {
-            //Knocks player back
-            Vector3 knockbackDirection = (other.transform.position - transform.position).normalized;
-            other.GetComponent<Rigidbody>().AddForce(knockbackStrength * 2 * knockbackDirection);
-        }
+
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        if(collision.gameObject.tag == "Player")
+        {
+            playerToChase = collision.gameObject.GetComponent<PlayerController>();
+            golemState = GolemStates.FindingPlayerToChase;
+            timeFindingPlayer = 0;
+
+        }
+        else if(collision.gameObject.tag == "PushProjectile")
+        {
+            animator.SetTrigger("Hit");
+            playerToChase = collision.gameObject.GetComponent<PushProjectile>().ownerPlayer.GetComponent<PlayerController>();
+            golemState = GolemStates.FindingPlayerToChase;
+        }
+
         if (showInitialiseParticles)
         {
             //Spawn crashing particles thrice
@@ -190,6 +249,7 @@ public class RockGolem : MonoBehaviour
                 newParticles.DestroyWithTime(2);
                 showInitialiseParticles = false;
             }
+            Shockwave();
         }
     }
 }

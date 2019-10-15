@@ -8,6 +8,7 @@ TagManager:
   - GrabbableEnvironment
   - Shield
   - Rock
+  - PushProjectile
   layers:
   - Default
   - TransparentFX

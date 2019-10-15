@@ -962,7 +962,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrolSpeed: 1
-  knockbackStrength: 700
+  chaseSpeed: 3.5
+  knockbackStrength: 1800
   shockwaveParticles: {fileID: 1765079799062324546, guid: c873447dcbd7d8c4dbb878ba67891401,
     type: 3}
   crashingParticles: {fileID: 1765079799062324546, guid: 0cfed572c7b22294caf35be577e6ccb8,
