@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     public GameObject playerPushedEffect;
     public GameObject playerPulledEffect;
 
-    private int ControllerNumber;
+    public int ControllerNumber;
     public string HorizontalInputAxis;
     public string VerticalInputAxis;
     public string AButtonInput;
