@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.1}
+  m_AnchoredPosition: {x: 0, y: 0.2}
   m_SizeDelta: {x: 16, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1754352811
@@ -877,7 +877,7 @@ GameObject:
   - component: {fileID: 8930167015723236259}
   - component: {fileID: 1881393420942379056}
   m_Layer: 0
-  m_Name: Rock Golem
+  m_Name: Rocky Jr
   m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

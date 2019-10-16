@@ -96,8 +96,6 @@ public class RockGolem : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, 1.5f * Time.deltaTime);
 
             //Move Golem towards position
-            //rb.velocity = direction * patrolSpeed * Time.deltaTime;
-            //rb.velocity = transform.forward * patrolSpeed * Time.deltaTime;
             Vector3 movement = transform.forward * patrolSpeed * Time.deltaTime;
             rb.MovePosition(rb.position + movement);
             //Check if Position is reached
@@ -220,6 +218,14 @@ public class RockGolem : MonoBehaviour
         }
     }
     
+    void ChangeState(GolemStates newState)
+    {
+        switch (newState)
+        {
+
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Player")

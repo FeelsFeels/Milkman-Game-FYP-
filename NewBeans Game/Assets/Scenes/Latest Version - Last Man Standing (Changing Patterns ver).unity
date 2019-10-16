@@ -5773,6 +5773,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 3.9999993
       objectReference: {fileID: 0}
+    - target: {fileID: 6045131265281178699, guid: 0de5147ea4d0ce0458608f357c054973,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045131265281178699, guid: 0de5147ea4d0ce0458608f357c054973,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 614733457527139222, guid: 0de5147ea4d0ce0458608f357c054973,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 614733457527139222, guid: 0de5147ea4d0ce0458608f357c054973,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3809228650672270257, guid: 0de5147ea4d0ce0458608f357c054973,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3809228650672270257, guid: 0de5147ea4d0ce0458608f357c054973,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5394701431077631440, guid: 0de5147ea4d0ce0458608f357c054973,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5394701431077631440, guid: 0de5147ea4d0ce0458608f357c054973,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 0}
@@ -6854,12 +6894,14 @@ MonoBehaviour:
   currentScore: 0
   playerStunned: 0
   stunnedTime: 0
+  shootingHook: 0
   playerDieEffect: {fileID: 5321603115026070672, guid: 9a30751c44ecdd54996aa1f0cd0781f2,
     type: 3}
   playerPushedEffect: {fileID: 5866095184590232605, guid: 8d2c5bcf5e9fb5d44b06b03bcde18e45,
     type: 3}
   playerPulledEffect: {fileID: 8333770546263437678, guid: 23df1b9a80ad06d42a5727b3cbd1e62e,
     type: 3}
+  ControllerNumber: 0
   HorizontalInputAxis: Horizontal (Controller 3)
   VerticalInputAxis: Vertical (Controller 3)
   AButtonInput: AButton (Controller 3)
@@ -6877,10 +6919,8 @@ MonoBehaviour:
   rotAngle: 0
   CorrectionAngle: {x: 0, y: -35, z: 0}
   averageInput: 0
-  PressCounter: 0
-  PressCooldownTimer: 0
-  angleTolerance: 30
-  lastInputAngle: 0
+  cameraRigObj: {fileID: 0}
+  playerTurnSmoothing: 10
   dist: 1
   hitLayer:
     serializedVersion: 2
@@ -7866,12 +7906,14 @@ MonoBehaviour:
   currentScore: 0
   playerStunned: 0
   stunnedTime: 0
+  shootingHook: 0
   playerDieEffect: {fileID: 5321603115026070672, guid: 9a30751c44ecdd54996aa1f0cd0781f2,
     type: 3}
   playerPushedEffect: {fileID: 5866095184590232605, guid: 8d2c5bcf5e9fb5d44b06b03bcde18e45,
     type: 3}
   playerPulledEffect: {fileID: 8333770546263437678, guid: 23df1b9a80ad06d42a5727b3cbd1e62e,
     type: 3}
+  ControllerNumber: 2
   HorizontalInputAxis: Horizontal (Controller 2)
   VerticalInputAxis: Vertical (Controller 2)
   AButtonInput: AButton (Controller 2)
@@ -7889,10 +7931,8 @@ MonoBehaviour:
   rotAngle: 0
   CorrectionAngle: {x: 0, y: -35, z: 0}
   averageInput: 0
-  PressCounter: 0
-  PressCooldownTimer: 0
-  angleTolerance: 30
-  lastInputAngle: 0
+  cameraRigObj: {fileID: 754260432}
+  playerTurnSmoothing: 10
   dist: 1
   hitLayer:
     serializedVersion: 2
@@ -8692,12 +8732,14 @@ MonoBehaviour:
   currentScore: 0
   playerStunned: 0
   stunnedTime: 0
+  shootingHook: 0
   playerDieEffect: {fileID: 5321603115026070672, guid: 9a30751c44ecdd54996aa1f0cd0781f2,
     type: 3}
   playerPushedEffect: {fileID: 5866095184590232605, guid: 8d2c5bcf5e9fb5d44b06b03bcde18e45,
     type: 3}
   playerPulledEffect: {fileID: 8333770546263437678, guid: 23df1b9a80ad06d42a5727b3cbd1e62e,
     type: 3}
+  ControllerNumber: 1
   HorizontalInputAxis: Horizontal (Controller 1)
   VerticalInputAxis: Vertical (Controller 1)
   AButtonInput: AButton (Controller 1)
@@ -8715,10 +8757,8 @@ MonoBehaviour:
   rotAngle: 0
   CorrectionAngle: {x: 0, y: -35, z: 0}
   averageInput: 0
-  PressCounter: 0
-  PressCooldownTimer: 0
-  angleTolerance: 30
-  lastInputAngle: 0
+  cameraRigObj: {fileID: 754260432}
+  playerTurnSmoothing: 10
   dist: 1
   hitLayer:
     serializedVersion: 2
@@ -16034,7 +16074,7 @@ MonoBehaviour:
     isRepeating: 1
     repeatRate: 50
   - EventDescription: Spawn Golem
-    timeToCall: 1
+    timeToCall: 40
     unityEvent:
       m_PersistentCalls:
         m_Calls:
@@ -18527,6 +18567,51 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045131265281178699, guid: 0de5147ea4d0ce0458608f357c054973,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045131265281178699, guid: 0de5147ea4d0ce0458608f357c054973,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.95686066
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045131265281178699, guid: 0de5147ea4d0ce0458608f357c054973,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 614733457527139222, guid: 0de5147ea4d0ce0458608f357c054973,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.95686066
+      objectReference: {fileID: 0}
+    - target: {fileID: 614733457527139222, guid: 0de5147ea4d0ce0458608f357c054973,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3809228650672270257, guid: 0de5147ea4d0ce0458608f357c054973,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.95686066
+      objectReference: {fileID: 0}
+    - target: {fileID: 3809228650672270257, guid: 0de5147ea4d0ce0458608f357c054973,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5394701431077631440, guid: 0de5147ea4d0ce0458608f357c054973,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.95686066
+      objectReference: {fileID: 0}
+    - target: {fileID: 5394701431077631440, guid: 0de5147ea4d0ce0458608f357c054973,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0de5147ea4d0ce0458608f357c054973, type: 3}

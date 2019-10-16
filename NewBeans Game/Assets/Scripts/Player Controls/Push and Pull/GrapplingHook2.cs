@@ -340,7 +340,6 @@ public class GrapplingHook2 : MonoBehaviour
     //Call before destroying hook
     private void FinishHookSequence()
     {
-        player.GetComponent<Shoot>().canHook = true;
         Destroy(gameObject);
     }
 

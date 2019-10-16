@@ -328,7 +328,6 @@ public class GrapplingHookOld : MonoBehaviour
             //latchedObject.GetComponent<PlayerController>().hookedBy = null;
         }
 
-        player.GetComponent<Shoot>().canHook = true;
         Destroy(gameObject);
 
     }

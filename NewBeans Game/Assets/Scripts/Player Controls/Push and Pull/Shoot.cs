@@ -9,13 +9,17 @@ public class Shoot : MonoBehaviour
     public GameObject waterProjectile;
     public GameObject hookProjectile;
 
-    public GrapplingHook hProjectile;
+    public GameObject aimingArrows;
 
-    public PlayerController playerScript;
+    private GrapplingHook hProjectile;
+
+    private PlayerController playerScript;
+
+
 
     private float waterGunCooldownTimer;
     public float waterGunCooldown;
-    public bool canHook;
+    public bool aiming;
 
 
     ///If we want to use the Input Manager
@@ -28,18 +32,25 @@ public class Shoot : MonoBehaviour
     {
         //shootOrigin = transform.Find("ShootOrigin");
         waterGunCooldownTimer = 0;
-        canHook = true;
 
         playerScript = GetComponent<PlayerController>();
 
         // hProjectile.GetComponent<Shoot>().castedByPlayer = player;
         watergunInput = playerScript.AButtonInput;
         hookInput = playerScript.BButtonInput;
+
+        aimingArrows.SetActive(false);
     }
 
     private void Update()
     {
         waterGunCooldownTimer -= Time.deltaTime;
+
+        if (playerScript.playerStunned)
+        {
+            return;
+        }
+
         //Shoot Watergun
         if (Input.GetButtonDown(watergunInput) && waterGunCooldownTimer <= 0)
         {
@@ -51,19 +62,21 @@ public class Shoot : MonoBehaviour
         //Shoot Grappling Hook
         if (Input.GetButtonDown(hookInput))
         {
-            if (hProjectile == null && canHook)
+            if (hProjectile == null)
             {
-                ShootHook();
-                canHook = false;
+                ChargeHook();
             }
+        }
+
+        if (Input.GetButtonUp(hookInput) && aiming)
+        {
+            ShootHook();
         }
 
         if (hProjectile != null)
             playerScript.shootingHook = true;
         else
             playerScript.shootingHook = false;
-
-
     }
 
     private void ShootWaterGun()
@@ -79,10 +92,16 @@ public class Shoot : MonoBehaviour
         //playerScript.animator.SetTrigger("Attack");
     }
 
+    private void ChargeHook()
+    {
+        aimingArrows.SetActive(true);
+        aiming = true;
+    }
+
     private void ShootHook()
     {
-        if (playerScript.playerStunned)
-            return;
+        aiming = false;
+        aimingArrows.SetActive(false);
 
         GrapplingHook projectile = Instantiate(hookProjectile, new Vector3(shootOrigin.transform.position.x, shootOrigin.transform.position.y, shootOrigin.transform.position.z), Quaternion.identity).GetComponent<GrapplingHook>();
         //projectile.Init();
@@ -94,5 +113,11 @@ public class Shoot : MonoBehaviour
         //playerScript.animator.SetTrigger("Attack");
     }
 
+    //Called when player is stunned
+    //Fixes bugs when player is aiming hook, and gets stunned in the middle.
+    public void DisruptHookAiming()
+    {
+        aiming = false;
+    }
 
 }

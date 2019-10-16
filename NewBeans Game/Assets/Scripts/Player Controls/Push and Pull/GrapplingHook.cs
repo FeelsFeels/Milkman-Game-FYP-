@@ -83,7 +83,7 @@ public class GrapplingHook : MonoBehaviour
 
         if (useLineRenderer)
         {
-            lineRenderer.positionCount = nodes.Count;
+            lineRenderer.positionCount = nodes.Count + 1;
 
             for (int i = 0; i < nodes.Count; i++)
             {
@@ -133,6 +133,9 @@ public class GrapplingHook : MonoBehaviour
                     //This block controls when to let go of a player if hooked
                     if (latchedObject != null)
                     {
+                        //Sets latched object position to hook's position
+                        latchedObject.transform.localPosition = Vector3.zero;
+
                         if (!releaseOnNext)
                         {
                             RaycastHit hit;
@@ -294,10 +297,14 @@ public class GrapplingHook : MonoBehaviour
                 Destroy(node);
             }
         }
-        player.GetComponent<Shoot>().canHook = true;
         Destroy(gameObject);
     }
 
+    //Throws player in a direction
+    void FlingLatchedPlayer()
+    {
+
+    }
 
     private void OnTriggerEnter(Collider other)
     {

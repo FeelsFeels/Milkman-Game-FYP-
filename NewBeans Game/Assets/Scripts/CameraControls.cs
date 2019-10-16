@@ -75,12 +75,7 @@ public class CameraControls : MonoBehaviour
         // The desired position is the average position;
         m_DesiredPosition = averagePos;
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawSphere(m_DesiredPosition, 5);
-    }
+    
 
     private void Zoom()
     {
