@@ -55,10 +55,10 @@ public class CameraControls : MonoBehaviour
             //if (!m_Targets[i].gameObject.activeSelf)
             //    continue;
 
-            if (m_Targets[i].GetComponent<PlayerController>().isDead)
-            {
-                continue;
-            }
+            //if (m_Targets[i].GetComponent<PlayerController>().isDead)
+            //{
+            //    continue;
+            //}
 
             // Add to the average and increment the number of targets in the average.
             averagePos += m_Targets[i].transform.position;
@@ -100,10 +100,10 @@ public class CameraControls : MonoBehaviour
             //if (!m_Targets[i].gameObject.activeSelf)
             //    continue;
 
-            if (m_Targets[i].GetComponent<PlayerController>().isDead)
-            {
-                continue;
-            }
+            //if (m_Targets[i].GetComponent<PlayerController>().isDead)
+            //{
+            //    continue;
+            //}
 
             // Otherwise, find the position of the target in the camera's local space.
             Vector3 targetLocalPos = transform.InverseTransformPoint(m_Targets[i].transform.position);

@@ -43,6 +43,8 @@ public class PlayerController : MonoBehaviour
     [Header("Player Die")]
     public bool isDead = false;
     public bool shouldRespawn = true;
+    public float waitToRespawn = 3f;
+    public Transform stageCenterPos;
     public Transform respawnPosition;
     public float respawnDelay;
     public GameObject lastHitBy;
@@ -187,6 +189,7 @@ public class PlayerController : MonoBehaviour
         //If Not moving, can set the animator values
         if (Input.GetAxis(HorizontalInputAxis) == 0 && Input.GetAxis(VerticalInputAxis) == 0)
         {
+            if (animator != null)
             animator.SetFloat("Speed", 0);
         }
     }
@@ -205,14 +208,16 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = velocity * Time.deltaTime;
         transform.Translate(movement, Space.World);
 
-        //Rotate player
-        Quaternion correctedQ;
-        correctedQ = Quaternion.LookRotation(Quaternion.AngleAxis(cameraRigRot, Vector3.up) * direction); //Correct the rotation quaternion 
-
-        transform.rotation = Quaternion.Slerp(transform.rotation, correctedQ, Time.deltaTime * playerTurnSmoothing); //Rotate the player, and LERP THE ROTATION... 
+        if (!isDead) {
+            //Rotate player if NOT DEAD
+            Quaternion correctedQ;
+            correctedQ = Quaternion.LookRotation(Quaternion.AngleAxis(cameraRigRot, Vector3.up) * direction); //Correct the rotation quaternion 
+            transform.rotation = Quaternion.Slerp(transform.rotation, correctedQ, Time.deltaTime * playerTurnSmoothing); //Rotate the player, and LERP THE ROTATION... 
+        }
 
 
         //If Moving, can set the animator values
+        if (animator != null)
         animator.SetFloat("Speed", 1);
 
     }
@@ -288,6 +293,8 @@ public class PlayerController : MonoBehaviour
         {
             skinnedMeshRenderer.enabled = false;
             capsuleCollider.enabled = false;
+            this.transform.Find("Canvas").gameObject.SetActive(false);
+            this.transform.Find("Projector").gameObject.SetActive(true);
         }
 
         if (isDead == false)
@@ -295,6 +302,8 @@ public class PlayerController : MonoBehaviour
             skinnedMeshRenderer.enabled = true;
             capsuleCollider.enabled = true;
             invincibilityShield.ActivateShield();
+            this.transform.Find("Canvas").gameObject.SetActive(true);
+            this.transform.Find("Projector").gameObject.SetActive(false);
         }
 
     }
@@ -304,7 +313,6 @@ public class PlayerController : MonoBehaviour
         isDead = true;
 
         deathCountTimer = GameManager.instance.deathCountDownTimer;
-
         Instantiate(playerDieEffect, gameObject.transform.position, gameObject.transform.rotation);
 
         if (lastHitBy != null)
@@ -320,20 +328,35 @@ public class PlayerController : MonoBehaviour
 
         // Makes player disappear
         HidePlayerWhenDead();
+
         // Respawns player
         if (shouldRespawn)
-            StartCoroutine(RespawnPlayer());
+            StartCoroutine(WaitToRespawn());
+            
     }
 
+    IEnumerator WaitToRespawn()
+    {
+        rb.isKinematic = true;
+        rb.useGravity = false;
+        transform.position = stageCenterPos.position;
+        yield return new WaitForSeconds(waitToRespawn);
+        StartCoroutine(RespawnPlayer());
+
+    }
 
     IEnumerator RespawnPlayer()
     {
         if (isDead == true)
         {
+            
             yield return new WaitForSeconds(respawnDelay);
-            gameObject.transform.position = respawnPosition.transform.position;
+            //gameObject.transform.position = respawnPosition.transform.position;
+            
             isDead = false;
             HidePlayerWhenDead();
+            rb.isKinematic = false;
+            rb.useGravity = true;
         }
     }
 
