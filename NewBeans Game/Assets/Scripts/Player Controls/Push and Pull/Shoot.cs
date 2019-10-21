@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Shoot : MonoBehaviour
 {
@@ -10,17 +11,22 @@ public class Shoot : MonoBehaviour
     public GameObject hookProjectile;
 
     public GameObject aimingArrows;
+    public Image chargingIndication;
 
     private GrapplingHook hProjectile;
 
     private PlayerController playerScript;
 
 
+    //States and timing
+    private float pushCooldownTimer;
+    public float pushCooldown;
+    private float pushChargedTime;
+    public float pushChargedMaxTime;
+    public bool chargingPushProjectile;
+    public bool chargingGrapplingHook;
 
-    private float waterGunCooldownTimer;
-    public float waterGunCooldown;
-    public bool aiming;
-
+    public float baseKickbackForce;
 
     ///If we want to use the Input Manager
     public string watergunInput;
@@ -31,7 +37,7 @@ public class Shoot : MonoBehaviour
     private void Start()
     {
         //shootOrigin = transform.Find("ShootOrigin");
-        waterGunCooldownTimer = 0;
+        pushCooldownTimer = 0;
 
         playerScript = GetComponent<PlayerController>();
 
@@ -44,22 +50,46 @@ public class Shoot : MonoBehaviour
 
     private void Update()
     {
-        waterGunCooldownTimer -= Time.deltaTime;
+        pushCooldownTimer -= Time.deltaTime;
 
         if (playerScript.playerStunned)
         {
             return;
         }
 
-        //Shoot Watergun
-        if (Input.GetButtonDown(watergunInput) && waterGunCooldownTimer <= 0)
+        ////Shoot Watergun
+        //if (Input.GetButtonDown(watergunInput) && waterGunCooldownTimer <= 0)
+        //{
+        //    ShootPushProjectile();
+        //    pushCooldownTimer = pushCooldown;
+        //}
+
+        if (chargingPushProjectile)
         {
-            ShootWaterGun();
-            waterGunCooldownTimer = waterGunCooldown;
+            pushChargedTime += Time.deltaTime;
+            chargingIndication.gameObject.SetActive(true);
+            chargingIndication.fillAmount = pushChargedTime / 1.5f;
+
+            if (pushChargedTime >= pushChargedMaxTime)
+            {
+                PushBackfire();
+            }
         }
 
+        //Charge Push Projectile
+        if (Input.GetButtonDown(watergunInput) && pushCooldownTimer <= 0)
+        {
+            ChargePushProjectile();
+        }
 
-        //Shoot Grappling Hook
+        if (Input.GetButtonUp(watergunInput) && chargingPushProjectile)
+        {
+            ShootPushProjectile();
+        }
+
+        
+
+        //Charge Grappling Hook
         if (Input.GetButtonDown(hookInput))
         {
             if (hProjectile == null)
@@ -68,7 +98,8 @@ public class Shoot : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonUp(hookInput) && aiming)
+        //Shoot grappling hook
+        if (Input.GetButtonUp(hookInput) && chargingGrapplingHook)
         {
             ShootHook();
         }
@@ -79,28 +110,55 @@ public class Shoot : MonoBehaviour
             playerScript.shootingHook = false;
     }
 
-    private void ShootWaterGun()
+    private void ChargePushProjectile()
     {
-        if (playerScript.playerStunned)
-            return;
-
-        //WaterProjectile projectile = Instantiate(waterProjectile, shootOrigin.transform.position, Quaternion.identity).GetComponent<WaterProjectile>();
-        PushProjectile projectile = Instantiate(waterProjectile, new Vector3(shootOrigin.transform.position.x, shootOrigin.transform.position.y, shootOrigin.transform.position.z), Quaternion.identity).GetComponent<PushProjectile>();
-        projectile.knockbackDirection = shootOrigin.forward;
-        projectile.ownerPlayer = gameObject;
-
-        //playerScript.animator.SetTrigger("Attack");
+        aimingArrows.SetActive(true);
+        chargingPushProjectile = true;
     }
 
+    private void ShootPushProjectile()
+    {
+        PushProjectile projectile = Instantiate(waterProjectile, new Vector3(shootOrigin.transform.position.x, shootOrigin.transform.position.y, shootOrigin.transform.position.z)
+                                                                            , Quaternion.identity).GetComponent<PushProjectile>();
+        projectile.InitialiseShot(pushChargedTime, shootOrigin.forward, gameObject);
+
+        //kickback to player
+        Vector3 direction = -transform.forward;
+        float percentage = 1 + (pushChargedTime / pushChargedMaxTime) * 3;
+        playerScript.rb.AddForce(direction * (baseKickbackForce * percentage));
+        
+
+        //Reset states
+        aimingArrows.SetActive(false);
+        chargingIndication.gameObject.SetActive(false);
+        chargingPushProjectile = false;
+        pushChargedTime = 0;
+        pushCooldownTimer = pushCooldown;
+    }
+
+    private void PushBackfire()
+    {
+        Vector3 direction = -transform.forward;
+        playerScript.rb.AddForce(1800 * direction);
+        playerScript.Hit(3.0f);
+
+        //Reset states
+        aimingArrows.SetActive(false);
+        chargingPushProjectile = false;
+        pushChargedTime = 0;
+        pushCooldownTimer = pushCooldown;
+    }
+
+    //Hooking!
     private void ChargeHook()
     {
         aimingArrows.SetActive(true);
-        aiming = true;
+        chargingGrapplingHook = true;
     }
 
     private void ShootHook()
     {
-        aiming = false;
+        chargingGrapplingHook = false;
         aimingArrows.SetActive(false);
 
         GrapplingHook projectile = Instantiate(hookProjectile, new Vector3(shootOrigin.transform.position.x, shootOrigin.transform.position.y, shootOrigin.transform.position.z), Quaternion.identity).GetComponent<GrapplingHook>();
@@ -117,7 +175,7 @@ public class Shoot : MonoBehaviour
     //Fixes bugs when player is aiming hook, and gets stunned in the middle.
     public void DisruptHookAiming()
     {
-        aiming = false;
+        chargingGrapplingHook = false;
     }
 
 }

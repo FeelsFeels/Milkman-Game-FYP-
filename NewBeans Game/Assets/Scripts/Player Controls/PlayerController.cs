@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     public GameObject playerPushedEffect;
     public GameObject playerPulledEffect;
 
+    //Player Input 
+    public PlayerInputInfo inputInfo;
     public int ControllerNumber;
     public string HorizontalInputAxis;
     public string VerticalInputAxis;
@@ -81,24 +83,28 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        if (PlayerPrefs.HasKey("Player "+ playerNumber))
-        {
-            int controllerNo = PlayerPrefs.GetInt("Player " + playerNumber);
-            SetControllerNumber(controllerNo);
-        }
+        //if (PlayerPrefs.HasKey("Player "+ playerNumber))
+        //{
+        //    int controllerNo = PlayerPrefs.GetInt("Player " + playerNumber);
+        //    SetControllerNumber(controllerNo);
+        //}
 
-        Scene currentScene = SceneManager.GetActiveScene();
-        string sceneName = currentScene.name;
+        //Scene currentScene = SceneManager.GetActiveScene();
+        //string sceneName = currentScene.name;
 
-        if (ControllerNumber == 0 && currentScene.name != "Player Select")
-        {
-            //Testing purposes, do not forrget to erase
-            //if(sceneName == "Alpha Game")
-            //{
-            //    return;
-            //}
-            this.gameObject.SetActive(false);
-        }
+        //if (ControllerNumber == 0 && currentScene.name != "Player Select")
+        //{
+        //    //Testing purposes, do not forrget to erase
+        //    //if(sceneName == "Alpha Game")
+        //    //{
+        //    //    return;
+        //    //}
+        //    this.gameObject.SetActive(false);
+        //}
+        HorizontalInputAxis = inputInfo.HorizontalInputAxis;
+        VerticalInputAxis = inputInfo.VerticalInputAxis;
+        AButtonInput = inputInfo.AButtonInput;
+        BButtonInput = inputInfo.BButtonInput;
     }
 
 

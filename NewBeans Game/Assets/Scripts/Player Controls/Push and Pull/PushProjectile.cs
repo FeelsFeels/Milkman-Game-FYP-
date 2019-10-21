@@ -9,34 +9,50 @@ public class PushProjectile : MonoBehaviour
 
     public float speed;
 
-    public float knockbackStrength;
+    public float baseKnockback;
+    public float knockbackToUse;
     public float knockbackRadius;
     public float upwardsModifier;
     public PlayerController playerHit;
 
     public bool exploding;
 
-    private Rigidbody rb;
+    public Rigidbody rb;
+    public TrailRenderer trailRenderer;
 
     private void Start()
     {
         Destroy(gameObject, 3);
-        rb = GetComponent<Rigidbody>();
-        rb.velocity = knockbackDirection * speed;
     }
 
-    private void Update()
+    public void InitialiseShot(float durationCharged, Vector3 shotDirection, GameObject shootingPlayer)
     {
-        //transform.Translate(direction * speed);
+        if(durationCharged < 0.5f)
+        {
+            knockbackToUse = baseKnockback / 2;
+            speed *= 0.8f;
+        }
+        else if(durationCharged < 1f)
+        {
+            knockbackToUse = baseKnockback;
+        }
+        else if(durationCharged < 1.5f)
+        {
+            knockbackToUse = baseKnockback * 2;
+            speed *= 1.2f;
+        }
+        else if (durationCharged >= 1.5f)
+        {
+            knockbackToUse = baseKnockback * 4;
+            speed *= 1.4f;
+        }
+
+        ownerPlayer = shootingPlayer;
+        knockbackDirection = shotDirection;
+        rb.velocity = shotDirection * speed;
+        //knockbackToUse = baseKnockback * Mathf.Clamp(durationCharged, 1, 3);
+        print(knockbackToUse);
     }
-
-    // Rocky's non-AddForce Explode()
-    //private void Explode()
-    //{
-    //    playerHit.rb.AddExplosionForce(knockbackStrength, transform.position, knockbackRadius, upwardsModifier);
-
-    //    Destroy(gameObject);    //Unless we wanna add object pooling coolbeans😎🆒 stuff
-    //}
     
 
     private void OnCollisionEnter(Collision collision)
@@ -52,7 +68,7 @@ public class PushProjectile : MonoBehaviour
             playerHit = player;
             Instantiate(player.playerPushedEffect, player.transform.position, player.transform.rotation);
             //player.GetComponent<Rigidbody>().AddForce(direction * knockbackStrength);
-            player.GetComponent<Rigidbody>().AddForce(knockbackDirection * knockbackStrength);
+            player.GetComponent<Rigidbody>().AddForce(knockbackDirection * knockbackToUse);
             playerHit.lastHitBy = ownerPlayer;
             Destroy(gameObject);
             //Explode();

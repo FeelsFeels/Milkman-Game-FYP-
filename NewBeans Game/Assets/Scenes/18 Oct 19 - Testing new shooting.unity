@@ -6926,6 +6926,7 @@ MonoBehaviour:
     type: 3}
   playerPulledEffect: {fileID: 8333770546263437678, guid: 23df1b9a80ad06d42a5727b3cbd1e62e,
     type: 3}
+  inputInfo: {fileID: 0}
   ControllerNumber: 0
   HorizontalInputAxis: Horizontal (Controller 3)
   VerticalInputAxis: Vertical (Controller 3)
@@ -6936,7 +6937,7 @@ MonoBehaviour:
   isDead: 0
   shouldRespawn: 1
   waitToRespawn: 3
-  stageCenterPos: {fileID: 0}
+  stageCenterPos: {fileID: 690675801}
   respawnPosition: {fileID: 427376167}
   respawnDelay: 2
   lastHitBy: {fileID: 0}
@@ -7940,6 +7941,7 @@ MonoBehaviour:
     type: 3}
   playerPulledEffect: {fileID: 8333770546263437678, guid: 23df1b9a80ad06d42a5727b3cbd1e62e,
     type: 3}
+  inputInfo: {fileID: 11400000, guid: 99c24249d3bee7243b1dedb98cae64f9, type: 2}
   ControllerNumber: 2
   HorizontalInputAxis: Horizontal (Controller 2)
   VerticalInputAxis: Vertical (Controller 2)
@@ -7950,7 +7952,7 @@ MonoBehaviour:
   isDead: 0
   shouldRespawn: 1
   waitToRespawn: 3
-  stageCenterPos: {fileID: 0}
+  stageCenterPos: {fileID: 690675801}
   respawnPosition: {fileID: 2084286973}
   respawnDelay: 2
   lastHitBy: {fileID: 0}
@@ -7985,11 +7987,11 @@ MonoBehaviour:
     type: 3}
   aimingArrows: {fileID: 218378686}
   chargingIndication: {fileID: 218378688}
-  pushCooldown: 0.5
-  pushChargedMaxTime: 3.5
+  pushCooldown: 0.3
+  pushChargedMaxTime: 1.7
   chargingPushProjectile: 0
   chargingGrapplingHook: 0
-  baseKickbackForce: 400
+  baseKickbackForce: 500
   watergunInput: 
   hookInput: 
 --- !u!54 &463447350 stripped
@@ -8794,6 +8796,7 @@ MonoBehaviour:
     type: 3}
   playerPulledEffect: {fileID: 8333770546263437678, guid: 23df1b9a80ad06d42a5727b3cbd1e62e,
     type: 3}
+  inputInfo: {fileID: 11400000, guid: d8c35d73af737694e800bbca3247a69c, type: 2}
   ControllerNumber: 1
   HorizontalInputAxis: Horizontal (Controller 1)
   VerticalInputAxis: Vertical (Controller 1)
@@ -8804,7 +8807,7 @@ MonoBehaviour:
   isDead: 0
   shouldRespawn: 1
   waitToRespawn: 3
-  stageCenterPos: {fileID: 0}
+  stageCenterPos: {fileID: 690675801}
   respawnPosition: {fileID: 1337643032}
   respawnDelay: 2
   lastHitBy: {fileID: 0}
@@ -8843,7 +8846,7 @@ MonoBehaviour:
   pushChargedMaxTime: 1.7
   chargingPushProjectile: 0
   chargingGrapplingHook: 0
-  baseKickbackForce: 400
+  baseKickbackForce: 500
   watergunInput: 
   hookInput: 
 --- !u!54 &537737449 stripped
@@ -9714,6 +9717,36 @@ MonoBehaviour:
   upPos: {x: 0, y: 0, z: 0}
   downPos: {x: 0, y: 0, z: 0}
   tileState: 3
+--- !u!1 &690675800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 690675801}
+  m_Layer: 0
+  m_Name: Center Stage (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &690675801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690675800}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.1, y: 6.9624085, z: -9.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &694223085
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16656,6 +16689,14 @@ PrefabInstance:
     - target: {fileID: 467994, guid: a0f68672c76de4845b23a94845452f8a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 449634, guid: a0f68672c76de4845b23a94845452f8a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -18.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 191572, guid: a0f68672c76de4845b23a94845452f8a, type: 3}
+      propertyPath: m_Layer
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0f68672c76de4845b23a94845452f8a, type: 3}

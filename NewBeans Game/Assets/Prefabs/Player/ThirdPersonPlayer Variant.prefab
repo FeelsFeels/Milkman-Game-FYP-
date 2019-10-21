@@ -248,6 +248,56 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!1 &3317529548230038359
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 186441849013858632}
+  - component: {fileID: 5338289654094651286}
+  m_Layer: 0
+  m_Name: Projector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &186441849013858632
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3317529548230038359}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 934878710064892859}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!119 &5338289654094651286
+Projector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3317529548230038359}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_NearClipPlane: 2
+  m_FarClipPlane: 80
+  m_FieldOfView: 5
+  m_AspectRatio: 1
+  m_Orthographic: 1
+  m_OrthographicSize: 3
+  m_Material: {fileID: 2100000, guid: a8e2ca754f9584cb497b6cb5f2299221, type: 2}
+  m_IgnoreLayers:
+    serializedVersion: 2
+    m_Bits: 3623
 --- !u!1 &3885804681641638954
 GameObject:
   m_ObjectHideFlags: 0

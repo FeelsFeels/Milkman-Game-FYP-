@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 5564499495958723016}
   - component: {fileID: 9202030621963775509}
   - component: {fileID: -1659787128504604249}
-  - component: {fileID: 4366417856302751115}
+  - component: {fileID: 1163403538134597003}
   - component: {fileID: 6678222564224960228}
   m_Layer: 0
-  m_Name: Push Projectile 1
+  m_Name: Push Projectile
   m_TagString: PushProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9d65a197ca8631e48ac884693a0f6504, type: 2}
+  - {fileID: 2100000, guid: 6725e46065c67974d97074f1916eccef, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,7 +110,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &4366417856302751115
+--- !u!114 &1163403538134597003
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,20 +119,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 4402436895365813739}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e8e727f8441c5d4e9820c1ba2118a49, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d7b218c76cb7714f87f0d8c21529e8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   knockbackDirection: {x: 0, y: 0, z: 0}
   ownerPlayer: {fileID: 0}
   speed: 35
-  baseKnockback: 500
-  knockbackToUse: 0
+  knockbackStrength: 1400
   knockbackRadius: 50
   upwardsModifier: 1.2
   playerHit: {fileID: 0}
   exploding: 0
-  rb: {fileID: -1659787128504604249}
-  trailRenderer: {fileID: 6678222564224960228}
 --- !u!96 &6678222564224960228
 TrailRenderer:
   serializedVersion: 2

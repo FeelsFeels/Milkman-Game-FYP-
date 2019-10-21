@@ -6841,6 +6841,7 @@ MonoBehaviour:
     type: 3}
   playerPulledEffect: {fileID: 8333770546263437678, guid: 23df1b9a80ad06d42a5727b3cbd1e62e,
     type: 3}
+  inputInfo: {fileID: 0}
   ControllerNumber: 0
   HorizontalInputAxis: Horizontal (Controller 3)
   VerticalInputAxis: Vertical (Controller 3)
@@ -6850,6 +6851,8 @@ MonoBehaviour:
   moveRate: 10
   isDead: 0
   shouldRespawn: 1
+  waitToRespawn: 3
+  stageCenterPos: {fileID: 0}
   respawnPosition: {fileID: 427376167}
   respawnDelay: 2
   lastHitBy: {fileID: 0}
@@ -7853,6 +7856,7 @@ MonoBehaviour:
     type: 3}
   playerPulledEffect: {fileID: 8333770546263437678, guid: 23df1b9a80ad06d42a5727b3cbd1e62e,
     type: 3}
+  inputInfo: {fileID: 11400000, guid: 99c24249d3bee7243b1dedb98cae64f9, type: 2}
   ControllerNumber: 2
   HorizontalInputAxis: Horizontal (Controller 2)
   VerticalInputAxis: Vertical (Controller 2)
@@ -7862,6 +7866,8 @@ MonoBehaviour:
   moveRate: 10
   isDead: 0
   shouldRespawn: 1
+  waitToRespawn: 3
+  stageCenterPos: {fileID: 0}
   respawnPosition: {fileID: 2084286973}
   respawnDelay: 2
   lastHitBy: {fileID: 0}
@@ -8679,6 +8685,7 @@ MonoBehaviour:
     type: 3}
   playerPulledEffect: {fileID: 8333770546263437678, guid: 23df1b9a80ad06d42a5727b3cbd1e62e,
     type: 3}
+  inputInfo: {fileID: 11400000, guid: d8c35d73af737694e800bbca3247a69c, type: 2}
   ControllerNumber: 1
   HorizontalInputAxis: Horizontal (Controller 1)
   VerticalInputAxis: Vertical (Controller 1)
@@ -8688,6 +8695,8 @@ MonoBehaviour:
   moveRate: 10
   isDead: 0
   shouldRespawn: 1
+  waitToRespawn: 3
+  stageCenterPos: {fileID: 0}
   respawnPosition: {fileID: 1337643032}
   respawnDelay: 2
   lastHitBy: {fileID: 0}

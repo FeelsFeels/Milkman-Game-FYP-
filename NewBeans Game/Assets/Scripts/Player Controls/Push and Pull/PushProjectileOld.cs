@@ -2,56 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PushProjectile2 : MonoBehaviour
+public class PushProjectileOld : MonoBehaviour
 {
     public Vector3 knockbackDirection;
     public GameObject ownerPlayer;
 
     public float speed;
 
-    public float baseKnockback;
-    public float knockbackToUse;
+    public float knockbackStrength;
     public float knockbackRadius;
     public float upwardsModifier;
     public PlayerController playerHit;
 
     public bool exploding;
 
-    public Rigidbody rb;
-    public TrailRenderer trailRenderer;
+    private Rigidbody rb;
 
     private void Start()
     {
         Destroy(gameObject, 3);
+        rb = GetComponent<Rigidbody>();
+        rb.velocity = knockbackDirection * speed;
     }
 
-    public void InitialiseShot(float durationCharged, Vector3 shotDirection, GameObject shootingPlayer)
+    private void Update()
     {
-        if(durationCharged < 0.5f)
-        {
-            knockbackToUse = baseKnockback / 2; 
-        }
-        else if(durationCharged < 1f)
-        {
-            knockbackToUse = baseKnockback;
-        }
-        else if(durationCharged < 1.5f)
-        {
-            knockbackToUse = baseKnockback * 2;
-            speed *= 1.2f;
-        }
-        else if (durationCharged >= 1.5f)
-        {
-            knockbackToUse = baseKnockback * 3;
-            speed *= 1.4f;
-        }
-
-        ownerPlayer = shootingPlayer;
-        knockbackDirection = shotDirection;
-        rb.velocity = shotDirection * speed;
-        //knockbackToUse = baseKnockback * Mathf.Clamp(durationCharged, 1, 3);
-        print(knockbackToUse);
+        //transform.Translate(direction * speed);
     }
+
+    // Rocky's non-AddForce Explode()
+    //private void Explode()
+    //{
+    //    playerHit.rb.AddExplosionForce(knockbackStrength, transform.position, knockbackRadius, upwardsModifier);
+
+    //    Destroy(gameObject);    //Unless we wanna add object pooling coolbeans😎🆒 stuff
+    //}
     
 
     private void OnCollisionEnter(Collision collision)
@@ -67,7 +52,7 @@ public class PushProjectile2 : MonoBehaviour
             playerHit = player;
             Instantiate(player.playerPushedEffect, player.transform.position, player.transform.rotation);
             //player.GetComponent<Rigidbody>().AddForce(direction * knockbackStrength);
-            player.GetComponent<Rigidbody>().AddForce(knockbackDirection * knockbackToUse);
+            player.GetComponent<Rigidbody>().AddForce(knockbackDirection * knockbackStrength);
             playerHit.lastHitBy = ownerPlayer;
             Destroy(gameObject);
             //Explode();
