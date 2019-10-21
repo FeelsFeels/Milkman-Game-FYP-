@@ -22,7 +22,7 @@ public class Shoot : MonoBehaviour
     private float pushCooldownTimer;
     public float pushCooldown;
     private float pushChargedTime;
-    public float pushChargedMaxTime;
+    private float pushChargedMaxTime = 1.7f;
     public bool chargingPushProjectile;
     public bool chargingGrapplingHook;
 

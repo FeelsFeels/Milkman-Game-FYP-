@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shieldTime: 2
---- !u!114 &1220768820
+--- !u!114 &6892387394361574899
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,19 +161,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 934878710064627263}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9389c31b2b87da04eb002665a05e5bd0, type: 3}
+  m_Script: {fileID: 11500000, guid: 310f812abdcec6445b5d429cc521d198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shootOrigin: {fileID: 1978033520}
-  waterProjectile: {fileID: 4402436895365813739, guid: 932048ea04b212f4185d60a0f97e6ae8,
+  waterProjectile: {fileID: 4402436895365813739, guid: 2c359f36294584b48bab25595cc4b56d,
     type: 3}
   hookProjectile: {fileID: 1181466533355402987, guid: 10e2bd65e7f148249b8d7f346627176a,
     type: 3}
   aimingArrows: {fileID: 3885804681641638954}
-  waterGunCooldown: 1
-  aiming: 0
-  watergunInput: Fire1 (Player 1)
-  hookInput: Fire2 (Player 1)
+  chargingIndication: {fileID: 6648215220636798658}
+  pushCooldown: 0.3
+  pushChargedMaxTime: 1.7
+  chargingPushProjectile: 0
+  chargingGrapplingHook: 0
+  baseKickbackForce: 400
+  watergunInput: 
+  hookInput: 
 --- !u!1 &1118223197127146268
 GameObject:
   m_ObjectHideFlags: 0
