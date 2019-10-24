@@ -10,6 +10,8 @@ public class PlayerInputInfo : ScriptableObject
     public string VerticalInputAxis;
     public string AButtonInput;
     public string BButtonInput;
+    public string RightHorizontalAxis;
+    public string RightVerticalAxis;
 
     public int chosenCharacterIndex;
 
@@ -20,5 +22,9 @@ public class PlayerInputInfo : ScriptableObject
         VerticalInputAxis = string.Format("Vertical (Controller {0})", controllerNumber);
         AButtonInput = string.Format("AButton (Controller {0})", controllerNumber);
         BButtonInput = string.Format("BButton (Controller {0})", controllerNumber);
+
+        RightHorizontalAxis = string.Format("RightHorizontal (Controller {0})", controllerNumber);
+        RightVerticalAxis = string.Format("RightVertical (Controller {0})", controllerNumber);
+
     }
 }
