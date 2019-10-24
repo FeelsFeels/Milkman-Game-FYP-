@@ -52,8 +52,8 @@ public class CameraControls : MonoBehaviour
         for (int i = 0; i < m_Targets.Length; i++)
         {
             // If the target isn't active, go on to the next one.
-            //if (!m_Targets[i].gameObject.activeSelf)
-            //    continue;
+            if (!m_Targets[i].gameObject.activeSelf)
+                continue;
 
             //if (m_Targets[i].GetComponent<PlayerController>().isDead)
             //{
@@ -97,8 +97,8 @@ public class CameraControls : MonoBehaviour
         for (int i = 0; i < m_Targets.Length; i++)
         {
             // ... and if they aren't active continue on to the next target.
-            //if (!m_Targets[i].gameObject.activeSelf)
-            //    continue;
+            if (!m_Targets[i].gameObject.activeSelf)
+                continue;
 
             //if (m_Targets[i].GetComponent<PlayerController>().isDead)
             //{

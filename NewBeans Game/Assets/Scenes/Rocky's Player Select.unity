@@ -1246,7 +1246,7 @@ MonoBehaviour:
   - {fileID: 499118539}
   - {fileID: 829883096}
   playersJoined: 
-  SceneToLoad: 18 Oct 19 - Testing new shooting
+  SceneToLoad: 21 Oct 19 - Rooky - New Map
 --- !u!1 &829883094
 GameObject:
   m_ObjectHideFlags: 0

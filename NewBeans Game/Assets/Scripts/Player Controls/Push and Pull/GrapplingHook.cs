@@ -162,6 +162,11 @@ public class GrapplingHook : MonoBehaviour
                 {
                     transform.DetachChildren();
                     FinishHookSequence();
+
+                    if(latchedObject != null)
+                    {
+                        latchedObject.GetComponent<PlayerController>().Hit(2f);
+                    }
                 }
                 else if (nodes.Count > 0)
                     nodeToMoveTo = nodes.Last();

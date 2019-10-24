@@ -38,12 +38,12 @@ public class PushProjectile : MonoBehaviour
         }
         else if(durationCharged < 1.5f)
         {
-            knockbackToUse = baseKnockback * 2;
+            knockbackToUse = baseKnockback * 3;
             speed *= 1.2f;
         }
         else if (durationCharged >= 1.5f)
         {
-            knockbackToUse = baseKnockback * 4;
+            knockbackToUse = baseKnockback * 5;
             speed *= 1.4f;
         }
 

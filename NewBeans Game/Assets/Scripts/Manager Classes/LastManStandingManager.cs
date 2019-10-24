@@ -66,6 +66,9 @@ public class LastManStandingManager : MonoBehaviour
             playerLost[deadPlayer.playerNumber - 1] = true;
             deadPlayer.shouldRespawn = false;
             playerRankOrder.Push(deadPlayer);
+
+            //TEMPORARY FIX, player setactive false to stop camera tracking
+            deadPlayer.gameObject.SetActive(false);
         }
 
         UpdateScore();
@@ -76,7 +79,7 @@ public class LastManStandingManager : MonoBehaviour
         player1LivesText.text = playerLives[0].ToString();
         player2LivesText.text = playerLives[1].ToString();
         player3LivesText.text = playerLives[2].ToString();
-        //player2ScoreText.text = playerScript[3].currentScore.ToString();
+        player4LivesText.text = playerLives[3].ToString();
 
         int numberPlayersLeft = 0;
 
