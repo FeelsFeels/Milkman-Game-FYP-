@@ -963,6 +963,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chaseSpeed: 3.5
   knockbackStrength: 1800
+  unactivatedLocalscale: {x: 0.8, y: 0.8, z: 0.8}
+  activatedLocalscale: {x: 1.5661, y: 1.5661, z: 1.5661}
   shockwaveParticles: {fileID: 1765079799062324546, guid: c873447dcbd7d8c4dbb878ba67891401,
     type: 3}
   shockwaveRange: {fileID: 1822232346}
