@@ -19,4 +19,5 @@ MonoBehaviour:
   BButtonInput: BButton (Controller 2)
   RightHorizontalAxis: RightHorizontal (Controller 2)
   RightVerticalAxis: RightVertical (Controller 2)
+  RightBumper: RightBumper (Controller 2)
   chosenCharacterIndex: 1

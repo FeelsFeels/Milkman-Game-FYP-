@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
     public string BButtonInput;
     public string RightHorizontalAxis;
     public string RightVerticalAxis;
+    public string RightBumper;
 
     public float turnSmoothTime = 0.2f;
     float turnSmoothVelocity;
@@ -114,6 +115,8 @@ public class PlayerController : MonoBehaviour
             RightHorizontalAxis = inputInfo.RightHorizontalAxis;
             if (inputInfo.RightVerticalAxis != null)
                 RightVerticalAxis = inputInfo.RightVerticalAxis;
+            if (inputInfo.RightBumper != null)
+                RightBumper = inputInfo.RightBumper;
         }
     }
 

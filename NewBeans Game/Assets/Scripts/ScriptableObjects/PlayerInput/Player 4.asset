@@ -17,4 +17,7 @@ MonoBehaviour:
   VerticalInputAxis: Vertical (Controller 4)
   AButtonInput: AButton (Controller 4)
   BButtonInput: BButton (Controller 4)
+  RightHorizontalAxis: RightHorizontal (Controller 4)
+  RightVerticalAxis: RightVertical (Controller 4)
+  RightBumper: RightBumper (Controller 4)
   chosenCharacterIndex: 3
