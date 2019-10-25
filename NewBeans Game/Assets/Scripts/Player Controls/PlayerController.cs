@@ -31,12 +31,16 @@ public class PlayerController : MonoBehaviour
     public GameObject playerPulledEffect;
 
     //Player Input 
+    [Header ("Player Input")]
     public PlayerInputInfo inputInfo;
     public int ControllerNumber;
     public string HorizontalInputAxis;
     public string VerticalInputAxis;
     public string AButtonInput;
     public string BButtonInput;
+    public string RightHorizontalAxis;
+    public string RightVerticalAxis;
+    public string RightBumper;
 
     public float turnSmoothTime = 0.2f;
     float turnSmoothVelocity;
@@ -60,17 +64,14 @@ public class PlayerController : MonoBehaviour
 
 
     [Header("Player Movement")]
-    //Player movement
-    public float rotAngle = 0;
-    public Vector3 CorrectionAngle; //y should be -45... about there. This rotates the movement, such that it is somewhat parallel to camera view
     public float averageInput;
-    //public int PressCounter = 0; //how many times you pressed the movement key/input
-    //public float PressCooldownTimer; //you have to press movement input again within this time in order to activate dash; countdown before reset thingy
-    //public float angleTolerance = 30;
-    //public float lastInputAngle;
+
     public GameObject cameraRigObj;
     float cameraRigRot =0f;
     public float playerTurnSmoothing = 10f;
+
+
+    public bool rightAnalogTargeting = false;
 
     void Reset()
     {
@@ -101,10 +102,22 @@ public class PlayerController : MonoBehaviour
         //    //}
         //    this.gameObject.SetActive(false);
         //}
-        HorizontalInputAxis = inputInfo.HorizontalInputAxis;
-        VerticalInputAxis = inputInfo.VerticalInputAxis;
-        AButtonInput = inputInfo.AButtonInput;
-        BButtonInput = inputInfo.BButtonInput;
+
+
+        if (inputInfo != null)
+        {
+            HorizontalInputAxis = inputInfo.HorizontalInputAxis;
+            VerticalInputAxis = inputInfo.VerticalInputAxis;
+            AButtonInput = inputInfo.AButtonInput;
+            BButtonInput = inputInfo.BButtonInput;
+
+            if (inputInfo.RightHorizontalAxis != null)
+            RightHorizontalAxis = inputInfo.RightHorizontalAxis;
+            if (inputInfo.RightVerticalAxis != null)
+                RightVerticalAxis = inputInfo.RightVerticalAxis;
+            if (inputInfo.RightBumper != null)
+                RightBumper = inputInfo.RightBumper;
+        }
     }
 
 
@@ -123,14 +136,16 @@ public class PlayerController : MonoBehaviour
             cameraRigRot = cameraRigObj.transform.rotation.eulerAngles.y;
     }
 
-    public void SetControllerNumber (int controllerNo)
-    {
-        ControllerNumber = controllerNo; //get the controller number that will control this player (to which this script is attached to)
-        HorizontalInputAxis = "Horizontal (Controller " + controllerNo + ")";
-        VerticalInputAxis = "Vertical (Controller " + controllerNo + ")";
-        AButtonInput = "AButton (Controller " + controllerNo + ")";
-        BButtonInput = "BButton (Controller " + controllerNo + ")";
-    }
+    //Deprecated 
+    //public void SetControllerNumber (int controllerNo)
+    //{
+    //    ControllerNumber = controllerNo; //get the controller number that will control this player (to which this script is attached to)
+    //    HorizontalInputAxis = "Horizontal (Controller " + controllerNo + ")";
+    //    VerticalInputAxis = "Vertical (Controller " + controllerNo + ")";
+    //    AButtonInput = "AButton (Controller " + controllerNo + ")";
+    //    BButtonInput = "BButton (Controller " + controllerNo + ")";
+    //}
+
     private void Update()
     {
         killCountTimer -= Time.deltaTime;
@@ -162,33 +177,25 @@ public class PlayerController : MonoBehaviour
         float moveHorizontalAxis = Input.GetAxisRaw(HorizontalInputAxis);
         Vector3 input = new Vector3(moveHorizontalAxis, 0, -moveVerticalAxis);
         Vector3 direction = input.normalized;
-       
-
-        //if (Input.GetAxis(VerticalInputAxis) != 0 && Input.GetAxis(HorizontalInputAxis) == 0) //if there is vertical input but no horizontal input
-        //{
-        //    Move(moveVerticalAxis);
-        //    Turn(moveVerticalAxis);
-        //}
-
-        //if (Input.GetAxis(HorizontalInputAxis) != 0 && Input.GetAxis(VerticalInputAxis) == 0) //if there is horizontal input but no vertical input
-        //{
-        //    Move(moveHorizontalAxis);
-        //    Turn(moveHorizontalAxis);
-        //}
-
-        //if (Input.GetAxis(VerticalInputAxis) != 0 && Input.GetAxis(HorizontalInputAxis) != 0) //if there is vertical input AND horizontal input
-        //{
-        //    averageInput = Mathf.Sqrt(moveHorizontalAxis * moveHorizontalAxis + moveVerticalAxis * moveVerticalAxis); //find the hypotenuse input; can you bELIEVE iM DOING MATH??? cause im also in disbelief like, oh mai gawddd yessiree desu
-
-        //    Turn(averageInput); //turn 
-        //    Move(averageInput);
-        //    //print(averageInput);
-        //}
 
         if (moveHorizontalAxis != 0 || moveVerticalAxis != 0)
         {
             Move(direction);
         }
+
+        /// Right analog
+        float aimVerticalAxis = Input.GetAxisRaw(RightVerticalAxis);
+        float aimHorizontalAxis = Input.GetAxisRaw(RightHorizontalAxis);
+        Vector3 rightAxisInput = new Vector3(aimHorizontalAxis, 0, -aimVerticalAxis);
+        Vector3 dir = rightAxisInput.normalized;
+
+        if (aimHorizontalAxis != 0 || aimVerticalAxis != 0)
+        {
+            rightAnalogTargeting = true;
+            Turn(dir);
+        }
+        else { rightAnalogTargeting = false; }
+
 
         OrientPlayerWithGround();
 
@@ -214,13 +221,14 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = velocity * Time.deltaTime;
         transform.Translate(movement, Space.World);
 
+        //Rotate player if NOT DEAD
         if (!isDead) {
-            //Rotate player if NOT DEAD
+            if (!rightAnalogTargeting) { //If not using right analog for turning
             Quaternion correctedQ;
             correctedQ = Quaternion.LookRotation(Quaternion.AngleAxis(cameraRigRot, Vector3.up) * direction); //Correct the rotation quaternion 
             transform.rotation = Quaternion.Slerp(transform.rotation, correctedQ, Time.deltaTime * playerTurnSmoothing); //Rotate the player, and LERP THE ROTATION... 
+            }
         }
-
 
         //If Moving, can set the animator values
         if (animator != null)
@@ -229,34 +237,17 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private void Move(float input)
+    void Turn (Vector3 dir)
     {
-        if (playerStunned)
-            return;
-        if (input > 0)
+        if (!isDead) // If player is still alive,
         {
-            Vector3 movement = transform.forward * input * moveRate * Time.deltaTime;
-            rb.MovePosition(rb.position + movement);
+            Quaternion correctedQ;
+            correctedQ = Quaternion.LookRotation(Quaternion.AngleAxis(cameraRigRot, Vector3.up) * dir); //Correct the rotation quaternion 
+            transform.rotation = Quaternion.Slerp(transform.rotation, correctedQ, Time.deltaTime * playerTurnSmoothing); //Rotate the player, and LERP THE ROTATION... 
         }
-
-        if (input < 0)
-        {
-            Vector3 movement = transform.forward * input * moveRate * Time.deltaTime;
-            rb.MovePosition(rb.position - movement);  //if input is negative, make it positive
-        }
+        
     }
 
-
-    private void Turn(float input)
-    {
-        if (playerStunned)
-            return;
-        Vector3 from = new Vector3(0f, 0f, 1f);
-        Vector3 to = Quaternion.Euler(CorrectionAngle) * new Vector3(Input.GetAxis(HorizontalInputAxis), 0f, Input.GetAxis(VerticalInputAxis));
-      
-        rotAngle = Vector3.SignedAngle(from, to, Vector3.up) ; //find the direction/angle player faces (based on world view and axis input)
-        transform.eulerAngles =  transform.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, -rotAngle, ref turnSmoothVelocity, turnSmoothTime) ; //turn the player
-    }
 
     public void Hit()
     {
@@ -273,20 +264,6 @@ public class PlayerController : MonoBehaviour
         stunnedTime = 0;
         stunDuration = timeToStun;
     }
-
-
-
-
-    /// ***********
-    /// Dashing in progress
-    /// ***********
-
-    //private void Dash()
-    //{
-    //    rb.AddForce(transform.forward * 10, ForceMode.Force); //push player forward
-    //    print("dashing");
-    //    PressCounter = 0;
-    //}    
 
     /// *********************************
     /// Player Die
@@ -346,6 +323,7 @@ public class PlayerController : MonoBehaviour
         rb.isKinematic = true;
         rb.useGravity = false;
         transform.position = stageCenterPos.position;
+        transform.rotation = Quaternion.Euler(Vector3.zero); // Reset rotation.
         yield return new WaitForSeconds(waitToRespawn);
         StartCoroutine(RespawnPlayer());
 
@@ -393,7 +371,6 @@ public class PlayerController : MonoBehaviour
     /// </summary>
 
     public float dist = 1.0f;
-    //public float smoothing = 0.2f;
     public LayerMask hitLayer;
     void OrientPlayerWithGround()
     {
@@ -406,8 +383,8 @@ public class PlayerController : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, dist, hitLayer))
         {
-            if (hit.collider.tag == "Ground")
-            {
+            //if (hit.collider.tag == "Ground")
+            //{
                 Debug.Log("Hit ground");
 
                 Debug.DrawLine(hit.point, hit.point + hit.normal, Color.green);
@@ -423,7 +400,7 @@ public class PlayerController : MonoBehaviour
 
                 // update rotation
                 transform.rotation = Quaternion.Slerp(transform.rotation, correctedtarget, Time.deltaTime);
-            }
+            //}
         }
     }
 

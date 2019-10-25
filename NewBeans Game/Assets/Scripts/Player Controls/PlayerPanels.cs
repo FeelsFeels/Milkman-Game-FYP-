@@ -50,7 +50,7 @@ public class PlayerPanels : MonoBehaviour
     public void AssignController (int controllerNo)
     {
         Debug.Log("Setting player to controller");
-        Player.SetControllerNumber(controllerNo);
+        //Player.SetControllerNumber(controllerNo);
         PlayerText.text = "Press A when ready";
         HasControllerAssigned = true;
         controllerNumber = controllerNo;

@@ -30,6 +30,8 @@ public class Shoot : MonoBehaviour
 
     ///If we want to use the Input Manager
     public string watergunInput;
+    public bool usingRightBumper = true;
+    public string chargingInput;
     public string hookInput;
     /// //////////////////////////////////
 
@@ -43,6 +45,7 @@ public class Shoot : MonoBehaviour
 
         // hProjectile.GetComponent<Shoot>().castedByPlayer = player;
         watergunInput = playerScript.AButtonInput;
+        chargingInput = playerScript.RightBumper;
         hookInput = playerScript.BButtonInput;
 
         aimingArrows.SetActive(false);
@@ -52,7 +55,7 @@ public class Shoot : MonoBehaviour
     {
         pushCooldownTimer -= Time.deltaTime;
 
-        if (playerScript.playerStunned)
+        if (playerScript.playerStunned || playerScript.isDead) //Check if player is stunned or dead. If dead/stunned, do not shoot
         {
             return;
         }
@@ -80,6 +83,16 @@ public class Shoot : MonoBehaviour
         if (Input.GetButtonDown(watergunInput) && pushCooldownTimer <= 0)
         {
             ChargePushProjectile();
+        }
+
+        if (usingRightBumper && Input.GetButtonDown(chargingInput) && pushCooldownTimer <= 0)
+        {
+            ChargePushProjectile();
+        }
+
+        if (usingRightBumper && Input.GetButtonUp(chargingInput) && chargingPushProjectile)
+        {
+            ShootPushProjectile();
         }
 
         if (Input.GetButtonUp(watergunInput) && chargingPushProjectile)
