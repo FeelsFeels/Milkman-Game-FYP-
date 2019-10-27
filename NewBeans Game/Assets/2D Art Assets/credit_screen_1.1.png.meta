@@ -1,0 +1,720 @@
+fileFormatVersion: 2
+guid: 9558adb509778b344a8e64cdd295eb78
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6839708185585757008
+    second: credit_screen_1.1_0
+  - first:
+      213: 3971906630028314291
+    second: credit_screen_1.1_1
+  - first:
+      213: 2723464434982128328
+    second: credit_screen_1.1_2
+  - first:
+      213: 4643519637936466544
+    second: credit_screen_1.1_3
+  - first:
+      213: -898208589373554953
+    second: credit_screen_1.1_4
+  - first:
+      213: 7732260446773214484
+    second: credit_screen_1.1_5
+  - first:
+      213: -8615936800102121038
+    second: credit_screen_1.1_6
+  - first:
+      213: 8012159244030496953
+    second: credit_screen_1.1_7
+  - first:
+      213: -6837974172042601497
+    second: credit_screen_1.1_8
+  - first:
+      213: -5496053444779408226
+    second: credit_screen_1.1_9
+  - first:
+      213: -6074752787788159322
+    second: credit_screen_1.1_10
+  - first:
+      213: 6873758636100249693
+    second: credit_screen_1.1_11
+  - first:
+      213: -6299164905861464783
+    second: credit_screen_1.1_12
+  - first:
+      213: -7392722409508678881
+    second: credit_screen_1.1_13
+  - first:
+      213: 6651974109659596614
+    second: credit_screen_1.1_14
+  - first:
+      213: -2499027513376472698
+    second: credit_screen_1.1_15
+  - first:
+      213: -5478754810586698617
+    second: credit_screen_1.1_16
+  - first:
+      213: 4723098403588936372
+    second: credit_screen_1.1_17
+  - first:
+      213: 7032538361048906777
+    second: credit_screen_1.1_18
+  - first:
+      213: -5283935807468369888
+    second: credit_screen_1.1_19
+  - first:
+      213: 4140719917275418503
+    second: credit_screen_1.1_20
+  - first:
+      213: -5231889259272599516
+    second: credit_screen_1.1_21
+  - first:
+      213: 7911730376670478760
+    second: credit_screen_1.1_22
+  - first:
+      213: 8865339332011331810
+    second: credit_screen_1.1_23
+  - first:
+      213: -2166994912605720060
+    second: credit_screen_1.1_24
+  - first:
+      213: -9015685905334340942
+    second: credit_screen_1.1_25
+  - first:
+      213: 1379145288654464628
+    second: credit_screen_1.1_26
+  - first:
+      213: -4382592450371033302
+    second: credit_screen_1.1_27
+  - first:
+      213: -3721686669812666018
+    second: credit_screen_1.1_28
+  - first:
+      213: -2962915166849758786
+    second: credit_screen_1.1_29
+  - first:
+      213: 8494048719543527408
+    second: credit_screen_1.1_30
+  - first:
+      213: 7103607245137112560
+    second: credit_screen_1.1_31
+  - first:
+      213: 5664751215220351189
+    second: credit_screen_1.1_32
+  - first:
+      213: -3665007615860607251
+    second: credit_screen_1.1_33
+  - first:
+      213: 7796523779939229041
+    second: credit_screen_1.1_34
+  - first:
+      213: 4979183359462019931
+    second: credit_screen_1.1_35
+  - first:
+      213: -4763685333905463643
+    second: credit_screen_1.1_36
+  - first:
+      213: -4551901092975474213
+    second: credit_screen_1.1_37
+  - first:
+      213: -4541949740371743134
+    second: credit_screen_1.1_38
+  - first:
+      213: -2470857822694265985
+    second: credit_screen_1.1_39
+  - first:
+      213: -3272173045063082844
+    second: credit_screen_1.1_40
+  - first:
+      213: 4967699073459254896
+    second: credit_screen_1.1_41
+  - first:
+      213: -5521623703826208780
+    second: credit_screen_1.1_42
+  - first:
+      213: -3371946329481207160
+    second: credit_screen_1.1_43
+  - first:
+      213: -7609785285221794046
+    second: credit_screen_1.1_44
+  - first:
+      213: -7210775543792233868
+    second: credit_screen_1.1_45
+  - first:
+      213: -8004916664705719020
+    second: credit_screen_1.1_46
+  - first:
+      213: -879008258805597301
+    second: credit_screen_1.1_47
+  - first:
+      213: -8103351764522106161
+    second: credit_screen_1.1_48
+  - first:
+      213: 4470312066576438501
+    second: credit_screen_1.1_49
+  - first:
+      213: -8724226906595172517
+    second: credit_screen_1.1_50
+  - first:
+      213: 4158219252844452332
+    second: credit_screen_1.1_51
+  - first:
+      213: -5204233557127368526
+    second: credit_screen_1.1_52
+  - first:
+      213: -560541157737323234
+    second: credit_screen_1.1_53
+  - first:
+      213: 1919428143063784250
+    second: credit_screen_1.1_54
+  - first:
+      213: 5998777846306090992
+    second: credit_screen_1.1_55
+  - first:
+      213: -5425610721046389846
+    second: credit_screen_1.1_56
+  - first:
+      213: 926214847314996300
+    second: credit_screen_1.1_57
+  - first:
+      213: 2738139109572085414
+    second: credit_screen_1.1_58
+  - first:
+      213: 5304209768220755581
+    second: credit_screen_1.1_59
+  - first:
+      213: 4531444100901750101
+    second: credit_screen_1.1_60
+  - first:
+      213: -8624517019551309382
+    second: credit_screen_1.1_61
+  - first:
+      213: 1577607051017543098
+    second: credit_screen_1.1_62
+  - first:
+      213: 7305890584632935991
+    second: credit_screen_1.1_63
+  - first:
+      213: -7591650966196486237
+    second: credit_screen_1.1_64
+  - first:
+      213: -1798569892685161575
+    second: credit_screen_1.1_65
+  - first:
+      213: -463115360650821390
+    second: credit_screen_1.1_66
+  - first:
+      213: 5443128055255385722
+    second: credit_screen_1.1_67
+  - first:
+      213: -7428549063558845560
+    second: credit_screen_1.1_68
+  - first:
+      213: -7223996065368155280
+    second: credit_screen_1.1_69
+  - first:
+      213: 3132234138147759443
+    second: credit_screen_1.1_70
+  - first:
+      213: 8449055881415317122
+    second: credit_screen_1.1_71
+  - first:
+      213: -5308981663492167133
+    second: credit_screen_1.1_72
+  - first:
+      213: -4476770246840860459
+    second: credit_screen_1.1_73
+  - first:
+      213: -7879665706053366675
+    second: credit_screen_1.1_74
+  - first:
+      213: -3654218957334478892
+    second: credit_screen_1.1_75
+  - first:
+      213: 2433073968182661289
+    second: credit_screen_1.1_76
+  - first:
+      213: -8789087506082944258
+    second: credit_screen_1.1_77
+  - first:
+      213: -7723231176128721262
+    second: credit_screen_1.1_78
+  - first:
+      213: 8277291977916299358
+    second: credit_screen_1.1_79
+  - first:
+      213: 5953613507086415470
+    second: credit_screen_1.1_80
+  - first:
+      213: -2442202283197773835
+    second: credit_screen_1.1_81
+  - first:
+      213: 3139342281621518104
+    second: credit_screen_1.1_82
+  - first:
+      213: 5431010749754514950
+    second: credit_screen_1.1_83
+  - first:
+      213: 6927294790949830499
+    second: credit_screen_1.1_84
+  - first:
+      213: -1888642739728794312
+    second: credit_screen_1.1_85
+  - first:
+      213: -2597827738565789726
+    second: credit_screen_1.1_86
+  - first:
+      213: 4993060401301916616
+    second: credit_screen_1.1_87
+  - first:
+      213: 7515592890145733881
+    second: credit_screen_1.1_88
+  - first:
+      213: -3436644995822114289
+    second: credit_screen_1.1_89
+  - first:
+      213: 4250638073322907411
+    second: credit_screen_1.1_90
+  - first:
+      213: -3730344595672926694
+    second: credit_screen_1.1_91
+  - first:
+      213: 1569680815065886390
+    second: credit_screen_1.1_92
+  - first:
+      213: -8201854947020346821
+    second: credit_screen_1.1_93
+  - first:
+      213: -6594168378519501684
+    second: credit_screen_1.1_94
+  - first:
+      213: 3494473792815067347
+    second: credit_screen_1.1_95
+  - first:
+      213: -5354323955873846713
+    second: credit_screen_1.1_96
+  - first:
+      213: -516512486306911965
+    second: credit_screen_1.1_97
+  - first:
+      213: -8383831282079481065
+    second: credit_screen_1.1_98
+  - first:
+      213: -5866639995419441210
+    second: credit_screen_1.1_99
+  - first:
+      213: 3575364405541610551
+    second: credit_screen_1.1_100
+  - first:
+      213: 7859982287129379497
+    second: credit_screen_1.1_101
+  - first:
+      213: 55602266247919834
+    second: credit_screen_1.1_102
+  - first:
+      213: -8392941774029498955
+    second: credit_screen_1.1_103
+  - first:
+      213: -6753089837483931454
+    second: credit_screen_1.1_104
+  - first:
+      213: 6221498572940609824
+    second: credit_screen_1.1_105
+  - first:
+      213: 129774298359788851
+    second: credit_screen_1.1_106
+  - first:
+      213: 2745901227877873244
+    second: credit_screen_1.1_107
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 1
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 0
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: credit_screen_1.1_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 162
+        width: 122
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e694488d04375a4cb66ca1140589c2c
+      internalID: 6839708185585757008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: credit_screen_1.1_1
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 154
+        width: 514
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 858e6af00fb0b4e49bf167b9cdb84adf
+      internalID: 3971906630028314291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: credit_screen_1.1_2
+      rect:
+        serializedVersion: 2
+        x: 878
+        y: 153
+        width: 415
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6450bd0361aaa2e4099b30807f07f830
+      internalID: 2723464434982128328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: credit_screen_1.1_3
+      rect:
+        serializedVersion: 2
+        x: 1381
+        y: 162
+        width: 171
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d9c5760389fea144987276cb13006b3
+      internalID: 4643519637936466544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: credit_screen_1.1_4
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 80
+        width: 126
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d094544937c02c64a943e689219d6a12
+      internalID: -898208589373554953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: credit_screen_1.1_5
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 80
+        width: 383
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 984812e2fa3d3d9489d7f46b05382549
+      internalID: 7732260446773214484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: credit_screen_1.1_6
+      rect:
+        serializedVersion: 2
+        x: 1066
+        y: 86
+        width: 227
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 547ce798b86fac24a807c52556c6aaff
+      internalID: -8615936800102121038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: credit_screen_1.1_7
+      rect:
+        serializedVersion: 2
+        x: 1381
+        y: 88
+        width: 152
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19b168662a88b354c96478279c516100
+      internalID: 8012159244030496953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: credit_screen_1.1_8
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 14
+        width: 138
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f84684f2a2336054db5b216185f552a0
+      internalID: -6837974172042601497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: credit_screen_1.1_9
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 6
+        width: 269
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c4032fd251d4f449a806fa47e4aa5be
+      internalID: -5496053444779408226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: credit_screen_1.1_10
+      rect:
+        serializedVersion: 2
+        x: 1177
+        y: 12
+        width: 116
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9cbc4e6000e1f2498f3f5ec16779eec
+      internalID: -6074752787788159322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: credit_screen_1.1_11
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 0
+        width: 300
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91854f842a1950343bd0f686f920028e
+      internalID: 6873758636100249693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: credit_screen_1.1_12
+      rect:
+        serializedVersion: 2
+        x: 1381
+        y: 14
+        width: 142
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 327859ab4780a404784638f28a144215
+      internalID: -6299164905861464783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 7f83b65f50e782340b929640ade66142
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
