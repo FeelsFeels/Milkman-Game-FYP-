@@ -45,25 +45,30 @@ public class CastLaserBeam : MonoBehaviour
         warningLine.SetWidth(5f, 5f);
         warningLine.SetPosition(0, laserStartPos.transform.position);
         warningLine.SetPosition(1, laserEndPos.transform.position);
+
+        print("Set warning renderer position");
         Debug.DrawRay(laserStartPos.transform.position, laserEndPos.transform.position, Color.blue);
 
         Invoke("ShootLaserBeam", warningTime);
+
     }
 
     // ----- Activate the real laser beam.
     public void ShootLaserBeam()
     {
-        warningLine.enabled = false;
+        warningLine.SetPosition(0, laserStartPos.transform.position);
+        warningLine.SetPosition(1, laserStartPos.transform.position);
+
+        print("Unset warning renderer position");
 
         Vector3 colliderScale = new Vector3(5f, 5f, 5f);
         Vector3 laserShootDirection = (laserEndPos.transform.position - laserStartPos.transform.position);
 
 
         Vector3 offset = new Vector3(0f, 0f, 2.8f);
-//        laserEffects.transform.position = laserStartPos.transform.position - offset;
-       laserEffects.transform.LookAt(laserEndPos);
- //       laserEffects.transform.rotation = Quaternion.LookRotation(laserEndPos.transform.position);
-        laserEffects.Play();
+              
+        laserEffects.transform.LookAt(laserEndPos);
+        laserEffects.Play(); 
 
         float distanceDifference; // Distance between object that is hit and the laser start point.
 
@@ -101,12 +106,12 @@ public class CastLaserBeam : MonoBehaviour
                 if ((rockExists == true) && (playerDistance <= closestRockDistance))
                 {
 
-                    hit.collider.gameObject.GetComponent<PlayerController>().Hit();
+                    hit.collider.gameObject.GetComponent<PlayerController>().Hit(3);
                 }
 
                 else if (rockExists == false)
                 {
-                    hit.collider.gameObject.GetComponent<PlayerController>().Hit();
+                    hit.collider.gameObject.GetComponent<PlayerController>().Hit(3);
                 }
             }
         }
@@ -117,6 +122,6 @@ public class CastLaserBeam : MonoBehaviour
     private IEnumerator DisableLaser()
     {
         yield return new WaitForSeconds(laserEndTime);
-        gameObject.SetActive(false);
+        warningLine.enabled = true;
     }
 }
