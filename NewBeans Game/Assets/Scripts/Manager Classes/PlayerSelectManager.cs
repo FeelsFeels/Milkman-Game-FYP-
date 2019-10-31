@@ -6,9 +6,9 @@ using System.Linq;
 
 public class PlayerSelectManager : MonoBehaviour
 {
-    public PlayerInputInfo[] playerInfoArray = new PlayerInputInfo[4];
-
-    public ChooseCharacter[] chooseCharacterArray = new ChooseCharacter[4];
+    public PlayerInputInfo[] playerInfoArray = new PlayerInputInfo[4];      //Player Input scriptable object
+    public CharacterData[] characterDataArray = new CharacterData[4];       //Specific character data scriptable objects
+    public ChooseCharacter[] chooseCharacterArray = new ChooseCharacter[4]; //Player choosing functionality script
 
     public List<int> playersJoined = new List<int>();   //Player numbers
 
@@ -64,6 +64,7 @@ public class PlayerSelectManager : MonoBehaviour
     public void ChangeCharacter(PlayerInputInfo playerToChange, int characterIndex)
     {
         playerToChange.chosenCharacterIndex = characterIndex;
+        playerToChange.chosenCharacter = characterDataArray[characterIndex];
         CheckIfCanStartGame();
     }
 
@@ -71,11 +72,13 @@ public class PlayerSelectManager : MonoBehaviour
     {
         //Checking if game is ready to start
 
+        //Must be more than one player
         if (playersJoined.Count < 2)
             return;
 
         List<int> chosenCharacterIndexes = new List<int>();
 
+        //If two people chose the same character, cannot start game
         for (int i = 0; i < playersJoined.Count; i++)
         {
             int chosenChar = playerInfoArray[i].chosenCharacterIndex;

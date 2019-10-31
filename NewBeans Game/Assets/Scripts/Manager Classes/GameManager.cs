@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
     public ScoreManager scoreManager;
     public LastManStandingManager LMSManager;
     public CommentaryManager commentaryManager;
+    public BaseResultsScreen resultsScreen;
 
     [Header("Events")]
     private EventsManager eventsManager;
@@ -57,6 +59,7 @@ public class GameManager : MonoBehaviour
     [Space]
     public float killCountDownTimer;
     public float deathCountDownTimer;
+    
 
 
     void Awake()
@@ -80,13 +83,14 @@ public class GameManager : MonoBehaviour
 
         //Find References
         eventsManager = FindObjectOfType<EventsManager>();
+        resultsScreen = FindObjectOfType<BaseResultsScreen>();
         theAudio = GetComponent<AudioSource>();
         //Sort PlayerList
         PlayerController[] tempPCList = FindObjectsOfType<PlayerController>();
         foreach (PlayerController pc in tempPCList)
             playerScript.Add(pc);
         playerScript.Sort(delegate (PlayerController p1, PlayerController p2) { return p1.playerNumber.CompareTo(p2.playerNumber); });
-        //Instantiate delegate
+
     }
     
     void Start()
@@ -172,6 +176,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void EndGame(List<PlayerController> ranking)
+    {
+        roundHasEnded = true;
+        resultsScreen.DisplayScreen(ranking);
+    }
+
     public void LoadScene(string sceneName)
     {
         Time.timeScale = 1;
@@ -180,13 +190,17 @@ public class GameManager : MonoBehaviour
     
     public void OnPlayerDeath(PlayerController playerDead, PlayerController killer)
     {
-        if(gameState == GameStates.Score)
+        if (gameState == GameStates.Score)
         {
+            if (scoreManager == null)
+                return;
             scoreManager.ChangeScore(playerDead, killer);
             commentaryManager.CheckPlayerKill(playerDead, killer);
         }
         else if (gameState == GameStates.LastManStanding)
         {
+            if (LMSManager == null)
+                return;
             LMSManager.ReduceLives(playerDead, killer);
             commentaryManager.CheckPlayerKill(playerDead, killer);
         }

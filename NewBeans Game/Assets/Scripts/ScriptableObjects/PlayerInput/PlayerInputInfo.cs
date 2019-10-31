@@ -15,6 +15,7 @@ public class PlayerInputInfo : ScriptableObject
     public string RightBumper;
 
     public int chosenCharacterIndex;
+    public CharacterData chosenCharacter;
 
     public void SetInputStrings(int controllerNumber)
     {
