@@ -2809,6 +2809,7 @@ MonoBehaviour:
   BButtonInput: BButton (Controller 1)
   RightHorizontalAxis: 
   RightVerticalAxis: 
+  RightBumper: 
   turnSmoothTime: 0.1
   moveRate: 10
   isDead: 0
@@ -6723,6 +6724,7 @@ MonoBehaviour:
   BButtonInput: BButton (Controller 1)
   RightHorizontalAxis: 
   RightVerticalAxis: 
+  RightBumper: 
   turnSmoothTime: 0.1
   moveRate: 10
   isDead: 0
@@ -8443,6 +8445,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892387394361574899, guid: 0de5147ea4d0ce0458608f357c054973,
+        type: 3}
+      propertyPath: playerLayer.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892387394361574899, guid: 0de5147ea4d0ce0458608f357c054973,
+        type: 3}
+      propertyPath: explodeRadius
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0de5147ea4d0ce0458608f357c054973, type: 3}
@@ -12805,6 +12817,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892387394361574899, guid: 0de5147ea4d0ce0458608f357c054973,
+        type: 3}
+      propertyPath: playerLayer.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892387394361574899, guid: 0de5147ea4d0ce0458608f357c054973,
+        type: 3}
+      propertyPath: explodeRadius
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0de5147ea4d0ce0458608f357c054973, type: 3}
