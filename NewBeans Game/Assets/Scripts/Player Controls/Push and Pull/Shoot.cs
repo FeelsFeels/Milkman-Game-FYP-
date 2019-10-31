@@ -27,6 +27,10 @@ public class Shoot : MonoBehaviour
     public bool chargingGrapplingHook;
 
     public float baseKickbackForce;
+    public float explodeRadius = 10f;
+    public LayerMask playerLayer;
+    public float explodeSpreadAngle = 90;
+    public float explodeForce=2500;
 
     ///If we want to use the Input Manager
     public string watergunInput;
@@ -71,11 +75,18 @@ public class Shoot : MonoBehaviour
         {
             pushChargedTime += Time.deltaTime;
             chargingIndication.gameObject.SetActive(true);
-            chargingIndication.fillAmount = pushChargedTime / 1.5f;
+            //chargingIndication.fillAmount = pushChargedTime / 1.5f;
+
+            //Calculate charge progress based on curve
+            float timeCharged = Mathf.Min(pushChargedTime, 1.2f); //Clamp to max of 1.2f
+            float chargedPercent = KnockbackMultiplier(timeCharged) / KnockbackMultiplier(1.2f);
+            chargingIndication.fillAmount = chargedPercent;
+
 
             if (pushChargedTime >= pushChargedMaxTime)
             {
-                PushBackfire();
+                //PushBackfire();
+                ShotgunAttack();
             }
         }
 
@@ -133,7 +144,11 @@ public class Shoot : MonoBehaviour
     {
         PushProjectile projectile = Instantiate(waterProjectile, new Vector3(shootOrigin.transform.position.x, shootOrigin.transform.position.y, shootOrigin.transform.position.z)
                                                                             , Quaternion.identity).GetComponent<PushProjectile>();
-        projectile.InitialiseShot(pushChargedTime, shootOrigin.forward, gameObject);
+        //projectile.InitialiseShot(pushChargedTime, shootOrigin.forward, gameObject);
+        projectile.ShotInitialised(KnockbackMultiplier(pushChargedTime), SmallMultiplier(pushChargedTime), shootOrigin.forward, gameObject);
+
+        //Scale projectile size
+        projectile.gameObject.transform.localScale = new Vector3(SmallMultiplier(pushChargedTime), SmallMultiplier(pushChargedTime), SmallMultiplier(pushChargedTime)); 
 
         //kickback to player
         Vector3 direction = -transform.forward;
@@ -161,6 +176,59 @@ public class Shoot : MonoBehaviour
         pushChargedTime = 0;
         pushCooldownTimer = pushCooldown;
     }
+
+    void ShotgunAttack() {
+
+        List<Collider> colliders = new List<Collider>();
+        colliders.AddRange(Physics.OverlapSphere(transform.position, explodeRadius, playerLayer)); //Find all players in range
+        Debug.Log("Shotgunning");
+
+        if (colliders.Contains(this.GetComponent<Collider>())) //If it includes this player,
+        {
+            colliders.Remove(this.GetComponent<Collider>()); // remove
+            Debug.Log("Remove self");
+        }
+
+        Debug.Log(colliders.Count);
+
+        foreach (Collider player in colliders)
+        {
+            //Debug.Log("hi");
+            Transform other = player.transform;
+            Vector3 dir = (other.position - this.transform.position).normalized; //Find the direction from origin to other player
+            float angle = 90 - Mathf.Atan2(dir.z, dir.x) * Mathf.Rad2Deg; //Find the angle of the direction
+            if (Mathf.Abs(Mathf.DeltaAngle(this.transform.eulerAngles.y, angle)) < explodeSpreadAngle) //If the angle difference between this object's forward and the direction is < spread angle,
+            {
+                //push the other player back
+                Rigidbody rb = other.GetComponent<Rigidbody>();
+                rb.AddForce(explodeForce * dir);
+            }
+        }
+
+        PushBackfire();
+
+    }
+
+
+    /// **********************************
+    /// Calculations using exponential curve
+    /// **********************************
+
+    float KnockbackMultiplier(float time) //Calculations for exponential power
+    {
+        float grantedPower = Mathf.Pow(4, time);
+        return grantedPower;
+    }
+
+    float SmallMultiplier(float time) //Calculations for speed
+    {
+        float giveMeSpeed = Mathf.Pow(1.3f, time); //Used 1.3f for smaller multiplier
+        return giveMeSpeed;
+    }
+
+
+
+
 
     //Hooking!
     private void ChargeHook()
