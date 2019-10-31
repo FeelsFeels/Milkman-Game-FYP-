@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
     public SkinnedMeshRenderer skinnedMeshRenderer;
     public Rigidbody rb;
     Shield invincibilityShield;
+    public GameObject dizzyStars;
 
 
     [Header("Player Movement")]
@@ -139,11 +140,14 @@ public class PlayerController : MonoBehaviour
         if (playerStunned)
         {
             stunnedTime += Time.deltaTime;
+            dizzyStars.SetActive(true);
+
             if (stunnedTime >= stunDuration)
             {
                 animator.ResetTrigger("Hit");
                 playerStunned = false;
                 stunnedTime = 0;
+                dizzyStars.SetActive(false);
             }
         }
     }
@@ -278,7 +282,8 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         isDead = true;
-
+        playerStunned = false;
+        dizzyStars.SetActive(false);
         deathCountTimer = GameManager.instance.deathCountDownTimer;
         Instantiate(playerDieEffect, gameObject.transform.position, gameObject.transform.rotation);
 

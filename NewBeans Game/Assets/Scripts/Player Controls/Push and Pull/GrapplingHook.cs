@@ -165,7 +165,7 @@ public class GrapplingHook : MonoBehaviour
 
                     if(latchedObject != null)
                     {
-                        latchedObject.GetComponent<PlayerController>().Hit(2f);
+                        latchedObject.GetComponent<PlayerController>().Hit();
                     }
                 }
                 else if (nodes.Count > 0)

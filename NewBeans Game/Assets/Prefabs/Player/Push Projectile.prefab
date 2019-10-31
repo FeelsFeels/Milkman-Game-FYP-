@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4366417856302751115}
   - component: {fileID: 6678222564224960228}
   m_Layer: 0
-  m_Name: Push Projectile 1
+  m_Name: Push Projectile
   m_TagString: PushProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

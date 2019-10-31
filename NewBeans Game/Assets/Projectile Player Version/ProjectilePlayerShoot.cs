@@ -113,7 +113,7 @@ public class ProjectilePlayerShoot : MonoBehaviour
     {
         PushProjectile projectile = Instantiate(waterProjectile, new Vector3(shootOrigin.transform.position.x, shootOrigin.transform.position.y, shootOrigin.transform.position.z)
                                                                             , Quaternion.identity).GetComponent<PushProjectile>();
-        projectile.InitialiseShot(pushChargedTime, shootOrigin.forward, gameObject);
+        //projectile.InitialiseShot(pushChargedTime, shootOrigin.forward, gameObject);
 
         //kickback to player
         Vector3 direction = transform.forward;

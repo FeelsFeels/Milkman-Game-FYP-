@@ -167,7 +167,7 @@ public class GameManager : MonoBehaviour
             roundEndScreen.gameObject.SetActive(true);
 
             PlayerController playerReference = LMSManager.playerRanking[0];
-            firstPlaceScore.text = string.Format("First Place: Player {0}!", playerReference.playerNumber);
+            firstPlaceScore.text = string.Format("First Place: Player {0}", playerReference.playerNumber);
             playerReference = LMSManager.playerRanking[1];
             secondPlaceScore.text = string.Format("Second Place: Player {0}", playerReference.playerNumber);
 
@@ -177,11 +177,11 @@ public class GameManager : MonoBehaviour
             playerReference = LMSManager.playerRanking[2];
             thirdPlaceScore.text = string.Format("Third Place: Player {0}", playerReference.playerNumber);
 
-            if (playerRanking.Count <= 2)
+            if (playerRanking.Count <= 3)
                 return;
 
             playerReference = LMSManager.playerRanking[3];
-            thirdPlaceScore.text = string.Format("Fourth Place: Player {0}", playerReference.playerNumber);
+            fourthPlaceScore.text = string.Format("Fourth Place: Player {0}", playerReference.playerNumber);
 
             //Fourth place
         }

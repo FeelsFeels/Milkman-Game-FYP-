@@ -22,7 +22,7 @@ public class Shoot : MonoBehaviour
     private float pushCooldownTimer;
     public float pushCooldown;
     private float pushChargedTime;
-    private float pushChargedMaxTime = 1.7f;
+    private float pushChargedMaxTime = 1.5f;
     public bool chargingPushProjectile;
     public bool chargingGrapplingHook;
 
@@ -31,6 +31,7 @@ public class Shoot : MonoBehaviour
     public LayerMask playerLayer;
     public float explodeSpreadAngle = 90;
     public float explodeForce=2500;
+    float timeCharged;
 
     ///If we want to use the Input Manager
     public string watergunInput;
@@ -78,7 +79,7 @@ public class Shoot : MonoBehaviour
             //chargingIndication.fillAmount = pushChargedTime / 1.5f;
 
             //Calculate charge progress based on curve
-            float timeCharged = Mathf.Min(pushChargedTime, 1.2f); //Clamp to max of 1.2f
+            timeCharged = Mathf.Min(pushChargedTime, 1.2f); //Clamp to max of 1.2f
             float chargedPercent = KnockbackMultiplier(timeCharged) / KnockbackMultiplier(1.2f);
             chargingIndication.fillAmount = chargedPercent;
 
@@ -145,7 +146,7 @@ public class Shoot : MonoBehaviour
         PushProjectile projectile = Instantiate(waterProjectile, new Vector3(shootOrigin.transform.position.x, shootOrigin.transform.position.y, shootOrigin.transform.position.z)
                                                                             , Quaternion.identity).GetComponent<PushProjectile>();
         //projectile.InitialiseShot(pushChargedTime, shootOrigin.forward, gameObject);
-        projectile.ShotInitialised(KnockbackMultiplier(pushChargedTime), SmallMultiplier(pushChargedTime), shootOrigin.forward, gameObject);
+        projectile.ShotInitialised(KnockbackMultiplier(timeCharged), SmallMultiplier(timeCharged), shootOrigin.forward, gameObject);
 
         //Scale projectile size
         projectile.gameObject.transform.localScale = new Vector3(SmallMultiplier(pushChargedTime), SmallMultiplier(pushChargedTime), SmallMultiplier(pushChargedTime)); 
@@ -175,6 +176,7 @@ public class Shoot : MonoBehaviour
         chargingPushProjectile = false;
         pushChargedTime = 0;
         pushCooldownTimer = pushCooldown;
+        chargingIndication.fillAmount = 0;
     }
 
     void ShotgunAttack() {
