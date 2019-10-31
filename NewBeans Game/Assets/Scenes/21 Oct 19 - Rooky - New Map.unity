@@ -968,9 +968,11 @@ MonoBehaviour:
   player2LivesText: {fileID: 1927777132}
   player3LivesText: {fileID: 604100806}
   player4LivesText: {fileID: 1175918987}
-  startingLives: 3
+  startingLives: 1
   playerLives: 00000000000000000000000000000000
   playerLost: 00000000
+  alivePlayers: []
+  playerRanking: []
 --- !u!1 &299700562
 GameObject:
   m_ObjectHideFlags: 0

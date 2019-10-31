@@ -56,7 +56,7 @@ public class TimerManager : MonoBehaviour
                 seconds = "00";
                 timerText.text = "Time Left: " + minutes + ":" + seconds;
 
-                GameManager.instance.RoundEnd();
+                //GameManager.instance.RoundEnd();
             }
         }
         else

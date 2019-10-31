@@ -139,43 +139,56 @@ public class GameManager : MonoBehaviour
         pauseScreen.gameObject.SetActive(false);
     }
 
-    public void RoundEnd()
+    public void RoundEnd(List<PlayerController> playerRanking)
     {
-        if (roundHasEnded == true)
+        roundHasEnded = true;
+
+        //Gamemode Score is broken af
+        if (gameState == GameStates.Score)
         {
-            if (gameState == GameStates.Score)
-            {
-                playerScript.Sort(delegate (PlayerController p1, PlayerController p2) { return p1.currentScore.CompareTo(p2.currentScore); });
-                playerScript.Reverse();
+            playerScript.Sort(delegate (PlayerController p1, PlayerController p2) { return p1.currentScore.CompareTo(p2.currentScore); });
+            playerScript.Reverse();
 
-                roundEndScreen.gameObject.SetActive(true);
+            roundEndScreen.gameObject.SetActive(true);
 
-                print(playerScript[0].playerNumber + "PlayerNO" + playerScript[0].currentScore + "CurrentScore");
-                print(playerScript[1].playerNumber + "PlayerNO" + playerScript[1].currentScore + "CurrentScore");
-                print(playerScript[2].playerNumber + "PlayerNO" + playerScript[2].currentScore + "CurrentScore");
+            print(playerScript[0].playerNumber + "PlayerNO" + playerScript[0].currentScore + "CurrentScore");
+            print(playerScript[1].playerNumber + "PlayerNO" + playerScript[1].currentScore + "CurrentScore");
+            print(playerScript[2].playerNumber + "PlayerNO" + playerScript[2].currentScore + "CurrentScore");
 
-                firstPlaceScore.text = string.Format("Player {0}: {1}", playerScript[0].playerNumber, playerScript[0].currentScore);
-                secondPlaceScore.text = string.Format("Player {0}: {1}", playerScript[1].playerNumber, playerScript[1].currentScore);
-                thirdPlaceScore.text = string.Format("Player {0}: {1}", playerScript[2].playerNumber, playerScript[2].currentScore);
-                //fourthPlaceScore.text = string.Format("Player {0}: {1}", playerScript[3].playerNumber, playerScript[3].currentScore);
+            firstPlaceScore.text = string.Format("Player {0}: {1}", playerScript[0].playerNumber, playerScript[0].currentScore);
+            secondPlaceScore.text = string.Format("Player {0}: {1}", playerScript[1].playerNumber, playerScript[1].currentScore);
+            thirdPlaceScore.text = string.Format("Player {0}: {1}", playerScript[2].playerNumber, playerScript[2].currentScore);
+            //fourthPlaceScore.text = string.Format("Player {0}: {1}", playerScript[3].playerNumber, playerScript[3].currentScore);
 
-                Time.timeScale = 0;
-            }
-            else if(gameState == GameStates.LastManStanding)
-            {
-                roundEndScreen.gameObject.SetActive(true);
-
-                PlayerController playerReference = LMSManager.playerRankOrder.Pop();
-                firstPlaceScore.text = string.Format("First Place: Player {0}! Kills: {1}", playerReference.playerNumber, playerReference.killCount);
-                playerReference = LMSManager.playerRankOrder.Pop();
-                secondPlaceScore.text = string.Format("Second Place: Player {0} Kills: {1}", playerReference.playerNumber, playerReference.killCount);
-                playerReference = LMSManager.playerRankOrder.Pop();
-                thirdPlaceScore.text = string.Format("Third Place: Player {0} Kills: {1}", playerReference.playerNumber, playerReference.killCount);
-                //Fourth place
-            }
+            Time.timeScale = 0;
         }
+        else if (gameState == GameStates.LastManStanding)
+        {
+            roundEndScreen.gameObject.SetActive(true);
+
+            PlayerController playerReference = LMSManager.playerRanking[0];
+            firstPlaceScore.text = string.Format("First Place: Player {0}!", playerReference.playerNumber);
+            playerReference = LMSManager.playerRanking[1];
+            secondPlaceScore.text = string.Format("Second Place: Player {0}", playerReference.playerNumber);
+
+            if (playerRanking.Count <= 2)
+                return;
+
+            playerReference = LMSManager.playerRanking[2];
+            thirdPlaceScore.text = string.Format("Third Place: Player {0}", playerReference.playerNumber);
+
+            if (playerRanking.Count <= 2)
+                return;
+
+            playerReference = LMSManager.playerRanking[3];
+            thirdPlaceScore.text = string.Format("Fourth Place: Player {0}", playerReference.playerNumber);
+
+            //Fourth place
+        }
+
     }
 
+    //Used in LastManStandingTracker.cs
     public void EndGame(List<PlayerController> ranking)
     {
         roundHasEnded = true;

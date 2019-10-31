@@ -88,26 +88,6 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        //if (PlayerPrefs.HasKey("Player "+ playerNumber))
-        //{
-        //    int controllerNo = PlayerPrefs.GetInt("Player " + playerNumber);
-        //    SetControllerNumber(controllerNo);
-        //}
-
-        //Scene currentScene = SceneManager.GetActiveScene();
-        //string sceneName = currentScene.name;
-
-        //if (ControllerNumber == 0 && currentScene.name != "Player Select")
-        //{
-        //    //Testing purposes, do not forrget to erase
-        //    //if(sceneName == "Alpha Game")
-        //    //{
-        //    //    return;
-        //    //}
-        //    this.gameObject.SetActive(false);
-        //}
-
-
         if (inputInfo != null)
         {
             HorizontalInputAxis = inputInfo.HorizontalInputAxis;

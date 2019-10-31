@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class LastManStandingManager : MonoBehaviour
 {
+    GameManager gameManager;
+
     public Text player1LivesText;
     public Text player2LivesText;
     public Text player3LivesText;
@@ -15,99 +17,82 @@ public class LastManStandingManager : MonoBehaviour
 
     public int[] playerLives = new int[4];
     public bool[] playerLost = new bool[4];
-
-    private List<PlayerController> playerList = new List<PlayerController>();
-    public Stack<PlayerController> playerRankOrder = new Stack<PlayerController>();
     
+    public List<PlayerController> alivePlayers = new List<PlayerController>();
+    public List<PlayerController> playerRanking = new List<PlayerController>();
+    public Dictionary<PlayerController, int> playerLivesInfo = new Dictionary<PlayerController, int>();
+
 
     void Awake()
     {
+        gameManager = FindObjectOfType<GameManager>();
+
         //Sorts the players by their playerNumbers when game starts
         PlayerController[] tempPCList = FindObjectsOfType<PlayerController>();
         foreach (PlayerController pc in tempPCList)
-            playerList.Add(pc);
-        playerList.Sort(delegate (PlayerController p1, PlayerController p2) { return p1.playerNumber.CompareTo(p2.playerNumber); });
+        {
+
+            alivePlayers.Add(pc);
+            playerLivesInfo.Add(pc, startingLives);
+
+            UpdateScoreUI(pc);
+        }
     }
 
     private void Start()
     {
-        GameManager GM = FindObjectOfType<GameManager>();
 
-        //Set initial values
-        for(int i = 0; i < playerLives.Length; i++)
-        {
-            //Checking if player exists
-            if (i >= playerList.Count)
-            {
-                playerLives[i] = 0;
-                playerLost[i] = true;
-                continue;
-            }
-
-            playerLives[i] = startingLives;
-            playerLost[i] = false;
-
-        }
-        UpdateScore();
     }
 
     public void ReduceLives(PlayerController deadPlayer, PlayerController killerPlayer)
     {
-        playerLives[deadPlayer.playerNumber - 1] -= 1;
 
-        if (killerPlayer != null)
+        int currentLives = --playerLivesInfo[deadPlayer];
+        print(deadPlayer + " has " + currentLives + " lives left!");
+
+        if (currentLives <= 0)
         {
-            killerPlayer.killCount++;
+            alivePlayers.Remove(deadPlayer);
+            deadPlayer.shouldRespawn = false;   //Kills player, no more respawning
+            deadPlayer.gameObject.SetActive(false); //player setactive false to stop camera tracking
+
+            playerRanking.Insert(0, deadPlayer);
         }
 
-        //Player has no more lives
-        if(playerLives[deadPlayer.playerNumber - 1] <= 0)
-        {
-            playerLost[deadPlayer.playerNumber - 1] = true;
-            deadPlayer.shouldRespawn = false;
-            playerRankOrder.Push(deadPlayer);
-
-            //TEMPORARY FIX, player setactive false to stop camera tracking
-            deadPlayer.gameObject.SetActive(false);
-        }
-
-        UpdateScore();
+        UpdateScoreUI(deadPlayer);
+        CheckPlayersLeft();
     }
 
-    public void UpdateScore()
+
+    public void UpdateScoreUI(PlayerController deadPlayer)
     {
-        player1LivesText.text = playerLives[0].ToString();
-        player2LivesText.text = playerLives[1].ToString();
-        player3LivesText.text = playerLives[2].ToString();
-        player4LivesText.text = playerLives[3].ToString();
+        int deadPlayerNumber = deadPlayer.playerNumber;
+        int deadPlayerLivesLeft = playerLivesInfo[deadPlayer];
 
-        int numberPlayersLeft = 0;
-
-        for (int i = 0; i < playerLost.Length; i++)
+        switch (deadPlayerNumber)
         {
-            if(playerLost[i] == false)
-            {
-                numberPlayersLeft++;
-            }
-        }
-        if(numberPlayersLeft == 1)
-        {
-            print(GetWinnerPlayerReference().name);
-            playerRankOrder.Push(GetWinnerPlayerReference());
-            GameManager.instance.roundHasEnded = true;
-            GameManager.instance.RoundEnd();
+            case 1:
+                player1LivesText.text = deadPlayerLivesLeft.ToString();
+                break;
+            case 2:
+                player2LivesText.text = deadPlayerLivesLeft.ToString();
+                break;
+            case 3:
+                player3LivesText.text = deadPlayerLivesLeft.ToString();
+                break;
+            case 4:
+                player4LivesText.text = deadPlayerLivesLeft.ToString();
+                break;                
         }
     }
 
-    PlayerController GetWinnerPlayerReference()
+    void CheckPlayersLeft()
     {
-        for (int i = 0; i < playerLost.Length; i++)
+        //One player is left.
+        if (playerLivesInfo.Count - playerRanking.Count <= 1)
         {
-            if (playerLost[i] == true)
-                continue;
-            else
-                return playerList[i];
+            playerRanking.Insert(0, alivePlayers[0]);
+            gameManager.RoundEnd(playerRanking);
         }
-        return null;
     }
 }
