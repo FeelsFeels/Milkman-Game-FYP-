@@ -1323,6 +1323,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 99c24249d3bee7243b1dedb98cae64f9, type: 2}
   - {fileID: 11400000, guid: 61dc69544f7bb0541a3d412f1ed152a0, type: 2}
   - {fileID: 11400000, guid: a9ce6e909e3233e4193f8c26d843278d, type: 2}
+  characterDataArray:
+  - {fileID: 11400000, guid: 34773c0ea191fa842bd8f64dc567869d, type: 2}
+  - {fileID: 11400000, guid: 6c949c186e315fb40912dc639e28fb16, type: 2}
+  - {fileID: 11400000, guid: 0d15d532b9eb83441a7caf973588de31, type: 2}
+  - {fileID: 11400000, guid: a3b8113e64a52bc4483654f0b0b161c2, type: 2}
   chooseCharacterArray:
   - {fileID: 303023745}
   - {fileID: 2081155624}

@@ -10,11 +10,10 @@ public class ChooseCharacter : MonoBehaviour
         Still
     }
     public MoveState moveState = MoveState.Still;
-    int currentPositionIndex = 0;
-    int targetPositionIndex;
+    public Transform[] selectPositions = new Transform[4];  //Positions to move to
+    int currentPositionIndex = 0;   //Current position
+    int targetPositionIndex;        //Next position
     float lerpStep;
-
-    public Transform[] selectPositions = new Transform[4];
 
     public PlayerInputInfo playerInfo;
 
@@ -41,9 +40,8 @@ public class ChooseCharacter : MonoBehaviour
         }
         else if (moveState == MoveState.Moving)
         {
+            //Moving the indicator
             lerpStep += Time.deltaTime;
-            //print(currentPositionIndex);
-            //print(targetPositionIndex);
             transform.position = Vector3.Lerp(selectPositions[currentPositionIndex].position, selectPositions[targetPositionIndex].position, lerpStep / 0.2f);
 
             if ((lerpStep / 0.2f) >= 1)
@@ -51,17 +49,13 @@ public class ChooseCharacter : MonoBehaviour
                 currentPositionIndex = targetPositionIndex;
                 lerpStep = 0;
                 moveState = MoveState.Still;
-                //UpdateCharacterSelection();
+                
+                //Sets character 
                 playerSelectManager.ChangeCharacter(playerInfo, currentPositionIndex);
             }
         }
     }
-
-    void UpdateCharacterSelection()
-    {
-        playerInfo.chosenCharacterIndex = currentPositionIndex;
-    }
-
+    
     void MoveSelectionRight()
     {        
         int newPositionIndex = currentPositionIndex + 1;

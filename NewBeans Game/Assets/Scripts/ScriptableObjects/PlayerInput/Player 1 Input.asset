@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b27ba28623135c140986851d553ef934, type: 3}
-  m_Name: Player 1
+  m_Name: Player 1 Input
   m_EditorClassIdentifier: 
   ControllerNumber: 1
   HorizontalInputAxis: Horizontal (Controller 1)
@@ -21,3 +21,4 @@ MonoBehaviour:
   RightVerticalAxis: RightVertical (Controller 1)
   RightBumper: RightBumper (Controller 1)
   chosenCharacterIndex: 0
+  chosenCharacter: {fileID: 11400000, guid: 34773c0ea191fa842bd8f64dc567869d, type: 2}

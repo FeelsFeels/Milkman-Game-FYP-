@@ -73,6 +73,10 @@ public class PlayerController : MonoBehaviour
 
     public bool rightAnalogTargeting = false;
 
+    //DeathEvent
+    //[HideInInspector]
+    public UnityEvent<PlayerController> OnPlayerDeath = new PlayerDeathEvent();
+
     void Reset()
     {
         //playController = GetComponent<CharacterController>();
@@ -315,7 +319,8 @@ public class PlayerController : MonoBehaviour
         // Respawns player
         if (shouldRespawn)
             StartCoroutine(WaitToRespawn());
-            
+
+        OnPlayerDeath.Invoke(this);            
     }
 
     IEnumerator WaitToRespawn()
