@@ -1052,7 +1052,7 @@ MonoBehaviour:
   player2LivesText: {fileID: 1927777132}
   player3LivesText: {fileID: 604100806}
   player4LivesText: {fileID: 1175918987}
-  startingLives: 1
+  startingLives: 3
   alivePlayers: []
   playerRanking: []
 --- !u!1 &274091006 stripped
@@ -1254,11 +1254,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 934878710068655679, guid: 0de5147ea4d0ce0458608f357c054973,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.78
       objectReference: {fileID: 0}
     - target: {fileID: 6045131265281178699, guid: 0de5147ea4d0ce0458608f357c054973,
         type: 3}
@@ -3765,6 +3760,11 @@ PrefabInstance:
         type: 3}
       propertyPath: explodeForce
       value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067479824907782300, guid: 0de5147ea4d0ce0458608f357c054973,
+        type: 3}
+      propertyPath: shieldTime
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0de5147ea4d0ce0458608f357c054973, type: 3}

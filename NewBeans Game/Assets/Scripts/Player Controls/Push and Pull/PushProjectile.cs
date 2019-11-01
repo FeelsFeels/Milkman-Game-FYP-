@@ -33,8 +33,6 @@ public class PushProjectile : MonoBehaviour
         ownerPlayer = shootingPlayer;
         knockbackDirection = shotDirection;
         rb.velocity = shotDirection * speed;
-        print(knockbackToUse);
-
     }
 
 
@@ -42,24 +40,24 @@ public class PushProjectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        PushProjectile pushProjectile = collision.transform.GetComponent<PushProjectile>();
-            if (pushProjectile)
-            return;
+        //PushProjectile pushProjectile = collision.transform.GetComponent<PushProjectile>();
+        //if (pushProjectile)
+        //    return;
 
         PlayerController player = collision.transform.GetComponent<PlayerController>();
-
-        Vector3 direction = collision.transform.position - transform.position;
-        direction = -direction.normalized;
-
+        
         if (player && collision.gameObject != ownerPlayer)
         {
+            
+            Vector3 direction = collision.transform.position - transform.position;
+            direction = -direction.normalized;
+
             playerHit = player;
             Instantiate(player.playerPushedEffect, player.transform.position, player.transform.rotation);
             //player.GetComponent<Rigidbody>().AddForce(direction * knockbackStrength);
             player.GetComponent<Rigidbody>().AddForce(knockbackDirection * knockbackToUse);
             playerHit.lastHitBy = ownerPlayer;
             Destroy(gameObject);
-            //Explode();
         }
 
         if (!player)

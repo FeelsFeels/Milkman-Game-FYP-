@@ -38,7 +38,6 @@ public class HazardBoulder : MonoBehaviour
                 //Stuns + knocks back other player
                 collision.gameObject.GetComponent<PlayerController>().Hit(2f);
                 collision.gameObject.GetComponent<Rigidbody>().AddForce(moveDirection * baseForce * rb.velocity.magnitude / 2);
-                print("GET FUKKED");
             }
         }
     }

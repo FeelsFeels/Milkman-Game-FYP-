@@ -27,6 +27,11 @@ public class Shield : MonoBehaviour
     {
         shieldRenderer.enabled = true;
         shieldCollider.enabled = true;
+
+        //player.rb.WakeUp();
+        //GetComponent<Rigidbody>().WakeUp();
+        player.transform.Translate(0.0001f, 0, 0);
+
         StartCoroutine(TimeBeforeDeactivate());
     }
 
@@ -40,21 +45,21 @@ public class Shield : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        PushProjectile projectile = other.GetComponent<PushProjectile>();
+        if (projectile)
+        {
+            if (projectile.ownerPlayer != player.gameObject)
+            {
+                Destroy(projectile.gameObject);
+            }
+        }
+
         GrapplingHook hook = other.GetComponent<GrapplingHook>();
         if (hook)
         {
             if(hook.player != player.gameObject)
             {
                 hook.StartTakeBack();
-            }
-        }
-
-        PushProjectile projectile = other.GetComponent<PushProjectile>();
-        if (projectile)
-        {
-            if(projectile.ownerPlayer != player.gameObject)
-            {
-                Destroy(projectile.gameObject);
             }
         }
     }
