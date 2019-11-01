@@ -26,9 +26,8 @@ public class HazardBoulder : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
-
         if (collision.gameObject.tag == "Player" && canStunPlayer)
         {
             //Need to check direction it is moving.
