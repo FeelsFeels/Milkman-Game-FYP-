@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Unlit_Simple Water
+  m_Shader: {fileID: 4800000, guid: 14e6f7ab6fb2bc74fadae652f6921fa1, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: e9086aea6595599468fdea0e526b9838, type: 3}
+        m_Scale: {x: 437.8, y: -76.5}
+        m_Offset: {x: -132.5, y: -28.86}
+    - _NoiseTex:
+        m_Texture: {fileID: 2800000, guid: 8dd18b0c52fb9e94a9638f2a894f714c, type: 3}
+        m_Scale: {x: 14.06, y: 14.36}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Amount: 0.016
+    - _Foam: 0.89
+    - _Height: 0.055
+    - _Scale: 0.065
+    - _Speed: 0.084
+    - _TextureDistort: 0.185
+    m_Colors:
+    - _Color: {r: 0.1033731, g: 0.72156864, b: 0.94474006, a: 0.78431374}
+    - _FoamC: {r: 0.051397286, g: 0.33680806, b: 0.92156863, a: 0.25882354}
