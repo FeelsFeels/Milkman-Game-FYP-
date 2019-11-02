@@ -14,9 +14,6 @@ public class LastManStandingManager : MonoBehaviour
     public Text player4LivesText;
 
     public int startingLives;
-
-    public int[] playerLives = new int[4];
-    public bool[] playerLost = new bool[4];
     
     public List<PlayerController> alivePlayers = new List<PlayerController>();
     public List<PlayerController> playerRanking = new List<PlayerController>();

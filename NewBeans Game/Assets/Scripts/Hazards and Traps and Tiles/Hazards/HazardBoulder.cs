@@ -26,9 +26,8 @@ public class HazardBoulder : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
-
         if (collision.gameObject.tag == "Player" && canStunPlayer)
         {
             //Need to check direction it is moving.
@@ -39,7 +38,6 @@ public class HazardBoulder : MonoBehaviour
                 //Stuns + knocks back other player
                 collision.gameObject.GetComponent<PlayerController>().Hit(2f);
                 collision.gameObject.GetComponent<Rigidbody>().AddForce(moveDirection * baseForce * rb.velocity.magnitude / 2);
-                print("GET FUKKED");
             }
         }
     }
