@@ -16,3 +16,5 @@ MonoBehaviour:
   characterColor:
     serializedVersion: 2
     rgba: 4278190335
+  characterUISprite: {fileID: -5207838752506280523, guid: ecb3e81dae6936c4a83f8e38f6d55774,
+    type: 3}

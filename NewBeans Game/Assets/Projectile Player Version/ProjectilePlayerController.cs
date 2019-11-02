@@ -39,6 +39,7 @@ public class ProjectilePlayerController : MonoBehaviour
     public string BButtonInput;
 
     public float turnSmoothTime = 0.2f;
+    public float playerTurnSmoothing = 10f;
     float turnSmoothVelocity;
     public float moveRate = 4;  // units moved per second holding down move input
 
@@ -70,7 +71,6 @@ public class ProjectilePlayerController : MonoBehaviour
     //public float lastInputAngle;
     public GameObject cameraRigObj;
     float cameraRigRot =0f;
-    public float playerTurnSmoothing = 10f;
 
     void Reset()
     {

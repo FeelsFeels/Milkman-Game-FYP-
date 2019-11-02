@@ -206,8 +206,9 @@ public class GrapplingHook : MonoBehaviour
             float angle = Quaternion.Angle(player.transform.rotation, nodes[0].transform.rotation);
             float dotProduct = Vector3.Dot(player.transform.forward, transform.position - player.transform.position);
 
-            if(player.GetComponent<PlayerController>().averageInput != 0 && angle < 250f && dotProduct > 0)
-            {
+            //if(player.GetComponent<PlayerController>().averageInput != 0 && angle < 250f && dotProduct > 0)
+            if (angle < 250f && dotProduct > 0)
+                {
                 if(currentRenodeDelay < renodeDelay)
                 {
                     currentRenodeDelay++;

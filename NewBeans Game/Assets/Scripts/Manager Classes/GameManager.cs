@@ -182,13 +182,11 @@ public class GameManager : MonoBehaviour
 
             playerReference = LMSManager.playerRanking[3];
             fourthPlaceScore.text = string.Format("Fourth Place: Player {0}", playerReference.playerNumber);
-
-            //Fourth place
         }
 
     }
 
-    //Used in LastManStandingTracker.cs
+    //Called from LastManStandingTracker.cs
     public void EndGame(List<PlayerController> ranking)
     {
         roundHasEnded = true;

@@ -7,7 +7,8 @@ public class ChooseCharacter : MonoBehaviour
     public enum MoveState
     {
         Moving,
-        Still
+        Still,
+        Selected
     }
     public MoveState moveState = MoveState.Still;
     public Transform[] selectPositions = new Transform[4];  //Positions to move to
@@ -37,6 +38,11 @@ public class ChooseCharacter : MonoBehaviour
             {
                 MoveSelectionLeft();
             }
+
+            //if (Input.GetButtonDown(playerInfo.AButtonInput))
+            //{
+            //    ConfirmSelectedCharacter();
+            //}
         }
         else if (moveState == MoveState.Moving)
         {
@@ -75,6 +81,11 @@ public class ChooseCharacter : MonoBehaviour
         }
         targetPositionIndex = newPositionIndex;
         moveState = MoveState.Moving;
+    }
+
+    void ConfirmSelectedCharacter()
+    {
+        //playerSelectManager.ChangeCharacter(playerInfo, currentPositionIndex);
     }
 
 }

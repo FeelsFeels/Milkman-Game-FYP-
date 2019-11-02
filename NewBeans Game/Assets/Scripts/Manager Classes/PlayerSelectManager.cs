@@ -16,7 +16,7 @@ public class PlayerSelectManager : MonoBehaviour
 
     public string SceneToLoad;
 
-    private void Update()
+    private void Update()  
     {
         for (int i = 1; i <= 5; i++) //check, for up to 4 controllers,
         {
@@ -64,7 +64,7 @@ public class PlayerSelectManager : MonoBehaviour
     public void ChangeCharacter(PlayerInputInfo playerToChange, int characterIndex)
     {
         playerToChange.chosenCharacterIndex = characterIndex;
-        playerToChange.chosenCharacter = characterDataArray[characterIndex];
+        playerToChange.chosenCharacterData = characterDataArray[characterIndex];
         CheckIfCanStartGame();
     }
 

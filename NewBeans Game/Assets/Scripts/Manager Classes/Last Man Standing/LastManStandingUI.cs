@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class LastManStandingUI : MonoBehaviour
 {
-    [SerializeField] PlayerInputInfo playerToCheckFor;
+    [SerializeField] PlayerInputInfo trackedPlayer;
 
-    public Text livesText;
     public Image livesBG;
+    public Text livesText;
 
     private void Awake()
     {
@@ -18,16 +18,15 @@ public class LastManStandingUI : MonoBehaviour
 
     public void UpdateUI(PlayerInputInfo playerToUpdate, float livesRemaining)
     {
-        if (playerToCheckFor != playerToUpdate)
+        if (trackedPlayer != playerToUpdate)
             return;
 
         livesText.text = livesRemaining.ToString();
     }
-
-    public void SetUIColor()
+     
+    public void SetUIBackground()
     {
-        Color32 characterColor = playerToCheckFor.chosenCharacter.characterColor;
-        livesBG.color = characterColor;
+        livesBG.sprite = trackedPlayer.chosenCharacterData.characterUISprite;
     }
 
 

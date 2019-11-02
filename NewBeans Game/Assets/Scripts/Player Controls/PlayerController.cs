@@ -7,23 +7,17 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     public int playerNumber;
-
-    public float killCountTimer;
-    public float deathCountTimer;
-
-    public int killSpreeCount;
-    public int deathSpreeCount;
-
+    
     [Header("Player Score")]
     public int killCount;
     public int deathCount;
     public int currentScore;
 
-    //Player status
-    public bool playerStunned;
+    [Header("Player Status Effects")]
+    public bool playerStunned;  //Are you stunned
     public float stunnedTime;   //Time passed while being stunned
-    private float stunDuration = 0.25f;
-    public bool shootingHook;
+    private float stunDuration = 0.25f; //Time to spend stunned
+    public bool shootingHook;   //Cannot move while shooting hook
 
     [Header("Visual Effects")]
     public GameObject playerDieEffect;
@@ -31,7 +25,7 @@ public class PlayerController : MonoBehaviour
     public GameObject playerPulledEffect;
 
     //Player Input 
-    [Header ("Player Input")]
+    [Header ("Player Input and Movement")]
     public PlayerInputInfo inputInfo;
     public int ControllerNumber;
     public string HorizontalInputAxis;
@@ -42,11 +36,12 @@ public class PlayerController : MonoBehaviour
     public string RightVerticalAxis;
     public string RightBumper;
 
-    public float turnSmoothTime = 0.2f;
+    public float playerTurnSmoothing = 10f;
+    public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
-    public float moveRate = 4;  // units moved per second holding down move input
+    public float moveRate = 10;  // units moved per second holding down move input
 
-    [Header("Player Die")]
+    [Header("Player Death Variables")]
     public bool isDead = false;
     public bool shouldRespawn = true;
     public float waitToRespawn = 3f;
@@ -55,6 +50,7 @@ public class PlayerController : MonoBehaviour
     public float respawnDelay;
     public GameObject lastHitBy;
 
+    [Header("Object Components and References")]
     // Object's Components
     public Animator animator;
     CapsuleCollider capsuleCollider;
@@ -63,13 +59,8 @@ public class PlayerController : MonoBehaviour
     Shield invincibilityShield;
     public GameObject dizzyStars;
 
-
-    [Header("Player Movement")]
-    public float averageInput;
-
     public GameObject cameraRigObj;
     float cameraRigRot =0f;
-    public float playerTurnSmoothing = 10f;
 
 
     public bool rightAnalogTargeting = false;
@@ -133,9 +124,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        killCountTimer -= Time.deltaTime;
-        deathCountTimer -= Time.deltaTime;
-
         //Stunned timing
         if (playerStunned)
         {
@@ -284,7 +272,6 @@ public class PlayerController : MonoBehaviour
         isDead = true;
         playerStunned = false;
         dizzyStars.SetActive(false);
-        deathCountTimer = GameManager.instance.deathCountDownTimer;
         Instantiate(playerDieEffect, gameObject.transform.position, gameObject.transform.rotation);
 
         if (lastHitBy != null)

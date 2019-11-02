@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Credits.unity
     guid: a8f1e636163950049967d073b07bd992
   - enabled: 1
-    path: Assets/Scenes/Rocky's Player Select.unity
+    path: Assets/Scenes/Player Select.unity
     guid: a0caaa6956852f4449c917ad705cfb1f
   - enabled: 1
     path: Assets/Scenes/17 Oct 19 - Rooky - Earth Map.unity

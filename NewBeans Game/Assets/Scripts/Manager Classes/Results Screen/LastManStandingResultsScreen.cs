@@ -21,10 +21,21 @@ public class LastManStandingResultsScreen : BaseResultsScreen
 
         StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < playerRanking.Count; i++)
+        int numberOfPlayers = ranking.Count;
+
+        sb.Append("Winner: Player " + playerRanking[0].playerNumber + "\n");
+        sb.Append("Second Place: Player " + playerRanking[1].playerNumber + "\n");
+
+        if (numberOfPlayers > 2)
         {
-            sb.Append("First place: Player" + playerRanking[i].playerNumber + "\n");
+            sb.Append("Third Place: Player " + playerRanking[2].playerNumber + "\n");
         }
+
+        if(numberOfPlayers > 3)
+        {
+            sb.Append("Fourth Place: Player " + playerRanking[3].playerNumber + "\n");
+        }
+
         playerRankText.text = sb.ToString();
     }
 }
