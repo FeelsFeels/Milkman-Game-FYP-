@@ -7011,6 +7011,12 @@ Rigidbody:
     type: 3}
   m_PrefabInstance: {fileID: 763390085}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &210391161 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 934878710064892859, guid: 0de5147ea4d0ce0458608f357c054973,
+    type: 3}
+  m_PrefabInstance: {fileID: 763390085}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &210391162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7024,10 +7030,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 1
-  killCountTimer: 0
-  deathCountTimer: 0
-  killSpreeCount: 0
-  deathSpreeCount: 0
   killCount: 0
   deathCount: 0
   currentScore: 0
@@ -7049,6 +7051,7 @@ MonoBehaviour:
   RightHorizontalAxis: 
   RightVerticalAxis: 
   RightBumper: 
+  playerTurnSmoothing: 10
   turnSmoothTime: 0.1
   moveRate: 10
   isDead: 0
@@ -7061,9 +7064,8 @@ MonoBehaviour:
   animator: {fileID: 0}
   skinnedMeshRenderer: {fileID: 0}
   rb: {fileID: 210391160}
-  averageInput: 0
+  dizzyStars: {fileID: 0}
   cameraRigObj: {fileID: 754260432}
-  playerTurnSmoothing: 10
   rightAnalogTargeting: 0
   dist: 1
   hitLayer:
@@ -8639,8 +8641,6 @@ MonoBehaviour:
   player3LivesText: {fileID: 0}
   player4LivesText: {fileID: 0}
   startingLives: 3
-  playerLives: 00000000000000000000000000000000
-  playerLost: 00000000
   alivePlayers: []
   playerRanking: []
 --- !u!1 &271194248
@@ -17358,10 +17358,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 2
-  killCountTimer: 0
-  deathCountTimer: 0
-  killSpreeCount: 0
-  deathSpreeCount: 0
   killCount: 0
   deathCount: 0
   currentScore: 0
@@ -17383,6 +17379,7 @@ MonoBehaviour:
   RightHorizontalAxis: 
   RightVerticalAxis: 
   RightBumper: 
+  playerTurnSmoothing: 10
   turnSmoothTime: 0.1
   moveRate: 10
   isDead: 0
@@ -17395,9 +17392,8 @@ MonoBehaviour:
   animator: {fileID: 0}
   skinnedMeshRenderer: {fileID: 0}
   rb: {fileID: 580837149}
-  averageInput: 0
+  dizzyStars: {fileID: 0}
   cameraRigObj: {fileID: 754260432}
-  playerTurnSmoothing: 10
   rightAnalogTargeting: 0
   dist: 1
   hitLayer:
@@ -22032,17 +22028,17 @@ PrefabInstance:
     - target: {fileID: 934878710064892859, guid: 0de5147ea4d0ce0458608f357c054973,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.8
+      value: 3.04
       objectReference: {fileID: 0}
     - target: {fileID: 934878710064892859, guid: 0de5147ea4d0ce0458608f357c054973,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 24
+      value: -2.19
       objectReference: {fileID: 0}
     - target: {fileID: 934878710064892859, guid: 0de5147ea4d0ce0458608f357c054973,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.1
+      value: -12.46
       objectReference: {fileID: 0}
     - target: {fileID: 934878710064892859, guid: 0de5147ea4d0ce0458608f357c054973,
         type: 3}
@@ -22108,6 +22104,11 @@ PrefabInstance:
         type: 3}
       propertyPath: explodeRadius
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 99388917411861540, guid: 0de5147ea4d0ce0458608f357c054973,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0de5147ea4d0ce0458608f357c054973, type: 3}
@@ -42467,6 +42468,97 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1398411528}
   m_Mesh: {fileID: -3866395212770353626, guid: 2233148f47914e84e8d57a90d96d5d9b, type: 3}
+--- !u!1 &1399043404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1399043405}
+  - component: {fileID: 1399043406}
+  m_Layer: 10
+  m_Name: Spotlight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1399043405
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399043404}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.22, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 210391161}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &1399043406
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399043404}
+  m_Enabled: 1
+  serializedVersion: 9
+  m_Type: 0
+  m_Color: {r: 1, g: 0.74729484, b: 0, a: 1}
+  m_Intensity: 100
+  m_Range: 15
+  m_SpotAngle: 90
+  m_InnerSpotAngle: 9
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 0
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1 &1399361944
 GameObject:
   m_ObjectHideFlags: 0
@@ -49130,14 +49222,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3486b8763360bd043a40c0c70aee4772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patternHolders:
-  - {fileID: 1552878983}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  tilePattern: []
   currentPatternIndex: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  segments: 0
+  lengthBetweenSegment: 0
   crumblingParticleEffect: {fileID: 1344314377593938, guid: 32954e349dd75554eb7dda03ac48f66d,
     type: 3}
 --- !u!1 &1660557989

@@ -87,6 +87,7 @@ public class Shoot : MonoBehaviour
             if (pushChargedTime >= pushChargedMaxTime)
             {
                 //PushBackfire();
+                //StartCoroutine(ShotgunFireLight());
                 ShotgunAttack();
             }
         }
@@ -180,6 +181,7 @@ public class Shoot : MonoBehaviour
     }
 
     void ShotgunAttack() {
+        StartCoroutine(ShotgunFireLight());
 
         List<Collider> colliders = new List<Collider>();
         colliders.AddRange(Physics.OverlapSphere(transform.position, explodeRadius, playerLayer)); //Find all players in range
@@ -210,6 +212,22 @@ public class Shoot : MonoBehaviour
         PushBackfire();
 
     }
+    //Shotgun indication
+    IEnumerator ShotgunFireLight()
+    {
+
+        if (this.gameObject.transform.Find("Spotlight") != null)
+        {
+            this.gameObject.transform.Find("Spotlight").gameObject.SetActive(true);
+        }
+
+        yield return new WaitForSeconds(0.8f);
+        if (this.gameObject.transform.Find("Spotlight") != null)
+        {
+            this.gameObject.transform.Find("Spotlight").gameObject.SetActive(false);
+        }
+    }
+
 
 
     /// **********************************
