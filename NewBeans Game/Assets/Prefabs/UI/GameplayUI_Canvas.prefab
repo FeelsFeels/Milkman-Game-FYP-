@@ -558,7 +558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.14150941, g: 0.13683693, b: 0.13683693, a: 0.41960785}
+  m_Color: {r: 0.14150941, g: 0.13683693, b: 0.13683693, a: 0.6431373}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1177,7 +1177,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -135, y: -93}
+  m_AnchoredPosition: {x: -105, y: -65}
   m_SizeDelta: {x: 155, y: 74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7893229861709036761
@@ -1725,7 +1725,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 843, y: -471}
+  m_AnchoredPosition: {x: 698, y: -471}
   m_SizeDelta: {x: 431, y: 80.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7893229862281613380
@@ -1808,8 +1808,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: LoadScene
+      - m_Target: {fileID: 7893229862281613376}
+        m_MethodName: 
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2067,7 +2067,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 841.1, y: -330.90002}
+  m_AnchoredPosition: {x: 696.1, y: -330.90002}
   m_SizeDelta: {x: 431, y: 80.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7893229862478952068
