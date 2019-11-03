@@ -10,6 +10,7 @@ public class Shoot : MonoBehaviour
     public GameObject waterProjectile;
     public GameObject hookProjectile;
 
+    private Animator animator;  //For blinking indication
     public GameObject aimingArrows;
     public Image chargingIndication;
 
@@ -47,6 +48,7 @@ public class Shoot : MonoBehaviour
         pushCooldownTimer = 0;
 
         playerScript = GetComponent<PlayerController>();
+        animator = GetComponent<Animator>();
 
         // hProjectile.GetComponent<Shoot>().castedByPlayer = player;
         watergunInput = playerScript.AButtonInput;
@@ -83,6 +85,14 @@ public class Shoot : MonoBehaviour
             float chargedPercent = KnockbackMultiplier(timeCharged) / KnockbackMultiplier(1.2f);
             chargingIndication.fillAmount = chargedPercent;
 
+            if(timeCharged >= 1.2f)
+            {
+                animator.SetBool("activateChargeBlink", true);
+            }
+            else
+            {
+                animator.SetBool("activateChargeBlink", false);
+            }
 
             if (pushChargedTime >= pushChargedMaxTime)
             {
