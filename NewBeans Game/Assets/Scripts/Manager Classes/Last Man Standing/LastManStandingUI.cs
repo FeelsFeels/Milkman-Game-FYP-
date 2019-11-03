@@ -14,6 +14,17 @@ public class LastManStandingUI : MonoBehaviour
     {
         livesText = transform.GetChild(1).GetComponent<Text>();
         livesBG = transform.GetChild(0).GetComponent<Image>();
+
+        //Check if tracked player is playing the game
+        if(trackedPlayer.chosenCharacterData == null)
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            livesBG.sprite = trackedPlayer.chosenCharacterData.characterUISprite;
+            gameObject.SetActive(true);
+        }
     }
 
     public void UpdateUI(PlayerInputInfo playerToUpdate, float livesRemaining)

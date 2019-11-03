@@ -31,9 +31,15 @@ public class LastManStandingTracker : MonoBehaviour
         PlayerController[] tempPCList = FindObjectsOfType<PlayerController>();
         foreach (PlayerController pc in tempPCList)
         {
-            alivePlayers.Add(pc);
-            pc.OnPlayerDeath.AddListener(UpdateLivesLeft);
-            playerLivesInfo.Add(pc, startingLives);
+            //Check if player is playing
+            if (pc.IsPlaying())
+            {
+                alivePlayers.Add(pc);
+                pc.OnPlayerDeath.AddListener(UpdateLivesLeft);
+                playerLivesInfo.Add(pc, startingLives);
+            }
+            else
+                continue;
         }
     }
 

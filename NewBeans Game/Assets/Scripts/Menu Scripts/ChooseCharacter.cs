@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ChooseCharacter : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class ChooseCharacter : MonoBehaviour
     }
     public MoveState moveState = MoveState.Still;
     public Transform[] selectPositions = new Transform[4];  //Positions to move to
+    public TextMeshProUGUI playerNumberText;
     int currentPositionIndex = 0;   //Current position
     int targetPositionIndex;        //Next position
     float lerpStep;
@@ -39,10 +41,10 @@ public class ChooseCharacter : MonoBehaviour
                 MoveSelectionLeft();
             }
 
-            //if (Input.GetButtonDown(playerInfo.AButtonInput))
-            //{
-            //    ConfirmSelectedCharacter();
-            //}
+            if (Input.GetButtonDown(playerInfo.AButtonInput))
+            {
+                ConfirmSelectedCharacter();
+            }
         }
         else if (moveState == MoveState.Moving)
         {
@@ -57,7 +59,14 @@ public class ChooseCharacter : MonoBehaviour
                 moveState = MoveState.Still;
                 
                 //Sets character 
-                playerSelectManager.ChangeCharacter(playerInfo, currentPositionIndex);
+                //playerSelectManager.ChangeCharacter(playerInfo, currentPositionIndex);
+            }
+        }
+        else if(moveState == MoveState.Selected)
+        {
+            if (Input.GetButtonDown(playerInfo.BButtonInput))
+            {
+                UnselectCharacter();
             }
         }
     }
@@ -85,7 +94,19 @@ public class ChooseCharacter : MonoBehaviour
 
     void ConfirmSelectedCharacter()
     {
-        //playerSelectManager.ChangeCharacter(playerInfo, currentPositionIndex);
+        if (playerSelectManager.CheckIfCharacterTaken(playerInfo, currentPositionIndex))
+        {
+            playerSelectManager.ChooseCharacter(playerInfo, currentPositionIndex);
+            playerNumberText.color = playerInfo.chosenCharacterData.characterColor;
+            moveState = MoveState.Selected;
+        }
+    }
+
+    void UnselectCharacter()
+    {
+        playerSelectManager.UnchooseCharacter(playerInfo, currentPositionIndex);
+        playerNumberText.color = Color.white;
+        moveState = MoveState.Still;
     }
 
 }

@@ -88,7 +88,15 @@ public class GameManager : MonoBehaviour
         //Sort PlayerList
         PlayerController[] tempPCList = FindObjectsOfType<PlayerController>();
         foreach (PlayerController pc in tempPCList)
-            playerScript.Add(pc);
+        {
+            //Check if player is playing
+            if(pc.IsPlaying())
+                playerScript.Add(pc);
+            else
+            {
+                pc.gameObject.SetActive(false);
+            }
+        }
         playerScript.Sort(delegate (PlayerController p1, PlayerController p2) { return p1.playerNumber.CompareTo(p2.playerNumber); });
 
     }

@@ -210,6 +210,7 @@ MonoBehaviour:
   - {fileID: 73424636}
   - {fileID: 2008359258}
   - {fileID: 1618702868}
+  playerNumberText: {fileID: 1982849785}
   playerInfo: {fileID: 11400000, guid: 61dc69544f7bb0541a3d412f1ed152a0, type: 2}
 --- !u!1 &92304870
 GameObject:
@@ -578,6 +579,7 @@ MonoBehaviour:
   - {fileID: 944100006}
   - {fileID: 903701691}
   - {fileID: 1926441605}
+  playerNumberText: {fileID: 375267484}
   playerInfo: {fileID: 11400000, guid: d8c35d73af737694e800bbca3247a69c, type: 2}
 --- !u!1 &351577161
 GameObject:
@@ -634,6 +636,7 @@ MonoBehaviour:
   - {fileID: 1412772953}
   - {fileID: 978207912}
   - {fileID: 92304871}
+  playerNumberText: {fileID: 94351837}
   playerInfo: {fileID: 11400000, guid: 99c24249d3bee7243b1dedb98cae64f9, type: 2}
 --- !u!1 &375267482
 GameObject:
@@ -1344,6 +1347,11 @@ MonoBehaviour:
   - {fileID: 351577163}
   - {fileID: 82427933}
   - {fileID: 1837207504}
+  characterBorders:
+  - {fileID: 544489878}
+  - {fileID: 2071972735}
+  - {fileID: 693312274}
+  - {fileID: 1273715356}
   playersJoined: 
   SceneToLoad: 31 Oct 19 - Rooky - New Map of Michelle's
 --- !u!1 &903701690
@@ -2179,6 +2187,7 @@ MonoBehaviour:
   - {fileID: 1351291799}
   - {fileID: 1285061961}
   - {fileID: 1976792291}
+  playerNumberText: {fileID: 649698258}
   playerInfo: {fileID: 11400000, guid: a9ce6e909e3233e4193f8c26d843278d, type: 2}
 --- !u!1 &1838281685
 GameObject:

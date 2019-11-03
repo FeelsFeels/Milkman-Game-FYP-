@@ -93,6 +93,10 @@ public class PlayerController : MonoBehaviour
                 RightVerticalAxis = inputInfo.RightVerticalAxis;
             if (inputInfo.RightBumper != null)
                 RightBumper = inputInfo.RightBumper;
+
+            //No player assigned to character
+            //if (inputInfo.chosenCharacterData == null)
+            //    gameObject.SetActive(false);
         }
     }
 
@@ -101,7 +105,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         // Components
-        animator = GetComponentInChildren<Animator>();
+        //animator = GetComponentInChildren<Animator>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         rb = GetComponent<Rigidbody>();
@@ -381,6 +385,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
+    public bool IsPlaying()
+    {
+        if (inputInfo.chosenCharacterData == null)
+            return false;
+        else
+            return true;
+    }
 }
 
