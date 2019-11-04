@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 49461c16672aec64b9e107fb6d3ed300
+=======
+guid: cf7c296ddc304c24fa66ec3faab1f5e8
+>>>>>>> 63be9e2d6252a0142332d89d026678fc5b61bc33
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -14,18 +18,29 @@ TextureImporter:
   - first:
       213: -5678722959675386637
     second: player_icons_3
+<<<<<<< HEAD
   - first:
       213: 2632221462301574410
     second: player_icons_4
+=======
+>>>>>>> 63be9e2d6252a0142332d89d026678fc5b61bc33
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
     mipMapMode: 0
+<<<<<<< HEAD
     enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
+=======
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 1
+>>>>>>> 63be9e2d6252a0142332d89d026678fc5b61bc33
     mipMapsPreserveCoverage: 0
     alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
@@ -47,7 +62,11 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: -1
+<<<<<<< HEAD
     aniso: -1
+=======
+    aniso: 0
+>>>>>>> 63be9e2d6252a0142332d89d026678fc5b61bc33
     mipBias: -100
     wrapU: 1
     wrapV: 1
@@ -96,6 +115,20 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
+<<<<<<< HEAD
+=======
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+>>>>>>> 63be9e2d6252a0142332d89d026678fc5b61bc33
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -113,10 +146,17 @@ TextureImporter:
       name: player_icons_0
       rect:
         serializedVersion: 2
+<<<<<<< HEAD
         x: 44
         y: 991
         width: 231
         height: 248
+=======
+        x: 0
+        y: 963
+        width: 324
+        height: 321
+>>>>>>> 63be9e2d6252a0142332d89d026678fc5b61bc33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,7 +164,11 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
+<<<<<<< HEAD
       spriteID: b4620c34b8a80aa48aec0ded501fb5e1
+=======
+      spriteID: 93046f65265a0514f965b7f567c443b0
+>>>>>>> 63be9e2d6252a0142332d89d026678fc5b61bc33
       internalID: 7555812126866737967
       vertices: []
       indices: 
@@ -134,10 +178,17 @@ TextureImporter:
       name: player_icons_1
       rect:
         serializedVersion: 2
+<<<<<<< HEAD
         x: 39
         y: 692
         width: 237
         height: 233
+=======
+        x: 0
+        y: 642
+        width: 324
+        height: 321
+>>>>>>> 63be9e2d6252a0142332d89d026678fc5b61bc33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,7 +196,11 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
+<<<<<<< HEAD
       spriteID: 3a256316948247445a85322d0b06c095
+=======
+      spriteID: 7605a64181dbf9942bca62e9c56e6944
+>>>>>>> 63be9e2d6252a0142332d89d026678fc5b61bc33
       internalID: -7267746988572873622
       vertices: []
       indices: 
@@ -155,10 +210,17 @@ TextureImporter:
       name: player_icons_2
       rect:
         serializedVersion: 2
+<<<<<<< HEAD
         x: 40
         y: 379
         width: 234
         height: 234
+=======
+        x: 0
+        y: 321
+        width: 324
+        height: 321
+>>>>>>> 63be9e2d6252a0142332d89d026678fc5b61bc33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,7 +228,11 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
+<<<<<<< HEAD
       spriteID: 7b6b389913e73324e85d469db42646a9
+=======
+      spriteID: 47a7a80969b425046a91a12502c2610c
+>>>>>>> 63be9e2d6252a0142332d89d026678fc5b61bc33
       internalID: 2165524302930359714
       vertices: []
       indices: 
@@ -176,10 +242,17 @@ TextureImporter:
       name: player_icons_3
       rect:
         serializedVersion: 2
+<<<<<<< HEAD
         x: 233
         y: 319
         width: 4
         height: 6
+=======
+        x: 0
+        y: 0
+        width: 324
+        height: 321
+>>>>>>> 63be9e2d6252a0142332d89d026678fc5b61bc33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,12 +260,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
+<<<<<<< HEAD
       spriteID: aca695d3f09efb44f82efd1e3e7df2c3
+=======
+      spriteID: c745c6ae528e420418f5dd11d871a19d
+>>>>>>> 63be9e2d6252a0142332d89d026678fc5b61bc33
       internalID: -5678722959675386637
       vertices: []
       indices: 
       edges: []
       weights: []
+<<<<<<< HEAD
     - serializedVersion: 2
       name: player_icons_4
       rect:
@@ -218,6 +296,12 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 885762daaf4f555489b718a592169646
+=======
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: aef7cb747f87f9a42bdc05516251ce40
+>>>>>>> 63be9e2d6252a0142332d89d026678fc5b61bc33
     internalID: 0
     vertices: []
     indices: 
