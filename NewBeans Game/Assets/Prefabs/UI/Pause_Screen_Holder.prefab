@@ -160,6 +160,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1531196446556000979}
   - component: {fileID: 1531196446556000978}
+  - component: {fileID: 1689008391}
   m_Layer: 5
   m_Name: Pause_Screen_Holder
   m_TagString: Untagged
@@ -176,7 +177,7 @@ RectTransform:
   m_GameObject: {fileID: 1531196446556000980}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.4, y: 2.4, z: 1}
   m_Children:
   - {fileID: 1531196447362333365}
   - {fileID: 1531196446747817158}
@@ -203,13 +204,28 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 4d0267b17b036f24a83c23214ed01212, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1689008391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531196446556000980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9066d3cd67e626d43bc590a26120d297, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resumeBut: {fileID: 0}
+  optionsBut: {fileID: 0}
+  quitBut: {fileID: 0}
 --- !u!1 &1531196446747817159
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,7 +260,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 350.9, y: -23.2}
+  m_AnchoredPosition: {x: 630.5, y: -23.2}
   m_SizeDelta: {x: 275, y: 300}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &1531196446747817156
@@ -396,7 +412,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 299.4, y: -80.3}
+  m_AnchoredPosition: {x: 579, y: -80.3}
   m_SizeDelta: {x: 270, y: 67}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1531196447266248559
@@ -478,7 +494,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1531196447266248544}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1689008391}
+        m_MethodName: QuitGame
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: TitleScreen
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!95 &1531196447266248558
@@ -535,7 +562,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -289.7, y: 158.2}
+  m_AnchoredPosition: {x: -609, y: 158.2}
   m_SizeDelta: {x: 296, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1531196447362333363
@@ -612,7 +639,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 299.4, y: -23.600014}
+  m_AnchoredPosition: {x: 579, y: -23.600014}
   m_SizeDelta: {x: 270, y: 67}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1531196447384296740
@@ -753,7 +780,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 299.4, y: 32.299976}
+  m_AnchoredPosition: {x: 579, y: 32.299976}
   m_SizeDelta: {x: 270, y: 67}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1531196447461291693
@@ -835,7 +862,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1531196447461291694}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1689008391}
+        m_MethodName: ResumeGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!95 &1531196447461291692

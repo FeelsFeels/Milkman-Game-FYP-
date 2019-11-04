@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
     public Text thirdPlaceScore;
     public Text fourthPlaceScore;
 
-    public Image pauseScreen;
+    public PauseScreen pauseScreen;
     public bool isPaused;
 
     [Header("Audio")]
@@ -137,14 +137,15 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
-        pauseScreen.gameObject.SetActive(true);
+        pauseScreen.AnimatePause();
         Time.timeScale = 0;
     }
 
     public void ResumeGame()
     {
+        pauseScreen.AnimateResume();
+        isPaused = false;
         Time.timeScale = 1;
-        pauseScreen.gameObject.SetActive(false);
     }
 
     public void RoundEnd(List<PlayerController> playerRanking)
