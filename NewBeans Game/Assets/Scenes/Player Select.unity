@@ -853,7 +853,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 2b0d1b8fe7a16664f9e4296e8912e9d2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 69d163d145e6d8e4fb5780aaca04baa4, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -928,7 +928,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 9ec8007aeea14b04bb447386bd31e932, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 60798a22b32754346a99b2a384de940e, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1352,6 +1352,26 @@ MonoBehaviour:
   - {fileID: 2071972735}
   - {fileID: 693312274}
   - {fileID: 1273715356}
+  characterBorderSprites:
+  - {fileID: 21300000, guid: 200ba77746b02cc45be96f23d092e3ab, type: 3}
+  - {fileID: 21300000, guid: 0d3ab8847364f924490aaca420fbf816, type: 3}
+  - {fileID: 21300000, guid: 4227bae6996009840a9ca752b79e153e, type: 3}
+  - {fileID: 21300000, guid: 21bb4949a14694249803fe259822d3cc, type: 3}
+  - {fileID: 21300000, guid: d9fc45e52a66f574c84f0a320cfc766d, type: 3}
+  characterPortraits:
+  - {fileID: 1428434144}
+  - {fileID: 526126923}
+  - {fileID: 522560774}
+  - {fileID: 1049043356}
+  characterPortraitSprites:
+  - {fileID: 21300000, guid: feb85fd3c470ffe4b806c0e78ec89402, type: 3}
+  - {fileID: 21300000, guid: 60798a22b32754346a99b2a384de940e, type: 3}
+  - {fileID: 21300000, guid: 69d163d145e6d8e4fb5780aaca04baa4, type: 3}
+  - {fileID: 21300000, guid: 6487f9be8566bb04184764b1d71eb39c, type: 3}
+  - {fileID: 21300000, guid: 9a944ae29f0b9df408f3fabb7ce798ed, type: 3}
+  - {fileID: 21300000, guid: 6988dfc7714b5564c9b954a5e17860a9, type: 3}
+  - {fileID: 21300000, guid: ca9838db0f5392046a3810e6ab857d03, type: 3}
+  - {fileID: 21300000, guid: d8370d24a6030d340a578d7d971ca295, type: 3}
   playersJoined: 
   SceneToLoad: 31 Oct 19 - Rooky - New Map of Michelle's
 --- !u!1 &903701690

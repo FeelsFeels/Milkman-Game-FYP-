@@ -12,6 +12,9 @@ public class PlayerSelectManager : MonoBehaviour
     public ChooseCharacter[] chooseCharacterArray = new ChooseCharacter[4]; //Player choosing functionality script
 
     public Image[] characterBorders = new Image[4];
+    public Sprite[] characterBorderSprites = new Sprite[5];
+    public Image[] characterPortraits = new Image[4];
+    public Sprite[] characterPortraitSprites = new Sprite[8];
 
     public List<int> playersJoined = new List<int>();   //Player numbers
 
@@ -79,7 +82,9 @@ public class PlayerSelectManager : MonoBehaviour
         playerToChange.chosenCharacterIndex = characterIndex;
         playerToChange.chosenCharacterData = characterDataArray[characterIndex];
 
-        characterBorders[characterIndex].color = characterDataArray[characterIndex].characterColor;
+        //characterBorders[characterIndex].color = characterDataArray[characterIndex].characterColor;
+        characterBorders[characterIndex].sprite = characterBorderSprites[characterIndex + 1];
+        characterPortraits[characterIndex].sprite = characterPortraitSprites[characterIndex + 4];
 
         CheckIfCanStartGame();
         return true;
@@ -87,7 +92,9 @@ public class PlayerSelectManager : MonoBehaviour
 
     public void UnchooseCharacter(PlayerInputInfo playerToChange, int characterIndex)
     {
-        characterBorders[characterIndex].color = Color.white;
+        //characterBorders[characterIndex].color = Color.white;
+        characterBorders[characterIndex].sprite = characterBorderSprites[0];
+        characterPortraits[characterIndex].sprite = characterPortraitSprites[characterIndex];
         playerToChange.chosenCharacterData = null;
 
         CheckIfCanStartGame();
