@@ -7,6 +7,10 @@ using System.Linq;
 
 public class PlayerSelectManager : MonoBehaviour
 {
+    public Animator animator;
+
+    [Space]
+
     public PlayerInputInfo[] playerInfoArray = new PlayerInputInfo[4];      //Player Input scriptable object
     public CharacterData[] characterDataArray = new CharacterData[4];       //Specific character data scriptable objects
     public ChooseCharacter[] chooseCharacterArray = new ChooseCharacter[4]; //Player choosing functionality script
@@ -149,6 +153,7 @@ public class PlayerSelectManager : MonoBehaviour
             {
                 //A player has not chosen a character. Cannot start game.
                 canStartGame = false;
+                animator.SetBool("ReadyToStart", canStartGame);
                 return;
             }
 
@@ -157,6 +162,7 @@ public class PlayerSelectManager : MonoBehaviour
             if (chosenCharacterIndexes.Contains(chosenChar))
             {
                 canStartGame = false;
+                animator.SetBool("ReadyToStart", canStartGame);
                 return;
             }
             else
@@ -166,6 +172,8 @@ public class PlayerSelectManager : MonoBehaviour
         }
 
         canStartGame = true;
+
+        animator.SetBool("ReadyToStart", canStartGame);
 
     }
 }
