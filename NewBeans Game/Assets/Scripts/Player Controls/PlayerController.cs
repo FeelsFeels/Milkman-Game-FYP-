@@ -387,10 +387,12 @@ public class PlayerController : MonoBehaviour
 
     public bool IsPlaying()
     {
+        if (inputInfo.forceActive)
+            return true;
+
         if (inputInfo.chosenCharacterData == null)
             return false;
         else
             return true;
     }
 }
-

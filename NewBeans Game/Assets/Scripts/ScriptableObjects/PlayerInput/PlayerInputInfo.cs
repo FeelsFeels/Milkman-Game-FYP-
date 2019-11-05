@@ -17,6 +17,8 @@ public class PlayerInputInfo : ScriptableObject
     public int chosenCharacterIndex;
     public CharacterData chosenCharacterData;
 
+    public bool forceActive;
+
     public void SetInputStrings(int controllerNumber)
     {
         ControllerNumber = controllerNumber;

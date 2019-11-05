@@ -16,7 +16,12 @@ public class LastManStandingUI : MonoBehaviour
         livesBG = transform.GetChild(0).GetComponent<Image>();
 
         //Check if tracked player is playing the game
-        if(trackedPlayer.chosenCharacterData == null)
+
+        if (trackedPlayer.forceActive)
+        {
+            gameObject.SetActive(true);
+        }
+        else if(trackedPlayer.chosenCharacterData == null)
         {
             gameObject.SetActive(false);
         }

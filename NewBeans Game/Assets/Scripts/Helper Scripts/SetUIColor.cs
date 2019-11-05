@@ -12,14 +12,16 @@ public class SetUIColor : MonoBehaviour
 
     private void Awake()
     {
-        colorToUse = colorToReference.chosenCharacterData.characterColor;
+        if(colorToReference.chosenCharacterData)
+            colorToUse = colorToReference.chosenCharacterData.characterColor;
     }
 
     private void Start()
     {
         foreach(Image image in colorsToChange)
         {
-            image.color = colorToUse;
+            if(colorToReference.chosenCharacterData)
+                image.color = colorToUse;
         }
     }
 
