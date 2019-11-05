@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27ba28623135c140986851d553ef934, type: 3}
   m_Name: Player 3 Input
   m_EditorClassIdentifier: 
+  playerNumber: 3
   ControllerNumber: 3
   HorizontalInputAxis: Horizontal (Controller 3)
   VerticalInputAxis: Vertical (Controller 3)
@@ -21,5 +22,6 @@ MonoBehaviour:
   RightVerticalAxis: RightVertical (Controller 3)
   RightBumper: RightBumper (Controller 3)
   chosenCharacterIndex: 2
-  chosenCharacterData: {fileID: 0}
+  chosenCharacterData: {fileID: 11400000, guid: 0d15d532b9eb83441a7caf973588de31,
+    type: 2}
   forceActive: 1

@@ -25,17 +25,19 @@ public class PlayerController : MonoBehaviour
     public GameObject playerPulledEffect;
 
     //Player Input 
-    [Header ("Player Input and Movement")]
+    [Header ("Player Input and Initialisation")]
     public PlayerInputInfo inputInfo;
     public int ControllerNumber;
-    public string HorizontalInputAxis;
-    public string VerticalInputAxis;
-    public string AButtonInput;
-    public string BButtonInput;
-    public string RightHorizontalAxis;
-    public string RightVerticalAxis;
-    public string RightBumper;
+    public GameObject playerModel;
+    [HideInInspector] public string HorizontalInputAxis;
+    [HideInInspector] public string VerticalInputAxis;
+    [HideInInspector] public string AButtonInput;
+    [HideInInspector] public string BButtonInput;
+    [HideInInspector] public string RightHorizontalAxis;
+    [HideInInspector] public string RightVerticalAxis;
+    [HideInInspector] public string RightBumper;
 
+    [Header("Player Movement")]
     public float playerTurnSmoothing = 10f;
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
@@ -82,6 +84,8 @@ public class PlayerController : MonoBehaviour
     {
         if (inputInfo != null)
         {
+            playerNumber = inputInfo.playerNumber;
+
             HorizontalInputAxis = inputInfo.HorizontalInputAxis;
             VerticalInputAxis = inputInfo.VerticalInputAxis;
             AButtonInput = inputInfo.AButtonInput;
@@ -105,11 +109,12 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         // Components
-        //animator = GetComponentInChildren<Animator>();
+        animator = transform.Find("Character Model").GetComponentInChildren<Animator>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         rb = GetComponent<Rigidbody>();
         invincibilityShield = GetComponentInChildren<Shield>();
+        cameraRigObj = FindObjectOfType<CameraControls>().gameObject;
 
         //Set the camera rig rotation at the start. This will be the 'correction angle'
         if (cameraRigObj != null)
@@ -366,8 +371,6 @@ public class PlayerController : MonoBehaviour
         {
             //if (hit.collider.tag == "Ground")
             //{
-                Debug.Log("Hit ground");
-
                 Debug.DrawLine(hit.point, hit.point + hit.normal, Color.green);
 
                 Quaternion targetQuaternion;

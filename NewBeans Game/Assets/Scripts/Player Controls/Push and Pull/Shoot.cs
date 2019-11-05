@@ -35,8 +35,8 @@ public class Shoot : MonoBehaviour
     float timeCharged;
 
     ///If we want to use the Input Manager
-    public string watergunInput;
     public bool usingRightBumper = true;
+    public string watergunInput;
     public string chargingInput;
     public string hookInput;
     /// //////////////////////////////////
@@ -48,7 +48,7 @@ public class Shoot : MonoBehaviour
         pushCooldownTimer = 0;
 
         playerScript = GetComponent<PlayerController>();
-        animator = GetComponent<Animator>();
+        animator = transform.Find("Canvas").GetComponent<Animator>();
 
         // hProjectile.GetComponent<Shoot>().castedByPlayer = player;
         watergunInput = playerScript.AButtonInput;
@@ -98,6 +98,7 @@ public class Shoot : MonoBehaviour
             {
                 //PushBackfire();
                 //StartCoroutine(ShotgunFireLight());
+                animator.SetBool("activateChargeBlink", false);
                 ShotgunAttack();
             }
         }
@@ -172,6 +173,7 @@ public class Shoot : MonoBehaviour
         aimingArrows.SetActive(false);
         chargingIndication.gameObject.SetActive(false);
         chargingPushProjectile = false;
+        animator.SetBool("activateChargeBlink", false);
         pushChargedTime = 0;
         pushCooldownTimer = pushCooldown;
     }
@@ -231,7 +233,7 @@ public class Shoot : MonoBehaviour
             this.gameObject.transform.Find("Spotlight").gameObject.SetActive(true);
         }
 
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.5f);
         if (this.gameObject.transform.Find("Spotlight") != null)
         {
             this.gameObject.transform.Find("Spotlight").gameObject.SetActive(false);

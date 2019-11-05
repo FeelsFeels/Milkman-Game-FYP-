@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Player Data", menuName = "Player Data")]
 public class PlayerInputInfo : ScriptableObject
 {
+    public int playerNumber;
     public int ControllerNumber;
     public string HorizontalInputAxis;
     public string VerticalInputAxis;
