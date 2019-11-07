@@ -12,8 +12,8 @@ public class LastManStandingUI : MonoBehaviour
 
     private void Awake()
     {
-        livesText = transform.GetChild(1).GetComponent<Text>();
-        livesBG = transform.GetChild(0).GetComponent<Image>();
+        //livesText = transform.GetChild(1).GetComponent<Text>();
+        //livesBG = transform.GetChild(0).GetComponent<Image>();
 
         //Check if tracked player is playing the game
 
