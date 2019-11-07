@@ -255,9 +255,10 @@ public class RockGolem : MonoBehaviour
             {
                 AutoDestroyOverTime newParticles = Instantiate(crashingParticles, new Vector3(transform.position.x + Random.Range(-5f, 5f), 0, transform.position.z + Random.Range(-5f, 5f)), Quaternion.identity).GetComponent<AutoDestroyOverTime>();
                 newParticles.DestroyWithTime(2);
-                showInitialiseParticles = false;
             }
+            showInitialiseParticles = false;
             Shockwave();
+            rb.velocity = Vector3.zero;
         }
     }
 }
