@@ -23,4 +23,4 @@ MonoBehaviour:
   RightBumper: RightBumper (Controller 4)
   chosenCharacterIndex: 0
   chosenCharacterData: {fileID: 0}
-  forceActive: 0
+  forceActive: 1

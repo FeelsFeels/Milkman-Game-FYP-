@@ -33,6 +33,7 @@ public class Shoot : MonoBehaviour
     public float explodeSpreadAngle = 90;
     public float explodeForce=2500;
     float timeCharged;
+    public ParticleSystem shotgunParticles;
 
     ///If we want to use the Input Manager
     public bool usingRightBumper = true;
@@ -100,6 +101,8 @@ public class Shoot : MonoBehaviour
                 //StartCoroutine(ShotgunFireLight());
                 animator.SetBool("activateChargeBlink", false);
                 ShotgunAttack();
+                Instantiate(shotgunParticles, transform.position, transform.rotation, transform);
+                //shotgunParticles.shape.angle = explodeSpreadAngle / 2;
             }
         }
 
@@ -193,6 +196,7 @@ public class Shoot : MonoBehaviour
     }
 
     void ShotgunAttack() {
+        
         StartCoroutine(ShotgunFireLight());
 
         List<Collider> colliders = new List<Collider>();
