@@ -29,7 +29,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Amount: 0.016
-    - _Foam: 0.89
+    - _Foam: 0.5
     - _Height: 0.055
     - _Scale: 0.065
     - _Speed: 0.292

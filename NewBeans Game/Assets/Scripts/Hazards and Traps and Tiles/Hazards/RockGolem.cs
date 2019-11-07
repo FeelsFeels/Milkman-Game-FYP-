@@ -121,7 +121,8 @@ public class RockGolem : MonoBehaviour
         if (golemState == GolemStates.FindingPlayerToChase)
         {
             timeFindingPlayer += Time.deltaTime;
-            Vector3 direction = playerToChase.transform.position - transform.position;
+            Vector3 facePos = new Vector3(playerToChase.transform.position.x, transform.position.y, playerToChase.transform.position.z);
+            Vector3 direction = facePos - transform.position;
             Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
             transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, 1.5f * Time.deltaTime);
 

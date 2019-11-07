@@ -19,6 +19,7 @@ public class LastManStandingUI : MonoBehaviour
 
         if (trackedPlayer.forceActive)
         {
+            livesBG.sprite = trackedPlayer.chosenCharacterData.characterUISprite;
             gameObject.SetActive(true);
         }
         else if(trackedPlayer.chosenCharacterData == null)
