@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: Player 2 Input
   m_EditorClassIdentifier: 
   playerNumber: 2
-  ControllerNumber: 2
-  HorizontalInputAxis: Horizontal (Controller 2)
-  VerticalInputAxis: Vertical (Controller 2)
-  AButtonInput: AButton (Controller 2)
-  BButtonInput: BButton (Controller 2)
-  RightHorizontalAxis: RightHorizontal (Controller 2)
-  RightVerticalAxis: RightVertical (Controller 2)
-  RightBumper: RightBumper (Controller 2)
-  chosenCharacterIndex: 1
+  ControllerNumber: 3
+  HorizontalInputAxis: Horizontal (Controller 3)
+  VerticalInputAxis: Vertical (Controller 3)
+  AButtonInput: AButton (Controller 3)
+  BButtonInput: BButton (Controller 3)
+  RightHorizontalAxis: RightHorizontal (Controller 3)
+  RightVerticalAxis: RightVertical (Controller 3)
+  RightBumper: RightBumper (Controller 3)
+  chosenCharacterIndex: 0
   chosenCharacterData: {fileID: 11400000, guid: 6c949c186e315fb40912dc639e28fb16,
     type: 2}
   forceActive: 1
