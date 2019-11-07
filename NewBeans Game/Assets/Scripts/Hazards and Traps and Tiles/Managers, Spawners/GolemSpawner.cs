@@ -17,8 +17,8 @@ public class GolemSpawner : MonoBehaviour
     public void SpawnGolem()
     {
         //Find an appropriate place to spawn the golem
-        Vector3 spawnPoint = Vector3.zero;  //using vec3.zero as if it was a null check
-        while(spawnPoint == Vector3.zero)
+        Vector3 spawnPoint = new Vector3(0, 1000, 0);  //using vec3 as a pseudo null check
+        while(spawnPoint == new Vector3(0, 1000, 0))
         {
             int rand = Random.Range(0, spawnPoints.Length);
 
@@ -27,7 +27,7 @@ public class GolemSpawner : MonoBehaviour
             if(Physics.Raycast(spawnPoints[rand].position, Vector3.down, out hit))
             {
                 print(hit.collider.tag);
-                if (hit.collider.tag == "Hole")
+                if (hit.collider.tag != "Ground")
                     continue;
                 else
                     spawnPoint = spawnPoints[rand].position;
