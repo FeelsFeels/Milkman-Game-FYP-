@@ -207,6 +207,7 @@ public class RockGolem : MonoBehaviour
         //Disrupts all players in range
         foreach(Collider collider in inRange)
         {
+            print(collider.name);
             PlayerController player = collider.GetComponent<PlayerController>();
             if (player)
             {
@@ -214,6 +215,12 @@ public class RockGolem : MonoBehaviour
                 player.GetComponent<Rigidbody>().AddForce(knockbackStrength * knockbackDirection);
 
                 player.Hit();
+            }
+            else if(collider.tag == "Rock")
+            {
+                print("neeba");
+                Vector3 knockbackDirection = (collider.transform.position - transform.position).normalized;
+                collider.GetComponent<HazardBoulder>().rb.AddForce(knockbackStrength * knockbackDirection);
             }
         }
     }
@@ -258,7 +265,13 @@ public class RockGolem : MonoBehaviour
             }
             showInitialiseParticles = false;
             Shockwave();
-            rb.velocity = Vector3.zero;
+            StartCoroutine(SetVelocityZeroNextFrame());
         }
+    }
+
+    IEnumerator SetVelocityZeroNextFrame()
+    {
+        yield return null;
+        rb.velocity = Vector3.zero;
     }
 }
