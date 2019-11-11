@@ -36,7 +36,7 @@ public class HazardBoulder : MonoBehaviour
             if (Vector3.Dot(moveDirection, directionToPlayer) > 0)
             {
                 //Stuns + knocks back other player
-                collision.gameObject.GetComponent<PlayerController>().Hit(2f);
+                collision.gameObject.GetComponent<PlayerController>().Hit(1f);
                 collision.gameObject.GetComponent<Rigidbody>().AddForce(moveDirection * baseForce * rb.velocity.magnitude / 2);
             }
         }

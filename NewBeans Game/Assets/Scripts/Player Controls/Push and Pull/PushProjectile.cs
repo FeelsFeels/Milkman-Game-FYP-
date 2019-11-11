@@ -8,23 +8,30 @@ public class PushProjectile : MonoBehaviour
     public GameObject ownerPlayer;
 
     public float speed;
+    public Vector3 lastFrameVelocity;
 
     public float baseKnockback; //Base knockback currently set to 500
     public float knockbackToUse;
     public float knockbackRadius;
     public float upwardsModifier;
     public PlayerController playerHit;
+    private int timesReflected;
 
     public bool exploding;
 
     public Rigidbody rb;
     public TrailRenderer trailRenderer;
 
+
     private void Start()
     {
         Destroy(gameObject, 3);
     }
 
+    private void FixedUpdate()
+    {
+        lastFrameVelocity = rb.velocity;
+    }
 
     public void ShotInitialised(float multiplier, float smallMultiplier, Vector3 shotDirection, GameObject shootingPlayer)
     {
@@ -36,17 +43,32 @@ public class PushProjectile : MonoBehaviour
     }
 
 
-
+    public void ReflectShot(Vector3 collisionNormal)
+    {
+        Vector3 reflectDirection = Vector3.Reflect(lastFrameVelocity.normalized, collisionNormal);
+        speed *= 0.8f;
+        rb.velocity = reflectDirection * speed;
+        timesReflected++;
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
-        //PushProjectile pushProjectile = collision.transform.GetComponent<PushProjectile>();
-        //if (pushProjectile)
-        //    return;
+        PushProjectile pushProjectile = collision.transform.GetComponent<PushProjectile>();
+        if (pushProjectile)
+        {
+            ReflectShot(collision.contacts[0].normal);
+            return;
+        }
+
+        if((collision.gameObject.tag == "Rock" || collision.gameObject.tag == "GrabbableEnvironment") && timesReflected <= 1)
+        {
+            ReflectShot(collision.contacts[0].normal);
+            return;
+        }
 
         PlayerController player = collision.transform.GetComponent<PlayerController>();
         
-        if (player && collision.gameObject != ownerPlayer)
+        if ((player && collision.gameObject != ownerPlayer) || (player && timesReflected >= 1))
         {
             
             Vector3 direction = collision.transform.position - transform.position;
@@ -61,7 +83,10 @@ public class PushProjectile : MonoBehaviour
         }
 
         if (!player)
+        {
+            Instantiate(player.playerPushedEffect, player.transform.position, player.transform.rotation);
             Destroy(gameObject);
+        }
     }
 
 

@@ -475,6 +475,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: d8c35d73af737694e800bbca3247a69c,
         type: 2}
+    - target: {fileID: 9217587416402060001, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: explodeForce
+      value: 4000
+      objectReference: {fileID: 0}
+    - target: {fileID: 9217587416402060001, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: baseKickbackForce
+      value: 500
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bddf47119048164f92afd5b2ac6e2e3, type: 3}
 --- !u!1 &149369842
@@ -1671,6 +1681,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: a9ce6e909e3233e4193f8c26d843278d,
         type: 2}
+    - target: {fileID: 9217587416402060001, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: explodeForce
+      value: 4000
+      objectReference: {fileID: 0}
+    - target: {fileID: 9217587416402060001, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: baseKickbackForce
+      value: 500
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bddf47119048164f92afd5b2ac6e2e3, type: 3}
 --- !u!1 &1136643621
@@ -1789,7 +1809,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1207452937}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0bf6e59cfd114d45858f2fa68c53b98, type: 3}
   m_Name: 
@@ -2301,6 +2321,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 61dc69544f7bb0541a3d412f1ed152a0,
         type: 2}
+    - target: {fileID: 9217587416402060001, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: explodeForce
+      value: 4000
+      objectReference: {fileID: 0}
+    - target: {fileID: 9217587416402060001, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: baseKickbackForce
+      value: 500
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bddf47119048164f92afd5b2ac6e2e3, type: 3}
 --- !u!1 &1658703578
@@ -2371,7 +2401,7 @@ MonoBehaviour:
     isRepeating: 1
     repeatRate: 50
   - EventDescription: Spawn Golem
-    timeToCall: 40
+    timeToCall: 1
     unityEvent:
       m_PersistentCalls:
         m_Calls:
@@ -2745,7 +2775,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   canStunPlayer: 0
-  baseForce: 200
+  baseForce: 50
 --- !u!23 &1701914250
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7708,7 +7738,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   canStunPlayer: 0
-  baseForce: 200
+  baseForce: 50
 --- !u!23 &1848492882
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7833,7 +7863,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   canStunPlayer: 0
-  baseForce: 200
+  baseForce: 50
 --- !u!23 &1855989710
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7963,6 +7993,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 99c24249d3bee7243b1dedb98cae64f9,
         type: 2}
+    - target: {fileID: 9217587416402060001, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: explodeForce
+      value: 4000
+      objectReference: {fileID: 0}
+    - target: {fileID: 9217587416402060001, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: baseKickbackForce
+      value: 500
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bddf47119048164f92afd5b2ac6e2e3, type: 3}
 --- !u!1 &2017650234
@@ -8109,7 +8149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   canStunPlayer: 0
-  baseForce: 200
+  baseForce: 50
 --- !u!65 &2093050976
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8316,7 +8356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   canStunPlayer: 0
-  baseForce: 200
+  baseForce: 50
 --- !u!23 &2141692759
 MeshRenderer:
   m_ObjectHideFlags: 0
