@@ -95,6 +95,7 @@ public class GrapplingHook : MonoBehaviour
 
     private void HookLogic()
     {
+        //Hook is going forwards
         if (hookStatus == HookStatus.shooting)
         {
             //Movement. Direction is set by Shoot.cs
@@ -124,6 +125,7 @@ public class GrapplingHook : MonoBehaviour
 
         }
 
+        //Hook is coming back
         if (hookStatus == HookStatus.takeback)
         {
             if (Time.time - lastNodeUpdateTime > nodeUpdateTime)
@@ -133,11 +135,11 @@ public class GrapplingHook : MonoBehaviour
                     //This block controls when to let go of a player if hooked
                     if (latchedObject != null)
                     {
-                        //Sets latched object position to hook's position
-                        latchedObject.transform.localPosition = Vector3.zero;
-
                         if (!releaseOnNext)
                         {
+                            //Sets latched object position to hook's position
+                            latchedObject.transform.localPosition = new Vector3(0, -8.5f, 0);
+
                             RaycastHit hit;
 
                             if (Physics.Raycast(transform.position, Vector3.down, out hit, 100f, 1 << LayerMask.NameToLayer("Ground")))
@@ -177,6 +179,7 @@ public class GrapplingHook : MonoBehaviour
             }
         }
 
+        //You are pulling yourself to the pillar
         if (hookStatus == HookStatus.reverse)
         {
             if (Time.time - lastNodeUpdateTime > nodeUpdateTime)
@@ -189,6 +192,7 @@ public class GrapplingHook : MonoBehaviour
                 if (nodes.Count == 0)
                 {
                     FinishHookSequence();
+                    return;
                 }
                 else if (nodes.Count > 0)
                     nodeToMoveTo = nodes.Last();
@@ -198,8 +202,9 @@ public class GrapplingHook : MonoBehaviour
                 player.transform.position = Vector3.Lerp(player.transform.position, nodeToMoveTo.transform.position, Time.deltaTime * 20);
             }
         }
-
-        if (hookStatus != HookStatus.reverse && hookStatus != HookStatus.takeback)
+        
+        //Re-add nodes when hook is being shot
+        if (hookStatus != HookStatus.reverse && hookStatus != HookStatus.takeback && hookStatus != HookStatus.none)
         {
             //use angle and dot product to decide if player is moving towards hook.
             //then, adjust nodes position
@@ -365,9 +370,9 @@ public class GrapplingHook : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         transform.DetachChildren();
+        latchedObject = null;
         latchedObject.GetComponent<PlayerController>().rb.AddForce(Vector3.down * 1000);
         yield return new WaitForSeconds(0.1f);
-        latchedObject = null;
         releaseOnNext = false;
     }
 

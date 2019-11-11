@@ -2398,10 +2398,10 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    isRepeating: 1
+    isRepeating: 0
     repeatRate: 50
   - EventDescription: Spawn Golem
-    timeToCall: 1
+    timeToCall: 50
     unityEvent:
       m_PersistentCalls:
         m_Calls:

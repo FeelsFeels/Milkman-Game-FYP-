@@ -45,8 +45,7 @@ public class LastManStandingTracker : MonoBehaviour
 
 
     public void UpdateLivesLeft(PlayerController deadPlayer)
-    {
-        Debug.Log("player death!");
+    { 
         int currentLives = --playerLivesInfo[deadPlayer];
         print(deadPlayer + " has " + currentLives + " lives left!");
 

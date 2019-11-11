@@ -26,7 +26,6 @@ public class GolemSpawner : MonoBehaviour
             //Check whether the spawn point is nearby a hole
             if(Physics.Raycast(spawnPoints[rand].position, Vector3.down, out hit))
             {
-                print(hit.collider.tag);
                 if (hit.collider.tag == "Hole")
                     continue;
                 else

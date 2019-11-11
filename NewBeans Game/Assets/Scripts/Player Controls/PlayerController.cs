@@ -182,7 +182,7 @@ public class PlayerController : MonoBehaviour
         else { rightAnalogTargeting = false; }
 
 
-        OrientPlayerWithGround();
+        //OrientPlayerWithGround();
 
         //If Not moving, can set the animator values
         if (Input.GetAxis(HorizontalInputAxis) == 0 && Input.GetAxis(VerticalInputAxis) == 0)
