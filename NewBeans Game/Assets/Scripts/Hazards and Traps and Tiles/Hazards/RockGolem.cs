@@ -32,6 +32,7 @@ public class RockGolem : MonoBehaviour
     //Attacking variables
     float timeToNextShockwave = 0f;
     public float knockbackStrength;
+    public float knockbackRadius;
 
     //Visuals
     bool showInitialiseParticles;
@@ -203,7 +204,7 @@ public class RockGolem : MonoBehaviour
 
         //Gets all players in range of shockwave stomp
         int ignoreLayerMask =~ 1 << LayerMask.NameToLayer("Ground");    //Raycasts on everything but ground
-        Collider[] inRange = Physics.OverlapSphere(transform.position, 8f, ignoreLayerMask);
+        Collider[] inRange = Physics.OverlapSphere(transform.position, knockbackRadius, ignoreLayerMask);
 
         //Disrupts all players in range
         foreach(Collider collider in inRange)

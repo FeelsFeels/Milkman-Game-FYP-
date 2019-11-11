@@ -349,6 +349,8 @@ MonoBehaviour:
     m_Bits: 1024
   explodeSpreadAngle: 90
   explodeForce: 2500
+  shotgunParticles: {fileID: 8090446431925777048, guid: e4fd5d7dc1428e8438860015600ea3db,
+    type: 3}
   usingRightBumper: 1
   watergunInput: 
   chargingInput: 

@@ -198,7 +198,7 @@ public class PlayerController : MonoBehaviour
     /// ***********
     private void Move(Vector3 direction)
     {
-        if (playerStunned || shootingHook)
+        if (playerStunned)
             return;
 
         // Movement based on camera's rotation at the start.

@@ -256,9 +256,9 @@ public class Shoot : MonoBehaviour
         return grantedPower;
     }
 
-    float SmallMultiplier(float time) //Calculations for speed
+    float SmallMultiplier(float time) //Calculations for speed and localscale
     {
-        float giveMeSpeed = Mathf.Pow(1.3f, time); //Used 1.3f for smaller multiplier
+        float giveMeSpeed = Mathf.Pow(1.6f, time); //Used 1.3f for smaller multiplier
         return giveMeSpeed;
     }
 

@@ -892,7 +892,7 @@ Transform:
   m_GameObject: {fileID: 1731319518641209068}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.8841, y: 0.31, z: -15.379}
-  m_LocalScale: {x: 1.5661, y: 1.5661, z: 1.5661}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 1735427336510319888}
   - {fileID: 1732343154133958350}
@@ -961,9 +961,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a30c851c48d92a45a96d5b5c2a6272c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolSpeed: 1
-  chaseSpeed: 3.5
-  knockbackStrength: 1800
+  patrolSpeed: 3
+  chaseSpeed: 6
+  knockbackStrength: 2500
+  knockbackRadius: 10
   shockwaveParticles: {fileID: 1765079799062324546, guid: c873447dcbd7d8c4dbb878ba67891401,
     type: 3}
   crashingParticles: {fileID: 1765079799062324546, guid: 0cfed572c7b22294caf35be577e6ccb8,
