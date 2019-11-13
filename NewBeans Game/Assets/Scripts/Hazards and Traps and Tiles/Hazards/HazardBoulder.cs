@@ -6,17 +6,55 @@ public class HazardBoulder : MonoBehaviour
 {
     public Rigidbody rb;
     public bool canStunPlayer;
+    public bool tofuDropped;
 
     public float baseForce;
+
+    public GameObject shockwaveParticles;
+    public float knockbackStrength = 1800f;
 
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        Shockwave();
+
+    }
+
+    public void Shockwave()
+    {
+        AutoDestroyOverTime particles = Instantiate(shockwaveParticles, transform.position, shockwaveParticles.transform.rotation).GetComponent<AutoDestroyOverTime>();
+        particles.DestroyWithTime(0.3f);
+
+        //Gets all players in range of shockwave stomp
+        int ignoreLayerMask = ~1 << LayerMask.NameToLayer("Ground");    //Raycasts on everything but ground
+        Collider[] inRange = Physics.OverlapSphere(transform.position, 10f, ignoreLayerMask);
+
+
+        //Disrupts all players in range
+        foreach (Collider collider in inRange)
+        {
+            PlayerController player = collider.GetComponent<PlayerController>();
+            if (player)
+            {
+                Vector3 knockbackDirection = (player.transform.position - transform.position).normalized;
+                player.GetComponent<Rigidbody>().AddForce(knockbackStrength * knockbackDirection);
+
+                player.Hit();
+                print("Player kena tofu shockwave");
+            }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(1, 0, 0, 0.2f);
+        Gizmos.DrawSphere(transform.position, 10f);
     }
 
     private void Update()
     {
+
         float velocity = rb.velocity.magnitude;
 
         if (velocity > 5f)
@@ -44,10 +82,21 @@ public class HazardBoulder : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "Hole")
+        {
+            tofuDropped = true;
+            gameObject.SetActive(false);
+            print("tofu in hole:" + tofuDropped);
+
+            TofuBlockManager.instance.SpawnTofuWithDelay();
+            print("new tofu in town");
+        }
+
         if (other.GetComponent<IAffectedByWeight>() != null)
         {
             other.GetComponent<IAffectedByWeight>().AddWeight(1);
         }
+
     }
 
     private void OnTriggerExit(Collider other)
