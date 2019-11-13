@@ -8003,6 +8003,16 @@ PrefabInstance:
       propertyPath: baseKickbackForce
       value: 500
       objectReference: {fileID: 0}
+    - target: {fileID: 9217587417547698246, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9217587417547698244, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bddf47119048164f92afd5b2ac6e2e3, type: 3}
 --- !u!1 &2017650234

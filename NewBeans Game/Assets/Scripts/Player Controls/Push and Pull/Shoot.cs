@@ -22,7 +22,7 @@ public class Shoot : MonoBehaviour
     //States and timing
     private float pushCooldownTimer;
     public float pushCooldown;
-    private float pushChargedTime;
+    public float pushChargedTime;
     private float pushChargedMaxTime = 1.5f;
     public bool chargingPushProjectile;
     public bool chargingGrapplingHook;
@@ -63,10 +63,22 @@ public class Shoot : MonoBehaviour
     {
         pushCooldownTimer -= Time.deltaTime;
 
+        // --- If player is stunned, stop the charging.
+        if (playerScript.playerStunned)
+        {
+            aimingArrows.SetActive(false);
+            pushChargedTime = 0;
+            chargingPushProjectile = false;
+            chargingIndication.fillAmount = 0;
+            animator.SetBool("activateChargeBlink", false);
+            return;
+        }
+
         if (playerScript.playerStunned || playerScript.isDead) //Check if player is stunned or dead. If dead/stunned, do not shoot
         {
             return;
         }
+
 
         ////Shoot Watergun
         //if (Input.GetButtonDown(watergunInput) && waterGunCooldownTimer <= 0)
@@ -158,6 +170,7 @@ public class Shoot : MonoBehaviour
 
     private void ShootPushProjectile()
     {
+
         PushProjectile projectile = Instantiate(waterProjectile, new Vector3(shootOrigin.transform.position.x, shootOrigin.transform.position.y, shootOrigin.transform.position.z)
                                                                             , Quaternion.identity).GetComponent<PushProjectile>();
         //projectile.InitialiseShot(pushChargedTime, shootOrigin.forward, gameObject);
@@ -170,7 +183,7 @@ public class Shoot : MonoBehaviour
         Vector3 direction = -transform.forward;
         float percentage = 1 + (pushChargedTime / pushChargedMaxTime) * 3;
         playerScript.rb.AddForce(direction * (baseKickbackForce * percentage));
-        
+
 
         //Reset states
         aimingArrows.SetActive(false);
@@ -198,6 +211,8 @@ public class Shoot : MonoBehaviour
     void ShotgunAttack() {
         
         StartCoroutine(ShotgunFireLight());
+
+        animator.SetBool("backToNull", true); // Stops the shoot charging animation
 
         List<Collider> colliders = new List<Collider>();
         colliders.AddRange(Physics.OverlapSphere(transform.position, explodeRadius, playerLayer)); //Find all players in range
