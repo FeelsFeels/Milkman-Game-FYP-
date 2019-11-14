@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// For using special skills
@@ -9,9 +10,15 @@ using UnityEngine;
 public class SkillSetManager : MonoBehaviour
 {
     public enum characterChosen { Fire, Water, Lightning, Earth,};
+    [Header("Charging Ultimate Skill Settings")]
     public characterChosen playerAvatar;
     public float fullChargeAmount‬ = 13195f;
     float currentCharge = 0;
+    string AButtonInput;
+    string BButtonInput;
+
+    [Header("UI")]
+    public Image chargeBar;
 
     // Start is called before the first frame update
     void Start()
@@ -24,11 +31,24 @@ public class SkillSetManager : MonoBehaviour
     {
         if (currentCharge >= fullChargeAmount)
         {
-            //check input
+            //Insert visual feedback that my ultimate form is ready to show
+
+
+            //Check inputs
+            if(Input.GetButtonDown(AButtonInput) && Input.GetButtonDown(BButtonInput))
+            {
+                //Disable Push and Pull
+
+                //Release unique ulti skill
+                Debug.Log("You have released the kraken");
+                ReleaseSpecialSkill();
+            }
         }
     }
 
-    //Set the character
+    /// ***********
+    //Set the character stuff
+    /// ***********
     public void SetCharacter(string characterType)
     {
         switch (characterType)
@@ -64,15 +84,25 @@ public class SkillSetManager : MonoBehaviour
         }
     }
 
+    public void SetInputs(string A, string B)
+    {
+        AButtonInput = A;
+        BButtonInput = B;
+    }
+
+
+
     public void ChargeSpecialSkill(float projectileKnockback)
     {
-        currentCharge += projectileKnockback;
+        Debug.Log("I feel stronger each time");
 
-        if (currentCharge > fullChargeAmount)
-            currentCharge = fullChargeAmount; //Make sure current charge never exceedsss the max
+        //Increase thy ulti charge
+        currentCharge = Mathf.Min(currentCharge + projectileKnockback, fullChargeAmount);//Make sure current charge never exceedsss the max
 
-        //Insert UI stuff here for charge bar
+        //Debug.Log("My power is now at: " + currentCharge);
 
+        //Insert UI stuff here for charge bar update
+        
 
     }
 
@@ -80,6 +110,40 @@ public class SkillSetManager : MonoBehaviour
     void ReleaseSpecialSkill()
     {
         // Release the kraken
+
+        switch (playerAvatar) {
+
+            case (characterChosen.Fire):
+            {
+                //Insert Fire
+                break;
+            }
+
+
+            case (characterChosen.Water):
+            {
+                //Insert Water
+                break;
+            }
+
+            case (characterChosen.Lightning):
+            {
+                //Insert Ziggity Zaggity
+                break;
+            }
+            case (characterChosen.Earth):
+            {
+                //Insert Golem??? 
+                break;
+            }
+
+
+            default:
+            {
+                Debug.Log("Oh heckie");
+                break;
+            }
+        }
 
     }
 

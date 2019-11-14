@@ -796,6 +796,12 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 61573804}
+    - target: {fileID: 2470273207614264387, guid: 3bda2b1ba259d344aabdf004f7ca1e57,
+        type: 3}
+      propertyPath: trackedPlayer
+      value: 
+      objectReference: {fileID: 11400000, guid: d633b295485f476439537afe242feeec,
+        type: 2}
     - target: {fileID: 7893229862611723533, guid: 3bda2b1ba259d344aabdf004f7ca1e57,
         type: 3}
       propertyPath: m_Sprite
@@ -1668,7 +1674,7 @@ PrefabInstance:
         type: 3}
       propertyPath: inputInfo
       value: 
-      objectReference: {fileID: 11400000, guid: a9ce6e909e3233e4193f8c26d843278d,
+      objectReference: {fileID: 11400000, guid: d633b295485f476439537afe242feeec,
         type: 2}
     - target: {fileID: 9217587416402060000, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
@@ -1679,7 +1685,7 @@ PrefabInstance:
         type: 3}
       propertyPath: colorToReference
       value: 
-      objectReference: {fileID: 11400000, guid: a9ce6e909e3233e4193f8c26d843278d,
+      objectReference: {fileID: 11400000, guid: d633b295485f476439537afe242feeec,
         type: 2}
     - target: {fileID: 9217587416402060001, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}

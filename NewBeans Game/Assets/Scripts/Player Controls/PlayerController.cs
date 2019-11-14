@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-//[RequireComponent(typeof(SkillSetManager))]
+[RequireComponent(typeof(SkillSetManager))]
 public class PlayerController : MonoBehaviour
 {
     public int playerNumber;
@@ -105,6 +105,7 @@ public class PlayerController : MonoBehaviour
             {
                 if(this.GetComponent<SkillSetManager>()!=null)
                 this.GetComponent<SkillSetManager>().SetCharacter(inputInfo.chosenCharacterData.character);
+                this.GetComponent<SkillSetManager>().SetInputs(AButtonInput, BButtonInput);
             }
 
             //No player assigned to character

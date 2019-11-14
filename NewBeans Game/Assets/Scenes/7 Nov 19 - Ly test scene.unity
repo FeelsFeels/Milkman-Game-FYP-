@@ -691,7 +691,7 @@ PrefabInstance:
     - target: {fileID: 7893229861948897603, guid: 3bda2b1ba259d344aabdf004f7ca1e57,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7893229861948897607, guid: 3bda2b1ba259d344aabdf004f7ca1e57,
         type: 3}
@@ -808,6 +808,12 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 61573804}
+    - target: {fileID: 2470273207614264387, guid: 3bda2b1ba259d344aabdf004f7ca1e57,
+        type: 3}
+      propertyPath: trackedPlayer
+      value: 
+      objectReference: {fileID: 11400000, guid: d633b295485f476439537afe242feeec,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bda2b1ba259d344aabdf004f7ca1e57, type: 3}
 --- !u!1 &350313479
@@ -1297,6 +1303,27 @@ MonoBehaviour:
   m_ScreenEdgeBuffer: 7
   m_MinSize: 15
   m_Targets: []
+--- !u!1 &770465943 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9217587416402060013, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1556699364}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &770465949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770465943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e321d3f01307a346ba4be48fc3a29e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAvatar: 0
+  fullChargeAmount: 13195
+  chargeBar: {fileID: 0}
 --- !u!1 &801333826 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9217587416402060013, guid: 1bddf47119048164f92afd5b2ac6e2e3,
@@ -1316,7 +1343,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAvatar: 0
-  fullChargeAmount: 0
+  fullChargeAmount: 13195
+  chargeBar: {fileID: 0}
 --- !u!1 &844239885
 GameObject:
   m_ObjectHideFlags: 0
@@ -1521,7 +1549,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAvatar: 0
-  fullChargeAmount: 0
+  fullChargeAmount: 13195
+  chargeBar: {fileID: 0}
 --- !u!1 &1040281928
 GameObject:
   m_ObjectHideFlags: 0
@@ -1714,7 +1743,7 @@ PrefabInstance:
         type: 3}
       propertyPath: inputInfo
       value: 
-      objectReference: {fileID: 11400000, guid: a9ce6e909e3233e4193f8c26d843278d,
+      objectReference: {fileID: 11400000, guid: d633b295485f476439537afe242feeec,
         type: 2}
     - target: {fileID: 9217587416402060000, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
@@ -1725,7 +1754,7 @@ PrefabInstance:
         type: 3}
       propertyPath: colorToReference
       value: 
-      objectReference: {fileID: 11400000, guid: a9ce6e909e3233e4193f8c26d843278d,
+      objectReference: {fileID: 11400000, guid: d633b295485f476439537afe242feeec,
         type: 2}
     - target: {fileID: 9217587416402060001, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
@@ -2825,7 +2854,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   canStunPlayer: 0
-  tofuDropped: 0
+  rockDropping: 0
   baseForce: 200
   shockwaveParticles: {fileID: 0}
   knockbackStrength: 1800
@@ -2925,6 +2954,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 125339955b5d58d40a0cb7a7cd9111a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   golemPrefab: {fileID: 1731319518641209068, guid: 75ed28e394bab9140a09be9c6440795a,
     type: 3}
   spawnPoints:
@@ -7791,7 +7825,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   canStunPlayer: 0
-  tofuDropped: 0
+  rockDropping: 0
   baseForce: 200
   shockwaveParticles: {fileID: 0}
   knockbackStrength: 1800
@@ -7919,7 +7953,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   canStunPlayer: 0
-  tofuDropped: 0
+  rockDropping: 0
   baseForce: 200
   shockwaveParticles: {fileID: 0}
   knockbackStrength: 1800
@@ -8066,6 +8100,27 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bddf47119048164f92afd5b2ac6e2e3, type: 3}
+--- !u!1 &2006223864 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9217587416402060013, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1133764705}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2006223870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006223864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e321d3f01307a346ba4be48fc3a29e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAvatar: 0
+  fullChargeAmount: 13195
+  chargeBar: {fileID: 0}
 --- !u!1 &2017650234
 GameObject:
   m_ObjectHideFlags: 0
@@ -8210,7 +8265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   canStunPlayer: 0
-  tofuDropped: 0
+  rockDropping: 0
   baseForce: 200
   shockwaveParticles: {fileID: 0}
   knockbackStrength: 1800
@@ -8420,7 +8475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   canStunPlayer: 0
-  tofuDropped: 0
+  rockDropping: 0
   baseForce: 200
   shockwaveParticles: {fileID: 0}
   knockbackStrength: 1800
