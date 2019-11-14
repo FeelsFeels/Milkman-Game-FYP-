@@ -26,6 +26,7 @@ public class GrapplingHook : MonoBehaviour
     public GameObject hookOwner;        //This refers to the "first node", usually refers to player. 
     public GameObject player;           //Player gameobject. Does NOT change.
     public GameObject latchedObject;
+    public Transform playerCenter;
 
     public GameObject nodePrefab;       //This is the nodes
 
@@ -58,6 +59,7 @@ public class GrapplingHook : MonoBehaviour
             lineRenderer.enabled = false;
 
         player = hookOwner;
+
     }
 
     private void FixedUpdate()
@@ -76,7 +78,7 @@ public class GrapplingHook : MonoBehaviour
             else
             {
                 //The nodes follows the player
-                FollowPreviousNode(i == 0 ? player.transform : nodes[i - 1].transform, nodes[i].transform);
+                FollowPreviousNode(i == 0 ? playerCenter : nodes[i - 1].transform, nodes[i].transform);
                 //AdjustNodes((i == nodes.Count - 1) ? transform : nodes[i + 1].transform, i == 0 ? player.transform : nodes[i - 1].transform, nodes[i].transform);
             }
         }
@@ -243,7 +245,8 @@ public class GrapplingHook : MonoBehaviour
 
         Vector3 targetPosition = prevNode.position;
         targetPosition -= node.transform.rotation * Vector3.forward * nodeBondDistance;
-        targetPosition.y = node.position.y;
+        //targetPosition.y = node.position.y;
+        targetPosition.y = (prevNode.position.y + node.position.y) / 2;
         node.position = Vector3.Lerp(node.position, targetPosition, Time.deltaTime * nodeBondDamping);
     }
 
@@ -298,7 +301,7 @@ public class GrapplingHook : MonoBehaviour
     }
 
     //Call before destroying hook
-    private void FinishHookSequence()
+    public void FinishHookSequence()
     {
         hookStatus = HookStatus.none;
         if (nodes.Count >= 0)
@@ -310,13 +313,7 @@ public class GrapplingHook : MonoBehaviour
         }
         Destroy(gameObject);
     }
-
-    //Throws player in a direction
-    void FlingLatchedPlayer()
-    {
-
-    }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         ////////****///////
@@ -395,7 +392,6 @@ public class GrapplingHook : MonoBehaviour
         Vector3 targetPosition = prevNode.position;
         Vector3 nextPosition = nextNode.position;
         targetPosition -= node.transform.rotation * Vector3.forward * nodeBondDistance;
-        targetPosition.y = node.position.y;
         targetPosition.y = node.position.y;
 
         Vector3 averagePosition;
