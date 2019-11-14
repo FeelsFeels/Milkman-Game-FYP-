@@ -44,7 +44,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskInt:
-        m_Texture: {fileID: 2800000, guid: 361c66ba3f0a0ea4f9868a3a02c5b708, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -89,4 +89,4 @@ Material:
     m_Colors:
     - _Color: {r: 0.5486828, g: 0.7415154, b: 0.8490566, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FoamC: {r: 0.9764151, g: 0.99504715, b: 1, a: 1}
+    - _FoamC: {r: 0.14711641, g: 0.4804942, b: 0.5471698, a: 0.26666668}

@@ -18,3 +18,4 @@ MonoBehaviour:
     rgba: 4278190335
   characterUISprite: {fileID: 7555812126866737967, guid: 49461c16672aec64b9e107fb6d3ed300,
     type: 3}
+  character: Fire
