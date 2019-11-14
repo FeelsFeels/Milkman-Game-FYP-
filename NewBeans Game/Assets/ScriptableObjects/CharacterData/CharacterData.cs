@@ -8,5 +8,4 @@ public class CharacterData : ScriptableObject
     public GameObject characterPrefab;
     public Color32 characterColor;
     public Sprite characterUISprite;
-    public string character;
 }

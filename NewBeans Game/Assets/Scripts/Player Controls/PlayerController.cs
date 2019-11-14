@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-//[RequireComponent(typeof(SkillSetManager))]
 public class PlayerController : MonoBehaviour
 {
     public int playerNumber;
@@ -99,13 +98,6 @@ public class PlayerController : MonoBehaviour
                 RightVerticalAxis = inputInfo.RightVerticalAxis;
             if (inputInfo.RightBumper != null)
                 RightBumper = inputInfo.RightBumper;
-
-            //Set what character this player is playing
-            if (inputInfo.chosenCharacterData != null)
-            {
-                if(this.GetComponent<SkillSetManager>()!=null)
-                this.GetComponent<SkillSetManager>().SetCharacter(inputInfo.chosenCharacterData.character);
-            }
 
             //No player assigned to character
             //if (inputInfo.chosenCharacterData == null)

@@ -36,7 +36,6 @@ public class PushProjectile : MonoBehaviour
     public void ShotInitialised(float multiplier, float smallMultiplier, Vector3 shotDirection, GameObject shootingPlayer)
     {
         knockbackToUse = multiplier * baseKnockback;
-
         speed *= smallMultiplier;
         ownerPlayer = shootingPlayer;
         knockbackDirection = shotDirection;
@@ -80,13 +79,6 @@ public class PushProjectile : MonoBehaviour
             //player.GetComponent<Rigidbody>().AddForce(direction * knockbackStrength);
             player.GetComponent<Rigidbody>().AddForce(knockbackDirection * knockbackToUse);
             playerHit.lastHitBy = ownerPlayer;
-
-            //Charging special skills
-            if(ownerPlayer.GetComponent<SkillSetManager>() != null)
-            {
-                ownerPlayer.GetComponent<SkillSetManager>().ChargeSpecialSkill(knockbackToUse);
-            }
-
             Destroy(gameObject);
         }
 

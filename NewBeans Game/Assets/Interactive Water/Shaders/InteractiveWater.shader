@@ -107,10 +107,11 @@ Shader "Unlit/Simple Water Interactive"
                 half4 col = tex2D(_MainTex, (i.worldPos.xz * _Scale) - (distortx * _TextureDistort));// texture times tint;        
                 half depth = LinearEyeDepth(SAMPLE_DEPTH_TEXTURE_PROJ(_CameraDepthTexture, UNITY_PROJ_COORD(i.scrPos ))); // depth
 				//half depth = tex2Dproj (_CameraDepthTexture, UNITY_PROJ_COORD(i.scrPos)).r * 400;
-				//half depth = tex2D(_CameraDepthTexture, i.scrPos.xy / i.scrPos.w).r * 1.0999999;
+				//half depth = tex2D(_CameraDepthTexture, (i.scrPos)).r * 1.0999999;
 				//half depth = tex2Dproj(_CameraDepthTexture, UNITY_PROJ_COORD(i.scrPos)).r * 1.0999999;
 
-                half4 foamLine =1 - saturate(_Foam* (depth - i.scrPos.w ) ) ;// foam line by comparing depth and screenposition
+                //half4 foamLine =1 - saturate(_Foam* (depth - i.scrPos.w ) ) ;// foam line by comparing depth and screenposition
+				half4 foamLine =1 - saturate(_Foam* (depth - i.vertex.w) ) ;
 				
 
                 col *= _Color;
