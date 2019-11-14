@@ -34,7 +34,7 @@ public class EventTimer : MonoBehaviour
         timerManager = FindObjectOfType<TimerManager>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         //null check
         if (eventList.Count == 0 || eventList == null)
@@ -82,5 +82,22 @@ public class EventTimer : MonoBehaviour
         //Clear all elements in temporary list
         eventsToRemove.Clear();
     }
+
+    //All this shit doesnt work, i am very sorry for messing up.
+    //public void AddNewEvent(float timeBeforeCall, UnityEvent eventToAdd, bool shouldRepeat, float repeatTime)
+    //{
+    //    EventInformation newEvent = new EventInformation(timerManager.timeElapsedSinceStart + timeBeforeCall, eventToAdd, shouldRepeat, repeatTime);
+    //    eventList.Add(newEvent);
+    //}
+
+    //public void AddNewEvent(EventInformation newEvent)
+    //{
+    //    eventList.Add(newEvent);
+    //}
+
+    //public void Print()
+    //{
+    //    print("EVENT RUNNED");
+    //}
 }
 

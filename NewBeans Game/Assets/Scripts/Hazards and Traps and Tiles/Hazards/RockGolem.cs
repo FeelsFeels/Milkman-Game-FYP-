@@ -16,6 +16,7 @@ public class RockGolem : MonoBehaviour
 
     GolemStates golemState = GolemStates.Idle;
 
+    public GolemSpawner golemSpawner;
     Rigidbody rb;
     Animator animator;
 
@@ -38,6 +39,7 @@ public class RockGolem : MonoBehaviour
     bool showInitialiseParticles;
     public GameObject shockwaveParticles;
     public GameObject crashingParticles;
+    public GameObject chasingCanvas;
 
     private void Start()
     {
@@ -162,6 +164,11 @@ public class RockGolem : MonoBehaviour
             {
                 timeSpentChasing = 0; 
                 golemState = GolemStates.Idle;
+                chasingCanvas.SetActive(false);
+            }
+            else
+            {
+                chasingCanvas.SetActive(true);
             }
         }
 
@@ -209,7 +216,6 @@ public class RockGolem : MonoBehaviour
         //Disrupts all players in range
         foreach(Collider collider in inRange)
         {
-            print(collider.name);
             PlayerController player = collider.GetComponent<PlayerController>();
             if (player)
             {
@@ -224,14 +230,6 @@ public class RockGolem : MonoBehaviour
                 Vector3 knockbackDirection = (collider.transform.position - transform.position).normalized;
                 collider.GetComponent<HazardBoulder>().rb.AddForce(knockbackStrength * knockbackDirection);
             }
-        }
-    }
-    
-    void ChangeState(GolemStates newState)
-    {
-        switch (newState)
-        {
-
         }
     }
 
@@ -268,6 +266,22 @@ public class RockGolem : MonoBehaviour
             showInitialiseParticles = false;
             Shockwave();
             StartCoroutine(SetVelocityZeroNextFrame());
+        }
+
+        //Golem is already inside water, kill it
+        if(transform.position.y < -20f)
+        {
+            GolemDeath();
+        }
+    }
+
+    void GolemDeath()
+    {
+        Destroy(gameObject);
+
+        if (golemSpawner != null)
+        {
+            golemSpawner.GolemHasDied();
         }
     }
 

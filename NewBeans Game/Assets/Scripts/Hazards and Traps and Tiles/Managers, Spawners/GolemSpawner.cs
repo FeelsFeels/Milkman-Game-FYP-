@@ -1,17 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GolemSpawner : MonoBehaviour
 {
+    EventTimer eventTimer;
+
+    public UnityEvent testEvent;
+
     public GameObject golemPrefab;
 
     public Transform[] spawnPoints; //In the scene, put these spawnpoints in the center of the section (1 October 2019, early prototype)
 
-
-    public void GolemTestDebug()
+    private void Awake()
     {
-        print("spawnGolem");
+        eventTimer = FindObjectOfType<EventTimer>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            testEvent.AddListener(SpawnGolem);
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            testEvent.RemoveListener(SpawnGolem);
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            testEvent.Invoke();
+        }
     }
 
     public void SpawnGolem()
@@ -33,10 +53,20 @@ public class GolemSpawner : MonoBehaviour
             }
         }
         RockGolem spawnedGolem = Instantiate(golemPrefab, spawnPoint, Quaternion.identity).GetComponent<RockGolem>();
+        spawnedGolem.golemSpawner = this;
         spawnedGolem.transform.position += Vector3.up * 100;    //Make sure golem is out of frame, so it can come crashing down like a majestic lit ass mofo 😎😎😎😎😎😎😎😎
         spawnedGolem.Initialise();
 
     }
 
+    public void GolemHasDied()
+    {
+        StartCoroutine(TimerBeforeNextGolemSpawn());
+    }
 
+    IEnumerator TimerBeforeNextGolemSpawn()
+    {
+        yield return new WaitForSeconds(30);
+        SpawnGolem();
+    }
 }

@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Object Components and References")]
     // Object's Components
+    public Shoot playerShoot;
     public Animator animator;
     CapsuleCollider capsuleCollider;
     public SkinnedMeshRenderer skinnedMeshRenderer;
@@ -128,16 +129,7 @@ public class PlayerController : MonoBehaviour
         if (cameraRigObj != null)
             cameraRigRot = cameraRigObj.transform.rotation.eulerAngles.y;
     }
-
-    //Deprecated 
-    //public void SetControllerNumber (int controllerNo)
-    //{
-    //    ControllerNumber = controllerNo; //get the controller number that will control this player (to which this script is attached to)
-    //    HorizontalInputAxis = "Horizontal (Controller " + controllerNo + ")";
-    //    VerticalInputAxis = "Vertical (Controller " + controllerNo + ")";
-    //    AButtonInput = "AButton (Controller " + controllerNo + ")";
-    //    BButtonInput = "BButton (Controller " + controllerNo + ")";
-    //}
+    
 
     private void Update()
     {
@@ -289,6 +281,7 @@ public class PlayerController : MonoBehaviour
         isDead = true;
         playerStunned = false;
         dizzyStars.SetActive(false);
+        playerShoot.DestroyGrapplingHook();
         Instantiate(playerDieEffect, gameObject.transform.position, gameObject.transform.rotation);
 
         if (lastHitBy != null)

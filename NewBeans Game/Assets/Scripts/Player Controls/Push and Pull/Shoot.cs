@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Shoot : MonoBehaviour
 {
     public Transform shootOrigin;
+    public Transform playerCenter; //Needed as reference for grappling hook's linerenderer;
 
     public GameObject waterProjectile;
     public GameObject hookProjectile;
@@ -24,6 +25,9 @@ public class Shoot : MonoBehaviour
     public float pushCooldown;
     public float pushChargedTime;
     private float pushChargedMaxTime = 1.5f;
+    private float pullCooldownTimer;
+    public float pullCooldown = 5f;
+
     public bool chargingPushProjectile;
     public bool chargingGrapplingHook;
 
@@ -62,6 +66,7 @@ public class Shoot : MonoBehaviour
     private void Update()
     {
         pushCooldownTimer -= Time.deltaTime;
+        pullCooldownTimer -= Time.deltaTime;
 
         // --- If player is stunned, stop the charging.
         if (playerScript.playerStunned)
@@ -123,17 +128,7 @@ public class Shoot : MonoBehaviour
         {
             ChargePushProjectile();
         }
-
-        if (usingRightBumper && Input.GetButtonDown(chargingInput) && pushCooldownTimer <= 0)
-        {
-            ChargePushProjectile();
-        }
-
-        if (usingRightBumper && Input.GetButtonUp(chargingInput) && chargingPushProjectile)
-        {
-            ShootPushProjectile();
-        }
-
+        
         if (Input.GetButtonUp(watergunInput) && chargingPushProjectile)
         {
             ShootPushProjectile();
@@ -142,7 +137,7 @@ public class Shoot : MonoBehaviour
         
 
         //Charge Grappling Hook
-        if (Input.GetButtonDown(hookInput))
+        if (Input.GetButtonDown(hookInput) && pullCooldownTimer <= 0)
         {
             if (hProjectile == null)
             {
@@ -294,13 +289,11 @@ public class Shoot : MonoBehaviour
         aimingArrows.SetActive(false);
 
         GrapplingHook projectile = Instantiate(hookProjectile, new Vector3(shootOrigin.transform.position.x, shootOrigin.transform.position.y, shootOrigin.transform.position.z), Quaternion.identity).GetComponent<GrapplingHook>();
-        //projectile.Init();
         projectile.direction = shootOrigin.forward;
         projectile.hookOwner = gameObject;
+        projectile.playerCenter = playerCenter;
         hProjectile = projectile;
-
-        //It looks terrible, dont
-        //playerScript.animator.SetTrigger("Attack");
+        pullCooldownTimer = pullCooldown;
     }
 
     //Called when player is stunned
@@ -308,6 +301,13 @@ public class Shoot : MonoBehaviour
     public void DisruptHookAiming()
     {
         chargingGrapplingHook = false;
+    }
+
+    //Force destroy grappling hook
+    public void DestroyGrapplingHook()
+    {
+        if(hProjectile != null)
+            hProjectile.FinishHookSequence();
     }
 
 }
