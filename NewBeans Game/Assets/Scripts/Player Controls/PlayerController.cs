@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Object Components and References")]
     // Object's Components
-    private Shoot playerShoot;
+    public Shoot playerShoot;
     public Animator animator;
     CapsuleCollider capsuleCollider;
     public SkinnedMeshRenderer skinnedMeshRenderer;

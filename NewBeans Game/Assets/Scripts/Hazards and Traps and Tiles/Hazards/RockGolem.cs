@@ -216,7 +216,6 @@ public class RockGolem : MonoBehaviour
         //Disrupts all players in range
         foreach(Collider collider in inRange)
         {
-            print(collider.name);
             PlayerController player = collider.GetComponent<PlayerController>();
             if (player)
             {

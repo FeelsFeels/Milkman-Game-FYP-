@@ -321,7 +321,7 @@ public class GrapplingHook : MonoBehaviour
         ////////****///////
         
         //Dont need to do anything if colliding with the caster
-        if (other.gameObject == hookOwner)
+        if (other.gameObject == player)
             return;
 
         //Or if its hitting a shield, because the shield blocks the grapple hook anyway
@@ -353,7 +353,7 @@ public class GrapplingHook : MonoBehaviour
         else if (other.tag == "GrabbableEnvironment" || other.tag == "Rock")
         {
             StartReverse();
-            gameObject.transform.position = other.transform.position;
+            //gameObject.transform.position = other.transform.position;
             return;
         }
         else

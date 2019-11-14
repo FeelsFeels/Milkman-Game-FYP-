@@ -128,17 +128,7 @@ public class Shoot : MonoBehaviour
         {
             ChargePushProjectile();
         }
-
-        if (usingRightBumper && Input.GetButtonDown(chargingInput) && pushCooldownTimer <= 0)
-        {
-            ChargePushProjectile();
-        }
-
-        if (usingRightBumper && Input.GetButtonUp(chargingInput) && chargingPushProjectile)
-        {
-            ShootPushProjectile();
-        }
-
+        
         if (Input.GetButtonUp(watergunInput) && chargingPushProjectile)
         {
             ShootPushProjectile();

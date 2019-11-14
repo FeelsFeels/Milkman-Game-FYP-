@@ -2401,7 +2401,7 @@ MonoBehaviour:
     isRepeating: 1
     repeatRate: 50
   - EventDescription: Spawn Golem
-    timeToCall: 1
+    timeToCall: 10000
     unityEvent:
       m_PersistentCalls:
         m_Calls:
@@ -2879,6 +2879,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 125339955b5d58d40a0cb7a7cd9111a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   golemPrefab: {fileID: 1731319518641209068, guid: 75ed28e394bab9140a09be9c6440795a,
     type: 3}
   spawnPoints:
