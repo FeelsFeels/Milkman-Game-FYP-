@@ -18,3 +18,4 @@ MonoBehaviour:
     rgba: 4289855610
   characterUISprite: {fileID: 2165524302930359714, guid: 49461c16672aec64b9e107fb6d3ed300,
     type: 3}
+  character: Lightning

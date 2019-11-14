@@ -688,6 +688,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameplayUI_Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7893229861948897603, guid: 3bda2b1ba259d344aabdf004f7ca1e57,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7893229861948897607, guid: 3bda2b1ba259d344aabdf004f7ca1e57,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1292,6 +1297,26 @@ MonoBehaviour:
   m_ScreenEdgeBuffer: 7
   m_MinSize: 15
   m_Targets: []
+--- !u!1 &801333826 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9217587416402060013, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1948586132}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &801333832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801333826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e321d3f01307a346ba4be48fc3a29e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAvatar: 0
+  fullChargeAmount: 0
 --- !u!1 &844239885
 GameObject:
   m_ObjectHideFlags: 0
@@ -1477,6 +1502,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 995897734}
   m_Mesh: {fileID: 3569926171146316544, guid: 0fc744938e362eb4e9fa99acf60aeb40, type: 3}
+--- !u!1 &1020858575 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9217587416402060013, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 85133315}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1020858576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020858575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e321d3f01307a346ba4be48fc3a29e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAvatar: 0
+  fullChargeAmount: 0
 --- !u!1 &1040281928
 GameObject:
   m_ObjectHideFlags: 0
@@ -2602,7 +2647,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1667435613}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
@@ -2780,7 +2825,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   canStunPlayer: 0
+<<<<<<< HEAD
   rockDropping: 0
+=======
+  tofuDropped: 0
+>>>>>>> parent of 6560ab1... help
   baseForce: 200
   shockwaveParticles: {fileID: 0}
   knockbackStrength: 1800
@@ -7751,7 +7800,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   canStunPlayer: 0
+<<<<<<< HEAD
   rockDropping: 0
+=======
+  tofuDropped: 0
+>>>>>>> parent of 6560ab1... help
   baseForce: 200
   shockwaveParticles: {fileID: 0}
   knockbackStrength: 1800
@@ -7879,7 +7932,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   canStunPlayer: 0
+<<<<<<< HEAD
   rockDropping: 0
+=======
+  tofuDropped: 0
+>>>>>>> parent of 6560ab1... help
   baseForce: 200
   shockwaveParticles: {fileID: 0}
   knockbackStrength: 1800
@@ -8170,7 +8227,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   canStunPlayer: 0
+<<<<<<< HEAD
   rockDropping: 0
+=======
+  tofuDropped: 0
+>>>>>>> parent of 6560ab1... help
   baseForce: 200
   shockwaveParticles: {fileID: 0}
   knockbackStrength: 1800
@@ -8380,7 +8441,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   canStunPlayer: 0
+<<<<<<< HEAD
   rockDropping: 0
+=======
+  tofuDropped: 0
+>>>>>>> parent of 6560ab1... help
   baseForce: 200
   shockwaveParticles: {fileID: 0}
   knockbackStrength: 1800
