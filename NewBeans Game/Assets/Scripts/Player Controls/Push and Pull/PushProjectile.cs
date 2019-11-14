@@ -84,7 +84,7 @@ public class PushProjectile : MonoBehaviour
 
         if (!player)
         {
-            Instantiate(player.playerPushedEffect, player.transform.position, player.transform.rotation);
+            Instantiate(player.playerPushedEffect, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

@@ -12,7 +12,15 @@ public class HazardBoulder : MonoBehaviour
 
     public GameObject shockwaveParticles;
     public float knockbackStrength = 1800f;
-    
+
+
+    private void Awake()
+    {
+        if (!rb)
+        {
+            rb = GetComponent<Rigidbody>();
+        }
+    }
 
     public void Initialise()
     {
@@ -83,7 +91,10 @@ public class HazardBoulder : MonoBehaviour
             print("false because it hit " + other.gameObject.name + " that has the tag: " + other.tag);
             gameObject.SetActive(false);
 
-            TofuBlockManager.instance.SpawnTofuWithDelay(Random.Range(5, 10));
+            if (TofuBlockManager.instance != null)
+            {
+                TofuBlockManager.instance.SpawnTofuWithDelay(Random.Range(5, 10));
+            }
             print("new tofu in town");
         }
 

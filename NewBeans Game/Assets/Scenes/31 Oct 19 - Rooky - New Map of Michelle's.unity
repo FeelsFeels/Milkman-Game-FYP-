@@ -2381,7 +2381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventList:
   - EventDescription: Change Pattern/50s
-    timeToCall: 1
+    timeToCall: 13
     unityEvent:
       m_PersistentCalls:
         m_Calls:
@@ -2398,10 +2398,10 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    isRepeating: 0
+    isRepeating: 1
     repeatRate: 50
   - EventDescription: Spawn Golem
-    timeToCall: 50
+    timeToCall: 1
     unityEvent:
       m_PersistentCalls:
         m_Calls:
@@ -2694,6 +2694,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 449634, guid: a0f68672c76de4845b23a94845452f8a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -54
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0f68672c76de4845b23a94845452f8a, type: 3}
 --- !u!1 &1701914245
@@ -2775,7 +2779,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   canStunPlayer: 0
+  rockDropping: 0
   baseForce: 50
+  shockwaveParticles: {fileID: 0}
+  knockbackStrength: 1800
 --- !u!23 &1701914250
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7738,7 +7745,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   canStunPlayer: 0
+  rockDropping: 0
   baseForce: 50
+  shockwaveParticles: {fileID: 0}
+  knockbackStrength: 1800
 --- !u!23 &1848492882
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7863,7 +7873,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   canStunPlayer: 0
+  rockDropping: 0
   baseForce: 50
+  shockwaveParticles: {fileID: 0}
+  knockbackStrength: 1800
 --- !u!23 &1855989710
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8159,7 +8172,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   canStunPlayer: 0
+  rockDropping: 0
   baseForce: 50
+  shockwaveParticles: {fileID: 0}
+  knockbackStrength: 1800
 --- !u!65 &2093050976
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8366,7 +8382,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   canStunPlayer: 0
+  rockDropping: 0
   baseForce: 50
+  shockwaveParticles: {fileID: 0}
+  knockbackStrength: 1800
 --- !u!23 &2141692759
 MeshRenderer:
   m_ObjectHideFlags: 0
