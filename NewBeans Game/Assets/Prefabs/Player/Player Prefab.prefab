@@ -374,7 +374,7 @@ MonoBehaviour:
   chargingIndication: {fileID: 9217587417547698246}
   pushCooldown: 0.3
   pushChargedTime: 0
-  pullCooldown: 3
+  pullCooldown: 1.5
   chargingPushProjectile: 0
   chargingGrapplingHook: 0
   baseKickbackForce: 0
