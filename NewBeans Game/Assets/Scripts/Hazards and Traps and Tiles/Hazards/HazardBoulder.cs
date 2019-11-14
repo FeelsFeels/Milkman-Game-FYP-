@@ -6,19 +6,17 @@ public class HazardBoulder : MonoBehaviour
 {
     public Rigidbody rb;
     public bool canStunPlayer;
-    public bool tofuDropped;
+    public bool rockDropping;
 
     public float baseForce;
 
     public GameObject shockwaveParticles;
     public float knockbackStrength = 1800f;
+    
 
-
-    private void Start()
+    public void Initialise()
     {
-        rb = GetComponent<Rigidbody>();
-        Shockwave();
-
+        StartCoroutine(RockDroppingCoroutine());
     }
 
     public void Shockwave()
@@ -41,27 +39,25 @@ public class HazardBoulder : MonoBehaviour
                 player.GetComponent<Rigidbody>().AddForce(knockbackStrength * knockbackDirection);
 
                 player.Hit();
-                print("Player kena tofu shockwave");
+                print("Player kena FUCKED by tofu shockwave");
             }
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = new Color(1, 0, 0, 0.2f);
-        Gizmos.DrawSphere(transform.position, 10f);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = new Color(1, 0, 0, 0.2f);
+    //    Gizmos.DrawSphere(transform.position, 10f);
+    //}
 
     private void Update()
     {
-
         float velocity = rb.velocity.magnitude;
 
         if (velocity > 5f)
             canStunPlayer = true;
         else
             canStunPlayer = false;
-
     }
 
     private void OnCollisionStay(Collision collision)
@@ -84,11 +80,10 @@ public class HazardBoulder : MonoBehaviour
     {
         if (other.tag == "Hole")
         {
-            tofuDropped = true;
+            print("false because it hit " + other.gameObject.name + " that has the tag: " + other.tag);
             gameObject.SetActive(false);
-            print("tofu in hole:" + tofuDropped);
 
-            TofuBlockManager.instance.SpawnTofuWithDelay();
+            TofuBlockManager.instance.SpawnTofuWithDelay(Random.Range(5, 10));
             print("new tofu in town");
         }
 
@@ -105,5 +100,20 @@ public class HazardBoulder : MonoBehaviour
         {
             other.GetComponent<IAffectedByWeight>().RemoveWeight(1);
         }
+    }
+
+    IEnumerator RockDroppingCoroutine()
+    {
+        while(transform.position.y > 0.9f)
+        {
+            rb.isKinematic = true;
+            rb.MovePosition(transform.position + Vector3.down * 2.5f);
+            yield return null;
+        }
+        rb.isKinematic = false;
+        transform.position = new Vector3(transform.position.x, 0.8f, transform.position.z);
+        rb.velocity = Vector3.zero;
+
+        Shockwave();
     }
 }

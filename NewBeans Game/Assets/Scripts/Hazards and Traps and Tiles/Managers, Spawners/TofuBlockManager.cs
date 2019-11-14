@@ -8,11 +8,12 @@ public class TofuBlockManager : MonoBehaviour
 
     public GameObject tofuPrefab;
 
-
     public float tofuDelayTime = 1f;
 
+    public int startingTofuCount;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (instance == null)
         {
@@ -22,38 +23,49 @@ public class TofuBlockManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        SpawnTofu();
-        SpawnTofu();
-        SpawnTofu();
-        SpawnTofu();
-        SpawnTofu();
     }
-    
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        StartCoroutine(SpawnStartingTofu());
     }
+
+
 
     // -------- This spawns the 5 tofu blocks at random positions at the start of the game.
-    public void SpawnTofu()
+    void SpawnTofu()
     {
-        Vector3 randomSpawnPosition = new Vector3(Random.Range(35f, -20), 0.8f, Random.Range(-30f, 10f));
+        Vector3 randomSpawnPosition = new Vector3(Random.Range(35f, -20), 100f, Random.Range(-30f, 10f));
 
-        GameObject newTofu = (GameObject)Instantiate(tofuPrefab, randomSpawnPosition, Quaternion.Euler(-90, 0, 0));
+        HazardBoulder newTofu = Instantiate(tofuPrefab, randomSpawnPosition, Quaternion.Euler(-90, 0, 0)).GetComponent<HazardBoulder>();
+        newTofu.Initialise();
     }
 
     // -------- This spawns 1 tofu at random position, but with a delay time.
     public void SpawnTofuWithDelay()
     {
-        StartCoroutine(TofuSpawnWithDelay());
+        StartCoroutine(TofuSpawnWithDelay(0));
     }
 
-    IEnumerator TofuSpawnWithDelay()
+    public void SpawnTofuWithDelay(float tofuDelayTime)
+    {
+        StartCoroutine(TofuSpawnWithDelay(tofuDelayTime));
+    }
+
+    IEnumerator TofuSpawnWithDelay(float tofuDelayTime)
     {
         yield return new WaitForSeconds(tofuDelayTime);
         SpawnTofu();
+    }
+
+    //Spawns starting tofy blocks
+    IEnumerator SpawnStartingTofu()
+    {
+        for (int i = 0; i < startingTofuCount; i++)
+        {
+            SpawnTofu();
+            yield return new WaitForSeconds(0.15f);
+        }
+        yield return null;
     }
 }
