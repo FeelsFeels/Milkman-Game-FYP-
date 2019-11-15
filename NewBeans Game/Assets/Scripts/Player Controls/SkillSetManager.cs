@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 /// <summary>
 /// For using special skills
@@ -10,15 +11,20 @@ using UnityEngine.UI;
 public class SkillSetManager : MonoBehaviour
 {
     public enum characterChosen { Fire, Water, Lightning, Earth,};
+
     [Header("Charging Ultimate Skill Settings")]
     public characterChosen playerAvatar;
     public float fullChargeAmount‬ = 13195f;
-    float currentCharge = 0;
+    public float currentCharge = 0;
+    public float chargePercentage;
     string AButtonInput;
     string BButtonInput;
+    public bool ultiIsActivated;
 
     [Header("UI")]
     public Image chargeBar;
+
+    public UnityEvent<SkillSetManager> OnChargeUltimate = new ChargeUltiEvent();
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +44,7 @@ public class SkillSetManager : MonoBehaviour
             if(Input.GetButtonDown(AButtonInput) && Input.GetButtonDown(BButtonInput))
             {
                 //Disable Push and Pull
+                this.gameObject.GetComponent<Shoot>().playerCannotShoot = true;
 
                 //Release unique ulti skill
                 Debug.Log("You have released the kraken");
@@ -101,14 +108,21 @@ public class SkillSetManager : MonoBehaviour
 
         //Debug.Log("My power is now at: " + currentCharge);
 
-        //Insert UI stuff here for charge bar update
-        
+
+        //Charge bar update
+        chargePercentage = currentCharge / fullChargeAmount;
+
+        OnChargeUltimate.Invoke(this);
 
     }
 
 
     void ReleaseSpecialSkill()
     {
+        //Set bool active
+        ultiIsActivated = true;
+
+
         // Release the kraken
 
         switch (playerAvatar) {

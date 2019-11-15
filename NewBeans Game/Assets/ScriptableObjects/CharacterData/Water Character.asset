@@ -16,6 +16,6 @@ MonoBehaviour:
   characterColor:
     serializedVersion: 2
     rgba: 4294933504
-  characterUISprite: {fileID: -7267746988572873622, guid: 49461c16672aec64b9e107fb6d3ed300,
+  characterUISprite: {fileID: -1888357090364546983, guid: e9fc5dab66fcb6f4497f3627f41f0823,
     type: 3}
   character: Water

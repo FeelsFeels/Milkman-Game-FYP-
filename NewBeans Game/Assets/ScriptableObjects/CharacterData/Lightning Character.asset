@@ -16,6 +16,6 @@ MonoBehaviour:
   characterColor:
     serializedVersion: 2
     rgba: 4289855610
-  characterUISprite: {fileID: 2165524302930359714, guid: 49461c16672aec64b9e107fb6d3ed300,
+  characterUISprite: {fileID: -3570525371031324655, guid: e9fc5dab66fcb6f4497f3627f41f0823,
     type: 3}
   character: Lightning

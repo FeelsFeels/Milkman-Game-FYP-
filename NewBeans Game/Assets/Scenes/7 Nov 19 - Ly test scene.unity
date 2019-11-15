@@ -492,7 +492,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8090446431925777048, guid: e4fd5d7dc1428e8438860015600ea3db,
         type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1bddf47119048164f92afd5b2ac6e2e3, type: 3}
 --- !u!1 &149369842
 GameObject:
@@ -688,11 +689,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameplayUI_Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 7893229861948897603, guid: 3bda2b1ba259d344aabdf004f7ca1e57,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7893229861948897607, guid: 3bda2b1ba259d344aabdf004f7ca1e57,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -798,22 +794,26 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7893229862281613382, guid: 3bda2b1ba259d344aabdf004f7ca1e57,
+    - target: {fileID: 7827045517110350855, guid: 3bda2b1ba259d344aabdf004f7ca1e57,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 61573804}
-    - target: {fileID: 7893229862478952070, guid: 3bda2b1ba259d344aabdf004f7ca1e57,
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8679980444509060725, guid: 3bda2b1ba259d344aabdf004f7ca1e57,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 61573804}
-    - target: {fileID: 2470273207614264387, guid: 3bda2b1ba259d344aabdf004f7ca1e57,
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3530052770853761517, guid: 3bda2b1ba259d344aabdf004f7ca1e57,
         type: 3}
-      propertyPath: trackedPlayer
-      value: 
-      objectReference: {fileID: 11400000, guid: d633b295485f476439537afe242feeec,
-        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8669689186756310517, guid: 3bda2b1ba259d344aabdf004f7ca1e57,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bda2b1ba259d344aabdf004f7ca1e57, type: 3}
 --- !u!1 &350313479
@@ -1323,6 +1323,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAvatar: 0
   fullChargeAmount: 13195
+  currentCharge: 0
+  chargePercentage: 0
+  ultiIsActivated: 0
   chargeBar: {fileID: 0}
 --- !u!1 &801333826 stripped
 GameObject:
@@ -1344,6 +1347,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAvatar: 0
   fullChargeAmount: 13195
+  currentCharge: 0
+  chargePercentage: 0
+  ultiIsActivated: 0
   chargeBar: {fileID: 0}
 --- !u!1 &844239885
 GameObject:
@@ -1550,6 +1556,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAvatar: 0
   fullChargeAmount: 13195
+  currentCharge: 0
+  chargePercentage: 0
+  ultiIsActivated: 0
   chargeBar: {fileID: 0}
 --- !u!1 &1040281928
 GameObject:
@@ -1768,7 +1777,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8090446431925777048, guid: e4fd5d7dc1428e8438860015600ea3db,
         type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1bddf47119048164f92afd5b2ac6e2e3, type: 3}
 --- !u!1 &1136643621
 GameObject:
@@ -2410,7 +2420,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8090446431925777048, guid: e4fd5d7dc1428e8438860015600ea3db,
         type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1bddf47119048164f92afd5b2ac6e2e3, type: 3}
 --- !u!1 &1658703578
 GameObject:
@@ -2954,11 +2965,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 125339955b5d58d40a0cb7a7cd9111a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   golemPrefab: {fileID: 1731319518641209068, guid: 75ed28e394bab9140a09be9c6440795a,
     type: 3}
   spawnPoints:
@@ -8098,7 +8104,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8090446431925777048, guid: e4fd5d7dc1428e8438860015600ea3db,
         type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1bddf47119048164f92afd5b2ac6e2e3, type: 3}
 --- !u!1 &2006223864 stripped
 GameObject:
@@ -8120,6 +8127,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAvatar: 0
   fullChargeAmount: 13195
+  currentCharge: 0
+  chargePercentage: 0
+  ultiIsActivated: 0
   chargeBar: {fileID: 0}
 --- !u!1 &2017650234
 GameObject:

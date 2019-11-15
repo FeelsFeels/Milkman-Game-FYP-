@@ -16,6 +16,6 @@ MonoBehaviour:
   characterColor:
     serializedVersion: 2
     rgba: 4278255431
-  characterUISprite: {fileID: 2632221462301574410, guid: 49461c16672aec64b9e107fb6d3ed300,
+  characterUISprite: {fileID: -173562461484644088, guid: e9fc5dab66fcb6f4497f3627f41f0823,
     type: 3}
   character: Earth

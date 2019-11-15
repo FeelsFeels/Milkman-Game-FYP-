@@ -9,6 +9,7 @@ public class LastManStandingUI : MonoBehaviour
 
     public Image livesBG;
     public Text livesText;
+    public Slider ultiCharge;
 
     private void Awake()
     {
@@ -44,6 +45,18 @@ public class LastManStandingUI : MonoBehaviour
     public void SetUIBackground()
     {
         livesBG.sprite = trackedPlayer.chosenCharacterData.characterUISprite;
+    }
+
+    /// *********************************
+    /// Update tracked player UI
+    /// *********************************
+    public void UpdateUltiUI(PlayerInputInfo playerToUpdate, float percent)
+    {
+        if (trackedPlayer != playerToUpdate)
+            return;
+
+        if(ultiCharge != null)
+        ultiCharge.value = percent;
     }
 
 

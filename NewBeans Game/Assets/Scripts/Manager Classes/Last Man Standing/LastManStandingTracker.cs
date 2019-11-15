@@ -37,6 +37,10 @@ public class LastManStandingTracker : MonoBehaviour
                 alivePlayers.Add(pc);
                 pc.OnPlayerDeath.AddListener(UpdateLivesLeft);
                 playerLivesInfo.Add(pc, startingLives);
+
+                //Skills
+                pc.gameObject.GetComponent<SkillSetManager>().OnChargeUltimate.AddListener(UpdateUltiCharge);
+
             }
             else
                 continue;
@@ -61,6 +65,25 @@ public class LastManStandingTracker : MonoBehaviour
         UpdateLivesUI(deadPlayer.inputInfo, playerLivesInfo[deadPlayer]);
         CheckLastManStanding();
     }
+
+
+    /// *********************************
+    /// Update Ulti Charge
+    /// *********************************
+    public void UpdateUltiCharge(SkillSetManager manager)
+    {
+        float percent = manager.chargePercentage;
+        PlayerController thePlayer = manager.GetComponent<PlayerController>();
+        PlayerInputInfo playerInfo = thePlayer.inputInfo;
+
+        foreach (LastManStandingUI playerUI in lastManStandingUIs)
+        {
+            playerUI.UpdateUltiUI(playerInfo, percent);
+        }
+    }
+
+
+
 
     public void UpdateLivesUI(PlayerInputInfo playerToUpdate, int livesLeft)
     {

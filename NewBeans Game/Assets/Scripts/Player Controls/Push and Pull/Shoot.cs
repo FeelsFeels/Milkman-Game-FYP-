@@ -30,6 +30,7 @@ public class Shoot : MonoBehaviour
 
     public bool chargingPushProjectile;
     public bool chargingGrapplingHook;
+    public bool playerCannotShoot;
 
     public float baseKickbackForce;
     public float explodeRadius = 10f;
@@ -126,6 +127,7 @@ public class Shoot : MonoBehaviour
         //Charge Push Projectile
         if (Input.GetButtonDown(watergunInput) && pushCooldownTimer <= 0)
         {
+            if (!playerCannotShoot)
             ChargePushProjectile();
         }
         
@@ -141,7 +143,8 @@ public class Shoot : MonoBehaviour
         {
             if (hProjectile == null)
             {
-                ChargeHook();
+                if (!playerCannotShoot)
+                    ChargeHook();
             }
         }
 
