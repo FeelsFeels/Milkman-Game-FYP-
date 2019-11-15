@@ -14,7 +14,7 @@ public class RockGolem : MonoBehaviour
         FindingPlayerToChase
     }
 
-    GolemStates golemState = GolemStates.Idle;
+    [SerializeField] GolemStates golemState = GolemStates.Idle;
 
     public GolemSpawner golemSpawner;
     Rigidbody rb;
@@ -39,6 +39,7 @@ public class RockGolem : MonoBehaviour
     bool showInitialiseParticles;
     public GameObject shockwaveParticles;
     public GameObject crashingParticles;
+    public GameObject rangeCanvas;
     public GameObject chasingCanvas;
 
     private void Start()
@@ -67,109 +68,26 @@ public class RockGolem : MonoBehaviour
 
     void GolemBehaviour()
     {
-        ////////****////////////
-        ///Prepare4Death PT 2///
-        ////////****////////////
-
-        if (golemState == GolemStates.Idle)
+        switch (golemState)
         {
-            timeIdling += Time.deltaTime;
-            if(timeIdling > 5f)
-            {
-                timeIdling = 0;
-                golemState = GolemStates.FindingNewPosition;
-            }
-        }
-
-        if (golemState == GolemStates.FindingNewPosition)
-        {
-            //Initialises finding position
-            FindNewTargetPosition();
-        }
-
-        if (golemState == GolemStates.Patrolling)
-        {
-            //Get direction to target position
-            Vector3 direction = targetPosition - transform.position;
-            direction.y = 0;
-            direction.Normalize();
-
-            //Set rotation
-            Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
-            transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, 1.5f * Time.deltaTime);
-
-            //Move Golem towards position
-            Vector3 movement = transform.forward * patrolSpeed * Time.deltaTime;
-            rb.MovePosition(rb.position + movement);
-            //Check if Position is reached
-            float distance = (targetPosition - transform.position).sqrMagnitude;
-            if(distance < 2f)
-            {
-                //Nearby target position
+            case GolemStates.Idle:
+                IdleBehaviour();
+                break;
+            case GolemStates.Patrolling:
+                PatrolArea();
+                break;
+            case GolemStates.FindingNewPosition:
+                //Initialises finding position
                 FindNewTargetPosition();
-                golemState = GolemStates.Idle;
-            }
-            //Visualising position
-            Debug.DrawRay(targetPosition, Vector3.up * 100f, Color.red);
-
-            ////Stomping behaviour
-            //timeToNextShockwave += Time.deltaTime;
-            //if(timeToNextShockwave >= 0.666f)
-            //{
-            //    timeToNextShockwave = 0;
-            //    Shockwave();
-            //}
-        }
-
-        if (golemState == GolemStates.FindingPlayerToChase)
-        {
-            timeFindingPlayer += Time.deltaTime;
-            Vector3 facePos = new Vector3(playerToChase.transform.position.x, transform.position.y, playerToChase.transform.position.z);
-            Vector3 direction = facePos - transform.position;
-            Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
-            transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, 1.5f * Time.deltaTime);
-
-            if(timeFindingPlayer >= 2.5f)
-            {
-                golemState = GolemStates.Chasing;
-                timeFindingPlayer = 0;
-            }
-        }
-
-        if(golemState == GolemStates.Chasing)
-        {
-            //Get direction to target position
-            Vector3 direction = playerToChase.transform.position - transform.position;
-            direction.y = 0;
-            direction.Normalize();
-
-            //Set rotation
-            Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
-            transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, 4.0f * Time.deltaTime);
-
-            //Move Golem towards position
-            Vector3 movement = transform.forward * chaseSpeed * Time.deltaTime;
-            rb.MovePosition(rb.position + movement);
-
-            //Stomping behaviour
-            timeToNextShockwave += Time.deltaTime;
-            if (timeToNextShockwave >= 0.666f)
-            {
-                timeToNextShockwave = 0;
-                Shockwave();
-            }
-
-            timeSpentChasing += Time.deltaTime;
-            if (playerToChase.isDead || timeSpentChasing > 10f)
-            {
-                timeSpentChasing = 0; 
-                golemState = GolemStates.Idle;
-                chasingCanvas.SetActive(false);
-            }
-            else
-            {
-                chasingCanvas.SetActive(true);
-            }
+                break;
+            case GolemStates.Chasing:
+                ChasingPlayer();
+                break;
+            case GolemStates.FindingPlayerToChase:
+                FindPlayerToChase();
+                break;
+            default:
+                break;
         }
 
         //Setting golem's animation state
@@ -182,6 +100,16 @@ public class RockGolem : MonoBehaviour
             animator.SetFloat("Speed", 0);
         }
     }
+
+    void IdleBehaviour()
+    {
+        timeIdling += Time.deltaTime;
+        if (timeIdling > 5f)
+        {
+            timeIdling = 0;
+            golemState = GolemStates.FindingNewPosition;
+        }
+    }    
 
     void FindNewTargetPosition()
     {
@@ -201,6 +129,89 @@ public class RockGolem : MonoBehaviour
                 targetPosition = newPosition;
                 golemState = GolemStates.Patrolling;
             }
+        }
+    }
+
+    void FindPlayerToChase()
+    {
+        timeFindingPlayer += Time.deltaTime;
+        Vector3 facePos = new Vector3(playerToChase.transform.position.x, transform.position.y, playerToChase.transform.position.z);
+        Vector3 direction = facePos - transform.position;
+        Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
+        transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, 1.5f * Time.deltaTime);
+
+        if (timeFindingPlayer >= 2.5f)
+        {
+            golemState = GolemStates.Chasing;
+            timeFindingPlayer = 0;
+        }
+    }
+
+    void PatrolArea()
+    {
+        //Get direction to target position
+        Vector3 direction = targetPosition - transform.position;
+        direction.y = 0;
+        direction.Normalize();
+
+        //Set rotation
+        Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
+        transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, 1.5f * Time.deltaTime);
+
+        //Move Golem towards position
+        Vector3 movement = transform.forward * patrolSpeed * Time.deltaTime;
+        rb.MovePosition(rb.position + movement);
+
+        //Check if Position is reached
+        //But ignore the y axis
+        Vector2 targetXY = new Vector2(targetPosition.x, targetPosition.z);
+        Vector2 currentXY = new Vector2(transform.position.x, transform.position.z);
+        float distance = (targetXY - currentXY).sqrMagnitude;
+        if (distance < 2f)
+        {
+            //Nearby target position
+            FindNewTargetPosition();
+            golemState = GolemStates.Idle;
+        }
+        //Visualising position
+        Debug.DrawRay(targetPosition, Vector3.up * 100f, Color.red);
+    }
+
+    void ChasingPlayer()
+    {
+        //Get direction to target position
+        Vector3 direction = playerToChase.transform.position - transform.position;
+        direction.y = 0;
+        direction.Normalize();
+
+        //Set rotation
+        Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
+        transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, 4.0f * Time.deltaTime);
+
+        //Move Golem towards position
+        Vector3 movement = transform.forward * chaseSpeed * Time.deltaTime;
+        rb.MovePosition(rb.position + movement);
+
+        //Stomping behaviour
+        timeToNextShockwave += Time.deltaTime;
+        if (timeToNextShockwave >= 0.666f)
+        {
+            timeToNextShockwave = 0;
+            Shockwave();
+        }
+
+        timeSpentChasing += Time.deltaTime;
+        if (playerToChase.isDead || timeSpentChasing > 10f)
+        {
+            timeSpentChasing = 0;
+            golemState = GolemStates.Idle;
+            rangeCanvas.SetActive(false);
+            chasingCanvas.SetActive(false);
+        }
+        else
+        {
+            rangeCanvas.SetActive(true);
+            chasingCanvas.SetActive(true);
         }
     }
 
@@ -231,6 +242,10 @@ public class RockGolem : MonoBehaviour
             }
         }
     }
+
+    
+
+
 
     private void OnCollisionEnter(Collision collision)
     {

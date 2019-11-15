@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1754352808
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1061,6 +1061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a30c851c48d92a45a96d5b5c2a6272c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  golemSpawner: {fileID: 0}
   patrolSpeed: 3
   chaseSpeed: 6
   knockbackStrength: 2500
@@ -1069,6 +1070,7 @@ MonoBehaviour:
     type: 3}
   crashingParticles: {fileID: 1765079799062324546, guid: 0cfed572c7b22294caf35be577e6ccb8,
     type: 3}
+  rangeCanvas: {fileID: 1754352807}
   chasingCanvas: {fileID: 626580121741449822}
 --- !u!1 &1731343148443287556
 GameObject:
