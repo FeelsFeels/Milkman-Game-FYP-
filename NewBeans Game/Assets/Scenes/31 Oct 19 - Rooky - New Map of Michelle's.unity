@@ -403,6 +403,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 9217587416402060013, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9217587416402060012, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1615,6 +1620,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Prefab (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 9217587416402060013, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9217587416402060012, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2255,6 +2265,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Prefab (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 9217587416402060013, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9217587416402060012, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2387,7 +2402,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventList:
   - EventDescription: Change Pattern/50s
-    timeToCall: 13
+    timeToCall: 10000
     unityEvent:
       m_PersistentCalls:
         m_Calls:
@@ -2407,7 +2422,7 @@ MonoBehaviour:
     isRepeating: 1
     repeatRate: 50
   - EventDescription: Spawn Golem
-    timeToCall: 10000
+    timeToCall: 1
     unityEvent:
       m_PersistentCalls:
         m_Calls:
@@ -2885,11 +2900,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 125339955b5d58d40a0cb7a7cd9111a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   golemPrefab: {fileID: 1731319518641209068, guid: 75ed28e394bab9140a09be9c6440795a,
     type: 3}
   spawnPoints:
@@ -7944,6 +7954,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player Prefab (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9217587416402060013, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9217587416402060012, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}

@@ -88,14 +88,12 @@ public class HazardBoulder : MonoBehaviour
     {
         if (other.tag == "Hole")
         {
-            print("false because it hit " + other.gameObject.name + " that has the tag: " + other.tag);
             gameObject.SetActive(false);
 
             if (TofuBlockManager.instance != null)
             {
                 TofuBlockManager.instance.SpawnTofuWithDelay(Random.Range(5, 10));
             }
-            print("new tofu in town");
         }
 
         if (other.GetComponent<IAffectedByWeight>() != null)

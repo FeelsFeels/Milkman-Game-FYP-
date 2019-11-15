@@ -6,9 +6,7 @@ using UnityEngine.Events;
 public class GolemSpawner : MonoBehaviour
 {
     EventTimer eventTimer;
-
-    public UnityEvent testEvent;
-
+    
     public GameObject golemPrefab;
 
     public Transform[] spawnPoints; //In the scene, put these spawnpoints in the center of the section (1 October 2019, early prototype)
@@ -16,22 +14,6 @@ public class GolemSpawner : MonoBehaviour
     private void Awake()
     {
         eventTimer = FindObjectOfType<EventTimer>();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            testEvent.AddListener(SpawnGolem);
-        }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            testEvent.RemoveListener(SpawnGolem);
-        }
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            testEvent.Invoke();
-        }
     }
 
     public void SpawnGolem()
@@ -61,7 +43,9 @@ public class GolemSpawner : MonoBehaviour
 
     public void GolemHasDied()
     {
-        StartCoroutine(TimerBeforeNextGolemSpawn());
+        eventTimer.AddNewEvent(30, SpawnGolem, false, 0);
+
+        //StartCoroutine(TimerBeforeNextGolemSpawn());
     }
 
     IEnumerator TimerBeforeNextGolemSpawn()

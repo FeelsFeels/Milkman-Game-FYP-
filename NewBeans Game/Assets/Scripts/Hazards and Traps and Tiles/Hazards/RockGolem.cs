@@ -195,7 +195,7 @@ public class RockGolem : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(new Vector3(newXPos, 10, newZPos), Vector3.down, out hit, Mathf.Infinity))
         {
-            print("Rock Golem is going to: " + hit.collider.gameObject.name);
+            //print("Rock Golem is going to: " + hit.collider.gameObject.name);
             if(hit.collider.tag != "Hole")
             {   
                 targetPosition = newPosition;
@@ -226,7 +226,6 @@ public class RockGolem : MonoBehaviour
             }
             else if(collider.tag == "Rock")
             {
-                print("neeba");
                 Vector3 knockbackDirection = (collider.transform.position - transform.position).normalized;
                 collider.GetComponent<HazardBoulder>().rb.AddForce(knockbackStrength * knockbackDirection);
             }

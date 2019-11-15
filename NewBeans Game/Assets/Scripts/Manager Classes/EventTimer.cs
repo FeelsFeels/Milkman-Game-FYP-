@@ -10,16 +10,23 @@ public class EventTimer : MonoBehaviour
     public class EventInformation
     {
         public string EventDescription;
-        //Constructor when making new events during runtime
-        public EventInformation(float calltime, UnityEvent eventToCall, bool repeating, float frequency)
+        //Constructors when making new events during runtime
+        public EventInformation(float calltime, UnityEvent eventToCall, bool repeating, float frequency)    //For persistent callbacks
         {
-            timeToCall = calltime;
+            timeToCall = Mathf.FloorToInt(calltime);
             unityEvent = eventToCall;
             isRepeating = repeating;
             repeatRate = frequency;
         }
+        public EventInformation(float calltime, UnityAction eventToCall, bool repeating, float frequency)   //Adding through script.
+        {
+            timeToCall = Mathf.FloorToInt(calltime);
+            unityEvent.AddListener(eventToCall);
+            isRepeating = repeating;
+            repeatRate = frequency;
+        }
         public float timeToCall;
-        public UnityEvent unityEvent;
+        public UnityEvent unityEvent = new UnityEvent();
         public bool isRepeating;
         public float repeatRate;
     }
@@ -41,6 +48,14 @@ public class EventTimer : MonoBehaviour
             return;
         else
             CheckForEvents();
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            foreach (EventInformation info in eventList)
+            {
+                info.unityEvent.Invoke();
+            }
+        }
     }
 
     void CheckForEvents()
@@ -84,20 +99,10 @@ public class EventTimer : MonoBehaviour
     }
 
     //All this shit doesnt work, i am very sorry for messing up.
-    //public void AddNewEvent(float timeBeforeCall, UnityEvent eventToAdd, bool shouldRepeat, float repeatTime)
-    //{
-    //    EventInformation newEvent = new EventInformation(timerManager.timeElapsedSinceStart + timeBeforeCall, eventToAdd, shouldRepeat, repeatTime);
-    //    eventList.Add(newEvent);
-    //}
-
-    //public void AddNewEvent(EventInformation newEvent)
-    //{
-    //    eventList.Add(newEvent);
-    //}
-
-    //public void Print()
-    //{
-    //    print("EVENT RUNNED");
-    //}
+    public void AddNewEvent(float timeBeforeCall, UnityAction eventToAdd, bool shouldRepeat, float repeatTime)
+    {
+        EventInformation newEvent = new EventInformation(timerManager.timeElapsedSinceStart + timeBeforeCall, eventToAdd, shouldRepeat, repeatTime);
+        eventList.Add(newEvent);
+    }
 }
 
