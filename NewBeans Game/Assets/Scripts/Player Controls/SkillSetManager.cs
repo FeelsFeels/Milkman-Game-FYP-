@@ -154,12 +154,12 @@ public class SkillSetManager : MonoBehaviour
         public virtual void EndUltimate(SkillSetManager playerSkillManager)
         {
             // Remember to set the ultiIsActivated bool to false when ulti ends
+            // Bool playerCannotShoot to be set to false to re enable shooting
             // You CAN override this method with your own version
 
             playerSkillManager.ultiIsActivated = false;
             playerSkillManager.gameObject.GetComponent<Shoot>().playerCannotShoot = false;
         }
-
     }
 
     void ReleaseSpecialSkill()
