@@ -19,17 +19,38 @@ public class SkillSetManager : MonoBehaviour
     public float chargePercentage;
     string AButtonInput;
     string BButtonInput;
-    public bool ultiIsActivated;
+    public bool ultiIsActivated; // Is the ultimate skill currently in use?
 
-    [Header("UI")]
-    public Image chargeBar;
+    [Header("Skill prefabs in order of Fire, Water, Lightning & Earth")]
+    public GameObject[] skillPrefabs = new GameObject[4]; // Container for skill prefabs
+    Dictionary<characterChosen, SkillSet> playerSkills = new Dictionary<characterChosen, SkillSet>();
 
+    // For updating UI
     public UnityEvent<SkillSetManager> OnChargeUltimate = new ChargeUltiEvent();
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        // Set the dictionary
+        // I'm not sure if there's a better way to do this other than to hard code, but thankfull there's only 4 enums
+        // Why doesn't dictionary have an add range function
+        if (skillPrefabs[0] != null)
+        {
+            playerSkills.Add(characterChosen.Fire, skillPrefabs[0].GetComponent<SkillSet>());
+        }
+        if (skillPrefabs[1] != null)
+        {
+            playerSkills.Add(characterChosen.Water, skillPrefabs[1].GetComponent<SkillSet>());
+        }
+        if (skillPrefabs[2] != null)
+        {
+            playerSkills.Add(characterChosen.Earth, skillPrefabs[2].GetComponent<SkillSet>());
+        }
+        if (skillPrefabs[3] != null)
+        {
+            playerSkills.Add(characterChosen.Lightning, skillPrefabs[3].GetComponent<SkillSet>());
+        }
+
     }
 
     // Update is called once per frame
@@ -97,8 +118,9 @@ public class SkillSetManager : MonoBehaviour
         BButtonInput = B;
     }
 
-
-
+    /// *********************************
+    /// Ulti Charge
+    /// *********************************
     public void ChargeSpecialSkill(float projectileKnockback)
     {
         Debug.Log("I feel stronger each time");
@@ -116,6 +138,29 @@ public class SkillSetManager : MonoBehaviour
 
     }
 
+    /// *********************************
+    /// Release the ultimate
+    /// *********************************
+    [System.Serializable]
+    public abstract class SkillSet : MonoBehaviour
+    {
+        public float skillDuration; // Duration of the skill
+
+        public abstract void SkillAttack(SkillSetManager playerSkillManager); 
+            // Create your own method for this skill, this will be called in SkillSetManager 
+            // YOU MUST OVERRIDE THIS
+            // Reference to SkillSetManager if necessary
+
+        public virtual void EndUltimate(SkillSetManager playerSkillManager)
+        {
+            // Remember to set the ultiIsActivated bool to false when ulti ends
+            // You CAN override this method with your own version
+
+            playerSkillManager.ultiIsActivated = false;
+            playerSkillManager.gameObject.GetComponent<Shoot>().playerCannotShoot = false;
+        }
+
+    }
 
     void ReleaseSpecialSkill()
     {
@@ -123,43 +168,40 @@ public class SkillSetManager : MonoBehaviour
         ultiIsActivated = true;
 
 
-        // Release the kraken
+        // Release the kraken!!!!!!! aaaaaaaaaaaaah
 
-        switch (playerAvatar) {
-
-            case (characterChosen.Fire):
-            {
-                //Insert Fire
-                break;
-            }
-
-
-            case (characterChosen.Water):
-            {
-                //Insert Water
-                break;
-            }
-
-            case (characterChosen.Lightning):
-            {
-                //Insert Ziggity Zaggity
-                break;
-            }
-            case (characterChosen.Earth):
-            {
-                //Insert Golem??? 
-                break;
-            }
-
-
-            default:
-            {
-                Debug.Log("Oh heckie");
-                break;
-            }
+        if (playerSkills.ContainsKey(playerAvatar)) // Check if there is a skill for the enum, because there might not be a skill prefab for the enum
+        {
+            playerSkills[playerAvatar].SkillAttack(this); // Dictionary will return the skill set we want, and subsequently we call the attack method
         }
 
+        else // Default fall back if the skill for the enum... doesn't exist yet
+        {
+            Debug.Log("Producing clones");
+
+            // Muahaha
+            GameObject go = Instantiate(gameObject, transform.position, Quaternion.identity);
+            go.GetComponent<Rigidbody>().velocity = transform.forward;
+            Destroy(go, 5f);
+            StartCoroutine(EndUlti(5));
+        }
+
+        ResetUltiCharge(); // Reset skill charge gauge
     }
 
+    IEnumerator EndUlti(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        ultiIsActivated = false;
+        this.gameObject.GetComponent<Shoot>().playerCannotShoot = false;
+    }
+
+    void ResetUltiCharge()
+    {
+        Debug.Log("I am weak once again");
+        currentCharge = 0;
+        chargePercentage = currentCharge / fullChargeAmount;
+        OnChargeUltimate.Invoke(this);
+    }
 
 }
