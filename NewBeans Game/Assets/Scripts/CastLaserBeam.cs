@@ -33,11 +33,11 @@ public class CastLaserBeam : MonoBehaviour
         gameObject.transform.position = laserStartPos.transform.position;
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawCube(transform.position, new Vector3(5f, 5f, 5f));
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawCube(transform.position, new Vector3(5f, 5f, 5f));
+    //}
 
     // ----- Activate the warning laser beam.
     public void LaserWarning()

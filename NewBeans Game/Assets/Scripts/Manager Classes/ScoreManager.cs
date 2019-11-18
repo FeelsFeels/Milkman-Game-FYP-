@@ -30,7 +30,6 @@ public class ScoreManager : MonoBehaviour
         if (killerPlayer != null)
         {
             killerPlayer.currentScore += GameManager.instance.killScoreToAdd;
-            killerPlayer.killCountTimer = GameManager.instance.killCountDownTimer;
         }
         UpdateScore();
     }

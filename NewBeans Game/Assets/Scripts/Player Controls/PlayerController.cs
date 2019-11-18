@@ -4,26 +4,21 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(SkillSetManager))]
 public class PlayerController : MonoBehaviour
 {
     public int playerNumber;
-
-    public float killCountTimer;
-    public float deathCountTimer;
-
-    public int killSpreeCount;
-    public int deathSpreeCount;
-
+    
     [Header("Player Score")]
     public int killCount;
     public int deathCount;
     public int currentScore;
 
-    //Player status
-    public bool playerStunned;
+    [Header("Player Status Effects")]
+    public bool playerStunned;  //Are you stunned
     public float stunnedTime;   //Time passed while being stunned
-    private float stunDuration = 0.25f;
-    public bool shootingHook;
+    private float stunDuration = 0.25f; //Time to spend stunned
+    public bool shootingHook;   //Cannot move while shooting hook
 
     [Header("Visual Effects")]
     public GameObject playerDieEffect;
@@ -31,22 +26,25 @@ public class PlayerController : MonoBehaviour
     public GameObject playerPulledEffect;
 
     //Player Input 
-    [Header ("Player Input")]
+    [Header ("Player Input and Initialisation")]
     public PlayerInputInfo inputInfo;
     public int ControllerNumber;
-    public string HorizontalInputAxis;
-    public string VerticalInputAxis;
-    public string AButtonInput;
-    public string BButtonInput;
-    public string RightHorizontalAxis;
-    public string RightVerticalAxis;
-    public string RightBumper;
+    public GameObject playerModel;
+    [HideInInspector] public string HorizontalInputAxis;
+    [HideInInspector] public string VerticalInputAxis;
+    [HideInInspector] public string AButtonInput;
+    [HideInInspector] public string BButtonInput;
+    [HideInInspector] public string RightHorizontalAxis;
+    [HideInInspector] public string RightVerticalAxis;
+    [HideInInspector] public string RightBumper;
 
-    public float turnSmoothTime = 0.2f;
+    [Header("Player Movement")]
+    public float playerTurnSmoothing = 10f;
+    public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
-    public float moveRate = 4;  // units moved per second holding down move input
+    public float moveRate = 10;  // units moved per second holding down move input
 
-    [Header("Player Die")]
+    [Header("Player Death Variables")]
     public bool isDead = false;
     public bool shouldRespawn = true;
     public float waitToRespawn = 3f;
@@ -55,7 +53,9 @@ public class PlayerController : MonoBehaviour
     public float respawnDelay;
     public GameObject lastHitBy;
 
+    [Header("Object Components and References")]
     // Object's Components
+    public Shoot playerShoot;
     public Animator animator;
     CapsuleCollider capsuleCollider;
     public SkinnedMeshRenderer skinnedMeshRenderer;
@@ -63,13 +63,8 @@ public class PlayerController : MonoBehaviour
     Shield invincibilityShield;
     public GameObject dizzyStars;
 
-
-    [Header("Player Movement")]
-    public float averageInput;
-
     public GameObject cameraRigObj;
     float cameraRigRot =0f;
-    public float playerTurnSmoothing = 10f;
 
 
     public bool rightAnalogTargeting = false;
@@ -91,6 +86,8 @@ public class PlayerController : MonoBehaviour
     {
         if (inputInfo != null)
         {
+            playerNumber = inputInfo.playerNumber;
+
             HorizontalInputAxis = inputInfo.HorizontalInputAxis;
             VerticalInputAxis = inputInfo.VerticalInputAxis;
             AButtonInput = inputInfo.AButtonInput;
@@ -102,6 +99,18 @@ public class PlayerController : MonoBehaviour
                 RightVerticalAxis = inputInfo.RightVerticalAxis;
             if (inputInfo.RightBumper != null)
                 RightBumper = inputInfo.RightBumper;
+
+            //Set what character this player is playing
+            if (inputInfo.chosenCharacterData != null)
+            {
+                if(this.GetComponent<SkillSetManager>()!=null)
+                this.GetComponent<SkillSetManager>().SetCharacter(inputInfo.chosenCharacterData.character);
+                this.GetComponent<SkillSetManager>().SetInputs(AButtonInput, BButtonInput);
+            }
+
+            //No player assigned to character
+            //if (inputInfo.chosenCharacterData == null)
+            //    gameObject.SetActive(false);
         }
     }
 
@@ -110,32 +119,21 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         // Components
-        animator = GetComponentInChildren<Animator>();
+        animator = transform.Find("Character Model").GetComponentInChildren<Animator>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         rb = GetComponent<Rigidbody>();
         invincibilityShield = GetComponentInChildren<Shield>();
+        cameraRigObj = FindObjectOfType<CameraControls>().gameObject;
 
         //Set the camera rig rotation at the start. This will be the 'correction angle'
         if (cameraRigObj != null)
             cameraRigRot = cameraRigObj.transform.rotation.eulerAngles.y;
     }
-
-    //Deprecated 
-    //public void SetControllerNumber (int controllerNo)
-    //{
-    //    ControllerNumber = controllerNo; //get the controller number that will control this player (to which this script is attached to)
-    //    HorizontalInputAxis = "Horizontal (Controller " + controllerNo + ")";
-    //    VerticalInputAxis = "Vertical (Controller " + controllerNo + ")";
-    //    AButtonInput = "AButton (Controller " + controllerNo + ")";
-    //    BButtonInput = "BButton (Controller " + controllerNo + ")";
-    //}
+    
 
     private void Update()
     {
-        killCountTimer -= Time.deltaTime;
-        deathCountTimer -= Time.deltaTime;
-
         //Stunned timing
         if (playerStunned)
         {
@@ -185,7 +183,7 @@ public class PlayerController : MonoBehaviour
         else { rightAnalogTargeting = false; }
 
 
-        OrientPlayerWithGround();
+        //OrientPlayerWithGround();
 
         //If Not moving, can set the animator values
         if (Input.GetAxis(HorizontalInputAxis) == 0 && Input.GetAxis(VerticalInputAxis) == 0)
@@ -201,7 +199,7 @@ public class PlayerController : MonoBehaviour
     /// ***********
     private void Move(Vector3 direction)
     {
-        if (playerStunned || shootingHook)
+        if (playerStunned)
             return;
 
         // Movement based on camera's rotation at the start.
@@ -284,7 +282,7 @@ public class PlayerController : MonoBehaviour
         isDead = true;
         playerStunned = false;
         dizzyStars.SetActive(false);
-        deathCountTimer = GameManager.instance.deathCountDownTimer;
+        playerShoot.DestroyGrapplingHook();
         Instantiate(playerDieEffect, gameObject.transform.position, gameObject.transform.rotation);
 
         if (lastHitBy != null)
@@ -375,8 +373,6 @@ public class PlayerController : MonoBehaviour
         {
             //if (hit.collider.tag == "Ground")
             //{
-                Debug.Log("Hit ground");
-
                 Debug.DrawLine(hit.point, hit.point + hit.normal, Color.green);
 
                 Quaternion targetQuaternion;
@@ -394,6 +390,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public bool IsPlaying()
+    {
+        if (inputInfo.forceActive)
+            return true;
 
+        if (inputInfo.chosenCharacterData == null)
+            return false;
+        else
+            return true;
+    }
 }
-

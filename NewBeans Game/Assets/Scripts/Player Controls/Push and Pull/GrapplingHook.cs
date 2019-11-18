@@ -26,6 +26,7 @@ public class GrapplingHook : MonoBehaviour
     public GameObject hookOwner;        //This refers to the "first node", usually refers to player. 
     public GameObject player;           //Player gameobject. Does NOT change.
     public GameObject latchedObject;
+    public Transform playerCenter;
 
     public GameObject nodePrefab;       //This is the nodes
 
@@ -58,6 +59,7 @@ public class GrapplingHook : MonoBehaviour
             lineRenderer.enabled = false;
 
         player = hookOwner;
+
     }
 
     private void FixedUpdate()
@@ -76,7 +78,7 @@ public class GrapplingHook : MonoBehaviour
             else
             {
                 //The nodes follows the player
-                FollowPreviousNode(i == 0 ? player.transform : nodes[i - 1].transform, nodes[i].transform);
+                FollowPreviousNode(i == 0 ? playerCenter : nodes[i - 1].transform, nodes[i].transform);
                 //AdjustNodes((i == nodes.Count - 1) ? transform : nodes[i + 1].transform, i == 0 ? player.transform : nodes[i - 1].transform, nodes[i].transform);
             }
         }
@@ -95,6 +97,7 @@ public class GrapplingHook : MonoBehaviour
 
     private void HookLogic()
     {
+        //Hook is going forwards
         if (hookStatus == HookStatus.shooting)
         {
             //Movement. Direction is set by Shoot.cs
@@ -124,6 +127,7 @@ public class GrapplingHook : MonoBehaviour
 
         }
 
+        //Hook is coming back
         if (hookStatus == HookStatus.takeback)
         {
             if (Time.time - lastNodeUpdateTime > nodeUpdateTime)
@@ -133,11 +137,11 @@ public class GrapplingHook : MonoBehaviour
                     //This block controls when to let go of a player if hooked
                     if (latchedObject != null)
                     {
-                        //Sets latched object position to hook's position
-                        latchedObject.transform.localPosition = Vector3.zero;
-
                         if (!releaseOnNext)
                         {
+                            //Sets latched object position to hook's position
+                            latchedObject.transform.localPosition = new Vector3(0, -8.5f, 0);
+
                             RaycastHit hit;
 
                             if (Physics.Raycast(transform.position, Vector3.down, out hit, 100f, 1 << LayerMask.NameToLayer("Ground")))
@@ -177,6 +181,7 @@ public class GrapplingHook : MonoBehaviour
             }
         }
 
+        //You are pulling yourself to the pillar
         if (hookStatus == HookStatus.reverse)
         {
             if (Time.time - lastNodeUpdateTime > nodeUpdateTime)
@@ -189,6 +194,7 @@ public class GrapplingHook : MonoBehaviour
                 if (nodes.Count == 0)
                 {
                     FinishHookSequence();
+                    return;
                 }
                 else if (nodes.Count > 0)
                     nodeToMoveTo = nodes.Last();
@@ -198,16 +204,18 @@ public class GrapplingHook : MonoBehaviour
                 player.transform.position = Vector3.Lerp(player.transform.position, nodeToMoveTo.transform.position, Time.deltaTime * 20);
             }
         }
-
-        if (hookStatus != HookStatus.reverse && hookStatus != HookStatus.takeback)
+        
+        //Re-add nodes when hook is being shot
+        if (hookStatus != HookStatus.reverse && hookStatus != HookStatus.takeback && hookStatus != HookStatus.none)
         {
             //use angle and dot product to decide if player is moving towards hook.
             //then, adjust nodes position
             float angle = Quaternion.Angle(player.transform.rotation, nodes[0].transform.rotation);
             float dotProduct = Vector3.Dot(player.transform.forward, transform.position - player.transform.position);
 
-            if(player.GetComponent<PlayerController>().averageInput != 0 && angle < 250f && dotProduct > 0)
-            {
+            //if(player.GetComponent<PlayerController>().averageInput != 0 && angle < 250f && dotProduct > 0)
+            if (angle < 250f && dotProduct > 0)
+                {
                 if(currentRenodeDelay < renodeDelay)
                 {
                     currentRenodeDelay++;
@@ -237,7 +245,8 @@ public class GrapplingHook : MonoBehaviour
 
         Vector3 targetPosition = prevNode.position;
         targetPosition -= node.transform.rotation * Vector3.forward * nodeBondDistance;
-        targetPosition.y = node.position.y;
+        //targetPosition.y = node.position.y;
+        targetPosition.y = (prevNode.position.y + node.position.y) / 2;
         node.position = Vector3.Lerp(node.position, targetPosition, Time.deltaTime * nodeBondDamping);
     }
 
@@ -292,7 +301,7 @@ public class GrapplingHook : MonoBehaviour
     }
 
     //Call before destroying hook
-    private void FinishHookSequence()
+    public void FinishHookSequence()
     {
         hookStatus = HookStatus.none;
         if (nodes.Count >= 0)
@@ -304,13 +313,7 @@ public class GrapplingHook : MonoBehaviour
         }
         Destroy(gameObject);
     }
-
-    //Throws player in a direction
-    void FlingLatchedPlayer()
-    {
-
-    }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         ////////****///////
@@ -318,7 +321,7 @@ public class GrapplingHook : MonoBehaviour
         ////////****///////
         
         //Dont need to do anything if colliding with the caster
-        if (other.gameObject == hookOwner)
+        if (other.gameObject == player)
             return;
 
         //Or if its hitting a shield, because the shield blocks the grapple hook anyway
@@ -350,7 +353,7 @@ public class GrapplingHook : MonoBehaviour
         else if (other.tag == "GrabbableEnvironment" || other.tag == "Rock")
         {
             StartReverse();
-            gameObject.transform.position = other.transform.position;
+            //gameObject.transform.position = other.transform.position;
             return;
         }
         else
@@ -364,9 +367,9 @@ public class GrapplingHook : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         transform.DetachChildren();
+        latchedObject = null;
         latchedObject.GetComponent<PlayerController>().rb.AddForce(Vector3.down * 1000);
         yield return new WaitForSeconds(0.1f);
-        latchedObject = null;
         releaseOnNext = false;
     }
 
@@ -389,7 +392,6 @@ public class GrapplingHook : MonoBehaviour
         Vector3 targetPosition = prevNode.position;
         Vector3 nextPosition = nextNode.position;
         targetPosition -= node.transform.rotation * Vector3.forward * nodeBondDistance;
-        targetPosition.y = node.position.y;
         targetPosition.y = node.position.y;
 
         Vector3 averagePosition;

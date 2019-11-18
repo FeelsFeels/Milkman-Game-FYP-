@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
     public Text thirdPlaceScore;
     public Text fourthPlaceScore;
 
-    public Image pauseScreen;
+    public PauseScreen pauseScreen;
     public bool isPaused;
 
     [Header("Audio")]
@@ -88,7 +88,15 @@ public class GameManager : MonoBehaviour
         //Sort PlayerList
         PlayerController[] tempPCList = FindObjectsOfType<PlayerController>();
         foreach (PlayerController pc in tempPCList)
-            playerScript.Add(pc);
+        {
+            //Check if player is playing
+            if(pc.IsPlaying())
+                playerScript.Add(pc);
+            else
+            {
+                pc.gameObject.SetActive(false);
+            }
+        }
         playerScript.Sort(delegate (PlayerController p1, PlayerController p2) { return p1.playerNumber.CompareTo(p2.playerNumber); });
 
     }
@@ -129,14 +137,15 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
-        pauseScreen.gameObject.SetActive(true);
+        pauseScreen.AnimatePause();
         Time.timeScale = 0;
     }
 
     public void ResumeGame()
     {
+        pauseScreen.AnimateResume();
+        isPaused = false;
         Time.timeScale = 1;
-        pauseScreen.gameObject.SetActive(false);
     }
 
     public void RoundEnd(List<PlayerController> playerRanking)
@@ -182,13 +191,11 @@ public class GameManager : MonoBehaviour
 
             playerReference = LMSManager.playerRanking[3];
             fourthPlaceScore.text = string.Format("Fourth Place: Player {0}", playerReference.playerNumber);
-
-            //Fourth place
         }
 
     }
 
-    //Used in LastManStandingTracker.cs
+    //Called from LastManStandingTracker.cs
     public void EndGame(List<PlayerController> ranking)
     {
         roundHasEnded = true;
