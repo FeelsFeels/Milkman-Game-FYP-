@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 336061508611873984}
   - component: {fileID: 336061508611874046}
   - component: {fileID: 336061508611873985}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PushableRock_1
   m_TagString: Rock
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 3938375304894108027}
   - component: {fileID: 7604268504950328875}
   - component: {fileID: 5273793512341342328}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Leaves_O1_050
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 1591042796305741209}
   - component: {fileID: 6211795021619013494}
   - component: {fileID: 1415648537568696456}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ShockwaveRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}

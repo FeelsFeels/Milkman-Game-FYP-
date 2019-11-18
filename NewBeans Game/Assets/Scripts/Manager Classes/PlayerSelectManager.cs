@@ -39,7 +39,7 @@ public class PlayerSelectManager : MonoBehaviour
 
     private void Update()  
     {
-        for (int i = 1; i <= 5; i++) //check, for up to 4 controllers,
+        for (int i = 1; i <= 4; i++) //check, for up to 4 controllers,
         {
             if (playersJoined.Contains(i))
             {

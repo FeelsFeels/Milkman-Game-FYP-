@@ -1337,7 +1337,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d8c35d73af737694e800bbca3247a69c, type: 2}
   - {fileID: 11400000, guid: 99c24249d3bee7243b1dedb98cae64f9, type: 2}
   - {fileID: 11400000, guid: 61dc69544f7bb0541a3d412f1ed152a0, type: 2}
-  - {fileID: 11400000, guid: a9ce6e909e3233e4193f8c26d843278d, type: 2}
+  - {fileID: 11400000, guid: d633b295485f476439537afe242feeec, type: 2}
   characterDataArray:
   - {fileID: 11400000, guid: 34773c0ea191fa842bd8f64dc567869d, type: 2}
   - {fileID: 11400000, guid: 6c949c186e315fb40912dc639e28fb16, type: 2}
@@ -2283,7 +2283,7 @@ MonoBehaviour:
   - {fileID: 1285061961}
   - {fileID: 1976792291}
   playerNumberText: {fileID: 649698258}
-  playerInfo: {fileID: 11400000, guid: a9ce6e909e3233e4193f8c26d843278d, type: 2}
+  playerInfo: {fileID: 0}
 --- !u!1 &1838281685
 GameObject:
   m_ObjectHideFlags: 0

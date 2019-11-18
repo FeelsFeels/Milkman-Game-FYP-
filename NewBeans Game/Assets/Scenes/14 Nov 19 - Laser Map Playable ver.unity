@@ -161,6 +161,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserBeam08
       objectReference: {fileID: 0}
+    - target: {fileID: 141623971695188240, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 141623971695188244, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -481,6 +486,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LaserBeam [C1R3] L
+      objectReference: {fileID: 0}
+    - target: {fileID: 141623971695188240, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 141623971695188244, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
         type: 3}
@@ -1436,6 +1446,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserBeam [R1C2] R
       objectReference: {fileID: 0}
+    - target: {fileID: 141623971695188240, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 141623971695188244, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1945,6 +1960,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserBeam02
       objectReference: {fileID: 0}
+    - target: {fileID: 141623971695188240, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 141623971695188244, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2179,6 +2199,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserBeam07
       objectReference: {fileID: 0}
+    - target: {fileID: 141623971695188240, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 141623971695188244, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2325,6 +2350,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LaserBeam [R1C1] L
+      objectReference: {fileID: 0}
+    - target: {fileID: 141623971695188240, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 141623971695188244, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
         type: 3}
@@ -3364,6 +3394,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserBeam [C1R1] R
       objectReference: {fileID: 0}
+    - target: {fileID: 141623971695188240, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 141623971695188244, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3603,6 +3638,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LaserBeam [R1C2] L
+      objectReference: {fileID: 0}
+    - target: {fileID: 141623971695188240, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 141623971695188244, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
         type: 3}
@@ -5962,6 +6002,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserBeam09
       objectReference: {fileID: 0}
+    - target: {fileID: 141623971695188240, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 141623971695188244, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6857,6 +6902,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserBeam03
       objectReference: {fileID: 0}
+    - target: {fileID: 141623971695188240, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 141623971695188244, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7089,6 +7139,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LaserBeam11
+      objectReference: {fileID: 0}
+    - target: {fileID: 141623971695188240, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 141623971695188244, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
         type: 3}
@@ -8149,6 +8204,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserBeam04
       objectReference: {fileID: 0}
+    - target: {fileID: 141623971695188240, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 141623971695188244, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8323,6 +8383,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LaserBeam12
+      objectReference: {fileID: 0}
+    - target: {fileID: 141623971695188240, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 141623971695188244, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
         type: 3}
@@ -8672,6 +8737,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LaserBeam [R1C3] R
+      objectReference: {fileID: 0}
+    - target: {fileID: 141623971695188240, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 141623971695188244, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
         type: 3}
@@ -9024,6 +9094,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserBeam [R1C3] L
       objectReference: {fileID: 0}
+    - target: {fileID: 141623971695188240, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 141623971695188244, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9117,6 +9192,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LaserBeam05
+      objectReference: {fileID: 0}
+    - target: {fileID: 141623971695188240, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 141623971695188244, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
         type: 3}
@@ -9913,6 +9993,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LaserBeam06
+      objectReference: {fileID: 0}
+    - target: {fileID: 141623971695188240, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 141623971695188244, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
         type: 3}
@@ -13672,6 +13757,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserBeam [C1R1] L
       objectReference: {fileID: 0}
+    - target: {fileID: 141623971695188240, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 141623971695188244, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13970,6 +14060,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserBeam [C1R3] R
       objectReference: {fileID: 0}
+    - target: {fileID: 141623971695188240, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 141623971695188244, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14064,6 +14159,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserBeam01
       objectReference: {fileID: 0}
+    - target: {fileID: 141623971695188240, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 141623971695188244, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14127,6 +14227,11 @@ PrefabInstance:
       propertyPath: laserEndPos
       value: 
       objectReference: {fileID: 1547107228}
+    - target: {fileID: 141623971695188242, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 141623970030920493, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
         type: 3}
       propertyPath: TrailModule.enabled
@@ -14142,7 +14247,7 @@ PrefabInstance:
       propertyPath: TrailModule.dieWithParticles
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 141623971695188242, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
+    - target: {fileID: 141623970379504742, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
         type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -14535,6 +14640,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LaserBeam10
+      objectReference: {fileID: 0}
+    - target: {fileID: 141623971695188240, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 141623971695188244, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
         type: 3}
@@ -15809,8 +15919,7 @@ PrefabInstance:
         type: 3}
       propertyPath: inputInfo
       value: 
-      objectReference: {fileID: 11400000, guid: a9ce6e909e3233e4193f8c26d843278d,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 9217587416402060000, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: cameraRigObj
@@ -15830,8 +15939,7 @@ PrefabInstance:
         type: 3}
       propertyPath: colorToReference
       value: 
-      objectReference: {fileID: 11400000, guid: a9ce6e909e3233e4193f8c26d843278d,
-        type: 2}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bddf47119048164f92afd5b2ac6e2e3, type: 3}
 --- !u!64 &1941023084
@@ -16540,6 +16648,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserBeam [R1C1] R
       objectReference: {fileID: 0}
+    - target: {fileID: 141623971695188240, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 141623971695188244, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16633,6 +16746,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LaserBeam [C1R2] R
+      objectReference: {fileID: 0}
+    - target: {fileID: 141623971695188240, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 141623971695188244, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
         type: 3}
@@ -17419,6 +17537,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LaserBeam [C1R2] L
+      objectReference: {fileID: 0}
+    - target: {fileID: 141623971695188240, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 141623971695188244, guid: 1a278c301ec2b8344a03f94fe2e30a7d,
         type: 3}
