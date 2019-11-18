@@ -36,7 +36,7 @@ public class Shoot : MonoBehaviour
     public float explodeRadius = 10f;
     public LayerMask playerLayer;
     public float explodeSpreadAngle = 90;
-    public float explodeForce=2500;
+    public float explodeForce = 2500;
     float timeCharged;
     public ParticleSystem shotgunParticles;
 
@@ -72,15 +72,11 @@ public class Shoot : MonoBehaviour
         // --- If player is stunned, stop the charging.
         if (playerScript.playerStunned)
         {
-            aimingArrows.SetActive(false);
-            pushChargedTime = 0;
-            chargingPushProjectile = false;
-            chargingIndication.fillAmount = 0;
-            animator.SetBool("activateChargeBlink", false);
+            PlayerResetCharge();
             return;
         }
 
-        if (playerScript.playerStunned || playerScript.isDead) //Check if player is stunned or dead. If dead/stunned, do not shoot
+        if (playerScript.playerStunned || playerScript.isDead || GetComponent<SkillSetManager>().ultiIsActivated) //Check if player is stunned or dead. If dead/stunned, do not shoot
         {
             return;
         }
@@ -127,7 +123,6 @@ public class Shoot : MonoBehaviour
         //Charge Push Projectile
         if (Input.GetButtonDown(watergunInput) && pushCooldownTimer <= 0)
         {
-            if (!playerCannotShoot)
             ChargePushProjectile();
         }
         
@@ -143,8 +138,7 @@ public class Shoot : MonoBehaviour
         {
             if (hProjectile == null)
             {
-                if (!playerCannotShoot)
-                    ChargeHook();
+                ChargeHook();
             }
         }
 
@@ -160,14 +154,27 @@ public class Shoot : MonoBehaviour
             playerScript.shootingHook = false;
     }
 
+    public void PlayerResetCharge()
+    {
+        aimingArrows.SetActive(false);
+        pushChargedTime = 0;
+        chargingPushProjectile = false;
+        chargingIndication.fillAmount = 0;
+        animator.SetBool("activateChargeBlink", false);
+    }
+
     private void ChargePushProjectile()
     {
+        if (playerCannotShoot) return;
+
         aimingArrows.SetActive(true);
         chargingPushProjectile = true;
+
     }
 
     private void ShootPushProjectile()
     {
+        if (playerCannotShoot) return;
 
         PushProjectile projectile = Instantiate(waterProjectile, new Vector3(shootOrigin.transform.position.x, shootOrigin.transform.position.y, shootOrigin.transform.position.z)
                                                                             , Quaternion.identity).GetComponent<PushProjectile>();
@@ -184,11 +191,7 @@ public class Shoot : MonoBehaviour
 
 
         //Reset states
-        aimingArrows.SetActive(false);
-        chargingIndication.gameObject.SetActive(false);
-        chargingPushProjectile = false;
-        animator.SetBool("activateChargeBlink", false);
-        pushChargedTime = 0;
+        PlayerResetCharge();
         pushCooldownTimer = pushCooldown;
     }
 
@@ -219,7 +222,7 @@ public class Shoot : MonoBehaviour
         if (colliders.Contains(this.GetComponent<Collider>())) //If it includes this player,
         {
             colliders.Remove(this.GetComponent<Collider>()); // remove
-            Debug.Log("Remove self");
+            //Debug.Log("Remove self");
         }
 
         Debug.Log(colliders.Count);
@@ -282,12 +285,16 @@ public class Shoot : MonoBehaviour
     //Hooking!
     private void ChargeHook()
     {
+        if (playerCannotShoot) return;
+
         aimingArrows.SetActive(true);
         chargingGrapplingHook = true;
     }
 
     private void ShootHook()
     {
+        if (playerCannotShoot) return;
+
         chargingGrapplingHook = false;
         aimingArrows.SetActive(false);
 

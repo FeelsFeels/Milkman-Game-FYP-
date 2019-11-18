@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5776619469328802074}
   - component: {fileID: 2669549723968333824}
   m_Layer: 0
-  m_Name: TestSkill
+  m_Name: EarthSkills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

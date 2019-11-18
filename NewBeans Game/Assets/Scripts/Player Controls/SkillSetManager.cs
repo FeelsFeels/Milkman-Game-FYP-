@@ -22,7 +22,8 @@ public class SkillSetManager : MonoBehaviour
     public bool ultiIsActivated; // Is the ultimate skill currently in use?
 
     [Header("Skill prefabs in order of Fire, Water, Lightning & Earth")]
-    public GameObject[] skillPrefabs = new GameObject[4]; // Container for skill prefabs
+    //public GameObject[] skillPrefabs = new GameObject[4]; // Container for skill prefabs
+    public Transform skillContainer;
     Dictionary<characterChosen, SkillSet> playerSkills = new Dictionary<characterChosen, SkillSet>();
 
     // For updating UI
@@ -34,21 +35,41 @@ public class SkillSetManager : MonoBehaviour
         // Set the dictionary
         // I'm not sure if there's a better way to do this other than to hard code, but thankfull there's only 4 enums
         // Why doesn't dictionary have an add range function
-        if (skillPrefabs[0] != null)
+        //if (skillPrefabs[0].GetComponent<SkillSet>() != null)
+        //{
+        //    playerSkills.Add(characterChosen.Fire, skillPrefabs[0].GetComponent<SkillSet>());
+        //}
+        //if (skillPrefabs[1].GetComponent<SkillSet>() != null)
+        //{
+        //    playerSkills.Add(characterChosen.Water, skillPrefabs[1].GetComponent<SkillSet>());
+        //}
+        //if (skillPrefabs[2].GetComponent<SkillSet>() != null)
+        //{
+        //    playerSkills.Add(characterChosen.Earth, skillPrefabs[2].GetComponent<SkillSet>());
+        //}
+        //if (skillPrefabs[3].GetComponent<SkillSet>() != null)
+        //{
+        //    playerSkills.Add(characterChosen.Lightning, skillPrefabs[3].GetComponent<SkillSet>());
+        //}
+
+        if (skillContainer != null)
         {
-            playerSkills.Add(characterChosen.Fire, skillPrefabs[0].GetComponent<SkillSet>());
-        }
-        if (skillPrefabs[1] != null)
-        {
-            playerSkills.Add(characterChosen.Water, skillPrefabs[1].GetComponent<SkillSet>());
-        }
-        if (skillPrefabs[2] != null)
-        {
-            playerSkills.Add(characterChosen.Earth, skillPrefabs[2].GetComponent<SkillSet>());
-        }
-        if (skillPrefabs[3] != null)
-        {
-            playerSkills.Add(characterChosen.Lightning, skillPrefabs[3].GetComponent<SkillSet>());
+            if (skillContainer.GetChild(0).GetComponent<SkillSet>() != null)
+            {
+                playerSkills.Add(characterChosen.Fire, skillContainer.GetChild(0).GetComponent<SkillSet>());
+            }
+            if (skillContainer.GetChild(1).GetComponent<SkillSet>() != null)
+            {
+                playerSkills.Add(characterChosen.Water, skillContainer.GetChild(1).GetComponent<SkillSet>());
+            }
+            if (skillContainer.GetChild(2).GetComponent<SkillSet>() != null)
+            {
+                playerSkills.Add(characterChosen.Earth, skillContainer.GetChild(2).GetComponent<SkillSet>());
+            }
+            if (skillContainer.GetChild(3).GetComponent<SkillSet>() != null)
+            {
+                playerSkills.Add(characterChosen.Lightning, skillContainer.GetChild(3).GetComponent<SkillSet>());
+            }
         }
 
     }
@@ -62,14 +83,17 @@ public class SkillSetManager : MonoBehaviour
 
 
             //Check inputs
-            if(Input.GetButtonDown(AButtonInput) && Input.GetButtonDown(BButtonInput))
+            if(Input.GetButtonDown(AButtonInput))
             {
-                //Disable Push and Pull
-                this.gameObject.GetComponent<Shoot>().playerCannotShoot = true;
+                if (Input.GetButtonDown(BButtonInput))
+                {
+                    //Disable Push and Pull
+                    this.gameObject.GetComponent<Shoot>().playerCannotShoot = true;
 
-                //Release unique ulti skill
-                Debug.Log("You have released the kraken");
-                ReleaseSpecialSkill();
+                    //Release unique ulti skill
+                    Debug.Log("You have released the kraken");
+                    ReleaseSpecialSkill();
+                }
             }
         }
     }
@@ -164,6 +188,9 @@ public class SkillSetManager : MonoBehaviour
 
     void ReleaseSpecialSkill()
     {
+
+        if (ultiIsActivated) return;
+
         //Set bool active
         ultiIsActivated = true;
 
@@ -186,6 +213,8 @@ public class SkillSetManager : MonoBehaviour
             StartCoroutine(EndUlti(5));
         }
 
+        gameObject.GetComponent<Shoot>().PlayerResetCharge();
+
         ResetUltiCharge(); // Reset skill charge gauge
     }
 
@@ -194,6 +223,7 @@ public class SkillSetManager : MonoBehaviour
         yield return new WaitForSeconds(duration);
         ultiIsActivated = false;
         this.gameObject.GetComponent<Shoot>().playerCannotShoot = false;
+        gameObject.GetComponent<Shoot>().PlayerResetCharge();
     }
 
     void ResetUltiCharge()

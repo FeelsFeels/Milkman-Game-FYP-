@@ -24,4 +24,4 @@ MonoBehaviour:
   chosenCharacterIndex: 0
   chosenCharacterData: {fileID: 11400000, guid: 6c949c186e315fb40912dc639e28fb16,
     type: 2}
-  forceActive: 1
+  forceActive: 0
