@@ -166,6 +166,8 @@ public class Shoot : MonoBehaviour
     private void ChargePushProjectile()
     {
         if (playerCannotShoot) return;
+        if (chargingGrapplingHook) return;
+
 
         aimingArrows.SetActive(true);
         chargingPushProjectile = true;
@@ -286,6 +288,7 @@ public class Shoot : MonoBehaviour
     private void ChargeHook()
     {
         if (playerCannotShoot) return;
+        if (chargingPushProjectile) return;
 
         aimingArrows.SetActive(true);
         chargingGrapplingHook = true;

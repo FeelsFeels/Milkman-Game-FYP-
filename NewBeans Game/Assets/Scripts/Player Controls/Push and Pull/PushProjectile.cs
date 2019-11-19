@@ -19,6 +19,10 @@ public class PushProjectile : MonoBehaviour
 
     public bool exploding;
 
+    [Header("Ultimate Skills charge")]
+    public bool ownerPlayerGetsCharged;
+
+
     public Rigidbody rb;
     public TrailRenderer trailRenderer;
 
@@ -82,9 +86,19 @@ public class PushProjectile : MonoBehaviour
             playerHit.lastHitBy = ownerPlayer;
 
             //Charging special skills
-            if(ownerPlayer.GetComponent<SkillSetManager>() != null)
+            if (ownerPlayerGetsCharged)
             {
-                ownerPlayer.GetComponent<SkillSetManager>().ChargeSpecialSkill(knockbackToUse);
+                if (ownerPlayer.GetComponent<SkillSetManager>() != null)
+                {
+                    ownerPlayer.GetComponent<SkillSetManager>().ChargeSpecialSkill(knockbackToUse);
+                }
+            }
+            else
+            {
+                if (player.GetComponent<SkillSetManager>() != null)
+                {
+                    player.GetComponent<SkillSetManager>().ChargeSpecialSkill(knockbackToUse);
+                }
             }
 
             Destroy(gameObject);
