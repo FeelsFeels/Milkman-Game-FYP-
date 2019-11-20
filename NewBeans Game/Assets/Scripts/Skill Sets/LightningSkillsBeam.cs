@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class LightningSkillsBeam : MonoBehaviour
 {
-    public Animator animator;
+    public Animator anticipationAnimator;
+    public Animator leftBeamAnimator;
+    public Animator rightBeamAnimator;
     GameObject castingPlayer;
+    Collider collider;
 
     public void InitialiseLaser(SkillSetManager playerSkill)
     {
