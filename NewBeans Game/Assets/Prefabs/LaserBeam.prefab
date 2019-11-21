@@ -87,7 +87,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 128, z: 12.8, w: 1e-44}
+  m_BoundingSphereOverride: {x: 1.3563156e-19, y: 223.42627, z: 7.2738345e+22, w: 1.1693431e-19}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -4919,7 +4919,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &141623970379504743
 Transform:
   m_ObjectHideFlags: 0
@@ -5040,7 +5040,6 @@ GameObject:
   - component: {fileID: 141623971695188244}
   - component: {fileID: 141623971695188245}
   - component: {fileID: 141623971695188242}
-  - component: {fileID: 141623971695188246}
   - component: {fileID: 451000520}
   m_Layer: 0
   m_Name: LaserBeam
@@ -5110,19 +5109,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &141623971695188246
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 141623971695188240}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &451000520
 MonoBehaviour:
   m_ObjectHideFlags: 0

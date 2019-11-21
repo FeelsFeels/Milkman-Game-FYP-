@@ -15,11 +15,18 @@ public class CameraControls : MonoBehaviour
     private Vector3 m_MoveVelocity;                 // Reference velocity for the smooth damping of the position.
     private Vector3 m_DesiredPosition;              // The position the camera is moving towards.
 
+    //Screen shake
+    float yPosOriginal; //Needed to set yPos back to before screen shake values
+    Coroutine shakingCoroutine;
+    bool screenShaking;
+    float intensity;
+    float shakeTimeLeft;
 
     private void Awake()
     {
         m_Camera = GetComponentInChildren<Camera>();
         m_Targets = GameObject.FindGameObjectsWithTag("Player");
+        yPosOriginal = transform.position.y;
     }
 
 
@@ -70,10 +77,21 @@ public class CameraControls : MonoBehaviour
             averagePos /= numTargets;
 
         // Keep the same y value.
-        averagePos.y = transform.position.y;
+        //averagePos.y = transform.position.y;
+        averagePos.y = yPosOriginal;
 
         // The desired position is the average position;
         m_DesiredPosition = averagePos;
+
+        if (screenShaking)
+        {
+            float x = Random.Range(-.2f, .2f) * intensity;
+            float y = Random.Range(-.2f, .2f) * intensity;
+            float z = Random.Range(-.2f, .2f) * intensity;
+            m_DesiredPosition.x += x;
+            m_DesiredPosition.y += y;
+            m_DesiredPosition.z += z;
+        }
     }
     
 
@@ -138,6 +156,47 @@ public class CameraControls : MonoBehaviour
 
         // Find and set the required size of the camera.
         m_Camera.orthographicSize = FindRequiredSize();
+    }
+
+    public void ShakeCamera(float duration, float magnitude)
+    {
+        if (!screenShaking)
+        {
+            shakingCoroutine = StartCoroutine(ShakeRoutine(duration, magnitude));
+        }
+        else   //if already shaking, check shake times
+        {
+            if (duration > shakeTimeLeft)
+            {
+                //Stopping previous coroutine
+                StopCoroutine(shakingCoroutine);
+                StopShaking();
+
+                //Starting new one with new values
+                shakingCoroutine = StartCoroutine(ShakeRoutine(duration, magnitude));
+            }
+        }
+    }
+
+    IEnumerator ShakeRoutine(float duration, float magnitude)
+    {
+        screenShaking = true;
+        shakeTimeLeft = duration;
+        intensity = magnitude;
+
+        while(shakeTimeLeft > 0)
+        {
+            shakeTimeLeft -= Time.deltaTime;
+            yield return null;
+        }
+        
+        StopShaking();
+    }
+
+    void StopShaking()
+    {
+        screenShaking = false;
+        shakeTimeLeft = 0;
     }
 }
 
