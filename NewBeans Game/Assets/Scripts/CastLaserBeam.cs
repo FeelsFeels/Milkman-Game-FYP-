@@ -11,6 +11,8 @@ public class CastLaserBeam : MonoBehaviour
     public float maxDistance = 1000f; // Distance of raycast.
     private float laserEndTime = 0.4f; // How long the laser beam should last.
 
+    public GameObject warningDirection;
+    public LayerMask warningLayer;
     public LineRenderer warningLine; // Line Renderer to show the range of laser beam.
     public float lineWidth = 5f; // Line Renderer's width.
 
@@ -46,9 +48,33 @@ public class CastLaserBeam : MonoBehaviour
         warningLine.SetWidth(5f, 5f);
         warningLine.SetPosition(0, laserStartPos.transform.position);
         warningLine.SetPosition(1, laserEndPos.transform.position);
-        
-        Debug.DrawRay(laserStartPos.transform.position, laserEndPos.transform.position, Color.blue);
 
+
+        bool foundPos = false;
+        float distance = 1f;
+        while(foundPos == false)
+        {
+            RaycastHit hit;
+            Vector3 newPos = laserStartPos.position + (distance * (laserEndPos.position - laserStartPos.position));
+            Debug.DrawLine(newPos, newPos - Vector3.down * 100, Color.yellow, 5f);
+            if(Physics.Raycast(newPos, Vector3.down, out hit, warningLayer))
+            {
+                print("Name: " + hit.collider.gameObject.name + " Layer: " + hit.collider.gameObject.layer);
+                foundPos = true;
+                GameObject indication = Instantiate(warningDirection, newPos, Quaternion.identity);
+                Destroy(indication, warningTime);
+                break;
+                
+            }
+            else
+            {
+                distance += 1;
+                continue;
+            }
+        }
+
+        Debug.DrawRay(laserStartPos.transform.position, laserEndPos.transform.position, Color.blue);
+        
         Invoke("ShootLaserBeam", warningTime);
 
     }

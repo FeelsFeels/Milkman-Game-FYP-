@@ -8,7 +8,7 @@ namespace BloodyhellshitUnity{
         // Update is called once per frame
         void Update()
         {
-            for (int i = 1; i <= 5; i++)
+            for (int i = 1; i <= 4; i++)
             {
                 if (Input.GetButtonDown("AButton (Controller " + i + ")")) //if there's an A button input from one of the controllers
                 {

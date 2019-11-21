@@ -311,6 +311,10 @@ public class GrapplingHook : MonoBehaviour
                 Destroy(node);
             }
         }
+        if(transform.childCount > 0)
+        {
+            transform.DetachChildren();
+        }
         Destroy(gameObject);
     }
     

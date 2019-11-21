@@ -5079,7 +5079,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 141623971695188240}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -5126,6 +5126,11 @@ MonoBehaviour:
     m_Bits: 3072
   hitDetect: 0
   maxDistance: 1000
+  warningDirection: {fileID: 4994366782005532885, guid: 206f2f089458da246816562fc0db9951,
+    type: 3}
+  warningLayer:
+    serializedVersion: 2
+    m_Bits: 256
   warningLine: {fileID: 141623970379504742}
   lineWidth: 5
   laserStartPos: {fileID: 0}
