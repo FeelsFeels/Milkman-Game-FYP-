@@ -1851,6 +1851,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Prefab (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 9217587416402060013, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9217587416402060012, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9066,27 +9071,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 200106691564047126, guid: 69f6df1a567038c40810273757fcd7e1,
+    - target: {fileID: 8055662494059962561, guid: 69f6df1a567038c40810273757fcd7e1,
         type: 3}
-      propertyPath: shockwaveParticles
+      propertyPath: directionalLight
       value: 
-      objectReference: {fileID: 1765079799062324546, guid: c873447dcbd7d8c4dbb878ba67891401,
-        type: 3}
-    - target: {fileID: 200106691564047126, guid: 69f6df1a567038c40810273757fcd7e1,
-        type: 3}
-      propertyPath: knockbackStrength
-      value: 3500
-      objectReference: {fileID: 0}
-    - target: {fileID: 200106691564047126, guid: 69f6df1a567038c40810273757fcd7e1,
-        type: 3}
-      propertyPath: knockbackRadius
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 200106691564047126, guid: 69f6df1a567038c40810273757fcd7e1,
-        type: 3}
-      propertyPath: skillDuration
-      value: 10
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1040281929}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69f6df1a567038c40810273757fcd7e1, type: 3}
 --- !u!114 &7893229861017424943 stripped

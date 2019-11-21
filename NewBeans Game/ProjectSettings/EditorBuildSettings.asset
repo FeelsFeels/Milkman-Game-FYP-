@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/31 Oct 19 - Rooky - New Map of Michelle's.unity
     guid: a7eb32e07698c3043a7180225e8b66cf
+  - enabled: 1
+    path: Assets/Scenes/17 Nov 19 - Ly has skills.unity
+    guid: 09556f2b685a798408397a088786fd07
+  - enabled: 1
+    path: Assets/Scenes/14 Nov 19 - Laser Map Playable ver.unity
+    guid: 642f05af2f23f114180f7914ee246c8d
   m_configObjects: {}
