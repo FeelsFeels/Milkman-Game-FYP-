@@ -10,7 +10,7 @@ using UnityEngine.Events;
 
 public class SkillSetManager : MonoBehaviour
 {
-    public enum characterChosen { Fire, Water, Lightning, Earth,};
+    public enum characterChosen { Fire, Water, Earth, Lightning,};
 
     [Header("Charging Ultimate Skill Settings")]
     public characterChosen playerAvatar;
@@ -21,10 +21,12 @@ public class SkillSetManager : MonoBehaviour
     string BButtonInput;
     public bool ultiIsActivated; // Is the ultimate skill currently in use?
 
-    [Header("Skill prefabs in order of Fire, Water, Lightning & Earth")]
+    [Header("Skill prefabs in order of Fire, Water, Earth & Lightning")]
     //public GameObject[] skillPrefabs = new GameObject[4]; // Container for skill prefabs
     public Transform skillContainer;
     Dictionary<characterChosen, SkillSet> playerSkills = new Dictionary<characterChosen, SkillSet>();
+
+    public bool testingPurposes;
 
     // For updating UI
     public UnityEvent<SkillSetManager> OnChargeUltimate = new ChargeUltiEvent();
@@ -35,24 +37,9 @@ public class SkillSetManager : MonoBehaviour
         // Set the dictionary
         // I'm not sure if there's a better way to do this other than to hard code, but thankfull there's only 4 enums
         // Why doesn't dictionary have an add range function
-        //if (skillPrefabs[0].GetComponent<SkillSet>() != null)
-        //{
-        //    playerSkills.Add(characterChosen.Fire, skillPrefabs[0].GetComponent<SkillSet>());
-        //}
-        //if (skillPrefabs[1].GetComponent<SkillSet>() != null)
-        //{
-        //    playerSkills.Add(characterChosen.Water, skillPrefabs[1].GetComponent<SkillSet>());
-        //}
-        //if (skillPrefabs[2].GetComponent<SkillSet>() != null)
-        //{
-        //    playerSkills.Add(characterChosen.Earth, skillPrefabs[2].GetComponent<SkillSet>());
-        //}
-        //if (skillPrefabs[3].GetComponent<SkillSet>() != null)
-        //{
-        //    playerSkills.Add(characterChosen.Lightning, skillPrefabs[3].GetComponent<SkillSet>());
-        //}
 
-        if (skillContainer != null)
+
+        if (skillContainer != null && !testingPurposes)
         {
             if (skillContainer.GetChild(0).GetComponent<SkillSet>() != null)
             {
@@ -69,6 +56,14 @@ public class SkillSetManager : MonoBehaviour
             if (skillContainer.GetChild(3).GetComponent<SkillSet>() != null)
             {
                 playerSkills.Add(characterChosen.Lightning, skillContainer.GetChild(3).GetComponent<SkillSet>());
+            }
+        }
+
+        if (testingPurposes && skillContainer != null)
+        {
+            if (skillContainer.GetComponent<SkillSet>() != null)
+            {
+                playerSkills.Add(characterChosen.Fire, skillContainer.GetComponent<SkillSet>());
             }
         }
 
@@ -96,6 +91,16 @@ public class SkillSetManager : MonoBehaviour
                 }
             }
         }
+
+        /// Testing purposes
+        /// To be deleted
+        
+        if (testingPurposes && Input.GetKeyDown(KeyCode.H))
+        {
+            ReleaseSpecialSkill();
+        }
+
+
     }
 
     /// ***********
