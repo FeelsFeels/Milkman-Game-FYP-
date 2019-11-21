@@ -20,7 +20,6 @@ namespace Debugging
             {
                 Destroy(gameObject);
             }
-            DontDestroyOnLoad(gameObject);
         }
 
         public CharacterData[] characters = new CharacterData[4];
