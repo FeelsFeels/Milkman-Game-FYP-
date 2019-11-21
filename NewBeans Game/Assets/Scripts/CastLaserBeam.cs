@@ -42,11 +42,11 @@ public class CastLaserBeam : MonoBehaviour
     // ----- Activate the warning laser beam.
     public void LaserWarning()
     {
+        warningLine.gameObject.SetActive(true);
         warningLine.SetWidth(5f, 5f);
         warningLine.SetPosition(0, laserStartPos.transform.position);
         warningLine.SetPosition(1, laserEndPos.transform.position);
-
-        print("Set warning renderer position");
+        
         Debug.DrawRay(laserStartPos.transform.position, laserEndPos.transform.position, Color.blue);
 
         Invoke("ShootLaserBeam", warningTime);
@@ -56,12 +56,13 @@ public class CastLaserBeam : MonoBehaviour
     // ----- Activate the real laser beam.
     public void ShootLaserBeam()
     {
-        warningLine.SetPosition(0, laserStartPos.transform.position);
-        warningLine.SetPosition(1, laserStartPos.transform.position);
+        warningLine.gameObject.SetActive(false);
+        //warningLine.SetPosition(0, laserStartPos.transform.position);
+        //warningLine.SetPosition(1, laserStartPos.transform.position);
 
         print("Unset warning renderer position");
 
-        Vector3 colliderScale = new Vector3(5f, 5f, 5f);
+        Vector3 colliderScale = new Vector3(2.5f, 2.5f, 2.5f);
         Vector3 laserShootDirection = (laserEndPos.transform.position - laserStartPos.transform.position);
 
 

@@ -35,4 +35,19 @@ public class LightningSkillsBeam : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Camera shake fucking sucks and makes me giddy
+    /// </summary>    
+    //Light shaking during charge
+    public void ShakeCamera1()
+    {
+        FindObjectOfType<CameraControls>().ShakeCamera(1.9f, 0f);
+    }
+
+    //Heavy shaking during actual beam
+    public void ShakeCamera2()
+    {
+        FindObjectOfType<CameraControls>().ShakeCamera(6f, 0f);
+    }
+
 }
