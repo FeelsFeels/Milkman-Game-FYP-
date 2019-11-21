@@ -14,11 +14,6 @@ public class EarthSkills : SkillSetManager.SkillSet
 
     public override void SkillAttack(SkillSetManager manager)
     {
-        //GameObject test = Instantiate(testing, manager.transform.position, Quaternion.identity);
-        //test.GetComponent<Rigidbody>().AddForce(transform.forward * 10);
-
-        //StartCoroutine(OhHeck(manager, test));
-
         skillUser = manager.GetComponent<Transform>(); // Set the player
         startSmashing = true;
 
@@ -84,7 +79,7 @@ public class EarthSkills : SkillSetManager.SkillSet
 
     IEnumerator EndSkill(SkillSetManager manager)
     {
-        Debug.Log("heya");
+        Debug.Log("I've stopped being a rock golem");
         yield return new WaitForSeconds(skillDuration);
 
         //Stop the smash
