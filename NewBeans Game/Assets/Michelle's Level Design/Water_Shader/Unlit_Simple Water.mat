@@ -30,7 +30,7 @@ Material:
     m_Floats:
     - _Amount: 0.016
     - _Foam: 0.5
-    - _Height: 0.055
+    - _Height: 0.01
     - _Scale: 0.065
     - _Speed: 0.292
     - _TextureDistort: 0.122
