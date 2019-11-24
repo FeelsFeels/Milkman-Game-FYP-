@@ -39,7 +39,7 @@ public class SkillSetManager : MonoBehaviour
         // Why doesn't dictionary have an add range function
 
 
-        if (skillContainer != null && !testingPurposes)
+        if (skillContainer != null)
         {
             if (skillContainer.GetChild(0).GetComponent<SkillSet>() != null)
             {
@@ -59,13 +59,13 @@ public class SkillSetManager : MonoBehaviour
             }
         }
 
-        if (testingPurposes && skillContainer != null)
-        {
-            if (skillContainer.GetComponent<SkillSet>() != null)
-            {
-                playerSkills.Add(characterChosen.Fire, skillContainer.GetComponent<SkillSet>());
-            }
-        }
+        //if (testingPurposes && skillContainer != null)
+        //{
+        //    if (skillContainer.GetComponent<SkillSet>() != null)
+        //    {
+        //        playerSkills.Add(characterChosen.Fire, skillContainer.GetComponent<SkillSet>());
+        //    }
+        //}
 
     }
 

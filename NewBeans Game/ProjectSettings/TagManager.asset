@@ -9,6 +9,7 @@ TagManager:
   - Shield
   - Rock
   - PushProjectile
+  - Beyblade
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - Visual Effects
   - Player
   - Rock
-  - 
+  - Beyblade
   - 
   - 
   - 
