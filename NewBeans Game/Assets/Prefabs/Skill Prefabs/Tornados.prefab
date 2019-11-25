@@ -4799,7 +4799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 924da4b5468f5cc4d97eb44ed928a564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 6
   suctionForce: 1000
   tornadoRadius: 5
   playerLayer:

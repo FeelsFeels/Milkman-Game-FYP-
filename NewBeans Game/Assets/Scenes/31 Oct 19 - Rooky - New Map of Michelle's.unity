@@ -516,6 +516,11 @@ PrefabInstance:
       propertyPath: skillContainer
       value: 
       objectReference: {fileID: 16825178}
+    - target: {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: currentCharge
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bddf47119048164f92afd5b2ac6e2e3, type: 3}
 --- !u!1 &149369842
@@ -711,6 +716,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameplayUI_Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7893229861948897603, guid: 3bda2b1ba259d344aabdf004f7ca1e57,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7893229861948897607, guid: 3bda2b1ba259d344aabdf004f7ca1e57,
         type: 3}
@@ -1423,50 +1433,6 @@ PrefabInstance:
       objectReference: {fileID: 1040281929}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69f6df1a567038c40810273757fcd7e1, type: 3}
---- !u!1 &560525820 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 359444069643724560, guid: 69f6df1a567038c40810273757fcd7e1,
-    type: 3}
-  m_PrefabInstance: {fileID: 560525819}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &560525821 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 28517566028342544, guid: 69f6df1a567038c40810273757fcd7e1,
-    type: 3}
-  m_PrefabInstance: {fileID: 560525819}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &560525822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 560525820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fc674ca0f2d90e47b6bc2418785769f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillDuration: 6
-  lightningBeamsPrefab: {fileID: 2455858757423212052, guid: ea79e421aacc0874badbb267363ac0c8,
-    type: 3}
-  directionalLight: {fileID: 1040281929}
---- !u!114 &560525823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 560525821}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fc674ca0f2d90e47b6bc2418785769f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillDuration: 6
-  lightningBeamsPrefab: {fileID: 2455858757423212052, guid: ea79e421aacc0874badbb267363ac0c8,
-    type: 3}
-  directionalLight: {fileID: 1040281929}
 --- !u!1 &710541278
 GameObject:
   m_ObjectHideFlags: 0
@@ -2109,6 +2075,11 @@ PrefabInstance:
       propertyPath: skillContainer
       value: 
       objectReference: {fileID: 16825178}
+    - target: {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: currentCharge
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4888061938081025354, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -4014,6 +3985,11 @@ PrefabInstance:
       propertyPath: skillContainer
       value: 
       objectReference: {fileID: 16825178}
+    - target: {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: currentCharge
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4888061938081025354, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -5559,7 +5535,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 122046, guid: a0f68672c76de4845b23a94845452f8a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 467994, guid: a0f68672c76de4845b23a94845452f8a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5619,7 +5595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 877716511, guid: a0f68672c76de4845b23a94845452f8a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2311380, guid: a0f68672c76de4845b23a94845452f8a, type: 3}
       propertyPath: m_Enabled
@@ -10968,15 +10944,10 @@ PrefabInstance:
       propertyPath: skillContainer
       value: 
       objectReference: {fileID: 16825178}
-    - target: {fileID: 9217587417547698246, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+    - target: {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
-      propertyPath: m_FillAmount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9217587417547698244, guid: 1bddf47119048164f92afd5b2ac6e2e3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      propertyPath: currentCharge
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4888061938081025354, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
@@ -12217,6 +12188,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9217587417547698246, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9217587417547698244, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bddf47119048164f92afd5b2ac6e2e3, type: 3}

@@ -24,6 +24,7 @@ public class PushProjectile : MonoBehaviour
 
 
     public Rigidbody rb;
+    public GameObject hitParticles;
     public TrailRenderer trailRenderer;
 
 
@@ -81,6 +82,8 @@ public class PushProjectile : MonoBehaviour
 
             playerHit = player;
             Instantiate(player.playerPushedEffect, player.transform.position, player.transform.rotation);
+            if(hitParticles != null)
+                Instantiate(hitParticles, player.transform.position + Vector3.up * 2, Quaternion.identity);
             //player.GetComponent<Rigidbody>().AddForce(direction * knockbackStrength);
             player.GetComponent<Rigidbody>().AddForce(knockbackDirection * knockbackToUse);
             playerHit.lastHitBy = ownerPlayer;
