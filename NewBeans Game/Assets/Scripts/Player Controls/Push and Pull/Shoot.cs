@@ -8,7 +8,7 @@ public class Shoot : MonoBehaviour
     public Transform shootOrigin;
     public Transform playerCenter; //Needed as reference for grappling hook's linerenderer;
 
-    public GameObject waterProjectile;
+    public GameObject pushProjectile;
     public GameObject hookProjectile;
 
     private Animator animator;  //For blinking indication
@@ -60,6 +60,15 @@ public class Shoot : MonoBehaviour
         watergunInput = playerScript.AButtonInput;
         chargingInput = playerScript.RightBumper;
         hookInput = playerScript.BButtonInput;
+        if (playerScript.inputInfo.chosenCharacterData.pushProjectile != null)
+        {
+            pushProjectile = playerScript.inputInfo.chosenCharacterData.pushProjectile;
+        }
+        if (playerScript.inputInfo.chosenCharacterData.hookProjectile != null)
+        {
+            hookProjectile = playerScript.inputInfo.chosenCharacterData.hookProjectile;
+        }
+
 
         aimingArrows.SetActive(false);
     }
@@ -178,13 +187,14 @@ public class Shoot : MonoBehaviour
     {
         if (playerCannotShoot) return;
 
-        PushProjectile projectile = Instantiate(waterProjectile, new Vector3(shootOrigin.transform.position.x, shootOrigin.transform.position.y, shootOrigin.transform.position.z)
+        PushProjectile projectile = Instantiate(pushProjectile, new Vector3(shootOrigin.transform.position.x, shootOrigin.transform.position.y, shootOrigin.transform.position.z)
                                                                             , Quaternion.identity).GetComponent<PushProjectile>();
-        //projectile.InitialiseShot(pushChargedTime, shootOrigin.forward, gameObject);
+
         projectile.ShotInitialised(KnockbackMultiplier(timeCharged), SmallMultiplier(timeCharged), shootOrigin.forward, gameObject);
 
-        //Scale projectile size
-        projectile.gameObject.transform.localScale = new Vector3(SmallMultiplier(pushChargedTime), SmallMultiplier(pushChargedTime), SmallMultiplier(pushChargedTime)); 
+        //Scale projectile size and rotation
+        projectile.gameObject.transform.localScale = new Vector3(SmallMultiplier(pushChargedTime), SmallMultiplier(pushChargedTime), SmallMultiplier(pushChargedTime));
+        projectile.transform.forward = transform.forward;
 
         //kickback to player
         Vector3 direction = -transform.forward;
@@ -302,7 +312,8 @@ public class Shoot : MonoBehaviour
         aimingArrows.SetActive(false);
 
         GrapplingHook projectile = Instantiate(hookProjectile, new Vector3(shootOrigin.transform.position.x, shootOrigin.transform.position.y, shootOrigin.transform.position.z), Quaternion.identity).GetComponent<GrapplingHook>();
-        projectile.direction = shootOrigin.forward;
+        projectile.transform.forward = transform.forward;
+        projectile.direction = transform.forward;
         projectile.hookOwner = gameObject;
         projectile.playerCenter = playerCenter;
         hProjectile = projectile;

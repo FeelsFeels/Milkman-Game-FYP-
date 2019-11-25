@@ -31,7 +31,7 @@ public class WaterSkills : SkillSetManager.SkillSet
 
     IEnumerator GrowTornado()
     {
-        yield return new WaitForSeconds(timeForTornadoGrowth);
+        yield return new WaitForSeconds(timeForTornadoGrowth); //Wait for tornado to fully grow
 
         //Ref to tornado, and make tornado move forward
         storm.BrewStorm((skillUser.forward.normalized));
@@ -45,9 +45,5 @@ public class WaterSkills : SkillSetManager.SkillSet
         storm.DestroyStorm();
         EndUltimate(manager);
     }
-    //private void Update()
-    //{
-    //    if(skillUser != null)
-    //    Debug.Log(skillUser.position);
-    //}
+
 }

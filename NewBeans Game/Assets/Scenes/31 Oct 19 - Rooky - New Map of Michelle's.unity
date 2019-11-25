@@ -5324,7 +5324,7 @@ MonoBehaviour:
     isRepeating: 1
     repeatRate: 50
   - EventDescription: Spawn Golem
-    timeToCall: 50
+    timeToCall: 30
     unityEvent:
       m_PersistentCalls:
         m_Calls:
@@ -5556,6 +5556,10 @@ PrefabInstance:
     - target: {fileID: 122046, guid: a0f68672c76de4845b23a94845452f8a, type: 3}
       propertyPath: m_Name
       value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 122046, guid: a0f68672c76de4845b23a94845452f8a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 467994, guid: a0f68672c76de4845b23a94845452f8a, type: 3}
       propertyPath: m_LocalPosition.x
