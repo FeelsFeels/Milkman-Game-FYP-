@@ -367,7 +367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootOrigin: {fileID: 9217587416296703285}
   playerCenter: {fileID: 2535434088606850086}
-  waterProjectile: {fileID: 4402436895365813739, guid: 2c359f36294584b48bab25595cc4b56d,
+  pushProjectile: {fileID: 4402436895365813739, guid: 2c359f36294584b48bab25595cc4b56d,
     type: 3}
   hookProjectile: {fileID: 1181466533355402987, guid: 10e2bd65e7f148249b8d7f346627176a,
     type: 3}
@@ -378,6 +378,7 @@ MonoBehaviour:
   pullCooldown: 1.5
   chargingPushProjectile: 0
   chargingGrapplingHook: 0
+  playerCannotShoot: 0
   baseKickbackForce: 0
   explodeRadius: 10
   playerLayer:
@@ -405,7 +406,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAvatar: 0
   fullChargeAmount: 13195
-  chargeBar: {fileID: 0}
+  currentCharge: 0
+  chargePercentage: 0
+  ultiIsActivated: 0
+  skillContainer: {fileID: 0}
+  testingPurposes: 0
 --- !u!1 &9217587416420445602
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,8 +24,17 @@ public class FireUltiSkill : SkillSetManager.SkillSet
     // Start is called before the first frame update
     void Start()
     {
-        skillManager = GetComponent<SkillSetManager>();
-        ultiPrefab.transform.Translate(0.001f, 0.001f, 0.001f);
+        SkillSetManager[] managers = FindObjectsOfType<SkillSetManager>();
+        for (int i = 0; i < managers.Length; i++)
+        {
+            if(managers[i].playerAvatar == SkillSetManager.characterChosen.Fire)
+            {
+                skillManager = managers[i];
+                fireCharacter = managers[i].gameObject;
+                break;
+            }
+        }
+        //skillManager = GetComponent<SkillSetManager>();
     }
 
     // Update is called once per frame
@@ -36,10 +45,13 @@ public class FireUltiSkill : SkillSetManager.SkillSet
             thisUlti.transform.Rotate(0, 10, 0, Space.Self);
             thisUlti.transform.position = new Vector3(fireCharacter.transform.position.x, fireCharacter.transform.position.y + 3.5f, fireCharacter.transform.position.z);
         }
-        
-        if (fireCharacter.GetComponent<PlayerController>().isDead)
+
+        if (fireCharacter != null)
         {
-            Destroy(thisUlti);
+            if (fireCharacter.GetComponent<PlayerController>().isDead)
+            {
+                Destroy(thisUlti);
+            }
         }
     }
 

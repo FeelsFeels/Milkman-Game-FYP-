@@ -6,6 +6,8 @@ using UnityEngine;
 public class CharacterData : ScriptableObject
 {
     public GameObject characterPrefab;
+    public GameObject pushProjectile;
+    public GameObject hookProjectile;
     public Color32 characterColor;
     public Sprite characterUISprite;
     public string character;

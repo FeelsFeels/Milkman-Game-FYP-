@@ -12,7 +12,6 @@ public class CastLaserBeam : MonoBehaviour
     private float laserEndTime = 0.4f; // How long the laser beam should last.
 
     public GameObject warningDirection;
-    public LayerMask warningLayer;
     public LineRenderer warningLine; // Line Renderer to show the range of laser beam.
     public float lineWidth = 5f; // Line Renderer's width.
 
@@ -52,19 +51,26 @@ public class CastLaserBeam : MonoBehaviour
 
         bool foundPos = false;
         float distance = 1f;
-        while(foundPos == false)
+        int iterations = 0;
+        //for (int i = 0; i < 15; i++)
+        //{
+        //    Vector3 newPos = laserStartPos.position + (distance * (laserEndPos.position - laserStartPos.position).normalized);
+        //    Debug.DrawLine(newPos, newPos - Vector3.down * 100, Color.yellow, 5f);
+        //    distance++;
+        //}
+        while (foundPos == false)
         {
             RaycastHit hit;
-            Vector3 newPos = laserStartPos.position + (distance * (laserEndPos.position - laserStartPos.position));
+            Vector3 newPos = laserStartPos.position + (distance * (laserEndPos.position - laserStartPos.position).normalized);
             Debug.DrawLine(newPos, newPos - Vector3.down * 100, Color.yellow, 5f);
-            if(Physics.Raycast(newPos, Vector3.down, out hit, warningLayer))
+            if (Physics.Raycast(newPos, Vector3.down, out hit, Mathf.Infinity, 1 << LayerMask.NameToLayer("Ground")))
             {
-                print("Name: " + hit.collider.gameObject.name + " Layer: " + hit.collider.gameObject.layer);
+                print("Name: " + hit.collider.gameObject.name);
                 foundPos = true;
                 GameObject indication = Instantiate(warningDirection, newPos, Quaternion.identity);
                 Destroy(indication, warningTime);
                 break;
-                
+
             }
             else
             {

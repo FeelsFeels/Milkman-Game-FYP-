@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3581615164978769143}
+  - component: {fileID: 1417189249}
   m_Layer: 0
   m_Name: FireSkills
   m_TagString: Untagged
@@ -30,6 +31,28 @@ Transform:
   m_Father: {fileID: 2402456599169452694}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1417189249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28517566028342544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4207e74a482ea8642900b7dd35d694b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillDuration: 1000
+  beyblading: 0
+  showVFX: 0
+  knockbackRadius: 15
+  knockbackStrength: 2500
+  ultiPrefab: {fileID: 94769738028344917, guid: 9f3e47a02ed775e49a06e433fe15fa03,
+    type: 3}
+  fireCharacter: {fileID: 0}
+  thisUlti: {fileID: 0}
+  skillLifetime: 5
 --- !u!1 &359444069643724560
 GameObject:
   m_ObjectHideFlags: 0

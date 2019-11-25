@@ -23,12 +23,16 @@ public class GrapplingHook : MonoBehaviour
 
     public HookStatus hookStatus = HookStatus.shooting;
 
+    [Header("Essential Positioning")]
     public GameObject hookOwner;        //This refers to the "first node", usually refers to player. 
     public GameObject player;           //Player gameobject. Does NOT change.
     public GameObject latchedObject;
-    public Transform playerCenter;
-
+    public Transform playerCenter;      //For positioning the line renderer
+    public Transform latchedPosition;   //For positioning the latched player
     public GameObject nodePrefab;       //This is the nodes
+    public GameObject openHand;         //This is intended visuals when hook is going outwards. (outstreched hand)
+    public GameObject closedHand;       //This is the intended visuals when hook grabbed onto something (closed fist)
+
 
     public Vector3 direction;           //where the hook leader is going towards. Initialised in Shoot.cs when hook is fired.
     public float speed;                 //How fast hook leader goes when travelling forwards
@@ -41,10 +45,10 @@ public class GrapplingHook : MonoBehaviour
     public float nodeBondDamping;       //The damping for each connected node
     public float renodeDelay;
     private float currentRenodeDelay;
+    private bool releaseOnNext;         //If true and an object is latched, release it the next time a node is removed.
 
     public bool willReturn;             //Bool for if hook is supposed to come back.
 
-    private bool releaseOnNext;         //If true and an object is latched, release it the next time a node is removed.
 
     public List<GameObject> nodes = new List<GameObject>();
 
@@ -59,6 +63,7 @@ public class GrapplingHook : MonoBehaviour
             lineRenderer.enabled = false;
 
         player = hookOwner;
+        //direction = transform.forward;
 
     }
 
@@ -101,7 +106,7 @@ public class GrapplingHook : MonoBehaviour
         if (hookStatus == HookStatus.shooting)
         {
             //Movement. Direction is set by Shoot.cs
-            transform.Translate(direction * speed);
+            transform.Translate(direction * speed, Space.World);
             //If the hook nodes are at its maximum, bring back the hook.
             if(nodes.Count >= maxNodes)
             {
@@ -140,8 +145,14 @@ public class GrapplingHook : MonoBehaviour
                         if (!releaseOnNext)
                         {
                             //Sets latched object position to hook's position
-                            latchedObject.transform.localPosition = new Vector3(0, -8.5f, 0);
-
+                            if (latchedPosition != null)
+                            {
+                                latchedObject.transform.position = latchedPosition.position;
+                            }
+                            else
+                            {
+                                latchedObject.transform.localPosition = new Vector3(0, -8.5f, 0);
+                            }
                             RaycastHit hit;
 
                             if (Physics.Raycast(transform.position, Vector3.down, out hit, 100f, 1 << LayerMask.NameToLayer("Ground")))
@@ -315,6 +326,14 @@ public class GrapplingHook : MonoBehaviour
         {
             transform.DetachChildren();
         }
+
+        //Temporary check since all characters dont have these
+        if (openHand && closedHand)
+        {
+            Destroy(openHand.gameObject);
+            Destroy(closedHand.gameObject);
+        }
+
         Destroy(gameObject);
     }
     
@@ -351,12 +370,26 @@ public class GrapplingHook : MonoBehaviour
             latchedObject = other.gameObject;
             StartTakeBack();
 
+            //Temporary check since all characters dont have these
+            if(openHand && closedHand)
+            {
+                openHand.gameObject.SetActive(false);
+                closedHand.gameObject.SetActive(true);
+            }
+
             //transform.parent = other.transform;
             return;
         }
         else if (other.tag == "GrabbableEnvironment" || other.tag == "Rock")
         {
             StartReverse();
+
+            //Temporary check since all characters dont have these
+            if (openHand && closedHand)
+            {
+                openHand.gameObject.SetActive(false);
+                closedHand.gameObject.SetActive(true);
+            }
             //gameObject.transform.position = other.transform.position;
             return;
         }
