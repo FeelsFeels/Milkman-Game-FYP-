@@ -119,6 +119,7 @@ public class FireUltiSkill : SkillSetManager.SkillSet
     {
         while (beyblading) //Keep updating while this is true
         {
+            fireCharacter.GetComponent<PlayerController>().moveRate = 20f;
             Beyblade();
             
             yield return null;
