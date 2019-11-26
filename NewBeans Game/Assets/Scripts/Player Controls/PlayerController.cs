@@ -112,18 +112,18 @@ public class PlayerController : MonoBehaviour
             //if (inputInfo.chosenCharacterData == null)
             //    gameObject.SetActive(false);
         }
-    }
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
         // Components
         animator = transform.Find("Character Model").GetComponentInChildren<Animator>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         rb = GetComponent<Rigidbody>();
         invincibilityShield = GetComponentInChildren<Shield>();
+    }
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
         cameraRigObj = FindObjectOfType<CameraControls>().gameObject;
 
         //Set the camera rig rotation at the start. This will be the 'correction angle'
@@ -138,7 +138,6 @@ public class PlayerController : MonoBehaviour
         if (playerStunned)
         {
             stunnedTime += Time.deltaTime;
-            dizzyStars.SetActive(true);
 
             if (stunnedTime >= stunDuration)
             {
@@ -240,6 +239,7 @@ public class PlayerController : MonoBehaviour
         playerStunned = true;
         stunnedTime = 0;
         stunDuration = 0.25f;
+        dizzyStars.SetActive(true);
     }
 
     public void Hit(float timeToStun)
@@ -248,6 +248,7 @@ public class PlayerController : MonoBehaviour
         playerStunned = true;
         stunnedTime = 0;
         stunDuration = timeToStun;
+        dizzyStars.SetActive(true);
     }
 
     /// *********************************

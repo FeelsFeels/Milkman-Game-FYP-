@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
 
     public PauseScreen pauseScreen;
     public bool isPaused;
+    
 
     [Header("Audio")]
     private AudioSource audioSource;
@@ -90,8 +91,14 @@ public class GameManager : MonoBehaviour
         foreach (PlayerController pc in tempPCList)
         {
             //Check if player is playing
-            if(pc.IsPlaying())
+            if (pc.IsPlaying())
+            {
                 playerScript.Add(pc);
+                //pc.playerStunned = true;
+                //pc.stunnedTime = 3;
+                pc.Hit(3);
+                pc.dizzyStars.SetActive(false);
+            }
             else
             {
                 pc.gameObject.SetActive(false);
