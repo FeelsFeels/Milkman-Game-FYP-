@@ -42,12 +42,15 @@ public class GameManager : MonoBehaviour
     public int deathScoreToDeduct;
 
     [Header("Round End Variables")]
-    public Image roundEndScreen;
+    public GameObject roundEndScreen;
     public bool roundHasEnded;
     public Text firstPlaceScore;
     public Text secondPlaceScore;
     public Text thirdPlaceScore;
     public Text fourthPlaceScore;
+    public string earthRoundName;
+    public string lightningRoundName;
+    public Text continueButtonText; // Is either 'Next round' or 'Play again' depending on whether it is Earth / Lightning map
 
     public PauseScreen pauseScreen;
     public bool isPaused;
@@ -111,6 +114,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+
     }
     
     void Update()
@@ -180,7 +184,6 @@ public class GameManager : MonoBehaviour
         }
         else if (gameState == GameStates.LastManStanding)
         {
-            roundEndScreen.gameObject.SetActive(true);
 
             PlayerController playerReference = LMSManager.playerRanking[0];
             firstPlaceScore.text = string.Format("First Place: Player {0}", playerReference.playerNumber);
@@ -206,6 +209,17 @@ public class GameManager : MonoBehaviour
     public void EndGame(List<PlayerController> ranking)
     {
         roundHasEnded = true;
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        if (currentScene.name == earthRoundName)
+        {
+            continueButtonText.text = ("Next round");
+        }
+        if (currentScene.name == lightningRoundName)
+        {
+            continueButtonText.text = ("Play again");
+        }
+
         resultsScreen.DisplayScreen(ranking);
     }
 
@@ -232,5 +246,4 @@ public class GameManager : MonoBehaviour
             commentaryManager.CheckPlayerKill(playerDead, killer);
         }
     }
-
 }

@@ -53,6 +53,11 @@ public class LastManStandingTracker : MonoBehaviour
         int currentLives = --playerLivesInfo[deadPlayer];
         print(deadPlayer + " has " + currentLives + " lives left!");
 
+        if (killer)
+        { 
+            killer.killCount++;
+        }
+
         if (currentLives <= 0)
         {
             alivePlayers.Remove(deadPlayer);
@@ -60,8 +65,10 @@ public class LastManStandingTracker : MonoBehaviour
             deadPlayer.gameObject.SetActive(false); //player setactive false to stop camera tracking
 
             playerRanking.Insert(0, deadPlayer);
+
         }
 
+        
         UpdateLivesUI(deadPlayer.inputInfo, playerLivesInfo[deadPlayer]);
         CheckLastManStanding();
     }

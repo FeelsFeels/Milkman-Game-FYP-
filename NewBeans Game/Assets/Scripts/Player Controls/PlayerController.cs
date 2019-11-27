@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     public int playerNumber;
-    
+
     [Header("Player Score")]
     public int killCount;
     public int deathCount;
@@ -124,6 +124,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        killCount = 0;
         cameraRigObj = FindObjectOfType<CameraControls>().gameObject;
 
         //Set the camera rig rotation at the start. This will be the 'correction angle'
@@ -294,8 +295,7 @@ public class PlayerController : MonoBehaviour
             GameManager.instance.OnPlayerDeath(this, null);
         }
 
-        lastHitBy = null;
-
+        
         // Makes player disappear
         HidePlayerWhenDead();
 
@@ -304,6 +304,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(WaitToRespawn());
 
         OnPlayerDeath.Invoke(this, lastHitBy);
+        lastHitBy = null;
     }
 
     IEnumerator WaitToRespawn()
