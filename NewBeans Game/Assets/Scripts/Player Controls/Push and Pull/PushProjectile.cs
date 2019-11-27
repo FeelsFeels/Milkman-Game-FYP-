@@ -81,7 +81,7 @@ public class PushProjectile : MonoBehaviour
             direction = -direction.normalized;
 
             playerHit = player;
-            Instantiate(player.playerPushedEffect, player.transform.position, player.transform.rotation);
+            Instantiate(player.playerPushedEffect, player.transform);
             if(hitParticles != null)
                 Instantiate(hitParticles, player.transform.position + Vector3.up * 2, Quaternion.identity);
             //player.GetComponent<Rigidbody>().AddForce(direction * knockbackStrength);

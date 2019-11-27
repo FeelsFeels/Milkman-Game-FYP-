@@ -39,6 +39,7 @@ public class Shoot : MonoBehaviour
     public float explodeForce = 2500;
     float timeCharged;
     public ParticleSystem shotgunParticles;
+    public GameObject perfectChargeParticles;
 
     ///If we want to use the Input Manager
     public bool usingRightBumper = true;
@@ -201,6 +202,11 @@ public class Shoot : MonoBehaviour
         float percentage = 1 + (pushChargedTime / pushChargedMaxTime) * 3;
         playerScript.rb.AddForce(direction * (baseKickbackForce * percentage));
 
+        //Cool Visuals
+        if(timeCharged >= 1.2f)
+        {
+            //Instantiate(perfectChargeParticles, playerScript.transform);
+        }
 
         //Reset states
         PlayerResetCharge();
