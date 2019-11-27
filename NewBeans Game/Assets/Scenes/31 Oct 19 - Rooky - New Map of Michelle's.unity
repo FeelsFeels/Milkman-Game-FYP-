@@ -496,6 +496,11 @@ PrefabInstance:
       propertyPath: baseKickbackForce
       value: 500
       objectReference: {fileID: 0}
+    - target: {fileID: 9217587416402060001, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: perfectChargeParticles
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: skillPrefabs.Array.data[2]
