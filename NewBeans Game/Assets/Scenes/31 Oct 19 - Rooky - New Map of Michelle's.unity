@@ -509,7 +509,7 @@ PrefabInstance:
     - target: {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: fullChargeAmount
-      value: 10
+      value: 13195
       objectReference: {fileID: 0}
     - target: {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
@@ -519,7 +519,7 @@ PrefabInstance:
     - target: {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: currentCharge
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bddf47119048164f92afd5b2ac6e2e3, type: 3}
@@ -674,7 +674,7 @@ MonoBehaviour:
   alivePlayers: []
   playerRanking: []
   lastManStandingUIs: []
-  startingLives: 3
+  startingLives: 5
 --- !u!1 &299700562
 GameObject:
   m_ObjectHideFlags: 0
@@ -1431,6 +1431,16 @@ PrefabInstance:
       propertyPath: directionalLight
       value: 
       objectReference: {fileID: 1040281929}
+    - target: {fileID: 149156786837219032, guid: 69f6df1a567038c40810273757fcd7e1,
+        type: 3}
+      propertyPath: knockbackStrength
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8055662494059962561, guid: 69f6df1a567038c40810273757fcd7e1,
+        type: 3}
+      propertyPath: directionalLight
+      value: 
+      objectReference: {fileID: 1040281929}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69f6df1a567038c40810273757fcd7e1, type: 3}
 --- !u!1 &710541278
@@ -2068,7 +2078,7 @@ PrefabInstance:
     - target: {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: fullChargeAmount
-      value: 10
+      value: 13195
       objectReference: {fileID: 0}
     - target: {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
@@ -2078,7 +2088,7 @@ PrefabInstance:
     - target: {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: currentCharge
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4888061938081025354, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
@@ -3978,7 +3988,7 @@ PrefabInstance:
     - target: {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: fullChargeAmount
-      value: 10
+      value: 13195
       objectReference: {fileID: 0}
     - target: {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
@@ -3988,7 +3998,7 @@ PrefabInstance:
     - target: {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: currentCharge
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4888061938081025354, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
@@ -10937,7 +10947,7 @@ PrefabInstance:
     - target: {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: fullChargeAmount
-      value: 10
+      value: 13195
       objectReference: {fileID: 0}
     - target: {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
@@ -10947,7 +10957,7 @@ PrefabInstance:
     - target: {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: currentCharge
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4888061938081025354, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}

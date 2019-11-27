@@ -32,7 +32,7 @@ public class LightningSkills : SkillSetManager.SkillSet
 
         //The laser beam is active and happy.
         pc.moveRate = 0;
-        pc.playerTurnSmoothing = 0.2f;
+        pc.playerTurnSmoothing = 0.4f;
         yield return new WaitForSeconds(skillDuration);
 
         //pc.moveRate = previousMoveRate;
