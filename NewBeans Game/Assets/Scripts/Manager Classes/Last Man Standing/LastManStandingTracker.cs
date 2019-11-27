@@ -48,7 +48,7 @@ public class LastManStandingTracker : MonoBehaviour
     }
 
 
-    public void UpdateLivesLeft(PlayerController deadPlayer)
+    public void UpdateLivesLeft(PlayerController deadPlayer, PlayerController killer)
     { 
         int currentLives = --playerLivesInfo[deadPlayer];
         print(deadPlayer + " has " + currentLives + " lives left!");

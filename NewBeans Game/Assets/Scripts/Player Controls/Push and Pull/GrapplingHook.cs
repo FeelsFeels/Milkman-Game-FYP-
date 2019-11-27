@@ -366,7 +366,7 @@ public class GrapplingHook : MonoBehaviour
         if (other.tag == "Player")
         {
             other.transform.parent = transform;
-            other.GetComponent<PlayerController>().lastHitBy = player; // Hooked player gets hooked by the hook owner.
+            other.GetComponent<PlayerController>().lastHitBy = player.GetComponent<PlayerController>(); // Hooked player gets hooked by the hook owner.
             latchedObject = other.gameObject;
             StartTakeBack();
 

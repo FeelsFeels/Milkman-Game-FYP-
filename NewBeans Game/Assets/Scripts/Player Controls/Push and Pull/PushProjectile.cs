@@ -86,7 +86,7 @@ public class PushProjectile : MonoBehaviour
                 Instantiate(hitParticles, player.transform.position + Vector3.up * 2, Quaternion.identity);
             //player.GetComponent<Rigidbody>().AddForce(direction * knockbackStrength);
             player.GetComponent<Rigidbody>().AddForce(knockbackDirection * knockbackToUse);
-            playerHit.lastHitBy = ownerPlayer;
+            playerHit.lastHitBy = ownerPlayer.GetComponent<PlayerController>();
 
             //Charging special skills
             if (ownerPlayerGetsCharged)

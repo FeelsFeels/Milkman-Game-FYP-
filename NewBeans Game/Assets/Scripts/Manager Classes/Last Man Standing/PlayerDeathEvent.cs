@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
-public class PlayerDeathEvent : UnityEvent<PlayerController>
+                                           //Dead player     //Dead player's Killer
+public class PlayerDeathEvent : UnityEvent<PlayerController, PlayerController>
 {
 
 }

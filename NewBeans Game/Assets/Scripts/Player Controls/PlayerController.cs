@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
     public Transform stageCenterPos;
     public Transform respawnPosition;
     public float respawnDelay;
-    public GameObject lastHitBy;
+    public PlayerController lastHitBy;
 
     [Header("Object Components and References")]
     // Object's Components
@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
 
     //DeathEvent
     //[HideInInspector]
-    public UnityEvent<PlayerController> OnPlayerDeath = new PlayerDeathEvent();
+    public UnityEvent<PlayerController, PlayerController> OnPlayerDeath = new PlayerDeathEvent();
 
     void Reset()
     {
@@ -303,7 +303,7 @@ public class PlayerController : MonoBehaviour
         if (shouldRespawn)
             StartCoroutine(WaitToRespawn());
 
-        OnPlayerDeath.Invoke(this);            
+        OnPlayerDeath.Invoke(this, lastHitBy);
     }
 
     IEnumerator WaitToRespawn()
