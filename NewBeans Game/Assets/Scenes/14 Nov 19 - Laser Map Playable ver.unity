@@ -680,6 +680,9 @@ MonoBehaviour:
   secondPlaceScore: {fileID: 0}
   thirdPlaceScore: {fileID: 0}
   fourthPlaceScore: {fileID: 0}
+  earthRoundName: 
+  lightningRoundName: 
+  continueButtonText: {fileID: 0}
   pauseScreen: {fileID: 0}
   isPaused: 0
   bgm: {fileID: 8300000, guid: 645c8893ae655724fb1e6d8c574a8a3b, type: 3}
@@ -2993,7 +2996,7 @@ MonoBehaviour:
   alivePlayers: []
   playerRanking: []
   lastManStandingUIs: []
-  startingLives: 99
+  startingLives: 5
 --- !u!64 &281874188
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13869,7 +13872,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1658703578}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f0712dda7f60074ead59f5ec9bf858c, type: 3}
   m_Name: 

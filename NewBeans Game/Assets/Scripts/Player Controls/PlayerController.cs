@@ -109,8 +109,10 @@ public class PlayerController : MonoBehaviour
             }
 
             //No player assigned to character
-            //if (inputInfo.chosenCharacterData == null)
-            //    gameObject.SetActive(false);
+            if (inputInfo.chosenCharacterData == null && inputInfo.forceActive == false)
+            {
+                gameObject.SetActive(false);
+            }
         }
         // Components
         animator = transform.Find("Character Model").GetComponentInChildren<Animator>();
