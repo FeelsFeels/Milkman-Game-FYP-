@@ -40,6 +40,8 @@ public class LastManStandingUI : MonoBehaviour
             {
                 //Use Right UI
                 characterUI = Instantiate(trackedPlayer.chosenCharacterData.characterUI_Right, transform) as GameObject; //May wanna change this later on to just set active...
+                ultiCharge = characterUI.transform.Find("Ulti_Charge").GetComponent<Slider>();
+
             }
             else //If odd,
             {
