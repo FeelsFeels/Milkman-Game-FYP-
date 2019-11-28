@@ -23,10 +23,10 @@ public class LastManStandingTracker : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         lastManStandingUIs = FindObjectsOfType<LastManStandingUI>();
 
-        foreach(LastManStandingUI ui in lastManStandingUIs)
-        {
-            ui.livesText.text = startingLives.ToString();
-        }
+        //foreach(LastManStandingUI ui in lastManStandingUIs)
+        //{
+        //    ui.livesText.text = startingLives.ToString();
+        //}
 
         PlayerController[] tempPCList = FindObjectsOfType<PlayerController>();
         foreach (PlayerController pc in tempPCList)

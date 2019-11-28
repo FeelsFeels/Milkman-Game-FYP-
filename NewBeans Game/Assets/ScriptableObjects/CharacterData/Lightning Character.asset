@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: Lightning Character
   m_EditorClassIdentifier: 
   characterPrefab: {fileID: 0}
+  pushProjectile: {fileID: 0}
+  hookProjectile: {fileID: 0}
   characterColor:
     serializedVersion: 2
     rgba: 4289855610
-  characterUISprite: {fileID: -3570525371031324655, guid: e9fc5dab66fcb6f4497f3627f41f0823,
+  characterUI_Left: {fileID: 6881244035161043993, guid: c09633825b4883444b0fe467d44be229,
+    type: 3}
+  characterUI_Right: {fileID: 7622000253434024407, guid: f09777648c3eca74aa0b56e924f13753,
     type: 3}
   character: Lightning

@@ -9,6 +9,7 @@ public class CharacterData : ScriptableObject
     public GameObject pushProjectile;
     public GameObject hookProjectile;
     public Color32 characterColor;
-    public Sprite characterUISprite;
+    public GameObject characterUI_Left;
+    public GameObject characterUI_Right;
     public string character;
 }

@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: Water Character
   m_EditorClassIdentifier: 
   characterPrefab: {fileID: 0}
+  pushProjectile: {fileID: 0}
+  hookProjectile: {fileID: 0}
   characterColor:
     serializedVersion: 2
     rgba: 4294933504
-  characterUISprite: {fileID: -1888357090364546983, guid: e9fc5dab66fcb6f4497f3627f41f0823,
+  characterUI_Left: {fileID: 4452790412856341786, guid: 3b623fbb8bbf5634e964e36f529a2aef,
+    type: 3}
+  characterUI_Right: {fileID: 815774940805368648, guid: ba24be1af27acbe4a9b08a27a95666e3,
     type: 3}
   character: Water

@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: Earth Character
   m_EditorClassIdentifier: 
   characterPrefab: {fileID: 0}
+  pushProjectile: {fileID: 0}
+  hookProjectile: {fileID: 0}
   characterColor:
     serializedVersion: 2
     rgba: 4278255431
-  characterUISprite: {fileID: -173562461484644088, guid: e9fc5dab66fcb6f4497f3627f41f0823,
+  characterUI_Left: {fileID: 2569911168823268802, guid: 3d7ea8a7630d49b42bffd6efb13f44d6,
+    type: 3}
+  characterUI_Right: {fileID: 7058589043617709942, guid: 77ae24229b26e3942a50a3123b6b01b0,
     type: 3}
   character: Earth

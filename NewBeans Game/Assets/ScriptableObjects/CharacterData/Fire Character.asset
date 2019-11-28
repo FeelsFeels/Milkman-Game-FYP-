@@ -20,6 +20,8 @@ MonoBehaviour:
   characterColor:
     serializedVersion: 2
     rgba: 4278190335
-  characterUISprite: {fileID: -4183948416892504706, guid: e9fc5dab66fcb6f4497f3627f41f0823,
+  characterUI_Left: {fileID: 3801569834553717344, guid: d29c94f629c92cb4989870d003f9fa85,
+    type: 3}
+  characterUI_Right: {fileID: 6947780862390391763, guid: 88c58e9f56893aa449d11fed1d994924,
     type: 3}
   character: Fire
