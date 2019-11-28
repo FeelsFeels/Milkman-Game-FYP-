@@ -78,9 +78,9 @@ public class SkillSetManager : MonoBehaviour
 
 
             //Check inputs
-            if(Input.GetButtonDown(AButtonInput))
+            if(Input.GetButton(AButtonInput))
             {
-                if (Input.GetButtonDown(BButtonInput))
+                if (Input.GetButton(BButtonInput))
                 {
                     //Disable Push and Pull
                     this.gameObject.GetComponent<Shoot>().playerCannotShoot = true;

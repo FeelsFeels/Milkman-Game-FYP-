@@ -226,7 +226,7 @@ public class PlayerController : MonoBehaviour
 
     void Turn (Vector3 dir)
     {
-        if (!isDead) // If player is still alive,
+        if (!isDead && !playerStunned) // If player is still alive or not stunned,
         {
             Quaternion correctedQ;
             correctedQ = Quaternion.LookRotation(Quaternion.AngleAxis(cameraRigRot, Vector3.up) * dir); //Correct the rotation quaternion 

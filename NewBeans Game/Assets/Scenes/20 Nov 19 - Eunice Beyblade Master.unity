@@ -1168,6 +1168,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: 14 Nov 19 - Laser Map Playable ver
       objectReference: {fileID: 0}
+    - target: {fileID: 1531196446750084905, guid: 3bda2b1ba259d344aabdf004f7ca1e57,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bda2b1ba259d344aabdf004f7ca1e57, type: 3}
 --- !u!224 &318940416 stripped
@@ -1794,8 +1799,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAvatar: 0
   fullChargeAmount: 13195
-  currentCharge: 0
-  chargePercentage: 0
+  currentCharge: 13195
+  chargePercentage: 100
   ultiIsActivated: 0
   skillContainer: {fileID: 0}
   testingPurposes: 0
