@@ -24,17 +24,17 @@ public class LastManStandingResultsScreen : BaseResultsScreen
 
         int numberOfPlayers = ranking.Count;
 
-        sb.Append("Winner: Player " + playerRanking[0].playerNumber + "[Kills: " + playerRanking[0].killCount + "]" + "\n");
-        sb.Append("Second Place: Player " + playerRanking[1].playerNumber + "[Kills: " + playerRanking[1].killCount + "]" + "\n");
+        sb.Append("Winner: Player " + playerRanking[0].playerNumber + " [Kills: " + playerRanking[0].killCount + "]" + "\n");
+        sb.Append("Second Place: Player " + playerRanking[1].playerNumber + " [Kills: " + playerRanking[1].killCount + "]" + "\n");
 
         if (numberOfPlayers > 2)
         {
-            sb.Append("Third Place: Player " + playerRanking[2].playerNumber + "[Kills: " + playerRanking[2].killCount + "]" + "\n");
+            sb.Append("Third Place: Player " + playerRanking[2].playerNumber + " [Kills: " + playerRanking[2].killCount + "]" + "\n");
         }
 
         if(numberOfPlayers > 3)
         {
-            sb.Append("Fourth Place: Player " + playerRanking[3].playerNumber + "[Kills: " + playerRanking[3].killCount + "]" + "\n");
+            sb.Append("Fourth Place: Player " + playerRanking[3].playerNumber + " [Kills: " + playerRanking[3].killCount + "]" + "\n");
         }
 
         playerRankText.text = sb.ToString();

@@ -41,11 +41,13 @@ public class RockGolem : MonoBehaviour
     public GameObject crashingParticles;
     public GameObject rangeCanvas;
     public GameObject chasingCanvas;
+    CameraControls camera;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        camera = FindObjectOfType<CameraControls>();
     }
 
     // Update is called once per frame
@@ -219,6 +221,8 @@ public class RockGolem : MonoBehaviour
     {
         AutoDestroyOverTime particles = Instantiate(shockwaveParticles, transform.position, shockwaveParticles.transform.rotation).GetComponent<AutoDestroyOverTime>();
         particles.DestroyWithTime(0.3f);
+
+        camera.ShakeCamera(0.1f, 5f);
 
         //Gets all players in range of shockwave stomp
         int ignoreLayerMask =~ 1 << LayerMask.NameToLayer("Ground");    //Raycasts on everything but ground

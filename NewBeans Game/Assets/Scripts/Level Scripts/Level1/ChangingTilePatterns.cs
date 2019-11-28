@@ -5,6 +5,7 @@ using System.Linq;
 
 public class ChangingTilePatterns : MonoBehaviour
 {
+    CameraControls camera;
     
     public List<Tile> tilePattern = new List<Tile>();    //Each gameobject holds the tiles wanted for the different pattern.
     public int currentPatternIndex;
@@ -15,8 +16,13 @@ public class ChangingTilePatterns : MonoBehaviour
     public int segments;
     public float lengthBetweenSegment;
     public GameObject crumblingParticleEffect;
-    
-    
+
+
+    private void Awake()
+    {
+        camera = FindObjectOfType<CameraControls>();
+    }
+
     public void SelectNewPattern()
     {
         //Keeps randomising until a new pattern is found
@@ -80,6 +86,7 @@ public class ChangingTilePatterns : MonoBehaviour
             }
         }
 
+        camera.ShakeCamera(6f, 1f);
         yield return new WaitForSeconds(5f);
 
         //Indication over, start moving tiles downwards.

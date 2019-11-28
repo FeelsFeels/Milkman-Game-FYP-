@@ -17,6 +17,7 @@ public class CameraControls : MonoBehaviour
 
     //Screen shake
     float yPosOriginal; //Needed to set yPos back to before screen shake values
+    Quaternion originalRotation;
     Coroutine shakingCoroutine;
     bool screenShaking;
     float intensity;
@@ -27,8 +28,16 @@ public class CameraControls : MonoBehaviour
         m_Camera = GetComponentInChildren<Camera>();
         m_Targets = GameObject.FindGameObjectsWithTag("Player");
         yPosOriginal = transform.position.y;
+        originalRotation = transform.rotation;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ShakeCamera(3, 5);
+        }
+    }
 
     private void FixedUpdate()
     {
@@ -85,12 +94,17 @@ public class CameraControls : MonoBehaviour
 
         if (screenShaking)
         {
-            float x = Random.Range(-.2f, .2f) * intensity;
-            float y = Random.Range(-.2f, .2f) * intensity;
-            float z = Random.Range(-.2f, .2f) * intensity;
-            m_DesiredPosition.x += x;
-            m_DesiredPosition.y += y;
-            m_DesiredPosition.z += z;
+            //float x = Random.Range(-.2f, .2f) * intensity;
+            //float y = Random.Range(-.2f, .2f) * intensity;
+            //float z = Random.Range(-.2f, .2f) * intensity;
+            //m_DesiredPosition.x += x;
+            //m_DesiredPosition.y += y;
+            //m_DesiredPosition.z += z;
+
+            float rotX = Random.Range(-.2f, .2f) * intensity / 2;
+            float rotY = Random.Range(-.2f, .2f) * intensity / 2;
+            float rotZ = Random.Range(-.2f, .2f) * intensity / 2;
+            transform.localRotation = Quaternion.Euler(new Vector3(50.603f + rotX, 218.778f + rotY, 0));
         }
     }
     
@@ -179,7 +193,7 @@ public class CameraControls : MonoBehaviour
     }
 
     IEnumerator ShakeRoutine(float duration, float magnitude)
-    {
+    { 
         screenShaking = true;
         shakeTimeLeft = duration;
         intensity = magnitude;
@@ -195,6 +209,7 @@ public class CameraControls : MonoBehaviour
 
     void StopShaking()
     {
+        transform.rotation = originalRotation;
         screenShaking = false;
         shakeTimeLeft = 0;
     }

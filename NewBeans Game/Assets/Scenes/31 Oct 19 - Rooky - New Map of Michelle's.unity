@@ -204,6 +204,9 @@ MonoBehaviour:
   secondPlaceScore: {fileID: 0}
   thirdPlaceScore: {fileID: 0}
   fourthPlaceScore: {fileID: 0}
+  earthRoundName: 
+  lightningRoundName: 
+  continueButtonText: {fileID: 0}
   pauseScreen: {fileID: 1689008391}
   isPaused: 0
   bgm: {fileID: 8300000, guid: 645c8893ae655724fb1e6d8c574a8a3b, type: 3}
@@ -1431,7 +1434,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8252347743264072933, guid: 69f6df1a567038c40810273757fcd7e1,
+    - target: {fileID: 8055662494059962561, guid: 69f6df1a567038c40810273757fcd7e1,
         type: 3}
       propertyPath: directionalLight
       value: 
@@ -1441,7 +1444,7 @@ PrefabInstance:
       propertyPath: knockbackStrength
       value: 1000
       objectReference: {fileID: 0}
-    - target: {fileID: 8055662494059962561, guid: 69f6df1a567038c40810273757fcd7e1,
+    - target: {fileID: 8252347743264072933, guid: 69f6df1a567038c40810273757fcd7e1,
         type: 3}
       propertyPath: directionalLight
       value: 
@@ -5315,7 +5318,7 @@ MonoBehaviour:
     isRepeating: 1
     repeatRate: 50
   - EventDescription: Spawn Golem
-    timeToCall: 30
+    timeToCall: 50
     unityEvent:
       m_PersistentCalls:
         m_Calls:
@@ -10964,6 +10967,16 @@ PrefabInstance:
       propertyPath: currentCharge
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9217587417547698246, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9217587417547698244, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4888061938081025354, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -12203,16 +12216,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9217587417547698246, guid: 1bddf47119048164f92afd5b2ac6e2e3,
-        type: 3}
-      propertyPath: m_FillAmount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9217587417547698244, guid: 1bddf47119048164f92afd5b2ac6e2e3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bddf47119048164f92afd5b2ac6e2e3, type: 3}

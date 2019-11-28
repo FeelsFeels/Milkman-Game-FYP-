@@ -6,6 +6,7 @@ using System.Linq;
 public class TilePatternBigBlocks : MonoBehaviour
 {
     Tile[] tileArray;
+    CameraControls camera;
 
     [System.Serializable]
     public struct TilePattern
@@ -22,6 +23,7 @@ public class TilePatternBigBlocks : MonoBehaviour
     public void Awake()
     {
         tileArray = FindObjectsOfType<Tile>();
+        camera = FindObjectOfType<CameraControls>();
     }
 
     
@@ -60,6 +62,7 @@ public class TilePatternBigBlocks : MonoBehaviour
             particles.GetComponent<AutoDestroyOverTime>().DestroyWithTime(10f);
         }
 
+        camera.ShakeCamera(6f, 3f);
         yield return new WaitForSeconds(5f);
 
         foreach (Tile tile in patternHolders[currentPatternIndex].tilesInPattern)  //Move desired tiles down

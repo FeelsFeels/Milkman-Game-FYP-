@@ -97,9 +97,8 @@ public class GameManager : MonoBehaviour
             if (pc.IsPlaying())
             {
                 playerScript.Add(pc);
-                //pc.playerStunned = true;
-                //pc.stunnedTime = 3;
-                pc.Hit(3);
+                pc.playerStunned = true;
+                pc.stunnedTime = 3;
                 pc.dizzyStars.SetActive(false);
             }
             else
