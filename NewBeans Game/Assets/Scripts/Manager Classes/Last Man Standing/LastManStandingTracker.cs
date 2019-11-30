@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class LastManStandingTracker : MonoBehaviour
 {
     public GameManager gameManager;
-    
+    DeathInfluenceManager deathInfluenceManager;
 
     public List<PlayerController> alivePlayers = new List<PlayerController>();
     public List<PlayerController> playerRanking = new List<PlayerController>();
@@ -21,6 +21,7 @@ public class LastManStandingTracker : MonoBehaviour
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+        deathInfluenceManager = FindObjectOfType<DeathInfluenceManager>();
         lastManStandingUIs = FindObjectsOfType<LastManStandingUI>();
 
         //foreach(LastManStandingUI ui in lastManStandingUIs)
@@ -66,6 +67,7 @@ public class LastManStandingTracker : MonoBehaviour
 
             playerRanking.Insert(0, deadPlayer);
 
+            deathInfluenceManager.AddNewDeadPlayer(deadPlayer);
         }
 
         

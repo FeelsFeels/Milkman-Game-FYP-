@@ -76,7 +76,6 @@ public class LastManStandingUI : MonoBehaviour
         if (livesRemaining == 0) //Darken the images (not really greyscale) when player is out
         {
             Image[] playerImages = characterUI.GetComponentsInChildren<Image>();
-            Debug.Log(playerImages.Length);
             foreach (Image img in playerImages)
             {
                 img.color = new Color32(58, 58, 58, 255);
