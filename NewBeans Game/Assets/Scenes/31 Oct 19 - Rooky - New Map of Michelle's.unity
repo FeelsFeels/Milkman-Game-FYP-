@@ -12646,7 +12646,8 @@ MonoBehaviour:
   - {fileID: 920736540}
   - {fileID: 1624404279}
   deathSkills:
-  - {fileID: 8388743050121021517, guid: 1278eb96d3aade34cac1616a1be273ab, type: 3}
+  - {fileID: 2908109772314455301, guid: 0ccae3cc0d0e75a438f031d3bc7436e8, type: 3}
+  - {fileID: 7621969672926465100, guid: 713966461f3eef64ea69891773ee4d04, type: 3}
 --- !u!1 &2136207413
 GameObject:
   m_ObjectHideFlags: 0
