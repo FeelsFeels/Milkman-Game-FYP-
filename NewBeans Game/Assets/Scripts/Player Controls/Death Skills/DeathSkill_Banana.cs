@@ -21,12 +21,12 @@ public class DeathSkill_Banana : BaseDeathSkill
 
         if (!skillUsed)
         {
-            timeCharged += Time.deltaTime;
-            chargingImage.fillAmount = timeCharged / 10f;
-            if(timeCharged >= 10f)
-            {
-                OnUse();
-            }
+            //timeCharged += Time.deltaTime;
+            //chargingImage.fillAmount = timeCharged / 10f;
+            //if(timeCharged >= 10f)
+            //{
+            //    OnUse();
+            //}
         }
 
         

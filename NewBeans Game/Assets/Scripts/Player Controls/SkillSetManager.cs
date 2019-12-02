@@ -26,6 +26,7 @@ public class SkillSetManager : MonoBehaviour
     public Transform skillContainer;
     Dictionary<characterChosen, SkillSet> playerSkills = new Dictionary<characterChosen, SkillSet>();
 
+    public GameObject skillReadyParticleFX;
     public bool testingPurposes;
 
     // For updating UI
@@ -75,7 +76,7 @@ public class SkillSetManager : MonoBehaviour
         if (currentCharge >= fullChargeAmount)
         {
             //Insert visual feedback that my ultimate form is ready to show
-
+            //ActivateReadyParticles();
 
             //Check inputs
             if(Input.GetButton(AButtonInput))
@@ -101,6 +102,15 @@ public class SkillSetManager : MonoBehaviour
         }
 
 
+    }
+
+    void ActivateReadyParticles()
+    {
+        skillReadyParticleFX.SetActive(true);
+    }
+    void DeactivateReadyParticles()
+    {
+        skillReadyParticleFX.SetActive(false);
     }
 
     /// ***********
@@ -162,6 +172,9 @@ public class SkillSetManager : MonoBehaviour
 
         //Charge bar update
         chargePercentage = currentCharge / fullChargeAmount;
+
+        if (chargePercentage >= 1)
+            ActivateReadyParticles();
 
         OnChargeUltimate.Invoke(this);
 
@@ -236,6 +249,7 @@ public class SkillSetManager : MonoBehaviour
         Debug.Log("I am weak once again");
         currentCharge = 0;
         chargePercentage = currentCharge / fullChargeAmount;
+        DeactivateReadyParticles();
         OnChargeUltimate.Invoke(this);
     }
 

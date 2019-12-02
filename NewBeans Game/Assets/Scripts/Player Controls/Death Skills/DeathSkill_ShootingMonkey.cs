@@ -61,12 +61,12 @@ public class DeathSkill_ShootingMonkey : BaseDeathSkill
 
         if (!skillUsed)
         {
-            timeCharged += Time.deltaTime;
-            chargingImage.fillAmount = timeCharged / 10f;
-            if (timeCharged >= 10f)
-            {
-                OnUse();
-            }
+            //timeCharged += Time.deltaTime;
+            //chargingImage.fillAmount = timeCharged / 10f;
+            //if (timeCharged >= 10f)
+            //{
+            //    OnUse();
+            //}
 
             float moveVerticalAxis = Input.GetAxisRaw(VerticalInputAxis);
             float moveHorizontalAxis = Input.GetAxisRaw(HorizontalInputAxis);

@@ -93,10 +93,8 @@ public class FireUltiSkill : SkillSetManager.SkillSet
             GrapplingHook hook = GetComponent<GrapplingHook>();
             if (hook)
             {
-                print("hooki");
                 hook.latchedObject = null;
                 hook.StartTakeBack();
-                print("bye hookie");
             }
 
             PlayerController player = collider.GetComponent<PlayerController>();
@@ -128,10 +126,10 @@ public class FireUltiSkill : SkillSetManager.SkillSet
     }
     IEnumerator EndSkill(SkillSetManager manager)
     {
-        Debug.Log("heya");
         yield return new WaitForSeconds(skillDuration);
 
         // Stops the beyblade
+        fireCharacter.GetComponent<PlayerController>().moveRate = 10f;
         beyblading = false;
         EndUltimate(manager);
     }

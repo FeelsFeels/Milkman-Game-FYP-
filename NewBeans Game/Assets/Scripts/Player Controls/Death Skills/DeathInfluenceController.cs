@@ -32,6 +32,7 @@ public class DeathInfluenceController : MonoBehaviour
         }
     }
 
+    //This initialises the controller
     public void ActivateDeathInfluence(PlayerController newPlayer)
     {
         referencePlayer = newPlayer;

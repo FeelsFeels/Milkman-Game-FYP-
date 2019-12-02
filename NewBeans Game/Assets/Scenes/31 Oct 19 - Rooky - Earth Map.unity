@@ -456,11 +456,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Prefab
       objectReference: {fileID: 0}
-    - target: {fileID: 9217587416402060013, guid: 1bddf47119048164f92afd5b2ac6e2e3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9217587416402060012, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -518,31 +513,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9217587416402060000, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
-      propertyPath: inputInfo
-      value: 
-      objectReference: {fileID: 11400000, guid: d8c35d73af737694e800bbca3247a69c,
-        type: 2}
-    - target: {fileID: 9217587416402060000, guid: 1bddf47119048164f92afd5b2ac6e2e3,
-        type: 3}
       propertyPath: stageCenterPos
       value: 
       objectReference: {fileID: 216583635}
-    - target: {fileID: 8529076915811801624, guid: 1bddf47119048164f92afd5b2ac6e2e3,
-        type: 3}
-      propertyPath: colorToReference
-      value: 
-      objectReference: {fileID: 11400000, guid: d8c35d73af737694e800bbca3247a69c,
-        type: 2}
-    - target: {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3,
-        type: 3}
-      propertyPath: skillPrefabs.Array.data[2]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3,
-        type: 3}
-      propertyPath: skillPrefabs.Array.data[3]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: skillContainer
@@ -5821,7 +5794,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 191572, guid: a0f68672c76de4845b23a94845452f8a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 877716511, guid: a0f68672c76de4845b23a94845452f8a, type: 3}
       propertyPath: m_IsActive
@@ -12647,7 +12620,7 @@ MonoBehaviour:
   - {fileID: 1624404279}
   deathSkills:
   - {fileID: 2908109772314455301, guid: 0ccae3cc0d0e75a438f031d3bc7436e8, type: 3}
-  - {fileID: 7621969672926465100, guid: 713966461f3eef64ea69891773ee4d04, type: 3}
+  - {fileID: 8388743050121021517, guid: 1278eb96d3aade34cac1616a1be273ab, type: 3}
 --- !u!1 &2136207413
 GameObject:
   m_ObjectHideFlags: 0

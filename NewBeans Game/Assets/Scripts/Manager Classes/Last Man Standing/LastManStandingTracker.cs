@@ -67,7 +67,8 @@ public class LastManStandingTracker : MonoBehaviour
 
             playerRanking.Insert(0, deadPlayer);
 
-            deathInfluenceManager.AddNewDeadPlayer(deadPlayer);
+            if(deathInfluenceManager)
+                deathInfluenceManager.AddNewDeadPlayer(deadPlayer);
         }
 
         
