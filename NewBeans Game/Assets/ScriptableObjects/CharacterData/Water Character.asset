@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Water Character
   m_EditorClassIdentifier: 
   characterPrefab: {fileID: 0}
-  pushProjectile: {fileID: 0}
-  hookProjectile: {fileID: 0}
+  pushProjectile: {fileID: 7453725843471818069, guid: 75dc83e9473ec4649973eea1ec56c3bc,
+    type: 3}
+  hookProjectile: {fileID: 2992602490277621422, guid: 90f4181c40bc694469e4e18de58cee8c,
+    type: 3}
   characterColor:
     serializedVersion: 2
     rgba: 4294933504

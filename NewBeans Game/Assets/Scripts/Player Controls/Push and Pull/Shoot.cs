@@ -194,7 +194,7 @@ public class Shoot : MonoBehaviour
         projectile.ShotInitialised(KnockbackMultiplier(timeCharged), SmallMultiplier(timeCharged), shootOrigin.forward, gameObject);
 
         //Scale projectile size and rotation
-        projectile.gameObject.transform.localScale = new Vector3(SmallMultiplier(pushChargedTime), SmallMultiplier(pushChargedTime), SmallMultiplier(pushChargedTime));
+        projectile.gameObject.transform.localScale = new Vector3(SmallMultiplier(pushChargedTime/2), SmallMultiplier(pushChargedTime/2), SmallMultiplier(pushChargedTime/2));
         projectile.transform.forward = transform.forward;
 
         //kickback to player

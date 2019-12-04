@@ -3,8 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AutoDestroyOverTime : MonoBehaviour
-{    
-    
+{
+    public bool chooseInInspector;
+    public float chosenTime;
+
+    private void Start()
+    {
+        if (chooseInInspector)
+        {
+            CancelInvoke("DestroyThis");
+            Invoke("DestroyThis", chosenTime);
+        }
+    }
+
     void OnEnable()
     {
         // This calls DestroyThis function after default 5 seconds;

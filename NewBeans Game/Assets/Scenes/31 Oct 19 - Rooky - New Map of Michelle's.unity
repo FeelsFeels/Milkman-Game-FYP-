@@ -322,6 +322,50 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &67300786
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 67300787}
+  - component: {fileID: 67300788}
+  m_Layer: 0
+  m_Name: Death Influence P1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &67300787
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67300786}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2115685880}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &67300788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67300786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac02995ff3e194c4f8213ec3f693f7b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityCooldown: 20
 --- !u!1 &70526053
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,11 +456,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Prefab
       objectReference: {fileID: 0}
-    - target: {fileID: 9217587416402060013, guid: 1bddf47119048164f92afd5b2ac6e2e3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9217587416402060012, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -474,31 +513,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9217587416402060000, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
-      propertyPath: inputInfo
-      value: 
-      objectReference: {fileID: 11400000, guid: d8c35d73af737694e800bbca3247a69c,
-        type: 2}
-    - target: {fileID: 9217587416402060000, guid: 1bddf47119048164f92afd5b2ac6e2e3,
-        type: 3}
       propertyPath: stageCenterPos
       value: 
       objectReference: {fileID: 216583635}
-    - target: {fileID: 8529076915811801624, guid: 1bddf47119048164f92afd5b2ac6e2e3,
-        type: 3}
-      propertyPath: colorToReference
-      value: 
-      objectReference: {fileID: 11400000, guid: d8c35d73af737694e800bbca3247a69c,
-        type: 2}
-    - target: {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3,
-        type: 3}
-      propertyPath: skillPrefabs.Array.data[2]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3,
-        type: 3}
-      propertyPath: skillPrefabs.Array.data[3]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: skillContainer
@@ -1119,6 +1136,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1226595495754338794, guid: 3bda2b1ba259d344aabdf004f7ca1e57,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3548487613958874926, guid: 3bda2b1ba259d344aabdf004f7ca1e57,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bda2b1ba259d344aabdf004f7ca1e57, type: 3}
@@ -1771,6 +1798,50 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 844239885}
   m_Mesh: {fileID: -4590250237441492480, guid: 0fc744938e362eb4e9fa99acf60aeb40, type: 3}
+--- !u!1 &920736538
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 920736539}
+  - component: {fileID: 920736540}
+  m_Layer: 0
+  m_Name: Death Influence P3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &920736539
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920736538}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2115685880}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &920736540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920736538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac02995ff3e194c4f8213ec3f693f7b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityCooldown: 10
 --- !u!1 &993208741
 GameObject:
   m_ObjectHideFlags: 0
@@ -2082,12 +2153,6 @@ PrefabInstance:
       propertyPath: stageCenterPos
       value: 
       objectReference: {fileID: 216583635}
-    - target: {fileID: 8529076915811801624, guid: 1bddf47119048164f92afd5b2ac6e2e3,
-        type: 3}
-      propertyPath: colorToReference
-      value: 
-      objectReference: {fileID: 11400000, guid: d633b295485f476439537afe242feeec,
-        type: 2}
     - target: {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: skillPrefabs.Array.data[2]
@@ -2113,6 +2178,12 @@ PrefabInstance:
       propertyPath: currentCharge
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8529076915811801624, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: colorToReference
+      value: 
+      objectReference: {fileID: 11400000, guid: d633b295485f476439537afe242feeec,
+        type: 2}
     - target: {fileID: 9217587416402060001, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: explodeForce
@@ -3639,6 +3710,50 @@ Transform:
   m_Father: {fileID: 1765171425}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1293635477
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1293635478}
+  - component: {fileID: 1293635479}
+  m_Layer: 0
+  m_Name: Death Influence P2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1293635478
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293635477}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2115685880}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1293635479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293635477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac02995ff3e194c4f8213ec3f693f7b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityCooldown: 10
 --- !u!1 &1500922710
 GameObject:
   m_ObjectHideFlags: 0
@@ -3751,6 +3866,7 @@ Transform:
   - {fileID: 1658703579}
   - {fileID: 1765171425}
   - {fileID: 1207452938}
+  - {fileID: 2115685880}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3992,12 +4108,6 @@ PrefabInstance:
       propertyPath: stageCenterPos
       value: 
       objectReference: {fileID: 216583635}
-    - target: {fileID: 8529076915811801624, guid: 1bddf47119048164f92afd5b2ac6e2e3,
-        type: 3}
-      propertyPath: colorToReference
-      value: 
-      objectReference: {fileID: 11400000, guid: 61dc69544f7bb0541a3d412f1ed152a0,
-        type: 2}
     - target: {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: skillPrefabs.Array.data[2]
@@ -4023,6 +4133,12 @@ PrefabInstance:
       propertyPath: currentCharge
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8529076915811801624, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: colorToReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 61dc69544f7bb0541a3d412f1ed152a0,
+        type: 2}
     - target: {fileID: 9217587416402060001, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: explodeForce
@@ -5275,6 +5391,50 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bddf47119048164f92afd5b2ac6e2e3, type: 3}
+--- !u!1 &1624404277
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1624404278}
+  - component: {fileID: 1624404279}
+  m_Layer: 0
+  m_Name: Death Influence P4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1624404278
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624404277}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2115685880}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1624404279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624404277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac02995ff3e194c4f8213ec3f693f7b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityCooldown: 10
 --- !u!1 &1658703578
 GameObject:
   m_ObjectHideFlags: 0
@@ -5634,7 +5794,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 191572, guid: a0f68672c76de4845b23a94845452f8a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 877716511, guid: a0f68672c76de4845b23a94845452f8a, type: 3}
       propertyPath: m_IsActive
@@ -10951,12 +11111,6 @@ PrefabInstance:
       propertyPath: stageCenterPos
       value: 
       objectReference: {fileID: 216583635}
-    - target: {fileID: 8529076915811801624, guid: 1bddf47119048164f92afd5b2ac6e2e3,
-        type: 3}
-      propertyPath: colorToReference
-      value: 
-      objectReference: {fileID: 11400000, guid: 99c24249d3bee7243b1dedb98cae64f9,
-        type: 2}
     - target: {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: skillPrefabs.Array.data[2]
@@ -10982,6 +11136,12 @@ PrefabInstance:
       propertyPath: currentCharge
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8529076915811801624, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: colorToReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 99c24249d3bee7243b1dedb98cae64f9,
+        type: 2}
     - target: {fileID: 9217587416402060001, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: explodeForce
@@ -12405,6 +12565,62 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8.2, y: 4.157768, z: 4.148277}
   m_Center: {x: -0.81, y: 0.42275718, z: 2.0577252}
+--- !u!1 &2115685879
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2115685880}
+  - component: {fileID: 2115685881}
+  m_Layer: 0
+  m_Name: Death Influence Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2115685880
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115685879}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 67300787}
+  - {fileID: 1293635478}
+  - {fileID: 920736539}
+  - {fileID: 1624404278}
+  m_Father: {fileID: 1526705727}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2115685881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115685879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51b14de6091493649bcda474c6d957df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deadPlayers: []
+  controllers:
+  - {fileID: 67300788}
+  - {fileID: 1293635479}
+  - {fileID: 920736540}
+  - {fileID: 1624404279}
+  deathSkills:
+  - {fileID: 2908109772314455301, guid: 0ccae3cc0d0e75a438f031d3bc7436e8, type: 3}
+  - {fileID: 8388743050121021517, guid: 1278eb96d3aade34cac1616a1be273ab, type: 3}
 --- !u!1 &2136207413
 GameObject:
   m_ObjectHideFlags: 0
