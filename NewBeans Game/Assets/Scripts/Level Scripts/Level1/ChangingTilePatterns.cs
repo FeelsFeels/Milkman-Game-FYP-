@@ -82,6 +82,7 @@ public class ChangingTilePatterns : MonoBehaviour
                 //Spawn Particles
                 GameObject particles = Instantiate(crumblingParticleEffect, spawnPosition + Vector3.up, Quaternion.identity);
                 particles.transform.parent = tileToGoDown.transform;
+                particles.transform.localScale = Vector3.one / 1.5f;
                 particles.GetComponent<AutoDestroyOverTime>().DestroyWithTime(10f);
             }
         }
