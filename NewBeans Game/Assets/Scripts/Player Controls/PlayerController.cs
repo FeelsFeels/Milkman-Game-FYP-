@@ -238,7 +238,7 @@ public class PlayerController : MonoBehaviour
 
     public void Hit()
     {
-        animator.SetTrigger("Hit");
+        //animator.SetTrigger("Hit");
         playerStunned = true;
         stunnedTime = 0;
         stunDuration = 0.25f;
@@ -247,7 +247,7 @@ public class PlayerController : MonoBehaviour
 
     public void Hit(float timeToStun)
     {
-        animator.SetTrigger("Hit");
+        //animator.SetTrigger("Hit");
         playerStunned = true;
         stunnedTime = 0;
         stunDuration = timeToStun;
