@@ -266,7 +266,8 @@ public class PlayerController : MonoBehaviour
             skinnedMeshRenderer.enabled = false;
             capsuleCollider.enabled = false;
             this.transform.Find("Canvas").gameObject.SetActive(false);
-            this.transform.Find("Projector").gameObject.SetActive(true);
+            this.transform.Find("Respawn_Canvas").gameObject.SetActive(true);
+            //this.transform.Find("Projector").gameObject.SetActive(true);
         }
 
         if (isDead == false)
@@ -275,7 +276,8 @@ public class PlayerController : MonoBehaviour
             capsuleCollider.enabled = true;
             invincibilityShield.ActivateShield();
             this.transform.Find("Canvas").gameObject.SetActive(true);
-            this.transform.Find("Projector").gameObject.SetActive(false);
+            this.transform.Find("Respawn_Canvas").gameObject.SetActive(false);
+            //this.transform.Find("Projector").gameObject.SetActive(false);
         }
 
     }
