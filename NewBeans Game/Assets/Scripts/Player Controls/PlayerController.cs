@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     public float playerTurnSmoothing = 10f;
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
-    public float moveRate = 10;  // units moved per second holding down move input
+    public float moveRate = 5f;  // units moved per second holding down move input
 
     [Header("Player Death Variables")]
     public bool isDead = false;
@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rb;
     Shield invincibilityShield;
     public GameObject dizzyStars;
-
+    public GameObject defaultCharacterModel;
     public GameObject cameraRigObj;
     float cameraRigRot =0f;
 
@@ -103,9 +103,24 @@ public class PlayerController : MonoBehaviour
             //Set what character this player is playing
             if (inputInfo.chosenCharacterData != null)
             {
-                if(this.GetComponent<SkillSetManager>()!=null)
-                this.GetComponent<SkillSetManager>().SetCharacter(inputInfo.chosenCharacterData.character);
-                this.GetComponent<SkillSetManager>().SetInputs(AButtonInput, BButtonInput);
+                if (this.GetComponent<SkillSetManager>() != null)
+                {
+                    this.GetComponent<SkillSetManager>().SetCharacter(inputInfo.chosenCharacterData.character);
+                    this.GetComponent<SkillSetManager>().SetInputs(AButtonInput, BButtonInput);
+
+                    if (inputInfo.chosenCharacterData.characterUltiReadyVFX != null)
+                    {
+                        GameObject newVFX = Instantiate(inputInfo.chosenCharacterData.characterUltiReadyVFX, transform);
+                        newVFX.SetActive(false);
+                        this.GetComponent<SkillSetManager>().skillReadyParticleFX = newVFX;
+                    }
+                }
+                if(inputInfo.chosenCharacterData.characterPrefab != null)
+                {
+                    GameObject newModel = Instantiate(inputInfo.chosenCharacterData.characterPrefab, transform.Find("Character Model"));
+                    animator = newModel.GetComponent<Animator>();
+                    defaultCharacterModel.SetActive(false);
+                }
             }
 
             //No player assigned to character
@@ -115,11 +130,12 @@ public class PlayerController : MonoBehaviour
             }
         }
         // Components
-        animator = transform.Find("Character Model").GetComponentInChildren<Animator>();
+        if(animator == null)
+            animator = transform.Find("Character Model").GetComponentInChildren<Animator>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         rb = GetComponent<Rigidbody>();
-        invincibilityShield = GetComponentInChildren<Shield>();
+        invincibilityShield = GetComponentInChildren<Shield>();        
     }
 
 

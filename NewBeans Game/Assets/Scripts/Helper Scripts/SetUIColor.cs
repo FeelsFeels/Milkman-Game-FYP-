@@ -12,8 +12,15 @@ public class SetUIColor : MonoBehaviour
 
     private void Awake()
     {
+        PlayerController pc = GetComponentInParent<PlayerController>();
+        if (pc)
+        {
+            if (pc.inputInfo != null)
+                colorToReference = pc.inputInfo;
+        }
+
         if (colorToReference.chosenCharacterData != null)
-            colorToUse = colorToReference.chosenCharacterData.characterColor;        
+            colorToUse = colorToReference.chosenCharacterData.characterColor;
     }
 
     private void Start()

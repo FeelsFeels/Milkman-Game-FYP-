@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6ad6552f0488ca42a11f346f57efe67, type: 3}
   m_Name: Fire Character
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 0}
+  characterPrefab: {fileID: 219199783361363612, guid: 7bd025c29daa84845816756bd3135379,
+    type: 3}
   pushProjectile: {fileID: 7453725843471818069, guid: 97da09c9e4a5db64cbdfc834137707e1,
     type: 3}
   hookProjectile: {fileID: 2992602490277621422, guid: e269a9dca4dfe2b41bf5ae42738af227,
+    type: 3}
+  characterUltiReadyVFX: {fileID: 7771475926251127384, guid: 5f6edb647de7d6749b1bc166b0049a0f,
     type: 3}
   characterColor:
     serializedVersion: 2

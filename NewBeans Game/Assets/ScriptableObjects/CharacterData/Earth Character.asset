@@ -17,6 +17,8 @@ MonoBehaviour:
     type: 3}
   hookProjectile: {fileID: 2992602490277621422, guid: aa6276347d0f0244e84fe7e2528dade2,
     type: 3}
+  characterUltiReadyVFX: {fileID: 5771584809425393243, guid: 9faea57029c1cdf46b00e4b349a20355,
+    type: 3}
   characterColor:
     serializedVersion: 2
     rgba: 4278255431
