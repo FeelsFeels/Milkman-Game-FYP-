@@ -365,7 +365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac02995ff3e194c4f8213ec3f693f7b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityCooldown: 10
+  abilityCooldown: 20
 --- !u!1 &70526053
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,7 +674,7 @@ MonoBehaviour:
   alivePlayers: []
   playerRanking: []
   lastManStandingUIs: []
-  startingLives: 1
+  startingLives: 5
 --- !u!1 &299700562
 GameObject:
   m_ObjectHideFlags: 0
@@ -2153,12 +2153,6 @@ PrefabInstance:
       propertyPath: stageCenterPos
       value: 
       objectReference: {fileID: 216583635}
-    - target: {fileID: 8529076915811801624, guid: 1bddf47119048164f92afd5b2ac6e2e3,
-        type: 3}
-      propertyPath: colorToReference
-      value: 
-      objectReference: {fileID: 11400000, guid: d633b295485f476439537afe242feeec,
-        type: 2}
     - target: {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: skillPrefabs.Array.data[2]
@@ -2184,6 +2178,12 @@ PrefabInstance:
       propertyPath: currentCharge
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8529076915811801624, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: colorToReference
+      value: 
+      objectReference: {fileID: 11400000, guid: d633b295485f476439537afe242feeec,
+        type: 2}
     - target: {fileID: 9217587416402060001, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: explodeForce
@@ -4108,12 +4108,6 @@ PrefabInstance:
       propertyPath: stageCenterPos
       value: 
       objectReference: {fileID: 216583635}
-    - target: {fileID: 8529076915811801624, guid: 1bddf47119048164f92afd5b2ac6e2e3,
-        type: 3}
-      propertyPath: colorToReference
-      value: 
-      objectReference: {fileID: 11400000, guid: 61dc69544f7bb0541a3d412f1ed152a0,
-        type: 2}
     - target: {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: skillPrefabs.Array.data[2]
@@ -4139,6 +4133,12 @@ PrefabInstance:
       propertyPath: currentCharge
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8529076915811801624, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: colorToReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 61dc69544f7bb0541a3d412f1ed152a0,
+        type: 2}
     - target: {fileID: 9217587416402060001, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: explodeForce
@@ -11111,12 +11111,6 @@ PrefabInstance:
       propertyPath: stageCenterPos
       value: 
       objectReference: {fileID: 216583635}
-    - target: {fileID: 8529076915811801624, guid: 1bddf47119048164f92afd5b2ac6e2e3,
-        type: 3}
-      propertyPath: colorToReference
-      value: 
-      objectReference: {fileID: 11400000, guid: 99c24249d3bee7243b1dedb98cae64f9,
-        type: 2}
     - target: {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: skillPrefabs.Array.data[2]
@@ -11142,6 +11136,12 @@ PrefabInstance:
       propertyPath: currentCharge
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8529076915811801624, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: colorToReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 99c24249d3bee7243b1dedb98cae64f9,
+        type: 2}
     - target: {fileID: 9217587416402060001, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: explodeForce
@@ -12581,7 +12581,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2115685880
 Transform:
   m_ObjectHideFlags: 0
