@@ -12,6 +12,8 @@ public class Shoot : MonoBehaviour
     public GameObject hookProjectile;
 
     private Animator animator;  //For blinking indication
+    public Animator playerAnim; //player animation
+
     public GameObject aimingArrows;
     public Image chargingIndication;
 
@@ -56,6 +58,7 @@ public class Shoot : MonoBehaviour
 
         playerScript = GetComponent<PlayerController>();
         animator = transform.Find("Canvas").GetComponent<Animator>();
+        playerAnim = transform.Find("Character Model").GetComponentInChildren<Animator>();
 
         // hProjectile.GetComponent<Shoot>().castedByPlayer = player;
         watergunInput = playerScript.AButtonInput;
@@ -101,6 +104,10 @@ public class Shoot : MonoBehaviour
 
         if (chargingPushProjectile)
         {
+            //Player animator
+            playerAnim.SetBool("Charging", true);
+
+
             pushChargedTime += Time.deltaTime;
             chargingIndication.gameObject.SetActive(true);
             //chargingIndication.fillAmount = pushChargedTime / 1.5f;
@@ -138,7 +145,12 @@ public class Shoot : MonoBehaviour
         
         if (Input.GetButtonUp(watergunInput) && chargingPushProjectile)
         {
+            //Player anim
+            playerAnim.SetBool("Charging", false);
+            playerAnim.SetTrigger("Push");
+
             ShootPushProjectile();
+            
         }
 
         
@@ -156,6 +168,9 @@ public class Shoot : MonoBehaviour
         if (Input.GetButtonUp(hookInput) && chargingGrapplingHook)
         {
             ShootHook();
+
+            //Player anim
+            playerAnim.SetTrigger("Pull");
         }
 
         if (hProjectile != null)
@@ -171,6 +186,10 @@ public class Shoot : MonoBehaviour
         chargingPushProjectile = false;
         chargingIndication.fillAmount = 0;
         animator.SetBool("activateChargeBlink", false);
+
+        //Player anim
+        playerAnim.SetBool("Charging", false);
+        playerAnim.SetTrigger("ResetCharge");
     }
 
     private void ChargePushProjectile()
