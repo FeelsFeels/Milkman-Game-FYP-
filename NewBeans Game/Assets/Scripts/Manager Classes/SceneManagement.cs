@@ -12,6 +12,7 @@ public class SceneManagement : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
+        FindObjectOfType<AudioPlayer>().PlayMusic("MenuTrack");
     }
     private void Update()
     {

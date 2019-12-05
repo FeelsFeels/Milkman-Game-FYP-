@@ -114,6 +114,12 @@ public class GameManager : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
 
+        //Countdown hack (pls change)
+        PlayerController[] allPlayers = FindObjectsOfType<PlayerController>();
+        foreach (PlayerController p in allPlayers)
+        {
+            p.Hit(3);
+        }
     }
     
     void Update()
