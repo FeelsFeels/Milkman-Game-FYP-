@@ -46,8 +46,8 @@ MonoBehaviour:
   skillDuration: 5
   beyblading: 0
   showVFX: 0
-  knockbackRadius: 10
-  knockbackStrength: 10000
+  knockbackRadius: 5
+  knockbackStrength: 100
   ultiPrefab: {fileID: 94769738028344917, guid: 9f3e47a02ed775e49a06e433fe15fa03,
     type: 3}
   fireCharacter: {fileID: 0}

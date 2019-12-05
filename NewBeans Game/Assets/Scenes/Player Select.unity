@@ -1374,7 +1374,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ca9838db0f5392046a3810e6ab857d03, type: 3}
   - {fileID: 21300000, guid: d8370d24a6030d340a578d7d971ca295, type: 3}
   playersJoined: 
-  SceneToLoad: 31 Oct 19 - Rooky - New Map of Michelle's
+  SceneToLoad: 4 Dec 19 - Earth Map
 --- !u!1 &903701690
 GameObject:
   m_ObjectHideFlags: 0

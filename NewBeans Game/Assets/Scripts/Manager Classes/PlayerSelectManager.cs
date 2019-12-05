@@ -34,6 +34,7 @@ public class PlayerSelectManager : MonoBehaviour
         {
             player.chosenCharacterData = null;
             player.chosenCharacterIndex = 0;
+            player.forceActive = false;
         }
     }
 

@@ -7,11 +7,11 @@ using UnityEngine.SceneManagement;
 public class SceneManagement : MonoBehaviour
 {
 
-    //public Animator anim;
+    public Animator anim;
 
     private void Start()
     {
-    //    anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
     private void Update()
     {
@@ -20,12 +20,7 @@ public class SceneManagement : MonoBehaviour
 
     public void TitleScreenReady()
     {
-        // For loading MainMenu screen from TitleScreen only.
-        if (SceneManager.GetActiveScene().buildIndex == 0)
-        {
-  //          anim.Play("TitleScreen_ReadyToPlay");
-        }
-        
+        anim.Play("TitleScreen_ReadyToPlay");
     }
 
     public void LoadScene(string sceneName)

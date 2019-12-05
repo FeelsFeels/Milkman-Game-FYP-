@@ -12,8 +12,6 @@ public class PushProjectile : MonoBehaviour
 
     public float baseKnockback; //Base knockback currently set to 500
     public float knockbackToUse;
-    public float knockbackRadius;
-    public float upwardsModifier;
     public PlayerController playerHit;
     private int timesReflected;
 

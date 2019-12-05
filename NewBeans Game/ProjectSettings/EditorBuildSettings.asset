@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/14 Nov 19 - Laser Map Playable ver.unity
     guid: 642f05af2f23f114180f7914ee246c8d
+  - enabled: 1
+    path: Assets/Scenes/4 Dec 19 - Earth Map.unity
+    guid: 2d8851e0af1fed84284b2184f1c818ae
   m_configObjects: {}

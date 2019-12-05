@@ -382,8 +382,8 @@ MonoBehaviour:
   chargingPushProjectile: 0
   chargingGrapplingHook: 0
   playerCannotShoot: 0
-  baseKickbackForce: 250
-  explodeRadius: 10
+  baseKickbackForce: 200
+  explodeRadius: 5
   playerLayer:
     serializedVersion: 2
     m_Bits: 1024

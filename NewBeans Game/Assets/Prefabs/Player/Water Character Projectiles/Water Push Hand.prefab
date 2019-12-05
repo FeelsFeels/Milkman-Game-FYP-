@@ -836,12 +836,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knockbackDirection: {x: 0, y: 0, z: 0}
   ownerPlayer: {fileID: 0}
-  speed: 35
+  speed: 25
   lastFrameVelocity: {x: 0, y: 0, z: 0}
-  baseKnockback: 250
+  baseKnockback: 200
   knockbackToUse: 0
-  knockbackRadius: 50
-  upwardsModifier: 1.2
   playerHit: {fileID: 0}
   exploding: 0
   rb: {fileID: 6176825336639038437}
