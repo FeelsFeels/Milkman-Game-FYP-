@@ -13,7 +13,7 @@ public class CastLaserBeam : MonoBehaviour
 
     public GameObject warningDirection;
     public LineRenderer warningLine; // Line Renderer to show the range of laser beam.
-    public float lineWidth = 5f; // Line Renderer's width.
+    public float lineWidth = 2.5f; // Line Renderer's width.
 
     private RaycastHit[] hit;
     private Collider collider; // Collider of BoxCastAll.
@@ -44,7 +44,7 @@ public class CastLaserBeam : MonoBehaviour
     public void LaserWarning()
     {
         warningLine.gameObject.SetActive(true);
-        warningLine.SetWidth(5f, 5f);
+        warningLine.SetWidth(2.5f, 2.5f);
         warningLine.SetPosition(0, laserStartPos.transform.position);
         warningLine.SetPosition(1, laserEndPos.transform.position);
 
@@ -94,7 +94,7 @@ public class CastLaserBeam : MonoBehaviour
 
         print("Unset warning renderer position");
 
-        Vector3 colliderScale = new Vector3(2.5f, 2.5f, 2.5f);
+        Vector3 colliderScale = new Vector3(1.5f, 1.5f, 1.5f);
         Vector3 laserShootDirection = (laserEndPos.transform.position - laserStartPos.transform.position);
 
 

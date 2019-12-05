@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     [Header("Player Status Effects")]
     public bool playerStunned;  //Are you stunned
     public float stunnedTime;   //Time passed while being stunned
-    private float stunDuration = 0.25f; //Time to spend stunned
+    public float stunDuration = 0.25f; //Time to spend stunned
     public bool shootingHook;   //Cannot move while shooting hook
 
     [Header("Visual Effects")]

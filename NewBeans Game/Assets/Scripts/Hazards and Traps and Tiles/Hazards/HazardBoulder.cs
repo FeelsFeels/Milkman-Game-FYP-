@@ -34,7 +34,7 @@ public class HazardBoulder : MonoBehaviour
 
         //Gets all players in range of shockwave stomp
         int ignoreLayerMask = ~1 << LayerMask.NameToLayer("Ground");    //Raycasts on everything but ground
-        Collider[] inRange = Physics.OverlapSphere(transform.position, 10f, ignoreLayerMask);
+        Collider[] inRange = Physics.OverlapSphere(transform.position, 5f, ignoreLayerMask);
 
 
         //Disrupts all players in range

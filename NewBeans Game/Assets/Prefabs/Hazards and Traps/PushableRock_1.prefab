@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 948006940130147717}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 463.9, y: 7.7, z: 12.7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 3938375304894108027}
   - {fileID: 6740325095612397801}
@@ -126,10 +126,10 @@ MonoBehaviour:
   rb: {fileID: 336061508611873984}
   canStunPlayer: 0
   rockDropping: 0
-  baseForce: 50
+  baseForce: 25
   shockwaveParticles: {fileID: 1765079799062324546, guid: c873447dcbd7d8c4dbb878ba67891401,
     type: 3}
-  knockbackStrength: 500
+  knockbackStrength: 250
 --- !u!1 &5357628445875505376
 GameObject:
   m_ObjectHideFlags: 0

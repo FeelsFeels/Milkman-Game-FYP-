@@ -118,7 +118,9 @@ public class GameManager : MonoBehaviour
         PlayerController[] allPlayers = FindObjectsOfType<PlayerController>();
         foreach (PlayerController p in allPlayers)
         {
-            p.Hit(3);
+            p.playerStunned = true;
+            p.stunnedTime = 0f;
+            p.stunDuration = 3f;
         }
     }
     
