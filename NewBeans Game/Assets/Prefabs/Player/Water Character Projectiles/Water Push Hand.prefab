@@ -838,7 +838,7 @@ MonoBehaviour:
   ownerPlayer: {fileID: 0}
   speed: 25
   lastFrameVelocity: {x: 0, y: 0, z: 0}
-  baseKnockback: 200
+  baseKnockback: 250
   knockbackToUse: 0
   playerHit: {fileID: 0}
   exploding: 0

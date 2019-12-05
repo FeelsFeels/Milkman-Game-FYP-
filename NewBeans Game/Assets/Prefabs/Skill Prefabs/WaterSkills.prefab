@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69b6ea27f99f0fa428f0842443a3fb46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillDuration: 7
+  skillDuration: 5
   waterTornado: {fileID: 9024241037335677620, guid: 69f95b86c8b5f7a42a6ca958522c3273,
     type: 3}
   timeForTornadoGrowth: 0.2
