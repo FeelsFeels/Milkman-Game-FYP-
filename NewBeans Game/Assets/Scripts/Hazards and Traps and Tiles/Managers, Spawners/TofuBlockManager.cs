@@ -37,6 +37,7 @@ public class TofuBlockManager : MonoBehaviour
     // -------- This spawns the 5 tofu blocks at random positions at the start of the game.
     void SpawnTofu()
     {
+        print("spawntofuuwu");
         HazardBoulder newTofu;
         if (spawnLocations.Length > 0)
         {

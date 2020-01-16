@@ -25,8 +25,8 @@ public class LaserPatterns : MonoBehaviour
     {
         randomNum = Random.Range(0, 12);
 
-        lasers[randomNum].GetComponent<CastLaserBeam>().LaserWarning();
-        print("Shot singular laser:" + randomNum);
+        lasers[8].GetComponent<CastLaserBeam>().LaserWarning();
+        //print("Shot singular laser:" + randomNum);
     }
 
     // --- Difficulty: 2

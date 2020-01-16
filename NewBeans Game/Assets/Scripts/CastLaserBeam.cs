@@ -58,28 +58,33 @@ public class CastLaserBeam : MonoBehaviour
         //    Debug.DrawLine(newPos, newPos - Vector3.down * 100, Color.yellow, 5f);
         //    distance++;
         //}
-        while (foundPos == false)
-        {
-            RaycastHit hit;
-            Vector3 newPos = laserStartPos.position + (distance * (laserEndPos.position - laserStartPos.position).normalized);
-            Debug.DrawLine(newPos, newPos - Vector3.down * 100, Color.yellow, 5f);
-            if (Physics.Raycast(newPos, Vector3.down, out hit, Mathf.Infinity, 1 << LayerMask.NameToLayer("Ground")))
-            {
-                print("Name: " + hit.collider.gameObject.name);
-                foundPos = true;
-                GameObject indication = Instantiate(warningDirection, newPos, Quaternion.identity);
-                Destroy(indication, warningTime);
-                break;
+        //while (foundPos == false)
+        //{
+        //    iterations++;
+        //    if(iterations >= 50)
+        //    {
+        //        break;
+        //    }
+        //    RaycastHit hit;
+        //    Vector3 newPos = laserStartPos.position + (distance * (laserEndPos.position - laserStartPos.position).normalized);
+        //    Debug.DrawLine(newPos, newPos - Vector3.down * 100, Color.yellow, 5f);
+        //    if (Physics.Raycast(newPos, Vector3.down, out hit, Mathf.Infinity, 1 << LayerMask.NameToLayer("Ground")))
+        //    {
+        //        print("Name: " + hit.collider.gameObject.name);
+        //        foundPos = true;
+        //        GameObject indication = Instantiate(warningDirection, newPos, Quaternion.identity);
+        //        Destroy(indication, warningTime);
+        //        break;
 
-            }
-            else
-            {
-                distance += 1;
-                continue;
-            }
-        }
+        //    }
+        //    else
+        //    {
+        //        distance += 1;
+        //        continue;
+        //    }
+        //}
 
-        Debug.DrawRay(laserStartPos.transform.position, laserEndPos.transform.position, Color.blue);
+        Debug.DrawRay(laserStartPos.transform.position, laserEndPos.transform.position, Color.blue, 3.0f, false);
         
         Invoke("ShootLaserBeam", warningTime);
 
@@ -89,30 +94,22 @@ public class CastLaserBeam : MonoBehaviour
     public void ShootLaserBeam()
     {
         warningLine.gameObject.SetActive(false);
-        //warningLine.SetPosition(0, laserStartPos.transform.position);
-        //warningLine.SetPosition(1, laserStartPos.transform.position);
-
-        print("Unset warning renderer position");
-
         Vector3 colliderScale = new Vector3(1.5f, 1.5f, 1.5f);
         Vector3 laserShootDirection = (laserEndPos.transform.position - laserStartPos.transform.position);
 
-
-        Vector3 offset = new Vector3(0f, 0f, 2.8f);
-
+        transform.LookAt(laserEndPos);
         laserEffects.transform.LookAt(laserEndPos);
         laserEffects.Play();
 
         float distanceDifference; // Distance between object that is hit and the laser start point.
 
-        float closestRockDistance = 1000f;
+        float closestRockDistance = Mathf.Infinity;
         float playerDistance = 0f;
         bool rockExists = false;
 
+        Debug.DrawRay(laserEffects.transform.position, laserEffects.transform.forward * 100f, Color.red, 3f);
+        
         RaycastHit[] hits = Physics.BoxCastAll(laserStartPos.transform.position, colliderScale, laserShootDirection, transform.rotation, maxDistance, layersToHit);
-
-        Debug.DrawRay(laserEffects.transform.position, laserEffects.transform.forward * 100f, Color.red, 5f);
-
         foreach (RaycastHit hit in hits)
         {
             print("Hit");
