@@ -20748,6 +20748,7 @@ MonoBehaviour:
   stunnedTime: 0
   stunDuration: 0.25
   shootingHook: 0
+  respawnAudioPlaying: 0
   playerDieEffect: {fileID: 5321603115026070672, guid: 9a30751c44ecdd54996aa1f0cd0781f2,
     type: 3}
   playerPushedEffect: {fileID: 5866095184590232605, guid: 8d2c5bcf5e9fb5d44b06b03bcde18e45,
