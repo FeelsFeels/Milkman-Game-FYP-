@@ -248,7 +248,6 @@ public class Shoot : MonoBehaviour
     }
 
     void ShotgunAttack() {
-        
         StartCoroutine(ShotgunFireLight());
 
         animator.SetBool("backToNull", true); // Stops the shoot charging animation
@@ -285,7 +284,7 @@ public class Shoot : MonoBehaviour
     //Shotgun indication
     IEnumerator ShotgunFireLight()
     {
-
+        FindObjectOfType<AudioManager>().Play("Shotgun");
         if (this.gameObject.transform.Find("Spotlight") != null)
         {
             this.gameObject.transform.Find("Spotlight").gameObject.SetActive(true);

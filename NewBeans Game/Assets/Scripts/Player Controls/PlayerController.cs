@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public float stunnedTime;   //Time passed while being stunned
     public float stunDuration = 0.25f; //Time to spend stunned
     public bool shootingHook;   //Cannot move while shooting hook
+    public bool respawnAudioPlaying;
 
     [Header("Visual Effects")]
     public GameObject playerDieEffect;
@@ -329,6 +330,8 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator WaitToRespawn()
     {
+        InvokeRepeating("PlayRespawningSound", 0f, 1f);
+        
         rb.isKinematic = true;
         rb.useGravity = false;
         transform.position = stageCenterPos.position;
@@ -338,14 +341,24 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    // For looping the respawning audio clip.
+    public void PlayRespawningSound()
+    {
+        if (isDead)
+        {
+            FindObjectOfType<AudioManager>().Play("Respawning");
+        }
+    }
+
     IEnumerator RespawnPlayer()
     {
+        print("respawning player");
         if (isDead == true)
         {
             
             yield return new WaitForSeconds(respawnDelay);
             //gameObject.transform.position = respawnPosition.transform.position;
-            
+            FindObjectOfType<AudioManager>().Play("Respawned");
             isDead = false;
             HidePlayerWhenDead();
             rb.isKinematic = false;
