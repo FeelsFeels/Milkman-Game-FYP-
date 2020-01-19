@@ -21,17 +21,20 @@ public class CastLaserBeam : MonoBehaviour
     public Transform laserStartPos; // Start position of the laser beam.
     public Transform laserEndPos; // End position of the laser beam.
 
-    public float warningTime = 2f; // The time that the warning is active, before the real laser beam is active.
+    public float warningTime = 3f; // The time that the warning is active, before the real laser beam is active.
 
     public ParticleSystem laserEffects;
+    public Color32 normalColor;
+    public Color32 blinkColor;
 
     // Start is called before the first frame update
     void Start()
     {
-
         collider = GetComponent<Collider>();
 
         gameObject.transform.position = laserStartPos.transform.position;
+
+        normalColor = warningLine.startColor;
     }
 
     //private void OnDrawGizmos()
@@ -45,13 +48,18 @@ public class CastLaserBeam : MonoBehaviour
     {
         warningLine.gameObject.SetActive(true);
         warningLine.SetWidth(2.5f, 2.5f);
-        warningLine.SetPosition(0, laserStartPos.transform.position);
-        warningLine.SetPosition(1, laserEndPos.transform.position);
+        warningLine.startColor = normalColor;
+        warningLine.endColor = normalColor;
+        warningLine.SetPosition(0, new Vector3(laserStartPos.transform.position.x, 0, laserStartPos.transform.position.z));
+        //warningLine.SetPosition(1, new Vector3(laserEndPos.transform.position.x, 0, laserEndPos.transform.position.z));
 
 
         bool foundPos = false;
         float distance = 1f;
         int iterations = 0;
+        
+        ///This sends a raycast downwards,
+        ///and if it hits ground, instantiates a warning indication on top of ground.
         //for (int i = 0; i < 15; i++)
         //{
         //    Vector3 newPos = laserStartPos.position + (distance * (laserEndPos.position - laserStartPos.position).normalized);
@@ -85,7 +93,7 @@ public class CastLaserBeam : MonoBehaviour
         //}
 
         Debug.DrawRay(laserStartPos.transform.position, laserEndPos.transform.position, Color.blue, 3.0f, false);
-        
+        StartCoroutine("WarningIndicationRoutine");
         Invoke("ShootLaserBeam", warningTime);
 
     }
@@ -109,41 +117,84 @@ public class CastLaserBeam : MonoBehaviour
 
         Debug.DrawRay(laserEffects.transform.position, laserEffects.transform.forward * 100f, Color.red, 3f);
         
-        RaycastHit[] hits = Physics.BoxCastAll(laserStartPos.transform.position, colliderScale, laserShootDirection, transform.rotation, maxDistance, layersToHit);
-        foreach (RaycastHit hit in hits)
+        //RaycastHit[] hits = Physics.BoxCastAll(laserStartPos.transform.position, colliderScale, laserShootDirection, transform.rotation, maxDistance, layersToHit);
+        //foreach (RaycastHit hit in hits)
+        //{
+        //    print("Hit");
+        //    distanceDifference = (laserStartPos.transform.position - hit.collider.transform.position).magnitude;
+        //    Debug.DrawRay(hit.point, hit.point + Vector3.up * 5, Color.green);
+        //    hitDetect = true;
+
+        //    print("Laser hit:" + hit.collider.name);
+
+        //    // ----------- If hit rock
+        //    if (hit.collider.tag == "Rock")
+        //    {
+        //        rockExists = true;
+
+        //        Vector3 nearestRock = new Vector3(hit.collider.transform.position.x, hit.collider.transform.position.y, hit.collider.transform.position.z);
+        //        closestRockDistance = Vector3.Distance(laserStartPos.transform.position, nearestRock);
+
+        //    }
+        //    // ---------- If hit player
+        //    if (hit.collider.tag == "Player")
+        //    {
+        //        playerDistance = distanceDifference;
+
+        //        if ((rockExists == true) && (playerDistance <= closestRockDistance))
+        //        {
+
+        //            hit.collider.gameObject.GetComponent<PlayerController>().Hit(3);
+        //        }
+
+        //        else if (rockExists == false)
+        //        {
+        //            hit.collider.gameObject.GetComponent<PlayerController>().Hit(3);
+        //        }
+        //    }
+        //}
+    }
+
+    IEnumerator WarningIndicationRoutine()
+    {
+        float warningTime = 0f;
+        Vector3 tailEndPos;
+
+        while (warningTime < 1.5f)
         {
-            print("Hit");
-            distanceDifference = (laserStartPos.transform.position - hit.collider.transform.position).magnitude;
-            Debug.DrawRay(hit.point, hit.point + Vector3.up * 5, Color.green);
-            hitDetect = true;
+            warningTime += Time.deltaTime;
+            tailEndPos = Vector3.Lerp(laserStartPos.position, laserEndPos.position, warningTime / 1.5f);
+            //print(tailEndPos.y);  //Dunno why this is always 2.5f instead of 0
+            warningLine.SetPosition(1, new Vector3(tailEndPos.x, 0, tailEndPos.z));
+            yield return null;
+        }
 
-            print("Laser hit:" + hit.collider.name);
+        int iteration = 0;
+        while (warningTime < 3f)
+        {
+            yield return null;
 
-            // ----------- If hit rock
-            if (hit.collider.tag == "Rock")
+            warningTime += Time.deltaTime;
+            if (warningTime < 2f)
+                continue;
+
+            //Blinks the indicator
+            iteration++;
+            if(iteration % 4 == 0)
             {
-                rockExists = true;
-
-                Vector3 nearestRock = new Vector3(hit.collider.transform.position.x, hit.collider.transform.position.y, hit.collider.transform.position.z);
-                closestRockDistance = Vector3.Distance(laserStartPos.transform.position, nearestRock);
-
-            }
-            // ---------- If hit player
-            if (hit.collider.tag == "Player")
-            {
-                playerDistance = distanceDifference;
-
-                if ((rockExists == true) && (playerDistance <= closestRockDistance))
+                if (warningLine.startColor == normalColor)
                 {
-
-                    hit.collider.gameObject.GetComponent<PlayerController>().Hit(3);
+                    warningLine.startColor = blinkColor;
+                    warningLine.endColor = blinkColor;
                 }
-
-                else if (rockExists == false)
+                else
                 {
-                    hit.collider.gameObject.GetComponent<PlayerController>().Hit(3);
+                    warningLine.startColor = normalColor;
+                    warningLine.endColor = normalColor;
                 }
             }
         }
+        warningLine.startColor = normalColor;
+        warningLine.endColor = normalColor;
     }
 }
