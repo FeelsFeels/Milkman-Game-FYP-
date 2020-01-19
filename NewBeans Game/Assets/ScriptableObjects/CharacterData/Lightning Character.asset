@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6ad6552f0488ca42a11f346f57efe67, type: 3}
   m_Name: Lightning Character
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 0}
+  characterPrefab: {fileID: 6254405192400340290, guid: bbc7a330db8b38a409ad53cc1d482a0a,
+    type: 3}
   pushProjectile: {fileID: 7453725843471818069, guid: 409b39dc1ca04c2479b29aff2eff8379,
     type: 3}
   hookProjectile: {fileID: 2992602490277621422, guid: b747d60811b640c49bd91c241c86f158,
