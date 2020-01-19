@@ -346,7 +346,10 @@ public class PlayerController : MonoBehaviour
     {
         if (isDead)
         {
-            FindObjectOfType<AudioManager>().Play("Respawning");
+            if (FindObjectOfType<AudioManager>() != null)
+            {
+                FindObjectOfType<AudioManager>().Play("Respawning");
+            }
         }
     }
 
@@ -358,7 +361,10 @@ public class PlayerController : MonoBehaviour
             
             yield return new WaitForSeconds(respawnDelay);
             //gameObject.transform.position = respawnPosition.transform.position;
-            FindObjectOfType<AudioManager>().Play("Respawned");
+            if (FindObjectOfType<AudioManager>() != null)
+            {
+                FindObjectOfType<AudioManager>().Play("Respawned");
+            }
             isDead = false;
             HidePlayerWhenDead();
             rb.isKinematic = false;
