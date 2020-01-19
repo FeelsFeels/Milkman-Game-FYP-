@@ -47,9 +47,14 @@ public class PushProjectile : MonoBehaviour
 
     public void ReflectShot(Vector3 collisionNormal)
     {
+        if(timesReflected >= 1)
+        {
+            Destroy(gameObject);
+        }
         Vector3 reflectDirection = Vector3.Reflect(lastFrameVelocity.normalized, collisionNormal);
         speed *= 0.8f;
         rb.velocity = reflectDirection * speed;
+        transform.rotation = Quaternion.LookRotation(reflectDirection);
         timesReflected++;
     }
 
@@ -89,16 +94,16 @@ public class PushProjectile : MonoBehaviour
 
             //Charging special skills
 
-                if (ownerPlayer.GetComponent<SkillSetManager>() != null)
-                {
-                    ownerPlayer.GetComponent<SkillSetManager>().ChargeSpecialSkill(knockbackToUse/5); //Reduced amt of charge for ulti
-                }
+            if (ownerPlayer.GetComponent<SkillSetManager>() != null)
+            {
+                ownerPlayer.GetComponent<SkillSetManager>().ChargeSpecialSkill(knockbackToUse / 5); //Reduced amt of charge for ulti
+            }
 
-                if (player.GetComponent<SkillSetManager>() != null)
-                {
-                    player.GetComponent<SkillSetManager>().ChargeSpecialSkill(knockbackToUse);
-                }
-            
+            if (player.GetComponent<SkillSetManager>() != null)
+            {
+                player.GetComponent<SkillSetManager>().ChargeSpecialSkill(knockbackToUse);
+            }
+
 
             Destroy(gameObject);
         }
