@@ -27,8 +27,13 @@ public class SceneManagement : MonoBehaviour
     public void LoadScene(string sceneName)
 
     {
- //       anim.Play("Screen_FadeIn");
-   //     anim.SetTrigger("FadeOut");
+        if (FindObjectOfType<AudioManager>() != null)
+        {
+            FindObjectOfType<AudioManager>().Play("Button Selected");
+        }
+
+        //       anim.Play("Screen_FadeIn");
+        //     anim.SetTrigger("FadeOut");
         print("Fading out");
         SceneManager.LoadScene(sceneName);
 //        anim.Play("Screen_FadeOut");
