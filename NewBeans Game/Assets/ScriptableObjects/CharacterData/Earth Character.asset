@@ -26,4 +26,8 @@ MonoBehaviour:
     type: 3}
   characterUI_Right: {fileID: 7058589043617709942, guid: 77ae24229b26e3942a50a3123b6b01b0,
     type: 3}
+  characterUI_LeftUp: {fileID: 3801569834553717344, guid: 6134774fbdaa12a4485a186e21b20031,
+    type: 3}
+  characterUI_RightUp: {fileID: 3801569834553717344, guid: f8c18b1126b1e1e4e9171889948f640a,
+    type: 3}
   character: Earth

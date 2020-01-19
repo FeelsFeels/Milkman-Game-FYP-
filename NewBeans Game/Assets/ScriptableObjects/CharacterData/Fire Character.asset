@@ -27,4 +27,8 @@ MonoBehaviour:
     type: 3}
   characterUI_Right: {fileID: 6947780862390391763, guid: 88c58e9f56893aa449d11fed1d994924,
     type: 3}
+  characterUI_LeftUp: {fileID: 3801569834553717344, guid: 6be0e750feb749543993ecdd0a8be194,
+    type: 3}
+  characterUI_RightUp: {fileID: 3801569834553717344, guid: 6e70905e8434750498006d41588b709d,
+    type: 3}
   character: Fire

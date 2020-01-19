@@ -38,16 +38,33 @@ public class LastManStandingUI : MonoBehaviour
         {
             if (trackedPlayer.playerNumber % 2 == 0) //If even,
             {
-                //Use Right UI
-                characterUI = Instantiate(trackedPlayer.chosenCharacterData.characterUI_Right, transform) as GameObject; //May wanna change this later on to just set active...
-                ultiCharge = characterUI.transform.Find("Ulti_Charge").GetComponent<Slider>();
+                if (trackedPlayer.playerNumber < 3) //If btm row
+                {
+                    characterUI = Instantiate(trackedPlayer.chosenCharacterData.characterUI_Right, transform) as GameObject; //May wanna change this later on to just set active...
+                    ultiCharge = characterUI.transform.Find("Ulti_Charge").GetComponent<Slider>();
+                }
+                else
+                {
+                    characterUI = Instantiate(trackedPlayer.chosenCharacterData.characterUI_RightUp, transform) as GameObject;
+                    ultiCharge = characterUI.transform.Find("Ulti_Charge").GetComponent<Slider>();
+                }
 
             }
             else //If odd,
             {
                 //Use Left UI
-                characterUI = Instantiate(trackedPlayer.chosenCharacterData.characterUI_Left, transform) as GameObject;
-                ultiCharge = characterUI.transform.Find("Ulti_Charge").GetComponent<Slider>();
+                if (trackedPlayer.playerNumber < 3) //If btm row
+                {
+                    characterUI = Instantiate(trackedPlayer.chosenCharacterData.characterUI_Left, transform) as GameObject;
+                    ultiCharge = characterUI.transform.Find("Ulti_Charge").GetComponent<Slider>();
+                }
+                else
+                {
+                    characterUI = Instantiate(trackedPlayer.chosenCharacterData.characterUI_LeftUp, transform) as GameObject;
+                    ultiCharge = characterUI.transform.Find("Ulti_Charge").GetComponent<Slider>();
+                }
+
+
             }
             gameObject.SetActive(true);
         }

@@ -72,7 +72,10 @@ public class PushProjectile : MonoBehaviour
         
         if ((player && collision.gameObject != ownerPlayer) || (player && timesReflected >= 1))
         {
-            FindObjectOfType<AudioManager>().Play("Player Knock Back");
+            if (FindObjectOfType<AudioManager>())
+            {
+                FindObjectOfType<AudioManager>().Play("Player Knock Back");
+            }
             Vector3 direction = collision.transform.position - transform.position;
             direction = -direction.normalized;
 

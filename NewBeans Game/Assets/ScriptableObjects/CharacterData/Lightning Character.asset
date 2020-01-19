@@ -27,4 +27,8 @@ MonoBehaviour:
     type: 3}
   characterUI_Right: {fileID: 7622000253434024407, guid: f09777648c3eca74aa0b56e924f13753,
     type: 3}
+  characterUI_LeftUp: {fileID: 3801569834553717344, guid: 1f475547a3207724dac55b0574481653,
+    type: 3}
+  characterUI_RightUp: {fileID: 3801569834553717344, guid: 1e5c5bbe66562734c9bdb135bd61bc91,
+    type: 3}
   character: Lightning

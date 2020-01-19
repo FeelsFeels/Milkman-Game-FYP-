@@ -27,4 +27,8 @@ MonoBehaviour:
     type: 3}
   characterUI_Right: {fileID: 815774940805368648, guid: ba24be1af27acbe4a9b08a27a95666e3,
     type: 3}
+  characterUI_LeftUp: {fileID: 3801569834553717344, guid: 55b53e62bf7c1d74c909027e96c0740b,
+    type: 3}
+  characterUI_RightUp: {fileID: 3801569834553717344, guid: 0c2f31a50bf80b3448ed76a7766e352a,
+    type: 3}
   character: Water

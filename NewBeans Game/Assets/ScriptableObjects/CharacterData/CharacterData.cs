@@ -12,5 +12,7 @@ public class CharacterData : ScriptableObject
     public Color32 characterColor;
     public GameObject characterUI_Left;
     public GameObject characterUI_Right;
+    public GameObject characterUI_LeftUp;
+    public GameObject characterUI_RightUp;
     public string character;
 }
