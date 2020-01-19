@@ -9,6 +9,7 @@ public class LastManStandingResultsScreen : BaseResultsScreen
 {
     public GameObject resultsScreen;
     public Text playerRankText;
+    public Image[] rankingImg;
 
     private void Awake()
     {
@@ -38,6 +39,14 @@ public class LastManStandingResultsScreen : BaseResultsScreen
         }
 
         playerRankText.text = sb.ToString();
+
+
+
+
+
+
+
+
     }
 
 }
