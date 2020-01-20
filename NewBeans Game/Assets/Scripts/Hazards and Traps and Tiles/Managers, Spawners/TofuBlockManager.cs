@@ -29,7 +29,7 @@ public class TofuBlockManager : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(SpawnStartingTofu());
+        //StartCoroutine(SpawnStartingTofu());
     }
 
 
