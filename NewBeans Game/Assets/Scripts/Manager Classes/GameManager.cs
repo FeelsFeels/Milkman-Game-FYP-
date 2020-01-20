@@ -235,6 +235,11 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene(sceneName);
     }
+
+    public void FindAudio(string trackName)
+    {
+        FindObjectOfType<AudioPlayer>().PlayMusic(trackName);
+    }
     
     public void OnPlayerDeath(PlayerController playerDead, PlayerController killer)
     {

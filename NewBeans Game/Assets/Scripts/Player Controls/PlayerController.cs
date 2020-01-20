@@ -149,6 +149,7 @@ public class PlayerController : MonoBehaviour
         //Set the camera rig rotation at the start. This will be the 'correction angle'
         if (cameraRigObj != null)
             cameraRigRot = cameraRigObj.transform.rotation.eulerAngles.y;
+
     }
     
 
@@ -330,8 +331,8 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator WaitToRespawn()
     {
+        CancelInvoke("PlayRespawningSound");
         InvokeRepeating("PlayRespawningSound", 0f, 1f);
-        
         rb.isKinematic = true;
         rb.useGravity = false;
         transform.position = stageCenterPos.position;

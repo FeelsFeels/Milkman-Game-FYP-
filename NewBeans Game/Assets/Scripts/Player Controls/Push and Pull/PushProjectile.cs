@@ -22,6 +22,7 @@ public class PushProjectile : MonoBehaviour
     public Rigidbody rb;
     public GameObject hitParticles;
     public TrailRenderer trailRenderer;
+    public AudioManager audioManager;
 
 
     private void Start()
@@ -79,8 +80,9 @@ public class PushProjectile : MonoBehaviour
         {
             if (FindObjectOfType<AudioManager>())
             {
-                FindObjectOfType<AudioManager>().Play("Player Knock Back");
+                FindObjectOfType<AudioManager>().Play("Player Knocked Back");
             }
+            //AudioManager.instance.Play("Player Knocked Back");
             Vector3 direction = collision.transform.position - transform.position;
             direction = -direction.normalized;
 
