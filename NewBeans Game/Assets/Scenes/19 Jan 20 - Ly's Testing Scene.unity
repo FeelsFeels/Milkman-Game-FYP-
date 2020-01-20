@@ -1826,7 +1826,7 @@ MonoBehaviour:
   alivePlayers: []
   playerRanking: []
   lastManStandingUIs: []
-  startingLives: 5
+  startingLives: 1
 --- !u!1001 &277400153
 PrefabInstance:
   m_ObjectHideFlags: 0
