@@ -18,7 +18,7 @@ public class EarthSkills : SkillSetManager.SkillSet
         startSmashing = true;
 
         // Size up player
-        skillUser.localScale *= 4;
+        skillUser.localScale *= 3;
         StartCoroutine(EndSkill(manager));
         StartCoroutine(UpdatePlayerBehaviour());
 

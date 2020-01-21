@@ -107,8 +107,9 @@ public class FireUltiSkill : SkillSetManager.SkillSet
             PushProjectile projectile = GetComponent<PushProjectile>();
             if (collider.gameObject.tag == "PushProjectile") 
             {
-                Vector3 knockbackDirection = (collider.transform.position - skillUser.position).normalized;
-                collider.GetComponent<Rigidbody>().AddForce(knockbackStrength * knockbackDirection);
+                //Vector3 knockbackDirection = (collider.transform.position - skillUser.position).normalized;
+                //collider.GetComponent<Rigidbody>().AddForce(knockbackStrength * knockbackDirection);
+                Destroy(collider.gameObject);
             }
         }
     }

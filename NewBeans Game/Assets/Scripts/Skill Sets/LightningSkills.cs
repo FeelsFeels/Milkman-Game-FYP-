@@ -36,7 +36,7 @@ public class LightningSkills : SkillSetManager.SkillSet
         yield return new WaitForSeconds(skillDuration);
 
         //pc.moveRate = previousMoveRate;
-        pc.moveRate = 10;
+        pc.moveRate = 5;
         pc.playerTurnSmoothing = 10f;
 
         StartCoroutine(RestoreLighting());
