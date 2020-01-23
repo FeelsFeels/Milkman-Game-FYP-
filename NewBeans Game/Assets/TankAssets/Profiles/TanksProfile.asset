@@ -122,13 +122,13 @@ MonoBehaviour:
         neutralWhiteClip: 10
       basic:
         postExposure: 0
-        temperature: 0.1
-        tint: 0
-        hueShift: 0
-        saturation: 1
-        contrast: 1
+        temperature: -12
+        tint: -5
+        hueShift: 2
+        saturation: 0.99
+        contrast: 0.99
       channelMixer:
-        red: {x: 1, y: 0, z: 0}
+        red: {x: 1, y: 0.06, z: 0}
         green: {x: 0, y: 1, z: 0}
         blue: {x: 0, y: 0, z: 1}
         currentEditingChannel: 0
