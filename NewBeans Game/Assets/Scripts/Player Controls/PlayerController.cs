@@ -356,7 +356,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator RespawnPlayer()
     {
-        print("respawning player");
+        //print("respawning player");
         if (isDead == true)
         {
             

@@ -23,6 +23,8 @@ public class PushProjectile : MonoBehaviour
     public GameObject hitParticles;
     public TrailRenderer trailRenderer;
     public AudioManager audioManager;
+    public GameObject openHandModel;
+    public GameObject closedHandModel;
 
 
     private void Start()
@@ -43,6 +45,31 @@ public class PushProjectile : MonoBehaviour
         ownerPlayer = shootingPlayer;
         knockbackDirection = shotDirection;
         rb.velocity = shotDirection * speed;
+
+        //Changing Model for more oomph
+        if (!openHandModel && !closedHandModel)
+            return;
+        if (multiplier > 5.25f) //The multiplier resulting from charging for 1.2 seconds (1.2 ^ 4)
+        {
+            //Change color of hand to solid red
+            Renderer openHandRenderer = openHandModel.GetComponent<Renderer>();
+            Color32 color = openHandRenderer.material.color;
+            color.a = 255;
+            MaterialPropertyBlock propBlock = new MaterialPropertyBlock();
+            openHandRenderer.GetPropertyBlock(propBlock);
+            propBlock.SetColor("_Color", color);
+            openHandRenderer.SetPropertyBlock(propBlock);
+
+            //Shows open hand, disables closed hand
+            openHandModel.gameObject.SetActive(true);
+            closedHandModel.gameObject.SetActive(false);
+        }
+        else
+        {
+            openHandModel.gameObject.SetActive(false);
+            closedHandModel.gameObject.SetActive(true);
+        }
+
     }
 
 
