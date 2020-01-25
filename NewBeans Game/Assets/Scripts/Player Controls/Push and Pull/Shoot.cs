@@ -20,6 +20,7 @@ public class Shoot : MonoBehaviour
     private GrapplingHook hProjectile;
 
     private PlayerController playerScript;
+    private ChargingPushVFXController chargingVFXScript;
 
 
     //States and timing
@@ -57,6 +58,7 @@ public class Shoot : MonoBehaviour
         pushCooldownTimer = 0;
 
         playerScript = GetComponent<PlayerController>();
+        chargingVFXScript = GetComponentInChildren<ChargingPushVFXController>();
         animator = transform.Find("Canvas").GetComponent<Animator>();
         playerAnim = transform.Find("Character Model").GetComponentInChildren<Animator>();
 
@@ -133,6 +135,7 @@ public class Shoot : MonoBehaviour
                 animator.SetBool("activateChargeBlink", false);
                 ShotgunAttack();
                 Instantiate(shotgunParticles, transform.position, transform.rotation, transform);
+                chargingVFXScript.StopVFX();
                 //shotgunParticles.shape.angle = explodeSpreadAngle / 2;
             }
         }
@@ -141,6 +144,7 @@ public class Shoot : MonoBehaviour
         if (Input.GetButtonDown(watergunInput) && pushCooldownTimer <= 0)
         {
             ChargePushProjectile();
+            chargingVFXScript.StartVFX();
         }
         
         if (Input.GetButtonUp(watergunInput) && chargingPushProjectile)
@@ -149,11 +153,9 @@ public class Shoot : MonoBehaviour
             playerAnim.SetBool("Charging", false);
             playerAnim.SetTrigger("Push");
 
+            chargingVFXScript.StopVFX();
             ShootPushProjectile();
-            
         }
-
-        
 
         //Charge Grappling Hook
         if (Input.GetButtonDown(hookInput) && pullCooldownTimer <= 0)
@@ -210,6 +212,7 @@ public class Shoot : MonoBehaviour
         PushProjectile projectile = Instantiate(pushProjectile, new Vector3(shootOrigin.transform.position.x, shootOrigin.transform.position.y, shootOrigin.transform.position.z)
                                                                             , Quaternion.identity).GetComponent<PushProjectile>();
 
+        //print("Time charged: " + timeCharged + "\n" + "Multiplier: " + KnockbackMultiplier(timeCharged));
         projectile.ShotInitialised(KnockbackMultiplier(timeCharged), SmallMultiplier(timeCharged), shootOrigin.forward, gameObject);
 
         //Scale projectile size and rotation
@@ -247,7 +250,8 @@ public class Shoot : MonoBehaviour
         chargingIndication.fillAmount = 0;
     }
 
-    void ShotgunAttack() {
+    void ShotgunAttack()
+    {
         StartCoroutine(ShotgunFireLight());
 
         animator.SetBool("backToNull", true); // Stops the shoot charging animation

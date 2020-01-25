@@ -19,6 +19,10 @@ MonoBehaviour:
     type: 3}
   characterUltiReadyVFX: {fileID: 5771584809425393243, guid: 9faea57029c1cdf46b00e4b349a20355,
     type: 3}
+  chargingPushModel: {fileID: 1747899710422237806, guid: 896d2dc8c5d103c449578ba0e8504496,
+    type: 3}
+  chargingPushVFX: {fileID: 1511007602841408264, guid: 9b09a5d830df52d4c87080a311d39bcc,
+    type: 3}
   characterColor:
     serializedVersion: 2
     rgba: 4278255431
