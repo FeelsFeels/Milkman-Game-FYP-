@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2534303968079176445}
   - component: {fileID: 775450944434826448}
   m_Layer: 0
-  m_Name: Fire ChargingPushVFXHand
+  m_Name: Fire ChargingPushVFXHandModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
