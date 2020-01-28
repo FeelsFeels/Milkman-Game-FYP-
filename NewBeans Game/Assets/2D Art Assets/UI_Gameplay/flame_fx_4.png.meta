@@ -1,19 +1,31 @@
 fileFormatVersion: 2
-guid: 70bf9a4108ed0934d9e052df06cf1638
+guid: f6ccf8255725ce546a78d6988c5b52a8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6952255750235482898
-    second: flames_0
+      213: -1292908174264738384
+    second: flame_fx_4_0
   - first:
-      213: -8580444318367042149
-    second: flames_1
+      213: -3961714108620510356
+    second: flame_fx_4_1
   - first:
-      213: -661229833699065222
-    second: flames_2
+      213: -207797408882144076
+    second: flame_fx_4_2
   - first:
-      213: 2772505579824889003
-    second: flames_3
+      213: -5104904109454223761
+    second: flame_fx_4_3
+  - first:
+      213: 1830036027658262232
+    second: flame_fx_4_4
+  - first:
+      213: -4416277813659830798
+    second: flame_fx_4_5
+  - first:
+      213: -7349919734811587372
+    second: flame_fx_4_6
+  - first:
+      213: 4700815027308612349
+    second: flame_fx_4_7
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -72,7 +84,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 2
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 512
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -83,7 +95,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
     buildTarget: Standalone
-    maxTextureSize: 512
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -94,7 +106,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
     buildTarget: iPhone
-    maxTextureSize: 512
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -105,7 +117,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
     buildTarget: Android
-    maxTextureSize: 512
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -116,7 +128,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
     buildTarget: WebGL
-    maxTextureSize: 512
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -129,13 +141,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: flames_0
+      name: flame_fx_4_0
       rect:
         serializedVersion: 2
-        x: 35
-        y: 284
-        width: 137
-        height: 204
+        x: 0
+        y: 1480
+        width: 480
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,20 +155,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ced78a70364bfa45959d850f8019a00
-      internalID: 6952255750235482898
+      spriteID: 6312067ccd5d9fe40a7375d98334d81c
+      internalID: -1292908174264738384
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: flames_1
+      name: flame_fx_4_1
       rect:
         serializedVersion: 2
-        x: 294
-        y: 285
-        width: 179
-        height: 221
+        x: 480
+        y: 1480
+        width: 480
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -164,20 +176,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 50fcfd291013be14594519a5b30b983b
-      internalID: -8580444318367042149
+      spriteID: 2273d2deee0d4c54193d6d463d05550e
+      internalID: -3961714108620510356
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: flames_2
+      name: flame_fx_4_2
       rect:
         serializedVersion: 2
-        x: 12
-        y: 15
-        width: 181
-        height: 241
+        x: 0
+        y: 1000
+        width: 480
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -185,20 +197,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f3be51525c1ddce4fa75e0967e3f3776
-      internalID: -661229833699065222
+      spriteID: 0256b7b0665cc624680ee486203791c6
+      internalID: -207797408882144076
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: flames_3
+      name: flame_fx_4_3
       rect:
         serializedVersion: 2
-        x: 278
-        y: 6
-        width: 205
-        height: 230
+        x: 480
+        y: 1000
+        width: 480
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,8 +218,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06c486aaafb0c4440a28f9ad28c75d03
-      internalID: 2772505579824889003
+      spriteID: bb4278299fc3dd74e9dd8300fa1a2e69
+      internalID: -5104904109454223761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flame_fx_4_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 520
+        width: 480
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b978f1f97eb92bd46808d194a8c1afda
+      internalID: 1830036027658262232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flame_fx_4_5
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 520
+        width: 480
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb0b508fe01965144aaee2ad1364c77b
+      internalID: -4416277813659830798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flame_fx_4_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 40
+        width: 480
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5df674e771ccb648a1592ef6c0014b5
+      internalID: -7349919734811587372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flame_fx_4_7
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 40
+        width: 480
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdb5a463580250b4dacc241641b53f33
+      internalID: 4700815027308612349
       vertices: []
       indices: 
       edges: []
@@ -215,7 +311,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 007b036d163f6ab4985ab4939b391c40
+    spriteID: abe75d3e1cc8ac848ac23beb8e2f33a5
     internalID: 0
     vertices: []
     indices: 
