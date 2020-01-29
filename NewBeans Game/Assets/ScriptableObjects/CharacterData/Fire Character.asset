@@ -22,7 +22,7 @@ MonoBehaviour:
     type: 3}
   chargingPushModel: {fileID: 1747899710422237806, guid: 7eee3e5d3c3248c49ba9018bdce14a60,
     type: 3}
-  chargingPushVFX: {fileID: 1511007602841408264, guid: 6a2906b169fb52246b2a576ba6da4eb9,
+  chargingPushVFX: {fileID: 8361324597146366883, guid: 4f40b39e3ba4beb41ac787233a3b95ed,
     type: 3}
   characterColor:
     serializedVersion: 2
