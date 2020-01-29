@@ -8773,6 +8773,91 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 482847846}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &492652318
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1526705727}
+    m_Modifications:
+    - target: {fileID: -5419553386902269567, guid: 78e17c9a30fc5ee488ff21a556df46ae,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8369503667755565083, guid: 78e17c9a30fc5ee488ff21a556df46ae,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2477479453891581627, guid: 78e17c9a30fc5ee488ff21a556df46ae,
+        type: 3}
+      propertyPath: m_Name
+      value: Super Death Hissatsu Jutsu - Johnathan OUCH
+      objectReference: {fileID: 0}
+    - target: {fileID: 5988562019299879825, guid: 78e17c9a30fc5ee488ff21a556df46ae,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.105993
+      objectReference: {fileID: 0}
+    - target: {fileID: 5988562019299879825, guid: 78e17c9a30fc5ee488ff21a556df46ae,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.3037367
+      objectReference: {fileID: 0}
+    - target: {fileID: 5988562019299879825, guid: 78e17c9a30fc5ee488ff21a556df46ae,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.099636
+      objectReference: {fileID: 0}
+    - target: {fileID: 5988562019299879825, guid: 78e17c9a30fc5ee488ff21a556df46ae,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5988562019299879825, guid: 78e17c9a30fc5ee488ff21a556df46ae,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5988562019299879825, guid: 78e17c9a30fc5ee488ff21a556df46ae,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5988562019299879825, guid: 78e17c9a30fc5ee488ff21a556df46ae,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5988562019299879825, guid: 78e17c9a30fc5ee488ff21a556df46ae,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5988562019299879825, guid: 78e17c9a30fc5ee488ff21a556df46ae,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5988562019299879825, guid: 78e17c9a30fc5ee488ff21a556df46ae,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5988562019299879825, guid: 78e17c9a30fc5ee488ff21a556df46ae,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 78e17c9a30fc5ee488ff21a556df46ae, type: 3}
+--- !u!4 &492652319 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5988562019299879825, guid: 78e17c9a30fc5ee488ff21a556df46ae,
+    type: 3}
+  m_PrefabInstance: {fileID: 492652318}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &521642890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34714,6 +34799,7 @@ Transform:
   - {fileID: 1765171425}
   - {fileID: 1207452938}
   - {fileID: 2115685880}
+  - {fileID: 492652319}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

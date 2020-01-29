@@ -369,6 +369,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 116285055375368664}
+  - component: {fileID: 5159694801728869941}
   m_Layer: 0
   m_Name: Base Human001LPalm
   m_TagString: Untagged
@@ -390,6 +391,19 @@ Transform:
   m_Father: {fileID: 6105846220133896767}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &5159694801728869941
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688128115961245011}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.9063191
+  m_Center: {x: -0.5434126, y: 0.22435682, z: 0.02049663}
 --- !u!1 &1369496561910626554
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,6 +443,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5724625767264202620}
+  - component: {fileID: 8686068851767483019}
   m_Layer: 0
   m_Name: Base Human001RPalm
   m_TagString: Untagged
@@ -450,6 +465,19 @@ Transform:
   m_Father: {fileID: 2267384447129448155}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &8686068851767483019
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504017887311033981}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.8407107
+  m_Center: {x: -0.54508644, y: 0.15963979, z: 0.15686941}
 --- !u!1 &1968921577059170399
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,6 +739,7 @@ GameObject:
   - component: {fileID: 8135042058221941425}
   - component: {fileID: 8135042058221941428}
   - component: {fileID: 8135042058221941426}
+  - component: {fileID: 1886584683903189993}
   m_Layer: 0
   m_Name: Rock Golem Jr
   m_TagString: Rock
@@ -765,10 +794,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1.5335925
+  m_Radius: 1.0642765
   m_Height: 5.570054
   m_Direction: 0
-  m_Center: {x: 0.017502725, y: 1.6461828, z: -0.43160772}
+  m_Center: {x: 0.017502727, y: 1.6461828, z: -0.32033205}
 --- !u!95 &8135042058221941428
 Animator:
   serializedVersion: 3
@@ -802,7 +831,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   golemState: 0
   golemSpawner: {fileID: 0}
-  patrolSpeed: 1.5
+  patrolSpeed: 1
   chaseSpeed: 3
   knockbackStrength: 1250
   knockbackRadius: 5
@@ -812,6 +841,19 @@ MonoBehaviour:
     type: 3}
   rangeCanvas: {fileID: 1774496488}
   chasingCanvas: {fileID: 1189723712}
+--- !u!65 &1886584683903189993
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5689971837248504857}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.99999976, y: 0.26359677, z: 1.5156691}
+  m_Center: {x: 0, y: 0.09818709, z: -0.110452056}
 --- !u!1 &5816891888877395664
 GameObject:
   m_ObjectHideFlags: 0
