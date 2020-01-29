@@ -20,6 +20,10 @@ namespace SuperDeathHissatsuJustsus
             {
                 femaleHissatsu.Play();
             }
+            if (Input.GetKeyDown(KeyCode.Keypad5))
+            {
+                FindObjectOfType<AudioPlayer>().PlayMusic("EarthTrack");
+            }
         }
     }
 }

@@ -153,7 +153,6 @@ public class Shoot : MonoBehaviour
             playerAnim.SetBool("Charging", false);
             playerAnim.SetTrigger("Push");
 
-            chargingVFXScript.StopVFX();
             ShootPushProjectile();
         }
 
@@ -208,6 +207,9 @@ public class Shoot : MonoBehaviour
     private void ShootPushProjectile()
     {
         if (playerCannotShoot) return;
+
+        chargingVFXScript.StopVFX();
+        chargingVFXScript.PlayShootSound();
 
         PushProjectile projectile = Instantiate(pushProjectile, new Vector3(shootOrigin.transform.position.x, shootOrigin.transform.position.y, shootOrigin.transform.position.z)
                                                                             , Quaternion.identity).GetComponent<PushProjectile>();
