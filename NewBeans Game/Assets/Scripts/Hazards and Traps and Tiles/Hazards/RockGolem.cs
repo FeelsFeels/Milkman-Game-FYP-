@@ -255,13 +255,18 @@ public class RockGolem : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            if (golemState == GolemStates.FindingPlayerToChase || golemState == GolemStates.Chasing)
-                return;
+            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
 
-            playerToChase = collision.gameObject.GetComponent<PlayerController>();
-            golemState = GolemStates.FindingPlayerToChase;
-            timeFindingPlayer = 0;
+            Vector3 knockbackDirection = (player.transform.position - transform.position).normalized;
+            player.GetComponent<Rigidbody>().AddForce(knockbackStrength * knockbackDirection);
 
+            player.Hit();
+            //if (golemState == GolemStates.FindingPlayerToChase || golemState == GolemStates.Chasing)
+            //    return;
+
+            //playerToChase = collision.gameObject.GetComponent<PlayerController>();
+            //golemState = GolemStates.FindingPlayerToChase;
+            //timeFindingPlayer = 0;
         }
         else if(collision.gameObject.tag == "PushProjectile")
         {

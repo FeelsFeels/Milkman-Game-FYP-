@@ -8,8 +8,14 @@ public class ChargingPushVFXController : MonoBehaviour
     public Transform objectPosition;
     public GameObject pushHandModel;
     public ParticleSystem vfxToPlay;
+    float timeCharged;
     Vector3 originalScaling = new Vector3(0.08f, 0.08f, 0.08f);
     Vector3 maxScaling = new Vector3(0.16f, 0.16f, 0.16f);
+
+    [Header("Audio Effects for charging push")]
+    public AudioSource initialChargeAudioSource;
+    public AudioSource chargingAudioSource;
+    public AudioSource firingAudioSource;
 
     private void Awake()
     {
@@ -33,6 +39,8 @@ public class ChargingPushVFXController : MonoBehaviour
         pushHandModel.transform.localScale = originalScaling;
         pushHandModel.SetActive(true);
         vfxToPlay.Play();
+        PlayChargingSound();
+
         StartCoroutine("ChangeScalingOverTime");
     }
 
@@ -41,12 +49,14 @@ public class ChargingPushVFXController : MonoBehaviour
         pushHandModel.transform.localScale = originalScaling;
         pushHandModel.SetActive(false);
         vfxToPlay.Stop();
+        StopChargingSound();
+
         StopCoroutine("ChangeScalingOverTime");
     }
 
     IEnumerator ChangeScalingOverTime()
     {
-        float timeCharged = 0f;
+        timeCharged = 0f;
         while (timeCharged < 1.5f)
         {
             timeCharged += Time.deltaTime;
@@ -55,4 +65,30 @@ public class ChargingPushVFXController : MonoBehaviour
         }
         pushHandModel.transform.localScale = originalScaling;
     }
+
+    public void PlayChargingSound()
+    {
+        if (chargingAudioSource.clip)
+        {
+            //initialChargeAudioSource.Play();
+            print("charge :((((");
+            chargingAudioSource.Play();
+        }
+        
+    }
+    public void StopChargingSound()
+    {
+        print("STOP THanks");
+        chargingAudioSource.Stop();
+    }
+    public void PlayShootSound()
+    {
+        if (firingAudioSource.clip)
+        {
+            firingAudioSource.volume = 0.5f + (0.5f * (timeCharged / 1.5f));
+            firingAudioSource.pitch = 1.25f + (Random.Range(-0.10f, 0.10f));
+            firingAudioSource.Play();
+        }
+    }
+
 }

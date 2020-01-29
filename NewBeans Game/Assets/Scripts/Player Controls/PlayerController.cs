@@ -162,7 +162,7 @@ public class PlayerController : MonoBehaviour
 
             if (stunnedTime >= stunDuration)
             {
-                animator.ResetTrigger("Hit");
+                //animator.ResetTrigger("Hit");
                 playerStunned = false;
                 stunnedTime = 0;
                 dizzyStars.SetActive(false);
