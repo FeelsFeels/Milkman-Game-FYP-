@@ -1246,6 +1246,11 @@ PrefabInstance:
       propertyPath: skillContainer
       value: 
       objectReference: {fileID: 16825178}
+    - target: {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: currentCharge
+      value: 13195
+      objectReference: {fileID: 0}
     - target: {fileID: 4888061938081025354, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -3066,7 +3071,7 @@ MonoBehaviour:
   alivePlayers: []
   playerRanking: []
   lastManStandingUIs: []
-  startingLives: 1
+  startingLives: 5
 --- !u!1001 &277400153
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6012,6 +6017,8 @@ MonoBehaviour:
   upPos: {x: 0, y: 0, z: 0}
   downPos: {x: 0, y: 0, z: 0}
   tileState: 3
+  crumblingParticleLocations: []
+  crumblingParticleEffect: {fileID: 0}
 --- !u!1001 &537979123
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21848,7 +21855,7 @@ PrefabInstance:
     - target: {fileID: 448923231267802567, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
       propertyPath: currentCharge
-      value: 0
+      value: 13195
       objectReference: {fileID: 0}
     - target: {fileID: 4888061938081025354, guid: 1bddf47119048164f92afd5b2ac6e2e3,
         type: 3}
@@ -28596,6 +28603,8 @@ MonoBehaviour:
   upPos: {x: 0, y: 0, z: 0}
   downPos: {x: 0, y: 0, z: 0}
   tileState: 3
+  crumblingParticleLocations: []
+  crumblingParticleEffect: {fileID: 0}
 --- !u!114 &2131076490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28611,6 +28620,8 @@ MonoBehaviour:
   upPos: {x: 0, y: 0, z: 0}
   downPos: {x: 0, y: 0, z: 0}
   tileState: 3
+  crumblingParticleLocations: []
+  crumblingParticleEffect: {fileID: 0}
 --- !u!114 &2131076491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28626,6 +28637,8 @@ MonoBehaviour:
   upPos: {x: 0, y: 0, z: 0}
   downPos: {x: 0, y: 0, z: 0}
   tileState: 3
+  crumblingParticleLocations: []
+  crumblingParticleEffect: {fileID: 0}
 --- !u!114 &2131076492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28641,6 +28654,8 @@ MonoBehaviour:
   upPos: {x: 0, y: 0, z: 0}
   downPos: {x: 0, y: 0, z: 0}
   tileState: 3
+  crumblingParticleLocations: []
+  crumblingParticleEffect: {fileID: 0}
 --- !u!114 &2131076493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28656,6 +28671,8 @@ MonoBehaviour:
   upPos: {x: 0, y: 0, z: 0}
   downPos: {x: 0, y: 0, z: 0}
   tileState: 3
+  crumblingParticleLocations: []
+  crumblingParticleEffect: {fileID: 0}
 --- !u!114 &2131076494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28671,6 +28688,8 @@ MonoBehaviour:
   upPos: {x: 0, y: 0, z: 0}
   downPos: {x: 0, y: 0, z: 0}
   tileState: 3
+  crumblingParticleLocations: []
+  crumblingParticleEffect: {fileID: 0}
 --- !u!114 &2131076495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28686,6 +28705,8 @@ MonoBehaviour:
   upPos: {x: 0, y: 0, z: 0}
   downPos: {x: 0, y: 0, z: 0}
   tileState: 3
+  crumblingParticleLocations: []
+  crumblingParticleEffect: {fileID: 0}
 --- !u!1 &2141983964
 GameObject:
   m_ObjectHideFlags: 0

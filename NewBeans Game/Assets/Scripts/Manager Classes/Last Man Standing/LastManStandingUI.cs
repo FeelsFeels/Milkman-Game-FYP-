@@ -11,6 +11,7 @@ public class LastManStandingUI : MonoBehaviour
     //public Text livesText;
     public Slider ultiCharge;
     public bool UIOnLeft;
+    GameObject auraObj;
 
     private void Awake()
     {
@@ -66,6 +67,14 @@ public class LastManStandingUI : MonoBehaviour
 
 
             }
+
+            //Find aura
+
+            if(characterUI.transform.Find("Aura") != null)
+            {
+                auraObj = characterUI.transform.Find("Aura").gameObject;
+            }
+
             gameObject.SetActive(true);
         }
         else gameObject.SetActive(false);
@@ -117,6 +126,22 @@ public class LastManStandingUI : MonoBehaviour
 
         if(ultiCharge != null)
         ultiCharge.value = percent;
+
+        if(ultiCharge.value == 1) //if max charge for ulti
+        {
+            if (auraObj != null)
+            {
+                auraObj.SetActive(true); //show aura
+            }
+        }
+        else //otherwise set aura false
+        {
+            if(auraObj != null)
+            {
+                auraObj.SetActive(false);
+            }
+        }
+
     }
 
 
