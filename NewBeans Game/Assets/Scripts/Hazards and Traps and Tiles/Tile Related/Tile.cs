@@ -27,6 +27,8 @@ public class Tile : MonoBehaviour
 
     public TileState tileState = TileState.up;
 
+    public Transform[] crumblingParticleLocations;
+    public GameObject crumblingParticleEffect;
 
     private void Awake()
     {
@@ -134,5 +136,17 @@ public class Tile : MonoBehaviour
         coroutineRunning = false;
         tileState = TileState.up;
         lerpStep = 0;   //Reset lerping
+    }
+
+    public void SpawnCrumblingParticles()
+    {
+        //Spawn Particles
+        foreach (Transform pos in crumblingParticleLocations)
+        {
+            GameObject particles = Instantiate(crumblingParticleEffect, pos.position, Quaternion.identity);
+            particles.transform.parent = pos;
+            particles.transform.localScale = Vector3.one / 1.5f;
+            particles.GetComponent<AutoDestroyOverTime>().DestroyWithTime(10f);
+        }
     }
 }

@@ -1415,6 +1415,101 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8158146501968221317, guid: cc0ca36aca72843498be6ca12852c19e,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8123fceb16ef687459fc73b21999d3bc, type: 3}
+    - target: {fileID: 8158146501968221317, guid: cc0ca36aca72843498be6ca12852c19e,
+        type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8158146501968221317, guid: cc0ca36aca72843498be6ca12852c19e,
+        type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8158146501968221317, guid: cc0ca36aca72843498be6ca12852c19e,
+        type: 3}
+      propertyPath: MinDistance
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8158146501968221317, guid: cc0ca36aca72843498be6ca12852c19e,
+        type: 3}
+      propertyPath: MaxDistance
+      value: 50.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8158146501968221317, guid: cc0ca36aca72843498be6ca12852c19e,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].time
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8158146501968221317, guid: cc0ca36aca72843498be6ca12852c19e,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].inWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8158146501968221317, guid: cc0ca36aca72843498be6ca12852c19e,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].outWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8158146501968221317, guid: cc0ca36aca72843498be6ca12852c19e,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].time
+      value: 0.9660034
+      objectReference: {fileID: 0}
+    - target: {fileID: 8158146501968221317, guid: cc0ca36aca72843498be6ca12852c19e,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].value
+      value: 1.0125122
+      objectReference: {fileID: 0}
+    - target: {fileID: 8158146501968221317, guid: cc0ca36aca72843498be6ca12852c19e,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].inSlope
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8158146501968221317, guid: cc0ca36aca72843498be6ca12852c19e,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].outSlope
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8158146501968221317, guid: cc0ca36aca72843498be6ca12852c19e,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].inWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8158146501968221317, guid: cc0ca36aca72843498be6ca12852c19e,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].outWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9128016729337473303, guid: cc0ca36aca72843498be6ca12852c19e,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 473ab72ae404a0d4b8825478def583b5, type: 3}
+    - target: {fileID: 9128016729337473303, guid: cc0ca36aca72843498be6ca12852c19e,
+        type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9128016729337473303, guid: cc0ca36aca72843498be6ca12852c19e,
+        type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9128016729337473303, guid: cc0ca36aca72843498be6ca12852c19e,
+        type: 3}
+      propertyPath: MinDistance
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 9128016729337473303, guid: cc0ca36aca72843498be6ca12852c19e,
+        type: 3}
+      propertyPath: MaxDistance
+      value: 50.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc0ca36aca72843498be6ca12852c19e, type: 3}
 --- !u!4 &6173563024200512042 stripped
