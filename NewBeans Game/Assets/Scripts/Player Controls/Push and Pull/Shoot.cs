@@ -189,8 +189,8 @@ public class Shoot : MonoBehaviour
         animator.SetBool("activateChargeBlink", false);
 
         //Player anim
-        playerAnim.SetBool("Charging", false);
-        playerAnim.SetTrigger("ResetCharge");
+        //playerAnim.SetBool("Charging", false);
+        //playerAnim.SetTrigger("ResetCharge");
     }
 
     private void ChargePushProjectile()
