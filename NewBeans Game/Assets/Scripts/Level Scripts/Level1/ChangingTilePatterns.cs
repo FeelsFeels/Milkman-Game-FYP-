@@ -52,40 +52,40 @@ public class ChangingTilePatterns : MonoBehaviour
 
         //Get the new tile to go down
         Tile tileToGoDown = tilePattern[currentPatternIndex];
-
+        tileToGoDown.SpawnCrumblingParticles();
         //Give warning to players using smoke particles
         //Make a "tile map" of positions to spawn the smoke particles in.
-        for (int x = 0; x < segments; x++)  //New Position x-axis wise
-        {
-            for (int z = 0; z < segments; z++)  //New Position z-axis wise
-            {
-                //Getting new Position
-                float xPos = (tileToGoDown.transform.position.x - Mathf.CeilToInt(segments / 2) * lengthBetweenSegment) + (x * lengthBetweenSegment);
-                float zPos = (tileToGoDown.transform.position.z -  Mathf.CeilToInt(segments / 2) * lengthBetweenSegment) + (z * lengthBetweenSegment);
-                Vector3 spawnPosition = new Vector3(xPos, tileToGoDown.transform.position.y, zPos);
+        //for (int x = 0; x < segments; x++)  //New Position x-axis wise
+        //{
+        //    for (int z = 0; z < segments; z++)  //New Position z-axis wise
+        //    {
+        //        //Getting new Position
+        //        float xPos = (tileToGoDown.transform.position.x - Mathf.CeilToInt(segments / 2) * lengthBetweenSegment) + (x * lengthBetweenSegment);
+        //        float zPos = (tileToGoDown.transform.position.z -  Mathf.CeilToInt(segments / 2) * lengthBetweenSegment) + (z * lengthBetweenSegment);
+        //        Vector3 spawnPosition = new Vector3(xPos, tileToGoDown.transform.position.y, zPos);
 
-                //If new position is not over a tile, dont spawn crumbling particles
-                RaycastHit hit;
-                if(Physics.Raycast(spawnPosition + Vector3.up * 5, Vector3.down, out hit, 100f, 1 << LayerMask.NameToLayer("Ground")))
-                {
-                    Debug.DrawRay(spawnPosition, Vector3.down * 10, Color.red, 5f);
-                    if (hit.collider.name != tileToGoDown.gameObject.name)  //If new position is over a different tile, dont spawn crumbling particles
-                    {
-                        continue;
-                    }
-                }
-                else
-                {
-                    continue;
-                }
+        //        //If new position is not over a tile, dont spawn crumbling particles
+        //        RaycastHit hit;
+        //        if(Physics.Raycast(spawnPosition + Vector3.up * 5, Vector3.down, out hit, 100f, 1 << LayerMask.NameToLayer("Ground")))
+        //        {
+        //            Debug.DrawRay(spawnPosition, Vector3.down * 10, Color.red, 5f);
+        //            if (hit.collider.name != tileToGoDown.gameObject.name)  //If new position is over a different tile, dont spawn crumbling particles
+        //            {
+        //                continue;
+        //            }
+        //        }
+        //        else
+        //        {
+        //            continue;
+        //        }
 
-                //Spawn Particles
-                GameObject particles = Instantiate(crumblingParticleEffect, spawnPosition + Vector3.up, Quaternion.identity);
-                particles.transform.parent = tileToGoDown.transform;
-                particles.transform.localScale = Vector3.one / 1.5f;
-                particles.GetComponent<AutoDestroyOverTime>().DestroyWithTime(10f);
-            }
-        }
+        //        //Spawn Particles
+        //        GameObject particles = Instantiate(crumblingParticleEffect, spawnPosition + Vector3.up, Quaternion.identity);
+        //        particles.transform.parent = tileToGoDown.transform;
+        //        particles.transform.localScale = Vector3.one / 1.5f;
+        //        particles.GetComponent<AutoDestroyOverTime>().DestroyWithTime(10f);
+        //    }
+        //}
 
         camera.ShakeCamera(6f, 1f);
         yield return new WaitForSeconds(5f);
