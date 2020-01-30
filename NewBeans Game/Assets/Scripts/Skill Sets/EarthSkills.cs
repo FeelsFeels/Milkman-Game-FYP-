@@ -85,7 +85,7 @@ public class EarthSkills : SkillSetManager.SkillSet
         //Stop the smash
         startSmashing = false;
         //Size down player
-        skillUser.localScale *= (1/3); 
+        skillUser.localScale = Vector3.one; 
         EndUltimate(manager);
     }
 }

@@ -26,6 +26,7 @@ public class SkillSetManager : MonoBehaviour
     public Transform skillContainer;
     Dictionary<characterChosen, SkillSet> playerSkills = new Dictionary<characterChosen, SkillSet>();
 
+    public ChargingPushVFXController chargingPushVFX;   //Needed to stop charging vfx when ulti is activated
     public GameObject skillReadyParticleFX;
     public bool testingPurposes;
 
@@ -67,6 +68,7 @@ public class SkillSetManager : MonoBehaviour
         //        playerSkills.Add(characterChosen.Fire, skillContainer.GetComponent<SkillSet>());
         //    }
         //}
+        chargingPushVFX = GetComponentInChildren<ChargingPushVFXController>();
 
     }
 
@@ -212,6 +214,7 @@ public class SkillSetManager : MonoBehaviour
         //Set bool active
         ultiIsActivated = true;
 
+        chargingPushVFX.StopVFX();
 
         // Release the kraken!!!!!!! aaaaaaaaaaaaah
 

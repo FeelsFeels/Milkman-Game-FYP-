@@ -43,10 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4dad6d7d1f90ee41bf8fa233844a5bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillDuration: 10
+  skillDuration: 7
   shockwaveParticles: {fileID: 1765079799062324546, guid: c873447dcbd7d8c4dbb878ba67891401,
     type: 3}
   timeToNextShockwave: 0
   knockbackRadius: 10
-  knockbackStrength: 2500
+  knockbackStrength: 1000
   startSmashing: 0
