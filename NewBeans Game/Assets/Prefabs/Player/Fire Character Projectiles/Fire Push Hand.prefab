@@ -5718,7 +5718,7 @@ MonoBehaviour:
   playerHit: {fileID: 0}
   exploding: 0
   rb: {fileID: 6176825336639038437}
-  hitParticles: {fileID: 6419300147959046227, guid: 08892474d66d59c42b5e52f0cf5a4c51,
+  hitParticles: {fileID: 8614112540743099934, guid: 5a226d502a79c7f40a9d4556c54b5278,
     type: 3}
   trailRenderer: {fileID: 621585108608179119}
   audioManager: {fileID: 0}

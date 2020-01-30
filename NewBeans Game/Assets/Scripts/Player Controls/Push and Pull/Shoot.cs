@@ -364,5 +364,4 @@ public class Shoot : MonoBehaviour
         if(hProjectile != null)
             hProjectile.FinishHookSequence();
     }
-
 }
