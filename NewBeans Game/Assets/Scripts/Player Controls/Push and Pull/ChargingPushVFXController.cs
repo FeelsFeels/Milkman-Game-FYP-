@@ -71,14 +71,12 @@ public class ChargingPushVFXController : MonoBehaviour
         if (chargingAudioSource.clip)
         {
             //initialChargeAudioSource.Play();
-            print("charge :((((");
             chargingAudioSource.Play();
         }
         
     }
     public void StopChargingSound()
     {
-        print("STOP THanks");
         chargingAudioSource.Stop();
     }
     public void PlayShootSound()
