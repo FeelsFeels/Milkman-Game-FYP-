@@ -110,6 +110,8 @@ public class LastManStandingTracker : MonoBehaviour
         {
             playerRanking.Insert(0, alivePlayers[0]);
             gameManager.EndGame(playerRanking);
+            FindObjectOfType<AudioManager>().Play("VictoryJingle");
+            FindObjectOfType<AudioPlayer>().PlayMusic("NoMusic");
         }
     }
 

@@ -51,7 +51,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: c08c0f998efe3e1459c126b1fe53eaae, type: 3}
     name: Respawning
-    volume: 0.2
+    volume: 1
     pitch: 1
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 6c3e479115134d0468d31f4d179cc65a, type: 3}
@@ -69,10 +69,10 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     source: {fileID: 0}
-  - clip: {fileID: 0}
-    name: 
-    volume: 0
-    pitch: 0
+  - clip: {fileID: 8300000, guid: 8739b859243b1a441a4cedeeb9a819db, type: 3}
+    name: VictoryJingle
+    volume: 1
+    pitch: 0.99
     source: {fileID: 0}
   - clip: {fileID: 0}
     name: 

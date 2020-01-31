@@ -103,8 +103,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2669549723968333824, guid: 6d2f836f8775ab94280c2bb4f17aab7a,
         type: 3}
+      propertyPath: knockbackRadius
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2669549723968333824, guid: 6d2f836f8775ab94280c2bb4f17aab7a,
+        type: 3}
       propertyPath: knockbackStrength
-      value: 3500
+      value: 1500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d2f836f8775ab94280c2bb4f17aab7a, type: 3}
@@ -121,11 +126,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2402456599169452694}
     m_Modifications:
-    - target: {fileID: 4084583615270470793, guid: 57c4afe32e0d3b24e89abcd97c2ef271,
-        type: 3}
-      propertyPath: m_Name
-      value: WaterSkills
-      objectReference: {fileID: 0}
     - target: {fileID: 4172654211229271034, guid: 57c4afe32e0d3b24e89abcd97c2ef271,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -180,6 +180,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4084583615270470793, guid: 57c4afe32e0d3b24e89abcd97c2ef271,
+        type: 3}
+      propertyPath: m_Name
+      value: WaterSkills
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57c4afe32e0d3b24e89abcd97c2ef271, type: 3}
@@ -196,11 +201,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2402456599169452694}
     m_Modifications:
-    - target: {fileID: 451803984531716562, guid: a7194954bdecd4141ac650f5faf1dda9,
-        type: 3}
-      propertyPath: m_Name
-      value: FireSkills
-      objectReference: {fileID: 0}
     - target: {fileID: 7878138235019423853, guid: a7194954bdecd4141ac650f5faf1dda9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -256,6 +256,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 451803984531716562, guid: a7194954bdecd4141ac650f5faf1dda9,
+        type: 3}
+      propertyPath: m_Name
+      value: FireSkills
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7194954bdecd4141ac650f5faf1dda9, type: 3}
 --- !u!4 &798035613752791393 stripped
@@ -271,11 +276,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2402456599169452694}
     m_Modifications:
-    - target: {fileID: 2231544131464613102, guid: 79f738242b6571e40a88594180a3a85c,
-        type: 3}
-      propertyPath: m_Name
-      value: LightningSkills
-      objectReference: {fileID: 0}
     - target: {fileID: 2231544131464613088, guid: 79f738242b6571e40a88594180a3a85c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -330,6 +330,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2231544131464613102, guid: 79f738242b6571e40a88594180a3a85c,
+        type: 3}
+      propertyPath: m_Name
+      value: LightningSkills
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79f738242b6571e40a88594180a3a85c, type: 3}

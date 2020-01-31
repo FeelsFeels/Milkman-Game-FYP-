@@ -320,13 +320,15 @@ public class PlayerController : MonoBehaviour
         
         // Makes player disappear
         HidePlayerWhenDead();
+        OnPlayerDeath.Invoke(this, lastHitBy);
+        lastHitBy = null;
 
         // Respawns player
         if (shouldRespawn)
+        {
+            print("respawning" + gameObject.name);
             StartCoroutine(WaitToRespawn());
-
-        OnPlayerDeath.Invoke(this, lastHitBy);
-        lastHitBy = null;
+        }
     }
 
     IEnumerator WaitToRespawn()
@@ -338,6 +340,7 @@ public class PlayerController : MonoBehaviour
         transform.position = stageCenterPos.position;
         transform.rotation = Quaternion.Euler(Vector3.zero); // Reset rotation.
         yield return new WaitForSeconds(waitToRespawn);
+        CancelInvoke("PlayRespawningSound");
         StartCoroutine(RespawnPlayer());
 
     }
