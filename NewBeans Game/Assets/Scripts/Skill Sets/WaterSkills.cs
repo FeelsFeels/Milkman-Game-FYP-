@@ -42,8 +42,13 @@ public class WaterSkills : SkillSetManager.SkillSet
         Debug.Log("Tornado has stopped");
         yield return new WaitForSeconds(skillDuration);
 
-        storm.DestroyStorm();
         EndUltimate(manager);
+    }
+    public override void EndUltimate(SkillSetManager playerSkillManager)
+    {
+        base.EndUltimate(playerSkillManager);
+        //StopAllCoroutines();
+        //storm.DestroyStorm();
     }
 
 }

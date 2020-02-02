@@ -128,10 +128,14 @@ public class FireUltiSkill : SkillSetManager.SkillSet
     IEnumerator EndSkill(SkillSetManager manager)
     {
         yield return new WaitForSeconds(skillDuration);
-
+        EndUltimate(manager);
         // Stops the beyblade
+    }
+    public override void EndUltimate(SkillSetManager playerSkillManager)
+    {
+        base.EndUltimate(playerSkillManager);
+        StopAllCoroutines();
         fireCharacter.GetComponent<PlayerController>().moveRate = 5f;
         beyblading = false;
-        EndUltimate(manager);
     }
 }

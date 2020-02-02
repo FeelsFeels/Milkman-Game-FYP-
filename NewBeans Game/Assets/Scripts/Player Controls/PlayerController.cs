@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
     [Header("Object Components and References")]
     // Object's Components
     public Shoot playerShoot;
+    public SkillSetManager playerSkillSet;
     public Animator animator;
     CapsuleCollider capsuleCollider;
     public SkinnedMeshRenderer skinnedMeshRenderer;
@@ -104,19 +105,17 @@ public class PlayerController : MonoBehaviour
             //Set what character this player is playing
             if (inputInfo.chosenCharacterData != null)
             {
-                if (this.GetComponent<SkillSetManager>() != null)
-                {
-                    this.GetComponent<SkillSetManager>().SetCharacter(inputInfo.chosenCharacterData.character);
-                    this.GetComponent<SkillSetManager>().SetInputs(AButtonInput, BButtonInput);
+                playerSkillSet = GetComponentInChildren<SkillSetManager>();
+                playerSkillSet.SetCharacter(inputInfo.chosenCharacterData.character);
+                playerSkillSet.SetInputs(AButtonInput, BButtonInput);
 
-                    if (inputInfo.chosenCharacterData.characterUltiReadyVFX != null)
-                    {
-                        GameObject newVFX = Instantiate(inputInfo.chosenCharacterData.characterUltiReadyVFX, transform);
-                        newVFX.SetActive(false);
-                        this.GetComponent<SkillSetManager>().skillReadyParticleFX = newVFX;
-                    }
+                if (inputInfo.chosenCharacterData.characterUltiReadyVFX != null)
+                {
+                    GameObject newVFX = Instantiate(inputInfo.chosenCharacterData.characterUltiReadyVFX, transform);
+                    newVFX.SetActive(false);
+                    playerSkillSet.skillReadyParticleFX = newVFX;
                 }
-                if(inputInfo.chosenCharacterData.characterPrefab != null)
+                if (inputInfo.chosenCharacterData.characterPrefab != null)
                 {
                     GameObject newModel = Instantiate(inputInfo.chosenCharacterData.characterPrefab, transform.Find("Character Model"));
                     animator = newModel.GetComponent<Animator>();
@@ -136,7 +135,7 @@ public class PlayerController : MonoBehaviour
         capsuleCollider = GetComponent<CapsuleCollider>();
         skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         rb = GetComponent<Rigidbody>();
-        invincibilityShield = GetComponentInChildren<Shield>();        
+        invincibilityShield = GetComponentInChildren<Shield>();
     }
 
 
@@ -260,6 +259,7 @@ public class PlayerController : MonoBehaviour
         playerStunned = true;
         stunnedTime = 0;
         stunDuration = 0.25f;
+        playerShoot.ForceStopChargingVFX();
         dizzyStars.SetActive(true);
     }
 
@@ -302,12 +302,6 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
-        isDead = true;
-        playerStunned = false;
-        dizzyStars.SetActive(false);
-        playerShoot.DestroyGrapplingHook();
-        Instantiate(playerDieEffect, gameObject.transform.position, gameObject.transform.rotation);
-
         if (lastHitBy != null)
         {
             GameManager.instance.OnPlayerDeath(this, lastHitBy.GetComponent<PlayerController>());
@@ -317,7 +311,14 @@ public class PlayerController : MonoBehaviour
             GameManager.instance.OnPlayerDeath(this, null);
         }
 
-        
+        isDead = true;
+        playerStunned = false;
+        dizzyStars.SetActive(false);
+        playerShoot.DestroyGrapplingHook();
+        playerSkillSet.ForceEndUltimateSkill();
+        playerShoot.ForceStopChargingVFX();
+        Instantiate(playerDieEffect, gameObject.transform.position, gameObject.transform.rotation);
+
         // Makes player disappear
         HidePlayerWhenDead();
         OnPlayerDeath.Invoke(this, lastHitBy);

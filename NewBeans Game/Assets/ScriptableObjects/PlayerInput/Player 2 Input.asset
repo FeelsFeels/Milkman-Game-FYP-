@@ -21,7 +21,7 @@ MonoBehaviour:
   RightHorizontalAxis: RightHorizontal (Controller 2)
   RightVerticalAxis: RightVertical (Controller 2)
   RightBumper: RightBumper (Controller 2)
-  chosenCharacterIndex: 0
+  chosenCharacterIndex: 1
   chosenCharacterData: {fileID: 11400000, guid: 6c949c186e315fb40912dc639e28fb16,
     type: 2}
   forceActive: 0
