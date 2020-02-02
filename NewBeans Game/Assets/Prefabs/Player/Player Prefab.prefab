@@ -296,9 +296,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 1.1
-  m_Height: 3.6541514
+  m_Height: 3.4164538
   m_Direction: 1
-  m_Center: {x: 0, y: 1.5894144, z: -0.17839026}
+  m_Center: {x: 0, y: 1.7082632, z: -0.17839026}
 --- !u!114 &9217587416402060000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,6 +347,7 @@ MonoBehaviour:
   respawnDelay: 0
   lastHitBy: {fileID: 0}
   playerShoot: {fileID: 9217587416402060001}
+  playerSkillSet: {fileID: 0}
   animator: {fileID: 0}
   skinnedMeshRenderer: {fileID: 0}
   rb: {fileID: 9217587416402060014}
@@ -417,6 +418,7 @@ MonoBehaviour:
   chargePercentage: 0
   ultiIsActivated: 0
   skillContainer: {fileID: 0}
+  chargingPushVFX: {fileID: 0}
   skillReadyParticleFX: {fileID: 766159135614644037}
   testingPurposes: 0
 --- !u!1 &9217587416420445602
@@ -460,7 +462,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.2}
   m_SizeDelta: {x: 4, y: 4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &9217587416420445606

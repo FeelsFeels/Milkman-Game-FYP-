@@ -144,13 +144,6 @@ public class GameManager : MonoBehaviour
                 return;
             }
         }
-
-     
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            SceneManager.LoadScene("Latest Version - Last Man Standing");
-        }
-
     }
 
     public void PauseGame()
@@ -233,6 +226,7 @@ public class GameManager : MonoBehaviour
     public void LoadScene(string sceneName)
     {
         Time.timeScale = 1;
+        FindObjectOfType<AudioManager>().StopAllSounds();
         SceneManager.LoadScene(sceneName);
     }
 

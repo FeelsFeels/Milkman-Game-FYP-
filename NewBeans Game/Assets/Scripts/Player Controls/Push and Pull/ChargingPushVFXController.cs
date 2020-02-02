@@ -20,6 +20,7 @@ public class ChargingPushVFXController : MonoBehaviour
     private void Awake()
     {
         playerController = GetComponentInParent<PlayerController>();
+
         GameObject go = playerController.inputInfo.chosenCharacterData.chargingPushModel;
         pushHandModel = Instantiate(go, objectPosition.position, go.transform.rotation);
         go = playerController.inputInfo.chosenCharacterData.chargingPushVFX;
