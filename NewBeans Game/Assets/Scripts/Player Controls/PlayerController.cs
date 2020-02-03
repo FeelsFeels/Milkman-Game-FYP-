@@ -326,8 +326,7 @@ public class PlayerController : MonoBehaviour
 
         // Respawns player
         if (shouldRespawn)
-        {
-            print("respawning" + gameObject.name);
+        { 
             StartCoroutine(WaitToRespawn());
         }
     }
@@ -340,7 +339,24 @@ public class PlayerController : MonoBehaviour
         rb.useGravity = false;
         transform.position = stageCenterPos.position;
         transform.rotation = Quaternion.Euler(Vector3.zero); // Reset rotation.
-        yield return new WaitForSeconds(waitToRespawn);
+
+        //Controlling where to land
+        float timePassed = 0f;
+        GameObject targetter = transform.Find("Respawn_Canvas").gameObject;
+        while (timePassed < waitToRespawn)
+        {
+            timePassed += Time.deltaTime;
+            RaycastHit hit;
+            if(Physics.Raycast(transform.position, Vector3.down, out hit, 11f))
+            {
+                targetter.transform.position = new Vector3(transform.position.x, hit.point.y + 0.2f, transform.position.z);
+            }
+            else
+            {
+                targetter.transform.localPosition = new Vector3(0f, -7f, 0f);
+            }
+            yield return null;
+        }
         CancelInvoke("PlayRespawningSound");
         StartCoroutine(RespawnPlayer());
 
@@ -374,6 +390,7 @@ public class PlayerController : MonoBehaviour
             HidePlayerWhenDead();
             rb.isKinematic = false;
             rb.useGravity = true;
+            rb.AddForce(Vector3.down * 1500f);
         }
     }
 
