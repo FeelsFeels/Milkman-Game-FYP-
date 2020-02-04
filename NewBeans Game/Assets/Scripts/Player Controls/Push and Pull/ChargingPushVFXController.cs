@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ChargingPushVFXController : MonoBehaviour
 {
+    public PlayerInputInfo optionalInputInfo;
     PlayerController playerController;  //Needed to access the inputInfo inside
     public Transform objectPosition;
     public GameObject pushHandModel;
@@ -19,7 +20,21 @@ public class ChargingPushVFXController : MonoBehaviour
 
     private void Awake()
     {
+        //You have the option to assign the input info from inspector. NOT RECOMMENDED
+        if (optionalInputInfo)
+        {
+            GameObject gO = optionalInputInfo.chosenCharacterData.chargingPushModel;
+            pushHandModel = Instantiate(gO, objectPosition.position, gO.transform.rotation);
+            gO = optionalInputInfo.chosenCharacterData.chargingPushVFX;
+            vfxToPlay = Instantiate(gO, objectPosition.position, gO.transform.rotation).GetComponentInChildren<ParticleSystem>();
+
+            pushHandModel.transform.parent = objectPosition.transform;
+            vfxToPlay.gameObject.transform.parent = objectPosition.transform;
+            return;
+        }
+        
         playerController = GetComponentInParent<PlayerController>();
+
         GameObject go = playerController.inputInfo.chosenCharacterData.chargingPushModel;
         pushHandModel = Instantiate(go, objectPosition.position, go.transform.rotation);
         go = playerController.inputInfo.chosenCharacterData.chargingPushVFX;

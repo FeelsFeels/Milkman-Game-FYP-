@@ -81,11 +81,16 @@ public class EarthSkills : SkillSetManager.SkillSet
     {
         Debug.Log("I've stopped being a rock golem");
         yield return new WaitForSeconds(skillDuration);
-
+ 
+        EndUltimate(manager);
+    }
+    public override void EndUltimate(SkillSetManager playerSkillManager)
+    {
+        base.EndUltimate(playerSkillManager);
+        StopAllCoroutines();
         //Stop the smash
         startSmashing = false;
         //Size down player
-        skillUser.localScale = Vector3.one; 
-        EndUltimate(manager);
+        playerSkillManager.transform.localScale = Vector3.one;
     }
 }

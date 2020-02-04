@@ -40,7 +40,6 @@ public class SkillSetManager : MonoBehaviour
         // I'm not sure if there's a better way to do this other than to hard code, but thankfull there's only 4 enums
         // Why doesn't dictionary have an add range function
 
-
         if (skillContainer != null)
         {
             if (skillContainer.GetChild(0).GetComponent<SkillSet>() != null)
@@ -60,14 +59,6 @@ public class SkillSetManager : MonoBehaviour
                 playerSkills.Add(characterChosen.Lightning, skillContainer.GetChild(3).GetComponent<SkillSet>());
             }
         }
-
-        //if (testingPurposes && skillContainer != null)
-        //{
-        //    if (skillContainer.GetComponent<SkillSet>() != null)
-        //    {
-        //        playerSkills.Add(characterChosen.Fire, skillContainer.GetComponent<SkillSet>());
-        //    }
-        //}
         chargingPushVFX = GetComponentInChildren<ChargingPushVFXController>();
 
     }
@@ -94,15 +85,6 @@ public class SkillSetManager : MonoBehaviour
                 }
             }
         }
-
-        /// Testing purposes
-        /// To be deleted
-        
-        if (testingPurposes && Input.GetKeyDown(KeyCode.H))
-        {
-            ReleaseSpecialSkill();
-        }
-
 
     }
 
@@ -149,7 +131,6 @@ public class SkillSetManager : MonoBehaviour
                     Debug.Log("No character type, skills set to default: Fire");
                     break;
                 }
-
         }
     }
 
@@ -231,7 +212,7 @@ public class SkillSetManager : MonoBehaviour
             GameObject go = Instantiate(gameObject, transform.position, Quaternion.identity);
             go.GetComponent<Rigidbody>().velocity = transform.forward;
             Destroy(go, 5f);
-            StartCoroutine(EndUlti(5));
+            StartCoroutine(EndUltiTimer(5));
         }
 
         gameObject.GetComponent<Shoot>().PlayerResetCharge();
@@ -239,7 +220,12 @@ public class SkillSetManager : MonoBehaviour
         ResetUltiCharge(); // Reset skill charge gauge
     }
 
-    IEnumerator EndUlti(float duration)
+    public void ForceEndUltimateSkill()
+    {
+        playerSkills[playerAvatar].EndUltimate(this);
+    }
+
+    IEnumerator EndUltiTimer(float duration)
     {
         yield return new WaitForSeconds(duration);
         ultiIsActivated = false;

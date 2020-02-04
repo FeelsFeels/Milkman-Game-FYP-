@@ -32,11 +32,11 @@ public class ChooseCharacter : MonoBehaviour
         //Moving the player cursor
         if (moveState == MoveState.Still)
         {
-            if (Input.GetAxis(playerInfo.HorizontalInputAxis) >= 0.7f)
+            if (Input.GetAxis(playerInfo.HorizontalInputAxis) >= 0.1f)
             {
                 MoveSelectionRight();
             }
-            else if (Input.GetAxis(playerInfo.HorizontalInputAxis) <= -0.7f)
+            else if (Input.GetAxis(playerInfo.HorizontalInputAxis) <= -0.1f)
             {
                 MoveSelectionLeft();
             }

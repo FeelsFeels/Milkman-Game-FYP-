@@ -12,7 +12,8 @@ public class SceneManagement : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
-        FindObjectOfType<AudioPlayer>().PlayMusic("MenuTrack");
+        AudioPlayer audioPlayer = FindObjectOfType<AudioPlayer>();
+        if (audioPlayer) audioPlayer.PlayMusic("MenuTrack");
     }
     private void Update()
     {

@@ -6,6 +6,8 @@ public class LightningSkills : SkillSetManager.SkillSet
 {
     public GameObject lightningBeamsPrefab;
     public Light directionalLight;
+    
+    public GameObject lightningSkillsBeamToDestroy;
 
     void Awake()
     {
@@ -17,14 +19,14 @@ public class LightningSkills : SkillSetManager.SkillSet
     {
         LightningSkillsBeam lightningBeam = Instantiate(lightningBeamsPrefab, playerSkillManager.transform).GetComponent<LightningSkillsBeam>();
         lightningBeam.InitialiseLaser(playerSkillManager);
+        lightningSkillsBeamToDestroy = lightningBeam.gameObject;
         StartCoroutine(DimLighting());
-        StartCoroutine(SkillDurationTiming(playerSkillManager, lightningBeam.gameObject));
+        StartCoroutine(SkillDurationTiming(playerSkillManager));
     }
     
-    IEnumerator SkillDurationTiming(SkillSetManager manager, GameObject go)
+    IEnumerator SkillDurationTiming(SkillSetManager manager)
     {
         PlayerController pc = manager.gameObject.GetComponent<PlayerController>();
-
         //Anticipation animation
         pc.moveRate = 0;
         pc.playerTurnSmoothing = 0.0f;
@@ -34,14 +36,6 @@ public class LightningSkills : SkillSetManager.SkillSet
         pc.moveRate = 0;
         pc.playerTurnSmoothing = 0.4f;
         yield return new WaitForSeconds(skillDuration);
-
-        //pc.moveRate = previousMoveRate;
-        pc.moveRate = 5;
-        pc.playerTurnSmoothing = 10f;
-
-        StartCoroutine(RestoreLighting());
-
-        Destroy(go);
         EndUltimate(manager);
     }
 
@@ -73,4 +67,17 @@ public class LightningSkills : SkillSetManager.SkillSet
         yield return null;
     }
 
+    public override void EndUltimate(SkillSetManager playerSkillManager)
+    {
+        base.EndUltimate(playerSkillManager);
+        StopAllCoroutines();
+
+        //pc.moveRate = previousMoveRate;
+        playerSkillManager.GetComponent<PlayerController>().moveRate = 5;
+        playerSkillManager.GetComponent<PlayerController>().playerTurnSmoothing = 10f;
+
+        StartCoroutine(RestoreLighting());
+
+        Destroy(lightningSkillsBeamToDestroy);
+    }
 }

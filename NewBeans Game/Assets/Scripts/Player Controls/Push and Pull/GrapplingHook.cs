@@ -347,11 +347,11 @@ public class GrapplingHook : MonoBehaviour
         if (other.gameObject == player)
             return;
 
-        //Or if its hitting a shield, because the shield blocks the grapple hook anyway
+        //Or if its hitting a shield, because the blocking code is inside Shield.cs :(
         if (other.gameObject.tag == "Shield")
             return;
 
-        //Ignores collisions with pushes
+        //Ignores collisions with push projectiles
         if (other.gameObject.tag == "PushProjectile")
             return;
 
@@ -365,7 +365,7 @@ public class GrapplingHook : MonoBehaviour
 
         if (other.tag == "Player")
         {
-            other.transform.parent = transform;
+            //other.transform.parent = transform;
             other.GetComponent<PlayerController>().lastHitBy = player.GetComponent<PlayerController>(); // Hooked player gets hooked by the hook owner.
             latchedObject = other.gameObject;
             StartTakeBack();

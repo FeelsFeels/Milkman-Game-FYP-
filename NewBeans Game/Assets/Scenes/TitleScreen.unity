@@ -722,13 +722,19 @@ PrefabInstance:
     - target: {fileID: 6911360213249598349, guid: 4a79fda18cbfbf94da755942da2fdb7c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Controls Instructions Screen
+      value: Controls Instructions Screen v2
       objectReference: {fileID: 0}
     - target: {fileID: 768735489, guid: 4a79fda18cbfbf94da755942da2fdb7c, type: 3}
       propertyPath: m_Text
-      value: 'Controls
-
-'
+      value: Instructions
+      objectReference: {fileID: 0}
+    - target: {fileID: 768735488, guid: 4a79fda18cbfbf94da755942da2fdb7c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -78.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 768735488, guid: 4a79fda18cbfbf94da755942da2fdb7c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 493.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a79fda18cbfbf94da755942da2fdb7c, type: 3}
