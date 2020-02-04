@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b27ba28623135c140986851d553ef934, type: 3}
+  m_Name: AI Controlled Input (Tanya)
+  m_EditorClassIdentifier: 
+  playerNumber: 441
+  ControllerNumber: 2212
+  HorizontalInputAxis: Tanya x Raidus M18 Fanfiction
+  VerticalInputAxis: Tanya cupped Raidus's face as she
+  AButtonInput: pushed him against the wall. Tonight,
+  BButtonInput: you're MINE. She declared, with a twinkle
+  RightHorizontalAxis: in her eye. Hands tightly embracing one
+  RightVerticalAxis: another, they shared a deep, loving kiss.
+  RightBumper: blah blah blah zenshitsu tanshitro blah
+  chosenCharacterIndex: 1923890
+  chosenCharacterData: {fileID: 11400000, guid: a3b8113e64a52bc4483654f0b0b161c2,
+    type: 2}
+  forceActive: 0
