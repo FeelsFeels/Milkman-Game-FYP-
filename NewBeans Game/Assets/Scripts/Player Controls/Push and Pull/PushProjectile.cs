@@ -132,9 +132,15 @@ public class PushProjectile : MonoBehaviour
             {
                 player.GetComponent<SkillSetManager>().ChargeSpecialSkill(knockbackToUse);
             }
-
-
             Destroy(gameObject);
+        }
+
+
+        //If after checking player collision, recheck and
+        //Dont do anything if tagged player
+        if (collision.collider.CompareTag("Player"))
+        {
+            return;
         }
 
         if (!player)
@@ -144,5 +150,15 @@ public class PushProjectile : MonoBehaviour
         }
     }
 
-
+    public void PushARigidbody(Rigidbody rb)
+    {
+        Vector3 direction = rb.transform.position - transform.position;
+        direction = -direction.normalized;
+        
+        if (hitParticles != null)
+            Instantiate(hitParticles, rb.transform.position + Vector3.up * 2, Quaternion.identity);
+        //player.GetComponent<Rigidbody>().AddForce(direction * knockbackStrength);
+        rb.AddForce(knockbackDirection * knockbackToUse);
+        Destroy(gameObject);
+    }
 }

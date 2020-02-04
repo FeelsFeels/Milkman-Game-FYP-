@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SuperDeathHissatsuJustsus
+namespace NewBeans.SuperDeathHissatsuJustsus
 {
     public class SuperDeathHissatsuJutsuJohnathanOUCH : MonoBehaviour
     {

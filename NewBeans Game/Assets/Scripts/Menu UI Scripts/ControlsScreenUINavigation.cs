@@ -130,6 +130,7 @@ public class ControlsScreenUINavigation : MonoBehaviour
     public void Select()
     {
         selectableButtons[currentSelectedIndex].GetComponent<ControlsScreenUIPanel>().ShowPanel();
+
     }
 
     public void Cancel()
