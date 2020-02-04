@@ -6,6 +6,7 @@ using NewBeans.InstructionsScreen;
 public class MovementSimulation : BaseSimulation
 {
     public Transform player1ResetPos;
+    public Transform player2ResetPos;
 
     public override void StartSimulation()
     {
@@ -21,6 +22,11 @@ public class MovementSimulation : BaseSimulation
             player1.transform.position = player1ResetPos.position;
             player1.transform.rotation = player1ResetPos.rotation;
         }
+        if(player2 && player2ResetPos)
+        {
+            player2.transform.position = player2ResetPos.position;
+            player2.transform.rotation = player2ResetPos.rotation;
+        }
     }
 
     IEnumerator RulesSimulationRoutine()
@@ -33,42 +39,50 @@ public class MovementSimulation : BaseSimulation
             timePassed += Time.deltaTime;
             yield return null;
         }
-        while (timePassed < 2.0f)
+        while (timePassed < 2.5f)
         {
             timePassed += Time.deltaTime;
-            player1.Move(AIPlayerInputController.Direction.E);
-            yield return null;
-        }
-        while (timePassed < 3.5f)
-        {
-            timePassed += Time.deltaTime;
-            player1.Move(AIPlayerInputController.Direction.W);
+            player1.Move(AIPlayerInputController.Direction.S);
             yield return null;
         }
         while (timePassed < 4.5f)
         {
             timePassed += Time.deltaTime;
-            player1.Move(AIPlayerInputController.Direction.E);
-            player1.Turn(new Vector3(-1f, 0f, 0f).normalized);
+            player1.Move(AIPlayerInputController.Direction.N);
             yield return null;
         }
-        Vector3 rot = new Vector3(-1, 0, 0);
-        float step = 0;
-        while (timePassed < 6f)
+        while (timePassed < 5.3f)
         {
-            print("6sedc");
             timePassed += Time.deltaTime;
-            step += Time.deltaTime;
-            player1.Move(AIPlayerInputController.Direction.NE);
-            player1.Turn(Vector3.Lerp(rot, new Vector3(0, 0, 1), step / 2f));
+            player1.Move(AIPlayerInputController.Direction.S);
+            Vector3 turnDirection = player2.transform.position - player1.transform.position;
+            player1.Turn(turnDirection.normalized);            
             yield return null;
         }
-        
-        while(timePassed < 12f)
+        player1.HoldShootButton();
+        while (timePassed < 6.7f)
         {
+            timePassed += Time.deltaTime;
+            player1.Move(AIPlayerInputController.Direction.S);
+            Vector3 turnDirection = (player2.transform.position - player1.transform.position).normalized;
+            player1.transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(turnDirection), 10);
+            //player1.Turn(turnDirection.normalized);
             yield return null;
         }
-        yield return null;
+        player1.ReleaseShootButton();
+        while (timePassed < 7.5f)
+        {
+            timePassed += Time.deltaTime;
+            player1.Move(AIPlayerInputController.Direction.NE);
+            yield return null;
+        }
+        player1.Move(AIPlayerInputController.Direction.Still);
+        while (timePassed < 8.2f)
+        {
+            timePassed += Time.deltaTime;
+            yield return null;
+        }
         StartSimulation();
     }
 }
+
