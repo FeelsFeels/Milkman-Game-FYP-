@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using NewBeans.InstructionsScreen;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class GrapplingHook : MonoBehaviour
+public class GrapplingHookAI : MonoBehaviour
 {
     public enum HookStatus
     {
@@ -180,7 +181,7 @@ public class GrapplingHook : MonoBehaviour
 
                     if(latchedObject != null)
                     {
-                        latchedObject.GetComponent<PlayerController>().Hit();
+                        latchedObject.GetComponent<AIPlayerController>().Hit();
                     }
                 }
                 else if (nodes.Count > 0)
@@ -366,7 +367,7 @@ public class GrapplingHook : MonoBehaviour
         if (other.tag == "Player")
         {
             //other.transform.parent = transform;
-            other.GetComponent<PlayerController>().lastHitBy = player.GetComponent<PlayerController>(); // Hooked player gets hooked by the hook owner.
+            //other.GetComponent<AIPlayerController>().lastHitBy = player.GetComponent<AIPlayerController>(); // Hooked player gets hooked by the hook owner.
             latchedObject = other.gameObject;
             StartTakeBack();
 
@@ -405,7 +406,7 @@ public class GrapplingHook : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         GameObject go = latchedObject;
         latchedObject = null;
-        go.GetComponent<PlayerController>().rb.AddForce(Vector3.down * 1000);
+        go.GetComponent<AIPlayerController>().rb.AddForce(Vector3.down * 1000);
         yield return new WaitForSeconds(0.1f);
         releaseOnNext = false;
     }

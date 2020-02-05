@@ -22,6 +22,6 @@ MonoBehaviour:
   RightVerticalAxis: SUPERVISED LEARNING
   RightBumper: AND UNSUPERVISED LEARNING
   chosenCharacterIndex: 0
-  chosenCharacterData: {fileID: 11400000, guid: 34773c0ea191fa842bd8f64dc567869d,
+  chosenCharacterData: {fileID: 11400000, guid: 7e976f16323ed3f47a467ed8bc13f340,
     type: 2}
   forceActive: 0

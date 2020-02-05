@@ -18,7 +18,7 @@ namespace NewBeans.InstructionsScreen {
         public GameObject aimingArrows;
         public Image chargingIndication;
 
-        private GrapplingHook hProjectile;
+        private GrapplingHookAI hProjectile;
 
         private AIPlayerController playerScript;
         private ChargingPushVFXController chargingVFXScript;
@@ -345,7 +345,7 @@ namespace NewBeans.InstructionsScreen {
             chargingGrapplingHook = false;
             aimingArrows.SetActive(false);
 
-            GrapplingHook projectile = Instantiate(hookProjectile, new Vector3(shootOrigin.transform.position.x, shootOrigin.transform.position.y, shootOrigin.transform.position.z), Quaternion.identity).GetComponent<GrapplingHook>();
+            GrapplingHookAI projectile = Instantiate(hookProjectile, new Vector3(shootOrigin.transform.position.x, shootOrigin.transform.position.y, shootOrigin.transform.position.z), Quaternion.identity).GetComponent<GrapplingHookAI>();
             projectile.transform.forward = transform.forward;
             projectile.direction = transform.forward;
             projectile.hookOwner = gameObject;
@@ -397,7 +397,7 @@ namespace NewBeans.InstructionsScreen {
         public void HoldPullButton()
         {
             //Charge Grappling Hook
-            if (Input.GetButtonDown(hookInput) && pullCooldownTimer <= 0)
+            if (pullCooldownTimer <= 0)
             {
                 if (hProjectile == null)
                 {
@@ -407,7 +407,7 @@ namespace NewBeans.InstructionsScreen {
         }
         public void ReleasePullButton()
         {
-            if (Input.GetButtonUp(hookInput) && chargingGrapplingHook)
+            if (chargingGrapplingHook)
             {
                 ShootHook();
 

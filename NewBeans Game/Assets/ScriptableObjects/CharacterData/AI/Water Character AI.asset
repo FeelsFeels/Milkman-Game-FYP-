@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6ad6552f0488ca42a11f346f57efe67, type: 3}
+  m_Name: Water Character AI
+  m_EditorClassIdentifier: 
+  characterPrefab: {fileID: 7442280156047082946, guid: 88cc779da26768e4e86f9f774417ea94,
+    type: 3}
+  pushProjectile: {fileID: 7453725843471818069, guid: 75dc83e9473ec4649973eea1ec56c3bc,
+    type: 3}
+  hookProjectile: {fileID: 2992602490277621422, guid: 90f4181c40bc694469e4e18de58cee8c,
+    type: 3}
+  characterUltiReadyVFX: {fileID: 1113987249239454962, guid: 954196f7642be4f4c9bbe05460da03b3,
+    type: 3}
+  chargingPushModel: {fileID: 1747899710422237806, guid: e6741960316e24c479a8ee70c2b7dc9d,
+    type: 3}
+  chargingPushVFX: {fileID: 2568969653747572466, guid: 040bab9287ebd1d45b2834cf96469a64,
+    type: 3}
+  characterColor:
+    serializedVersion: 2
+    rgba: 4294933504
+  characterUI_Left: {fileID: 4452790412856341786, guid: 3b623fbb8bbf5634e964e36f529a2aef,
+    type: 3}
+  characterUI_Right: {fileID: 815774940805368648, guid: ba24be1af27acbe4a9b08a27a95666e3,
+    type: 3}
+  characterUI_LeftUp: {fileID: 3801569834553717344, guid: 55b53e62bf7c1d74c909027e96c0740b,
+    type: 3}
+  characterUI_RightUp: {fileID: 3801569834553717344, guid: 0c2f31a50bf80b3448ed76a7766e352a,
+    type: 3}
+  character: Water

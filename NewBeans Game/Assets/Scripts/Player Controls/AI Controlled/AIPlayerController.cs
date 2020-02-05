@@ -183,6 +183,7 @@ namespace NewBeans.InstructionsScreen
             {
                 if (animator != null)
                     animator.SetFloat("Speed", 0);
+                return;
             }
             else if (animator != null)  //If Moving, can set the animator values
             {

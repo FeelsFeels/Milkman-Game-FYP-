@@ -51,7 +51,8 @@ public class ChangingTilePatterns : MonoBehaviour
         yield return new WaitForSeconds(7);
 
         //Get the new tile to go down
-        Tile tileToGoDown = tilePattern[currentPatternIndex];
+        //Tile tileToGoDown = tilePattern[currentPatternIndex];
+        Tile tileToGoDown = tilePattern[7];
         tileToGoDown.SpawnCrumblingParticles();
         //Give warning to players using smoke particles
         //Make a "tile map" of positions to spawn the smoke particles in.
