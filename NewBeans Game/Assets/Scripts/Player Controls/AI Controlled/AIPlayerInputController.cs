@@ -56,6 +56,11 @@ namespace NewBeans.InstructionsScreen
             }
         }
 
+        public void Move(Vector3 direction)
+        {
+            playerController.Move(direction);
+        }
+
         public void Turn(Vector3 direction)
         {
             playerController.Turn(direction);

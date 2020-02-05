@@ -12,6 +12,9 @@ public class ShootingSimulation : BaseSimulation
     public Transform player2ResetPos;
     public Transform player3ResetPos;
     public Transform player4ResetPos;
+    [Space]
+    public Transform secondShootPos;
+    public Transform thirdShootPos;
 
     public override void StartSimulation()
     {
@@ -59,21 +62,64 @@ public class ShootingSimulation : BaseSimulation
             yield return null;
         }
         player1.ReleaseShootButton();
-        while(timepassed < 1.5f)
+        while(timepassed < 2.0f)
         {
             timepassed += Time.deltaTime;
-            player1.Move(AIPlayerInputController.Direction.S);
+            yield return null;
+        }
+        timepassed = 0f;
+        while((player1.transform.position - secondShootPos.position).sqrMagnitude > 0.05f)
+        {
+            Vector3 direction = (secondShootPos.position - player1.transform.position).normalized;
+            player1.Move(direction);
             Vector3 turnDirection = (player3.transform.position - player1.transform.position).normalized;
             player1.transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(turnDirection), 10);
             yield return null;
         }
+        player1.Move(AIPlayerInputController.Direction.Still);
+        while (timepassed < 0.9f)
+        {
+            Vector3 turnDirection = (player3.transform.position - player1.transform.position).normalized;
+            player1.transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(turnDirection), 10);
+            timepassed += Time.deltaTime;
+            yield return null;
+        }
         player1.HoldShootButton();
-        while(timepassed < 2.9f)
+        while(timepassed < 2.3f)
         {
             timepassed += Time.deltaTime;
             yield return null;
         }
         player1.ReleaseShootButton();
+        while(timepassed < 3.3f)
+        {
+            timepassed += Time.deltaTime;
+            yield return null;
+        }
+        timepassed = 0f;
+        while ((player1.transform.position - thirdShootPos.position).sqrMagnitude > 0.05f)
+        {
+            Vector3 direction = (thirdShootPos.position - player1.transform.position).normalized;
+            player1.Move(direction);
+            Vector3 turnDirection = (player4.transform.position - player1.transform.position).normalized;
+            player1.transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(turnDirection), 10);
+            yield return null;
+        }
+        player1.Move(AIPlayerInputController.Direction.Still);
+        while (timepassed < 0.9f)
+        {
+            Vector3 turnDirection = (player4.transform.position - player1.transform.position).normalized;
+            player1.transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(turnDirection), 10);
+            timepassed += Time.deltaTime;
+            yield return null;
+        }
+        player1.HoldShootButton();
+        while (timepassed < 5.5f)
+        {
+            timepassed += Time.deltaTime;
+            yield return null;
+        }
+        StartSimulation();
         yield return null;
     }
 }
