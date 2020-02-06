@@ -60,7 +60,7 @@ public class SkillSetManager : MonoBehaviour
             }
         }
         chargingPushVFX = GetComponentInChildren<ChargingPushVFXController>();
-
+        ChargeSpecialSkill(1);
     }
 
     // Update is called once per frame

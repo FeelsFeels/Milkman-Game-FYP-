@@ -21,7 +21,7 @@ public class FireUltiSkill : SkillSetManager.SkillSet
 
     public float skillLifetime;
     private SkillSetManager skillManager;
-    // Start is called before the first frame update
+
     void Start()
     {
         SkillSetManager[] managers = FindObjectsOfType<SkillSetManager>();
@@ -34,10 +34,9 @@ public class FireUltiSkill : SkillSetManager.SkillSet
                 break;
             }
         }
-        //skillManager = GetComponent<SkillSetManager>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (thisUlti != null)

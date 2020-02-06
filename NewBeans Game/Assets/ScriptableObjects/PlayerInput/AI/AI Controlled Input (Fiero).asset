@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27ba28623135c140986851d553ef934, type: 3}
   m_Name: AI Controlled Input (Fiero)
   m_EditorClassIdentifier: 
-  playerNumber: 2002020
+  playerNumber: 1
   ControllerNumber: 1991919
   HorizontalInputAxis: MACHINE LEARNING
   VerticalInputAxis: MALICIOUS EMAILS

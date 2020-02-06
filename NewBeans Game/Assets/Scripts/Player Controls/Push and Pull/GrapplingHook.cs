@@ -377,6 +377,13 @@ public class GrapplingHook : MonoBehaviour
                 closedHand.gameObject.SetActive(true);
             }
 
+            AudioManager audio = FindObjectOfType<AudioManager>();
+            if (audio)
+            {
+                audio.Play("Pull");
+                audio.Play("Pull_Latch");
+            }
+
             //transform.parent = other.transform;
             return;
         }
@@ -389,6 +396,12 @@ public class GrapplingHook : MonoBehaviour
             {
                 openHand.gameObject.SetActive(false);
                 closedHand.gameObject.SetActive(true);
+            }
+            AudioManager audio = FindObjectOfType<AudioManager>();
+            if (audio)
+            {
+                audio.Play("Pull");
+                audio.Play("Pull_Latch");
             }
             //gameObject.transform.position = other.transform.position;
             return;

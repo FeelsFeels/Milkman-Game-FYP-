@@ -49,7 +49,7 @@ public class Shoot : MonoBehaviour
     public string watergunInput;
     public string chargingInput;
     public string hookInput;
-    /// //////////////////////////////////
+    /////////////////////////////////////
 
 
     private void Start()

@@ -74,15 +74,15 @@ MonoBehaviour:
     volume: 1
     pitch: 0.99
     source: {fileID: 0}
-  - clip: {fileID: 0}
-    name: 
-    volume: 0
-    pitch: 0
+  - clip: {fileID: 8300000, guid: 98e152fdc17f43f47858dcee8149c567, type: 3}
+    name: Pull_Latch
+    volume: 1
+    pitch: 1
     source: {fileID: 0}
-  - clip: {fileID: 0}
-    name: 
-    volume: 0
-    pitch: 0
+  - clip: {fileID: 8300000, guid: d10cd9b9d9480284fba3bac1c396175d, type: 3}
+    name: Pull
+    volume: 1
+    pitch: 1
     source: {fileID: 0}
   - clip: {fileID: 0}
     name: 
