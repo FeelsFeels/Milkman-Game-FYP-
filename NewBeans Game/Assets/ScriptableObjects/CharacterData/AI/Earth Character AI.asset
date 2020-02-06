@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6ad6552f0488ca42a11f346f57efe67, type: 3}
+  m_Name: Earth Character AI
+  m_EditorClassIdentifier: 
+  characterPrefab: {fileID: 0}
+  pushProjectile: {fileID: 7453725843471818069, guid: 0e876b1aff271b449a4aa739d39fabda,
+    type: 3}
+  hookProjectile: {fileID: 2992602490277621422, guid: aa6276347d0f0244e84fe7e2528dade2,
+    type: 3}
+  characterUltiReadyVFX: {fileID: 5771584809425393243, guid: 9faea57029c1cdf46b00e4b349a20355,
+    type: 3}
+  chargingPushModel: {fileID: 1747899710422237806, guid: 896d2dc8c5d103c449578ba0e8504496,
+    type: 3}
+  chargingPushVFX: {fileID: 1893844305292645618, guid: bf25155f25a303c428758120a9f0ad4e,
+    type: 3}
+  characterColor:
+    serializedVersion: 2
+    rgba: 4278255431
+  characterUI_Left: {fileID: 2569911168823268802, guid: 3d7ea8a7630d49b42bffd6efb13f44d6,
+    type: 3}
+  characterUI_Right: {fileID: 7058589043617709942, guid: 77ae24229b26e3942a50a3123b6b01b0,
+    type: 3}
+  characterUI_LeftUp: {fileID: 3801569834553717344, guid: 6134774fbdaa12a4485a186e21b20031,
+    type: 3}
+  characterUI_RightUp: {fileID: 3801569834553717344, guid: f8c18b1126b1e1e4e9171889948f640a,
+    type: 3}
+  character: Earth

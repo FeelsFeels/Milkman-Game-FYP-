@@ -9,6 +9,8 @@ public class LightningSkills : SkillSetManager.SkillSet
     
     public GameObject lightningSkillsBeamToDestroy;
 
+    Transform skillUser;
+
     void Awake()
     {
         //directionalLight = GameObject.Find("Directional Light").GetComponent<Light>();
@@ -17,6 +19,15 @@ public class LightningSkills : SkillSetManager.SkillSet
 
     public override void SkillAttack(SkillSetManager playerSkillManager)
     {
+        skillUser = playerSkillManager.GetComponent<Transform>(); // Set the player transform
+        //Activate shield
+        if (skillUser.Find("InvincibilityShield"))
+        {
+           Shield shield = skillUser.Find("InvincibilityShield").GetComponent<Shield>();
+           shield.shieldRenderer.enabled = true;
+           shield.shieldCollider.enabled = true;
+        }
+
         LightningSkillsBeam lightningBeam = Instantiate(lightningBeamsPrefab, playerSkillManager.transform).GetComponent<LightningSkillsBeam>();
         lightningBeam.InitialiseLaser(playerSkillManager);
         lightningSkillsBeamToDestroy = lightningBeam.gameObject;
@@ -77,7 +88,14 @@ public class LightningSkills : SkillSetManager.SkillSet
         playerSkillManager.GetComponent<PlayerController>().playerTurnSmoothing = 10f;
 
         StartCoroutine(RestoreLighting());
-
         Destroy(lightningSkillsBeamToDestroy);
+
+        //Deactivate shield
+        if (skillUser)
+        {
+            Shield shield = skillUser.Find("InvincibilityShield").GetComponent<Shield>();
+            shield.shieldRenderer.enabled = false;
+            shield.shieldCollider.enabled = false;
+        }
     }
 }

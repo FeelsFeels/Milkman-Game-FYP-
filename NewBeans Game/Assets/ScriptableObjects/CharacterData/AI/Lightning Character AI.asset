@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6ad6552f0488ca42a11f346f57efe67, type: 3}
+  m_Name: Lightning Character AI
+  m_EditorClassIdentifier: 
+  characterPrefab: {fileID: 6254405192400340290, guid: bbc7a330db8b38a409ad53cc1d482a0a,
+    type: 3}
+  pushProjectile: {fileID: 7453725843471818069, guid: 409b39dc1ca04c2479b29aff2eff8379,
+    type: 3}
+  hookProjectile: {fileID: 2992602490277621422, guid: b747d60811b640c49bd91c241c86f158,
+    type: 3}
+  characterUltiReadyVFX: {fileID: 6839345820876704351, guid: 0b1c32539f3bb174ebfa0a9d3dc026c6,
+    type: 3}
+  chargingPushModel: {fileID: 1747899710422237806, guid: dad92859b8c42d64c958e44f2bf48e39,
+    type: 3}
+  chargingPushVFX: {fileID: 5670855776963627848, guid: 18321e049d8801741b89bda75f633642,
+    type: 3}
+  characterColor:
+    serializedVersion: 2
+    rgba: 4289855610
+  characterUI_Left: {fileID: 6881244035161043993, guid: c09633825b4883444b0fe467d44be229,
+    type: 3}
+  characterUI_Right: {fileID: 7622000253434024407, guid: f09777648c3eca74aa0b56e924f13753,
+    type: 3}
+  characterUI_LeftUp: {fileID: 3801569834553717344, guid: 1f475547a3207724dac55b0574481653,
+    type: 3}
+  characterUI_RightUp: {fileID: 3801569834553717344, guid: 1e5c5bbe66562734c9bdb135bd61bc91,
+    type: 3}
+  character: Lightning

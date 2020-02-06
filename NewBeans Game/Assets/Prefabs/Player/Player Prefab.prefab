@@ -391,7 +391,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 1024
-  explodeSpreadAngle: 90
+  explodeSpreadAngle: 120
   explodeForce: 3000
   shotgunParticles: {fileID: 8090446431925777048, guid: e4fd5d7dc1428e8438860015600ea3db,
     type: 3}
@@ -909,6 +909,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 613006007d4cd5c4695c0801bda74535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shieldRenderer: {fileID: 0}
+  shieldCollider: {fileID: 0}
   shieldTime: 2
 --- !u!1 &9217587417691407533
 GameObject:

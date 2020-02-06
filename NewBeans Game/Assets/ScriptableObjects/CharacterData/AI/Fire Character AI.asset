@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6ad6552f0488ca42a11f346f57efe67, type: 3}
+  m_Name: Fire Character AI
+  m_EditorClassIdentifier: 
+  characterPrefab: {fileID: 219199783361363612, guid: 7bd025c29daa84845816756bd3135379,
+    type: 3}
+  pushProjectile: {fileID: 7453725843471818069, guid: 97da09c9e4a5db64cbdfc834137707e1,
+    type: 3}
+  hookProjectile: {fileID: 2992602490277621422, guid: c069202464c0bbe42be4f50f1b75dce7,
+    type: 3}
+  characterUltiReadyVFX: {fileID: 7771475926251127384, guid: 5f6edb647de7d6749b1bc166b0049a0f,
+    type: 3}
+  chargingPushModel: {fileID: 1747899710422237806, guid: 7eee3e5d3c3248c49ba9018bdce14a60,
+    type: 3}
+  chargingPushVFX: {fileID: 8361324597146366883, guid: 4f40b39e3ba4beb41ac787233a3b95ed,
+    type: 3}
+  characterColor:
+    serializedVersion: 2
+    rgba: 4278190335
+  characterUI_Left: {fileID: 3801569834553717344, guid: d29c94f629c92cb4989870d003f9fa85,
+    type: 3}
+  characterUI_Right: {fileID: 6947780862390391763, guid: 88c58e9f56893aa449d11fed1d994924,
+    type: 3}
+  characterUI_LeftUp: {fileID: 3801569834553717344, guid: 6be0e750feb749543993ecdd0a8be194,
+    type: 3}
+  characterUI_RightUp: {fileID: 3801569834553717344, guid: 6e70905e8434750498006d41588b709d,
+    type: 3}
+  character: Fire

@@ -142,25 +142,25 @@ public class GrapplingHook : MonoBehaviour
                     //This block controls when to let go of a player if hooked
                     if (latchedObject != null)
                     {
+                        //Sets latched object position to hook's position
+                        if (latchedPosition != null)
+                        {
+                            latchedObject.transform.position = latchedPosition.position;
+                        }
+                        else
+                        {
+                            latchedObject.transform.localPosition = new Vector3(0, -8.5f, 0);
+                        }
                         if (!releaseOnNext)
                         {
-                            //Sets latched object position to hook's position
-                            if (latchedPosition != null)
-                            {
-                                latchedObject.transform.position = latchedPosition.position;
-                            }
-                            else
-                            {
-                                latchedObject.transform.localPosition = new Vector3(0, -8.5f, 0);
-                            }
+                            //raycasting to check if we want to drop the player
                             RaycastHit hit;
-
                             if (Physics.Raycast(transform.position, Vector3.down, out hit, 100f, 1 << LayerMask.NameToLayer("Ground")))
                             {
                                 Tile tile = hit.collider.GetComponent<Tile>();
                                 if (tile)
                                 {
-                                    if (tile.tileState == Tile.TileState.down)
+                                    if (tile.tileState == Tile.TileState.down || tile.tileState == Tile.TileState.goingDown)
                                     {
                                         releaseOnNext = true;
                                         StartCoroutine(Release());
@@ -216,7 +216,7 @@ public class GrapplingHook : MonoBehaviour
             }
         }
         
-        //Re-add nodes when hook is being shot
+        //Re-add nodes when hook is being shot. Makes the hook nodes not loop around itself.
         if (hookStatus != HookStatus.reverse && hookStatus != HookStatus.takeback && hookStatus != HookStatus.none)
         {
             //use angle and dot product to decide if player is moving towards hook.
@@ -377,6 +377,13 @@ public class GrapplingHook : MonoBehaviour
                 closedHand.gameObject.SetActive(true);
             }
 
+            AudioManager audio = FindObjectOfType<AudioManager>();
+            if (audio)
+            {
+                audio.Play("Pull");
+                audio.Play("Pull_Latch");
+            }
+
             //transform.parent = other.transform;
             return;
         }
@@ -389,6 +396,12 @@ public class GrapplingHook : MonoBehaviour
             {
                 openHand.gameObject.SetActive(false);
                 closedHand.gameObject.SetActive(true);
+            }
+            AudioManager audio = FindObjectOfType<AudioManager>();
+            if (audio)
+            {
+                audio.Play("Pull");
+                audio.Play("Pull_Latch");
             }
             //gameObject.transform.position = other.transform.position;
             return;
@@ -403,9 +416,9 @@ public class GrapplingHook : MonoBehaviour
     private IEnumerator Release()
     {
         yield return new WaitForSeconds(0.1f);
-        transform.DetachChildren();
+        GameObject go = latchedObject;
         latchedObject = null;
-        latchedObject.GetComponent<PlayerController>().rb.AddForce(Vector3.down * 1000);
+        go.GetComponent<PlayerController>().rb.AddForce(Vector3.down * 1000);
         yield return new WaitForSeconds(0.1f);
         releaseOnNext = false;
     }

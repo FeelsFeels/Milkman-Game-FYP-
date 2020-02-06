@@ -11,6 +11,11 @@ public class EarthSkills : SkillSetManager.SkillSet
     public float knockbackStrength;
     Transform skillUser;
     public bool startSmashing;
+    Rigidbody userRb;
+
+
+
+
 
     public override void SkillAttack(SkillSetManager manager)
     {
@@ -19,6 +24,10 @@ public class EarthSkills : SkillSetManager.SkillSet
 
         // Size up player
         skillUser.localScale *= 3;
+        //Add weight
+        userRb = skillUser.GetComponent<Rigidbody>();
+        userRb.mass *= 3;
+
         StartCoroutine(EndSkill(manager));
         StartCoroutine(UpdatePlayerBehaviour());
 
@@ -28,6 +37,15 @@ public class EarthSkills : SkillSetManager.SkillSet
     {
         while (startSmashing) //Keep updating while this is true
         {
+            //Disable player getting stunned, let's try let's go
+            if(skillUser.GetComponent<PlayerController>().playerStunned)
+            {
+                PlayerController player = skillUser.GetComponent<PlayerController>();
+                player.playerStunned = false;
+                player.stunnedTime = 0;
+                player.dizzyStars.SetActive(false);
+            }
+
             timeToNextShockwave += Time.deltaTime;
 
             if (timeToNextShockwave >= 0.666f)
@@ -90,7 +108,13 @@ public class EarthSkills : SkillSetManager.SkillSet
         StopAllCoroutines();
         //Stop the smash
         startSmashing = false;
+
         //Size down player
         playerSkillManager.transform.localScale = Vector3.one;
+        //Resume normal mass
+        if (userRb)
+        {
+            userRb.mass = 1;
+        }
     }
 }

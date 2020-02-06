@@ -49,7 +49,7 @@ public class Shoot : MonoBehaviour
     public string watergunInput;
     public string chargingInput;
     public string hookInput;
-    /// //////////////////////////////////
+    /////////////////////////////////////
 
 
     private void Start()
@@ -267,16 +267,19 @@ public class Shoot : MonoBehaviour
             //Debug.Log("Remove self");
         }
 
-        Debug.Log(colliders.Count);
+        //Debug.Log(colliders.Count);
 
         foreach (Collider player in colliders)
         {
             //Debug.Log("hi");
             Transform other = player.transform;
             Vector3 dir = (other.position - this.transform.position).normalized; //Find the direction from origin to other player
-            float angle = 90 - Mathf.Atan2(dir.z, dir.x) * Mathf.Rad2Deg; //Find the angle of the direction
-            if (Mathf.Abs(Mathf.DeltaAngle(this.transform.eulerAngles.y, angle)) < explodeSpreadAngle) //If the angle difference between this object's forward and the direction is < spread angle,
+            float angle = 90 - Mathf.Atan2(dir.z, dir.x) * Mathf.Rad2Deg; //Find the angle of the direction, multiply by rad2deg to convert to degrees
+            print((Mathf.DeltaAngle(this.transform.eulerAngles.y, angle)));
+            if (Mathf.Abs(Mathf.DeltaAngle(this.transform.eulerAngles.y, angle)) < (explodeSpreadAngle/2)) //If the angle difference between this object's forward and the direction is < spread angle,
             {
+                
+
                 //push the other player back
                 Rigidbody rb = other.GetComponent<Rigidbody>();
                 rb.AddForce(explodeForce * dir);
