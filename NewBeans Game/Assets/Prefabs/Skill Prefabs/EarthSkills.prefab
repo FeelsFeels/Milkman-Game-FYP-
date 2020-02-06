@@ -48,5 +48,5 @@ MonoBehaviour:
     type: 3}
   timeToNextShockwave: 0
   knockbackRadius: 10
-  knockbackStrength: 1000
+  knockbackStrength: 2000
   startSmashing: 0

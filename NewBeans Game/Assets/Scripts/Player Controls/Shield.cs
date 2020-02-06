@@ -5,8 +5,8 @@ using UnityEngine;
 public class Shield : MonoBehaviour
 {
     private PlayerController player;
-    private MeshRenderer shieldRenderer;
-    private SphereCollider shieldCollider;
+    public MeshRenderer shieldRenderer;
+    public SphereCollider shieldCollider;
 
     public float shieldTime;
 
