@@ -133,8 +133,9 @@ public class Shoot : MonoBehaviour
                 //PushBackfire();
                 //StartCoroutine(ShotgunFireLight());
                 animator.SetBool("activateChargeBlink", false);
+                shotgunParticles.Play();
                 ShotgunAttack();
-                Instantiate(shotgunParticles, transform.position, transform.rotation, transform);
+                //Instantiate(shotgunParticles, transform.position, transform.rotation, transform);
                 chargingVFXScript.StopVFX();
                 //shotgunParticles.shape.angle = explodeSpreadAngle / 2;
             }
@@ -253,7 +254,7 @@ public class Shoot : MonoBehaviour
 
     void ShotgunAttack()
     {
-        StartCoroutine(ShotgunFireLight());
+        //StartCoroutine(ShotgunFireLight());
 
         animator.SetBool("backToNull", true); // Stops the shoot charging animation
 
