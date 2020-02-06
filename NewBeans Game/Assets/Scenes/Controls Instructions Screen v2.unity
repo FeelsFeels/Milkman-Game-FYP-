@@ -10870,7 +10870,7 @@ MonoBehaviour:
   currentCharge: 0
   chargePercentage: 0
   ultiIsActivated: 0
-  skillContainer: {fileID: 1856942301}
+  skillContainer: {fileID: 2402456598726801994}
   chargingPushVFX: {fileID: 0}
   skillReadyParticleFX: {fileID: 0}
   testingPurposes: 0
@@ -23289,7 +23289,7 @@ MonoBehaviour:
   currentCharge: 0
   chargePercentage: 0
   ultiIsActivated: 0
-  skillContainer: {fileID: 1856942301}
+  skillContainer: {fileID: 2402456598726801994}
   chargingPushVFX: {fileID: 0}
   skillReadyParticleFX: {fileID: 0}
   testingPurposes: 0
@@ -34339,7 +34339,7 @@ MonoBehaviour:
   currentCharge: 0
   chargePercentage: 0
   ultiIsActivated: 0
-  skillContainer: {fileID: 1856942301}
+  skillContainer: {fileID: 2402456598726801994}
   chargingPushVFX: {fileID: 0}
   skillReadyParticleFX: {fileID: 67906391}
   testingPurposes: 0
@@ -58707,7 +58707,7 @@ MonoBehaviour:
   currentCharge: 0
   chargePercentage: 0
   ultiIsActivated: 0
-  skillContainer: {fileID: 1856942301}
+  skillContainer: {fileID: 2402456598726801994}
   chargingPushVFX: {fileID: 0}
   skillReadyParticleFX: {fileID: 593082344}
   testingPurposes: 0
@@ -60408,7 +60408,7 @@ MonoBehaviour:
   currentCharge: 0
   chargePercentage: 0
   ultiIsActivated: 0
-  skillContainer: {fileID: 1856942301}
+  skillContainer: {fileID: 2402456598726801994}
   chargingPushVFX: {fileID: 0}
   skillReadyParticleFX: {fileID: 0}
   testingPurposes: 0
@@ -62090,7 +62090,7 @@ Transform:
   - {fileID: 393844295}
   - {fileID: 377809543}
   - {fileID: 2052234430}
-  - {fileID: 1856942301}
+  - {fileID: 2402456598726801994}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -62108,7 +62108,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 595197943}
   player2: {fileID: 935550125}
-  videoPlayer: {fileID: 0}
+  player1ResetPos: {fileID: 393844295}
+  player2ResetPos: {fileID: 377809543}
   ultiUI: {fileID: 312456198}
 --- !u!1 &1113792420
 GameObject:
@@ -74905,7 +74906,7 @@ MonoBehaviour:
   currentCharge: 0
   chargePercentage: 0
   ultiIsActivated: 0
-  skillContainer: {fileID: 1856942301}
+  skillContainer: {fileID: 2402456598726801994}
   chargingPushVFX: {fileID: 0}
   skillReadyParticleFX: {fileID: 0}
   testingPurposes: 0
@@ -82472,7 +82473,7 @@ MonoBehaviour:
   currentCharge: 0
   chargePercentage: 0
   ultiIsActivated: 0
-  skillContainer: {fileID: 1856942301}
+  skillContainer: {fileID: 2402456598726801994}
   chargingPushVFX: {fileID: 0}
   skillReadyParticleFX: {fileID: 0}
   testingPurposes: 0
@@ -82965,7 +82966,7 @@ MonoBehaviour:
   currentCharge: 0
   chargePercentage: 0
   ultiIsActivated: 0
-  skillContainer: {fileID: 1856942301}
+  skillContainer: {fileID: 2402456598726801994}
   chargingPushVFX: {fileID: 0}
   skillReadyParticleFX: {fileID: 0}
   testingPurposes: 0
@@ -83348,7 +83349,7 @@ MonoBehaviour:
   currentCharge: 0
   chargePercentage: 0
   ultiIsActivated: 0
-  skillContainer: {fileID: 1856942301}
+  skillContainer: {fileID: 2402456598726801994}
   chargingPushVFX: {fileID: 0}
   skillReadyParticleFX: {fileID: 0}
   testingPurposes: 0
@@ -84982,81 +84983,6 @@ Transform:
   m_Father: {fileID: 280151201}
   m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1856942300
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1112664406}
-    m_Modifications:
-    - target: {fileID: 2402456599169452695, guid: 69f6df1a567038c40810273757fcd7e1,
-        type: 3}
-      propertyPath: m_Name
-      value: SkillsContainer
-      objectReference: {fileID: 0}
-    - target: {fileID: 2402456599169452694, guid: 69f6df1a567038c40810273757fcd7e1,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2402456599169452694, guid: 69f6df1a567038c40810273757fcd7e1,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2402456599169452694, guid: 69f6df1a567038c40810273757fcd7e1,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2402456599169452694, guid: 69f6df1a567038c40810273757fcd7e1,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2402456599169452694, guid: 69f6df1a567038c40810273757fcd7e1,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2402456599169452694, guid: 69f6df1a567038c40810273757fcd7e1,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2402456599169452694, guid: 69f6df1a567038c40810273757fcd7e1,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2402456599169452694, guid: 69f6df1a567038c40810273757fcd7e1,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2402456599169452694, guid: 69f6df1a567038c40810273757fcd7e1,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2402456599169452694, guid: 69f6df1a567038c40810273757fcd7e1,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2402456599169452694, guid: 69f6df1a567038c40810273757fcd7e1,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 69f6df1a567038c40810273757fcd7e1, type: 3}
---- !u!4 &1856942301 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2402456599169452694, guid: 69f6df1a567038c40810273757fcd7e1,
-    type: 3}
-  m_PrefabInstance: {fileID: 1856942300}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1857477784
 GameObject:
   m_ObjectHideFlags: 0
@@ -91743,7 +91669,7 @@ MonoBehaviour:
   currentCharge: 0
   chargePercentage: 0
   ultiIsActivated: 0
-  skillContainer: {fileID: 1856942301}
+  skillContainer: {fileID: 2402456598726801994}
   chargingPushVFX: {fileID: 0}
   skillReadyParticleFX: {fileID: 0}
   testingPurposes: 0
@@ -92359,7 +92285,7 @@ MonoBehaviour:
   currentCharge: 0
   chargePercentage: 0
   ultiIsActivated: 0
-  skillContainer: {fileID: 1856942301}
+  skillContainer: {fileID: 2402456598726801994}
   chargingPushVFX: {fileID: 0}
   skillReadyParticleFX: {fileID: 0}
   testingPurposes: 0
@@ -94782,6 +94708,42 @@ Transform:
   m_Father: {fileID: 1486341957}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &200106690919807946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5284503195453205359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4dad6d7d1f90ee41bf8fa233844a5bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillDuration: 7
+  shockwaveParticles: {fileID: 1765079799062324546, guid: c873447dcbd7d8c4dbb878ba67891401,
+    type: 3}
+  timeToNextShockwave: 0
+  knockbackRadius: 7
+  knockbackStrength: 1500
+  startSmashing: 0
+--- !u!1 &359444071276779468
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 412754156610818239}
+  - component: {fileID: 1417437918107698769}
+  m_Layer: 0
+  m_Name: WaterSkills
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!199 &405016456006827480
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -99592,6 +99554,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!4 &412754156610818239
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359444071276779468}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2402456598726801994}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &528382265525727780
 AudioSource:
   m_ObjectHideFlags: 0
@@ -99784,6 +99760,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!4 &798035615256289725
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6918325630235387906}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2402456598726801994}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &898920405586569964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99858,6 +99848,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898920405586569966}
   m_CullTransparentMesh: 0
+--- !u!114 &1417437918107698769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359444071276779468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69b6ea27f99f0fa428f0842443a3fb46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillDuration: 5
+  waterTornado: {fileID: 9024241037335677620, guid: 69f95b86c8b5f7a42a6ca958522c3273,
+    type: 3}
+  timeForTornadoGrowth: 0.2
+--- !u!4 &2402456598726801994
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2402456598726801995}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 798035615256289725}
+  - {fileID: 412754156610818239}
+  - {fileID: 8638012253877646032}
+  - {fileID: 8055662495493197842}
+  m_Father: {fileID: 1112664406}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2402456598726801995
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2402456598726801994}
+  m_Layer: 0
+  m_Name: SkillsContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!95 &2963879535973266993
 Animator:
   serializedVersion: 3
@@ -99891,6 +99931,23 @@ Transform:
   m_Father: {fileID: 8130240967715532918}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5284503195453205359
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8638012253877646032}
+  - component: {fileID: 200106690919807946}
+  m_Layer: 0
+  m_Name: EarthSkills
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &5412392339726384637
 GameObject:
   m_ObjectHideFlags: 0
@@ -100192,6 +100249,45 @@ Transform:
   m_Father: {fileID: 6526840806554689712}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6918325630235387906
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 798035615256289725}
+  - component: {fileID: 6918325630235387907}
+  m_Layer: 0
+  m_Name: FireSkills
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &6918325630235387907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6918325630235387906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d4fdf008e5c0904995fc89c83b98dbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillDuration: 5
+  beyblading: 0
+  showVFX: 0
+  knockbackRadius: 5
+  knockbackStrength: 100
+  ultiPrefab: {fileID: 94769738028344917, guid: 9f3e47a02ed775e49a06e433fe15fa03,
+    type: 3}
+  fireCharacter: {fileID: 0}
+  thisUlti: {fileID: 0}
+  skillLifetime: 0
 --- !u!108 &7096041123413456050
 Light:
   m_ObjectHideFlags: 0
@@ -100268,6 +100364,54 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &8055662495493197842
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8055662495493197852}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2402456598726801994}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8055662495493197852
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8055662495493197842}
+  - component: {fileID: 8055662495493197853}
+  m_Layer: 0
+  m_Name: LightningSkills
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &8055662495493197853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8055662495493197852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc674ca0f2d90e47b6bc2418785769f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillDuration: 6
+  lightningBeamsPrefab: {fileID: 2455858757423212052, guid: ea79e421aacc0874badbb267363ac0c8,
+    type: 3}
+  directionalLight: {fileID: 0}
+  lightningSkillsBeamToDestroy: {fileID: 0}
 --- !u!222 &8130240967527673036
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -100651,7 +100795,7 @@ MonoBehaviour:
   currentCharge: 0
   chargePercentage: 0
   ultiIsActivated: 0
-  skillContainer: {fileID: 1856942301}
+  skillContainer: {fileID: 2402456598726801994}
   chargingPushVFX: {fileID: 0}
   skillReadyParticleFX: {fileID: 0}
   testingPurposes: 0
@@ -101150,6 +101294,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8130240967715532918}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &8638012253877646032
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5284503195453205359}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2402456598726801994}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8746632293167138946
 MonoBehaviour:

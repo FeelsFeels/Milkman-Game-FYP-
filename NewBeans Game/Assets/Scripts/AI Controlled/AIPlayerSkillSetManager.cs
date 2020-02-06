@@ -151,6 +151,8 @@ namespace NewBeans.InstructionsScreen
                 playerSkillManager.ultiIsActivated = false;
                 playerSkillManager.gameObject.GetComponent<AIShoot>().playerCannotShoot = false;
             }
+
+            public abstract void SetManagerAndCharacter(AIPlayerSkillSetManager player);
         }
 
         public void ReleaseSpecialSkill()
@@ -166,6 +168,7 @@ namespace NewBeans.InstructionsScreen
 
             if (playerSkills.ContainsKey(playerAvatar)) // Check if there is a skill for the enum, because there might not be a skill prefab for the enum
             {
+                playerSkills[playerAvatar].SetManagerAndCharacter(this);
                 playerSkills[playerAvatar].SkillAttack(this); // Dictionary will return the skill set we want, and subsequently we call the attack method
             }
 

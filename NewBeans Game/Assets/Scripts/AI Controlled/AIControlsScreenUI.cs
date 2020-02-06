@@ -74,9 +74,13 @@ namespace NewBeans.InstructionsScreen
                 }
             }
         }
+        public void FullCharge()
+        {
+            UpdateUltiUI(trackedPlayer, 1);
+        }
         public void UseUlti()
         {
-
+            UpdateUltiUI(trackedPlayer, 0);
         }
     }
 }
