@@ -16,7 +16,7 @@ public class PullingSimulation : BaseSimulation
 
     public override void ResetSimulation()
     {
-
+        StopAllCoroutines();
         if (player1 && player1ResetPos)
         {
             player1.transform.position = player1ResetPos.position;
