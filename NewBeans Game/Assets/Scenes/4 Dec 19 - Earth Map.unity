@@ -1491,6 +1491,26 @@ PrefabInstance:
       propertyPath: currentCharge
       value: 20000
       objectReference: {fileID: 0}
+    - target: {fileID: 606342319154962622, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: ae571fdd110a15948be4d328b8a6a468, type: 3}
+    - target: {fileID: 572129772731522348, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5ea028700d8ef4a4ab92d8d3420bad4a, type: 3}
+    - target: {fileID: 7673878838862074728, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7673878838862074728, guid: 1bddf47119048164f92afd5b2ac6e2e3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.08
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bddf47119048164f92afd5b2ac6e2e3, type: 3}
 --- !u!1 &90213548
