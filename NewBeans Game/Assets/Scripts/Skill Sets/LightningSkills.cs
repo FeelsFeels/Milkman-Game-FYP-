@@ -91,7 +91,7 @@ public class LightningSkills : SkillSetManager.SkillSet
         Destroy(lightningSkillsBeamToDestroy);
 
         //Deactivate shield
-        if (skillUser.Find("InvincibilityShield"))
+        if (skillUser)
         {
             Shield shield = skillUser.Find("InvincibilityShield").GetComponent<Shield>();
             shield.shieldRenderer.enabled = false;

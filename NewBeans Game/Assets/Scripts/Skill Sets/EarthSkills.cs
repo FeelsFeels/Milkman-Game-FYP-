@@ -13,6 +13,10 @@ public class EarthSkills : SkillSetManager.SkillSet
     public bool startSmashing;
     Rigidbody userRb;
 
+
+
+
+
     public override void SkillAttack(SkillSetManager manager)
     {
         skillUser = manager.GetComponent<Transform>(); // Set the player
@@ -108,6 +112,9 @@ public class EarthSkills : SkillSetManager.SkillSet
         //Size down player
         playerSkillManager.transform.localScale = Vector3.one;
         //Resume normal mass
-        userRb.mass = 1;
+        if (userRb)
+        {
+            userRb.mass = 1;
+        }
     }
 }
