@@ -1,7 +1,13 @@
 fileFormatVersion: 2
-guid: 559c10ef4b5fd544dbadd657a2ae39f4
+guid: 178ce66298ed4c946bbb575fad5ffacf
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -2200534551178604224
+    second: instruction_button_spritesheet_0
+  - first:
+      213: 6722139812938430877
+    second: instruction_button_spritesheet_1
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -40,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -93,11 +99,53 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: instruction_button_spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 134
+        width: 433
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 172a599a4c8e8aa45bd71b3c1a52b8f0
+      internalID: -2200534551178604224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: instruction_button_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 12
+        width: 433
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 814e9b3855e40554896aac011ec1ff80
+      internalID: 6722139812938430877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: cf81e7fb943c19649b45c59e670001a9
     internalID: 0
     vertices: []
     indices: 
