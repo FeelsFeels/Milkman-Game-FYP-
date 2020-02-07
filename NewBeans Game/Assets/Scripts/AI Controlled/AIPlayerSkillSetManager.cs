@@ -147,7 +147,6 @@ namespace NewBeans.InstructionsScreen
                 // Remember to set the ultiIsActivated bool to false when ulti ends
                 // Bool playerCannotShoot to be set to false to re enable shooting
                 // You CAN override this method with your own version
-
                 playerSkillManager.ultiIsActivated = false;
                 playerSkillManager.gameObject.GetComponent<AIShoot>().playerCannotShoot = false;
             }
@@ -203,7 +202,6 @@ namespace NewBeans.InstructionsScreen
 
         void ResetUltiCharge()
         {
-            Debug.Log("I am weak once again");
             currentCharge = 0;
             chargePercentage = currentCharge / fullChargeAmount;
             DeactivateReadyParticles();

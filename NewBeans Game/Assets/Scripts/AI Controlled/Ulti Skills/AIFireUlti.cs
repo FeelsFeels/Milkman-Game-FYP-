@@ -139,8 +139,10 @@ namespace NewBeans.InstructionsScreen
         public override void EndUltimate(AIPlayerSkillSetManager playerSkillManager)
         {
             base.EndUltimate(playerSkillManager);
+            Destroy(thisUlti.gameObject);
             StopAllCoroutines();
-            fireCharacter.GetComponent<AIPlayerController>().moveRate = 5f;
+            if(fireCharacter)
+                fireCharacter.GetComponent<AIPlayerController>().moveRate = 5f;
             beyblading = false;
         }
     }

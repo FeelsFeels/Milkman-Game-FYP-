@@ -16,7 +16,7 @@ public class MovementSimulation : BaseSimulation
     public override void ResetSimulation()
     {
         StopAllCoroutines();
-
+        player1.ResetStates();
         if (player1 && player1ResetPos)
         {
             player1.transform.position = player1ResetPos.position;
