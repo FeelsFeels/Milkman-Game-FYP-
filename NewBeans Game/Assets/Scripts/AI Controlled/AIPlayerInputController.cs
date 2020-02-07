@@ -84,6 +84,7 @@ namespace NewBeans.InstructionsScreen
         }
         public void ResetStates()
         {
+            Move(Direction.Still);
             playerShoot.CancelShoot();
         }
     }

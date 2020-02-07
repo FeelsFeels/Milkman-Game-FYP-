@@ -403,7 +403,8 @@ namespace NewBeans.InstructionsScreen {
             {
                 Destroy(fucker);
             }
-            Destroy(hProjectile);
+            if (hProjectile)
+                hProjectile.FinishHookSequence();
 
         }
     }
