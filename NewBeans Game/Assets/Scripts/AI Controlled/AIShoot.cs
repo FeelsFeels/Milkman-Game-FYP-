@@ -22,6 +22,7 @@ namespace NewBeans.InstructionsScreen {
 
         private AIPlayerController playerScript;
         private ChargingPushVFXController chargingVFXScript;
+        public List<GameObject> objectsToDelete = new List<GameObject>();
 
 
         //States and timing
@@ -145,39 +146,6 @@ namespace NewBeans.InstructionsScreen {
                 }
             }
 
-            ////Charge Push Projectile
-            //if (Input.GetButtonDown(watergunInput) && pushCooldownTimer <= 0)
-            //{
-            //    ChargePushProjectile();
-            //}
-
-            //if (Input.GetButtonUp(watergunInput) && chargingPushProjectile)
-            //{
-            //    //Player anim
-            //    playerAnim.SetBool("Charging", false);
-            //    playerAnim.SetTrigger("Push");
-
-            //    ShootPushProjectile();
-            //}
-
-            //Charge Grappling Hook
-            //if (Input.GetButtonDown(hookInput) && pullCooldownTimer <= 0)
-            //{
-            //    if (hProjectile == null)
-            //    {
-            //        ChargeHook();
-            //    }
-            //}
-
-            //Shoot grappling hook
-            //if (Input.GetButtonUp(hookInput) && chargingGrapplingHook)
-            //{
-            //    ShootHook();
-
-            //    //Player anim
-            //    playerAnim.SetTrigger("Pull");
-            //}
-
             if (hProjectile != null)
                 playerScript.shootingHook = true;
             else
@@ -191,10 +159,6 @@ namespace NewBeans.InstructionsScreen {
             chargingPushProjectile = false;
             chargingIndication.fillAmount = 0;
             animator.SetBool("activateChargeBlink", false);
-
-            //Player anim
-            //playerAnim.SetBool("Charging", false);
-            //playerAnim.SetTrigger("ResetCharge");
         }
 
         private void ChargePushProjectile()
@@ -218,7 +182,8 @@ namespace NewBeans.InstructionsScreen {
             PushProjectile projectile = Instantiate(pushProjectile, new Vector3(shootOrigin.transform.position.x, shootOrigin.transform.position.y, shootOrigin.transform.position.z)
                                                                                 , Quaternion.identity).GetComponent<PushProjectile>();
 
-            //print("Time charged: " + timeCharged + "\n" + "Multiplier: " + KnockbackMultiplier(timeCharged));
+            objectsToDelete.Add(projectile.gameObject);
+
             projectile.ShotInitialised(KnockbackMultiplier(timeCharged), SmallMultiplier(timeCharged), shootOrigin.forward, gameObject);
 
             //Scale projectile size and rotation
@@ -415,6 +380,31 @@ namespace NewBeans.InstructionsScreen {
                 //Player anim
                 playerAnim.SetTrigger("Pull");
             }
+        }
+
+        //For exiting menus
+        public void CancelShoot()
+        {
+            //Stop charging
+            playerAnim.SetBool("Charging", false);
+            playerAnim.SetTrigger("ResetCharge");
+            chargingPushProjectile = false;
+            pushChargedTime = 0;
+            chargingIndication.gameObject.SetActive(true);
+            chargingIndication.fillAmount = 0;
+            aimingArrows.SetActive(false);
+
+            //Stop ultimates and vfx
+            chargingVFXScript.StopVFX();
+            playerScript.playerSkillSet.ForceEndUltimateSkill();
+
+            //Destroying of objects
+            foreach (GameObject fucker in objectsToDelete)
+            {
+                Destroy(fucker);
+            }
+            Destroy(hProjectile);
+
         }
     }
 }

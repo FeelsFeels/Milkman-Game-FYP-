@@ -82,5 +82,9 @@ namespace NewBeans.InstructionsScreen
         {
             playerShoot.ReleasePullButton();
         }
+        public void ResetStates()
+        {
+            playerShoot.CancelShoot();
+        }
     }
 }

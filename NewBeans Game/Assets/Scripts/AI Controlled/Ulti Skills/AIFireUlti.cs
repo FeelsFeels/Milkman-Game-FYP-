@@ -140,7 +140,8 @@ namespace NewBeans.InstructionsScreen
         {
             base.EndUltimate(playerSkillManager);
             StopAllCoroutines();
-            fireCharacter.GetComponent<AIPlayerController>().moveRate = 5f;
+            if(fireCharacter)
+                fireCharacter.GetComponent<AIPlayerController>().moveRate = 5f;
             beyblading = false;
         }
     }

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ControlsScreenUINavigation : MonoBehaviour
 {
@@ -129,8 +130,8 @@ public class ControlsScreenUINavigation : MonoBehaviour
 
     public void Select()
     {
-        selectableButtons[currentSelectedIndex].GetComponent<ControlsScreenUIPanel>().ShowPanel();
-
+        //selectableButtons[currentSelectedIndex].GetComponent<ControlsScreenUIPanel>().ShowPanel();
+        selectableButtons[currentSelectedIndex].GetComponentInChildren<Button>().onClick.Invoke();
     }
 
     public void Cancel()
