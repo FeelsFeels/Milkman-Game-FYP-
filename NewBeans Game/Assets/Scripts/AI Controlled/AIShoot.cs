@@ -390,9 +390,16 @@ namespace NewBeans.InstructionsScreen {
             playerAnim.SetTrigger("ResetCharge");
             chargingPushProjectile = false;
             pushChargedTime = 0;
+            pushCooldownTimer = 0;
+            pullCooldownTimer = 0;
             chargingIndication.gameObject.SetActive(true);
             chargingIndication.fillAmount = 0;
             aimingArrows.SetActive(false);
+            playerScript.rb.velocity = Vector3.zero;
+            playerScript.playerStunned = false;
+            playerScript.stunnedTime = 0f;
+            playerScript.stunDuration = 0f;
+            playerScript.dizzyStars.SetActive(false);
 
             //Stop ultimates and vfx
             chargingVFXScript.StopVFX();
