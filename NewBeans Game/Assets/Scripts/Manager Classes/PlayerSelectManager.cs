@@ -60,10 +60,7 @@ public class PlayerSelectManager : MonoBehaviour
         {
             if (Input.GetButtonDown("AButton (Controller " + playersJoined.First() + ")"))  //Take only player 1's input to start game
             {
-                SceneManager.LoadScene(SceneToLoad);
-
-                FindObjectOfType<AudioPlayer>().PlayMusic("EarthTrack");
-                
+                SceneManager.LoadScene(SceneToLoad);           
             }
         }
     }
