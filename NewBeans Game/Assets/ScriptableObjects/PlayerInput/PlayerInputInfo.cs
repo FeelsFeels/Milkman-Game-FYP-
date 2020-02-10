@@ -14,6 +14,8 @@ public class PlayerInputInfo : ScriptableObject
     public string RightHorizontalAxis;
     public string RightVerticalAxis;
     public string RightBumper;
+    public string LeftTrigger; //Pulling input
+    public string RightTrigger; //Pushing input
 
     public int chosenCharacterIndex;
     public CharacterData chosenCharacterData;
@@ -31,5 +33,7 @@ public class PlayerInputInfo : ScriptableObject
         RightHorizontalAxis = string.Format("RightHorizontal (Controller {0})", controllerNumber);
         RightVerticalAxis = string.Format("RightVertical (Controller {0})", controllerNumber);
         RightBumper = string.Format("RightBumper (Controller {0})", controllerNumber);
+        LeftTrigger = string.Format("LeftTrigger (Controller {0})", controllerNumber);
+        RightTrigger = string.Format("RightTrigger (Controller {0})", controllerNumber);
     }
 }

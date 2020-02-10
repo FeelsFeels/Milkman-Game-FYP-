@@ -19,6 +19,9 @@ public class SkillSetManager : MonoBehaviour
     public float chargePercentage;
     string AButtonInput;
     string BButtonInput;
+    string PushTriggerInput;
+    string PullTriggerInput;
+
     public bool ultiIsActivated; // Is the ultimate skill currently in use?
 
     [Header("Skill prefabs in order of Fire, Water, Earth & Lightning")]
@@ -72,9 +75,9 @@ public class SkillSetManager : MonoBehaviour
             //ActivateReadyParticles();
 
             //Check inputs
-            if(Input.GetButton(AButtonInput))
+            if(Input.GetButton(AButtonInput) || Input.GetAxis(PushTriggerInput) > 0.5) //Check if push button down
             {
-                if (Input.GetButton(BButtonInput))
+                if (Input.GetButton(BButtonInput) || Input.GetAxis(PullTriggerInput)> 0.5) //Check if pull button down
                 {
                     //Disable Push and Pull
                     this.gameObject.GetComponent<Shoot>().playerCannotShoot = true;
@@ -134,10 +137,12 @@ public class SkillSetManager : MonoBehaviour
         }
     }
 
-    public void SetInputs(string A, string B)
+    public void SetInputs(string A, string B, string Right, string Left)
     {
         AButtonInput = A;
         BButtonInput = B;
+        PushTriggerInput = Right;
+        PullTriggerInput = Left;
     }
 
     /// *********************************

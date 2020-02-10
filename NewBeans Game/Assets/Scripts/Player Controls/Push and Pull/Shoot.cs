@@ -142,12 +142,12 @@ public class Shoot : MonoBehaviour
         }
 
         //Charge Push Projectile
-        if (Input.GetButtonDown(watergunInput) && pushCooldownTimer <= 0)
+        if (Input.GetButtonDown(watergunInput) && pushCooldownTimer <= 0 || Input.GetAxis(playerScript.RightTrigger) > 0.5 && pushCooldownTimer <= 0)
         {
             ChargePushProjectile();
         }
         
-        if (Input.GetButtonUp(watergunInput) && chargingPushProjectile)
+        if (Input.GetButtonUp(watergunInput) && chargingPushProjectile || Input.GetAxisRaw(playerScript.RightTrigger) == 0 && chargingPushProjectile)
         {
             //Player anim
             playerAnim.SetBool("Charging", false);
@@ -157,7 +157,7 @@ public class Shoot : MonoBehaviour
         }
 
         //Charge Grappling Hook
-        if (Input.GetButtonDown(hookInput) && pullCooldownTimer <= 0)
+        if (Input.GetButtonDown(hookInput) && pullCooldownTimer <= 0 || Input.GetAxisRaw(playerScript.LeftTrigger) > 0.5 && pullCooldownTimer <= 0)
         {
             if (hProjectile == null)
             {
@@ -166,7 +166,7 @@ public class Shoot : MonoBehaviour
         }
 
         //Shoot grappling hook
-        if (Input.GetButtonUp(hookInput) && chargingGrapplingHook)
+        if (Input.GetButtonUp(hookInput) && chargingGrapplingHook || Input.GetAxisRaw(playerScript.LeftTrigger) == 0 && chargingGrapplingHook)
         {
             ShootHook();
 
@@ -258,6 +258,10 @@ public class Shoot : MonoBehaviour
 
         animator.SetBool("backToNull", true); // Stops the shoot charging animation
 
+        playerAnim.SetBool("Charging", false); //Reset charging player anim
+        playerAnim.SetTrigger("ResetCharge"); 
+
+
         List<Collider> colliders = new List<Collider>();
         colliders.AddRange(Physics.OverlapSphere(transform.position, explodeRadius, playerLayer)); //Find all players in range
         Debug.Log("Shotgunning");
@@ -276,7 +280,7 @@ public class Shoot : MonoBehaviour
             Transform other = player.transform;
             Vector3 dir = (other.position - this.transform.position).normalized; //Find the direction from origin to other player
             float angle = 90 - Mathf.Atan2(dir.z, dir.x) * Mathf.Rad2Deg; //Find the angle of the direction, multiply by rad2deg to convert to degrees
-            print((Mathf.DeltaAngle(this.transform.eulerAngles.y, angle)));
+            //print((Mathf.DeltaAngle(this.transform.eulerAngles.y, angle)));
             if (Mathf.Abs(Mathf.DeltaAngle(this.transform.eulerAngles.y, angle)) < (explodeSpreadAngle/2)) //If the angle difference between this object's forward and the direction is < spread angle,
             {
                 

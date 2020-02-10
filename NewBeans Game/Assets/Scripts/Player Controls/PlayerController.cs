@@ -38,6 +38,8 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public string RightHorizontalAxis;
     [HideInInspector] public string RightVerticalAxis;
     [HideInInspector] public string RightBumper;
+    [HideInInspector] public string LeftTrigger;
+    [HideInInspector] public string RightTrigger;
 
     [Header("Player Movement")]
     public float playerTurnSmoothing = 10f;
@@ -102,12 +104,18 @@ public class PlayerController : MonoBehaviour
             if (inputInfo.RightBumper != null)
                 RightBumper = inputInfo.RightBumper;
 
+            //Set trigger button inputs
+            if (inputInfo.LeftTrigger != null)
+                LeftTrigger = inputInfo.LeftTrigger;
+            if (inputInfo.RightTrigger != null)
+                RightTrigger = inputInfo.RightTrigger;
+
             //Set what character this player is playing
             if (inputInfo.chosenCharacterData != null)
             {
                 playerSkillSet = GetComponentInChildren<SkillSetManager>();
                 playerSkillSet.SetCharacter(inputInfo.chosenCharacterData.character);
-                playerSkillSet.SetInputs(AButtonInput, BButtonInput);
+                playerSkillSet.SetInputs(AButtonInput, BButtonInput, RightTrigger, LeftTrigger);
 
                 if (inputInfo.chosenCharacterData.characterUltiReadyVFX != null)
                 {
