@@ -87,18 +87,31 @@ public class ControllerUINavigation : MonoBehaviour
 
     public void MoveNavigationDown()
     {
-        if (currentSelectedIndex >= selectableButtons.Length - 1)
-            return;
+        Debug.Log("Move down");
 
-        currentSelectedIndex++;
-        eventSystem.SetSelectedGameObject(selectableButtons[currentSelectedIndex]);
+        if (currentSelectedIndex >= selectableButtons.Length - 1)
+        {
+            currentSelectedIndex = 0;
+
+        }
+        else
+        {
+            currentSelectedIndex++;
+        }
+            eventSystem.SetSelectedGameObject(selectableButtons[currentSelectedIndex]);
+
     }
     public void MoveNavigationUp()
     {
+        Debug.Log("Move up");
         if (currentSelectedIndex <= 0)
-            return;
-
-        currentSelectedIndex--;
+        {
+            currentSelectedIndex = selectableButtons.Length - 1;
+        }
+        else
+        {
+            currentSelectedIndex--;
+        }
         eventSystem.SetSelectedGameObject(selectableButtons[currentSelectedIndex]);
     }
 }
