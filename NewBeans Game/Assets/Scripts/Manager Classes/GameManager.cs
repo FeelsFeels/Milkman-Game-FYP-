@@ -237,19 +237,20 @@ public class GameManager : MonoBehaviour
     
     public void OnPlayerDeath(PlayerController playerDead, PlayerController killer)
     {
-        if (gameState == GameStates.Score)
-        {
-            if (scoreManager == null)
-                return;
-            scoreManager.ChangeScore(playerDead, killer);
-            commentaryManager.CheckPlayerKill(playerDead, killer);
-        }
-        else if (gameState == GameStates.LastManStanding)
-        {
-            if (LMSManager == null)
-                return;
-            LMSManager.ReduceLives(playerDead, killer);
-            commentaryManager.CheckPlayerKill(playerDead, killer);
-        }
+        commentaryManager.CheckPlayerKill(playerDead, killer);
+        //if (gameState == GameStates.Score)
+        //{
+        //    if (scoreManager == null)
+        //        return;
+        //    scoreManager.ChangeScore(playerDead, killer);
+        //    commentaryManager.CheckPlayerKill(playerDead, killer);
+        //}
+        //else if (gameState == GameStates.LastManStanding)
+        //{
+        //    if (LMSManager == null)
+        //        return;
+        //    LMSManager.ReduceLives(playerDead, killer);
+        //    commentaryManager.CheckPlayerKill(playerDead, killer);
+        //}
     }
 }
