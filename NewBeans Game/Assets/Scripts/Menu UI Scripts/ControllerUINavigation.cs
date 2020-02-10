@@ -18,11 +18,13 @@ public class ControllerUINavigation : MonoBehaviour
     public float autoRepeatDelay;
 
     public string verticalInputString;
+    public string selectionInputString;
+    public string cancelInputString;
 
     private void Awake()
     {
         eventSystem = FindObjectOfType<EventSystem>();
-        eventSystem.SetSelectedGameObject(selectableButtons[0]);
+        //eventSystem.SetSelectedGameObject(selectableButtons[0]);
     }
 
     private void Update()
@@ -75,6 +77,10 @@ public class ControllerUINavigation : MonoBehaviour
                     }
                 }
             }
+        }
+        if (Input.GetButtonDown(selectionInputString))
+        {
+            selectableButtons[currentSelectedIndex].GetComponent<Button>().onClick.Invoke();
         }
 
     }
