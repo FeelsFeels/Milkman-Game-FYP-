@@ -144,7 +144,8 @@ public class Shoot : MonoBehaviour
         //Charge Push Projectile
         if (Input.GetButtonDown(watergunInput) && pushCooldownTimer <= 0 || Input.GetAxis(playerScript.RightTrigger) > 0.5 && pushCooldownTimer <= 0)
         {
-            ChargePushProjectile();
+            if(!chargingPushProjectile)
+                ChargePushProjectile();
         }
         
         if (Input.GetButtonUp(watergunInput) && chargingPushProjectile || Input.GetAxisRaw(playerScript.RightTrigger) == 0 && chargingPushProjectile)
@@ -198,6 +199,7 @@ public class Shoot : MonoBehaviour
         if (playerCannotShoot) return;
         if (chargingGrapplingHook) return;
 
+        print("Starting");
         chargingVFXScript.StartVFX();
         aimingArrows.SetActive(true);
         chargingPushProjectile = true;

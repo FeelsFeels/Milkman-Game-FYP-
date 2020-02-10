@@ -57,8 +57,7 @@ public class GameManager : MonoBehaviour
     
 
     [Header("Audio")]
-    private AudioSource audioSource;
-    public AudioClip bgm;
+    public string bgmString;
 
     [Space]
     public float killCountDownTimer;
@@ -88,7 +87,6 @@ public class GameManager : MonoBehaviour
         //Find References
         eventsManager = FindObjectOfType<EventsManager>();
         resultsScreen = FindObjectOfType<BaseResultsScreen>();
-        theAudio = GetComponent<AudioSource>();
         //Sort PlayerList
         PlayerController[] tempPCList = FindObjectsOfType<PlayerController>();
         foreach (PlayerController pc in tempPCList)
@@ -108,12 +106,13 @@ public class GameManager : MonoBehaviour
         }
         playerScript.Sort(delegate (PlayerController p1, PlayerController p2) { return p1.playerNumber.CompareTo(p2.playerNumber); });
 
+        AudioPlayer audioPlayer = FindObjectOfType<AudioPlayer>();
+        if(audioPlayer)
+            audioPlayer.PlayMusic(bgmString);
     }
     
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-
         //Countdown hack (pls change)
         PlayerController[] allPlayers = FindObjectsOfType<PlayerController>();
         foreach (PlayerController p in allPlayers)
@@ -226,7 +225,9 @@ public class GameManager : MonoBehaviour
     public void LoadScene(string sceneName)
     {
         Time.timeScale = 1;
-        FindObjectOfType<AudioManager>().StopAllSounds();
+        AudioManager audioManager = FindObjectOfType<AudioManager>();
+        if (audioManager) audioManager.StopAllSounds();
+
         SceneManager.LoadScene(sceneName);
     }
 
