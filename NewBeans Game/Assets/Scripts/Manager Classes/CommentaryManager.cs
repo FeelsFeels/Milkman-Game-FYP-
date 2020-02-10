@@ -38,7 +38,7 @@ public class CommentaryManager : MonoBehaviour
         }
     }
 
-    void AudienceJump()
+    public void AudienceJump()
     {
         foreach(Transform audience in audienceHolders)
         {
