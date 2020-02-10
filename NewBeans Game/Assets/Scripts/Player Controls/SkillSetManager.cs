@@ -145,8 +145,6 @@ public class SkillSetManager : MonoBehaviour
     /// *********************************
     public void ChargeSpecialSkill(float projectileKnockback)
     {
-        Debug.Log("I feel stronger each time");
-
         //Increase thy ulti charge
         currentCharge = Mathf.Min(currentCharge + projectileKnockback, fullChargeAmount);//Make sure current charge never exceedsss the max
 
