@@ -41,7 +41,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1271396614412297831}
   serializedVersion: 6
-  lengthInSec: 20
+  lengthInSec: 5
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -9644,7 +9644,7 @@ GameObject:
   - component: {fileID: 3932049978993134061}
   - component: {fileID: 3932049978993134060}
   m_Layer: 0
-  m_Name: Lightning_PushHit_VFX
+  m_Name: Lightning_Ulti_Ready_VFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9658,7 +9658,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3932049978993134035}
   m_LocalRotation: {x: -0, y: -0.9825121, z: 0, w: 0.18619876}
-  m_LocalPosition: {x: 19.69, y: 2.74, z: -1.51}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3932049977964756636}
@@ -9675,15 +9675,15 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3932049978993134035}
   serializedVersion: 6
-  lengthInSec: 0.2
+  lengthInSec: 5
   simulationSpeed: 1
-  stopAction: 2
+  stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
-  prewarm: 0
-  playOnAwake: 1
+  prewarm: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
