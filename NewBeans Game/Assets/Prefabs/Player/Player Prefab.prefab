@@ -1,96 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4909970151227387751
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 9104125665925506657}
-  - component: {fileID: 7873745911914767912}
-  m_Layer: 10
-  m_Name: Spotlight
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &9104125665925506657
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4909970151227387751}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.3899999, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
-  m_Children: []
-  m_Father: {fileID: 9217587416402060012}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!108 &7873745911914767912
-Light:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4909970151227387751}
-  m_Enabled: 1
-  serializedVersion: 9
-  m_Type: 0
-  m_Color: {r: 1, g: 0.74729484, b: 0, a: 1}
-  m_Intensity: 20
-  m_Range: 15
-  m_SpotAngle: 90
-  m_InnerSpotAngle: 9
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-    m_CullingMatrixOverride:
-      e00: 1
-      e01: 0
-      e02: 0
-      e03: 0
-      e10: 0
-      e11: 1
-      e12: 0
-      e13: 0
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 2837
-  m_RenderingLayerMask: 1
-  m_Lightmapping: 4
-  m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 0
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_UseBoundingSphereOverride: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
 --- !u!1 &6953021251735089282
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,7 +173,6 @@ Transform:
   - {fileID: 9217587416420445605}
   - {fileID: 6173563024200512042}
   - {fileID: 825279940303305455}
-  - {fileID: 9104125665925506657}
   - {fileID: 766159135614644032}
   - {fileID: 7673878838862074728}
   m_Father: {fileID: 0}
@@ -337,6 +245,8 @@ MonoBehaviour:
   RightHorizontalAxis: 
   RightVerticalAxis: 
   RightBumper: 
+  LeftTrigger: 
+  RightTrigger: 
   playerTurnSmoothing: 10
   turnSmoothTime: 0.1
   moveRate: 5
@@ -421,6 +331,7 @@ MonoBehaviour:
   chargingPushVFX: {fileID: 0}
   skillReadyParticleFX: {fileID: 766159135614644037}
   testingPurposes: 0
+  playerAnim: {fileID: 0}
 --- !u!1 &9217587416420445602
 GameObject:
   m_ObjectHideFlags: 0
@@ -1196,7 +1107,7 @@ PrefabInstance:
     - target: {fileID: 766159135041655956, guid: 05ed73577c2bd55499aab7bc19b9b64d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 766159135041655956, guid: 05ed73577c2bd55499aab7bc19b9b64d,
         type: 3}
@@ -1277,7 +1188,7 @@ PrefabInstance:
     - target: {fileID: 5387567645522836216, guid: 4abbe849fc2065d4ba62b3d358b17116,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5387567645522836216, guid: 4abbe849fc2065d4ba62b3d358b17116,
         type: 3}
@@ -1293,6 +1204,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5387567645522836222, guid: 4abbe849fc2065d4ba62b3d358b17116,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4abbe849fc2065d4ba62b3d358b17116, type: 3}

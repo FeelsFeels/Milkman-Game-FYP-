@@ -24,6 +24,8 @@ MonoBehaviour:
     type: 3}
   chargingPushVFX: {fileID: 3819608418466614264, guid: bfc5462d248a4ce4badc10529f6a38c3,
     type: 3}
+  shotgunVFX: {fileID: 6535644907284322582, guid: fc6d9c4bf4daaa64dbda27f476a5b108,
+    type: 3}
   characterColor:
     serializedVersion: 2
     rgba: 4278255431

@@ -208,8 +208,7 @@ public class Shoot : MonoBehaviour
     {
         if (playerCannotShoot) return;
         if (chargingGrapplingHook) return;
-
-        print("Starting");
+        
         chargingVFXScript.StartVFX();
         aimingArrows.SetActive(true);
         chargingPushProjectile = true;
@@ -226,7 +225,7 @@ public class Shoot : MonoBehaviour
         PushProjectile projectile = Instantiate(pushProjectile, new Vector3(shootOrigin.transform.position.x, shootOrigin.transform.position.y, shootOrigin.transform.position.z)
                                                                             , Quaternion.identity).GetComponent<PushProjectile>();
 
-        //print("Time charged: " + timeCharged + "\n" + "Multiplier: " + KnockbackMultiplier(timeCharged));
+
         projectile.ShotInitialised(KnockbackMultiplier(timeCharged), SmallMultiplier(timeCharged), shootOrigin.forward, gameObject);
 
         //Scale projectile size and rotation
@@ -276,23 +275,19 @@ public class Shoot : MonoBehaviour
 
         List<Collider> colliders = new List<Collider>();
         colliders.AddRange(Physics.OverlapSphere(transform.position, explodeRadius, playerLayer)); //Find all players in range
-        Debug.Log("Shotgunning");
 
         if (colliders.Contains(this.GetComponent<Collider>())) //If it includes this player,
         {
             colliders.Remove(this.GetComponent<Collider>()); // remove
-            //Debug.Log("Remove self");
         }
-
-        //Debug.Log(colliders.Count);
+        
 
         foreach (Collider player in colliders)
         {
-            //Debug.Log("hi");
             Transform other = player.transform;
             Vector3 dir = (other.position - this.transform.position).normalized; //Find the direction from origin to other player
             float angle = 90 - Mathf.Atan2(dir.z, dir.x) * Mathf.Rad2Deg; //Find the angle of the direction, multiply by rad2deg to convert to degrees
-            //print((Mathf.DeltaAngle(this.transform.eulerAngles.y, angle)));
+
             if (Mathf.Abs(Mathf.DeltaAngle(this.transform.eulerAngles.y, angle)) < (explodeSpreadAngle/2)) //If the angle difference between this object's forward and the direction is < spread angle,
             {
                 

@@ -11,6 +11,7 @@ public class CharacterData : ScriptableObject
     public GameObject characterUltiReadyVFX;
     public GameObject chargingPushModel;
     public GameObject chargingPushVFX;
+    public GameObject shotgunVFX;
     public Color32 characterColor;
     public GameObject characterUI_Left;
     public GameObject characterUI_Right;

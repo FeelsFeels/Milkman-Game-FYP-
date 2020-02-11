@@ -113,21 +113,33 @@ public class PlayerController : MonoBehaviour
             //Set what character this player is playing
             if (inputInfo.chosenCharacterData != null)
             {
+                //Setting inputs for ulti skill
                 playerSkillSet = GetComponentInChildren<SkillSetManager>();
                 playerSkillSet.SetCharacter(inputInfo.chosenCharacterData.character);
                 playerSkillSet.SetInputs(AButtonInput, BButtonInput, RightTrigger, LeftTrigger);
 
+                //Setting ulti ready vfx
                 if (inputInfo.chosenCharacterData.characterUltiReadyVFX != null)
                 {
                     GameObject newVFX = Instantiate(inputInfo.chosenCharacterData.characterUltiReadyVFX, transform);
                     newVFX.SetActive(false);
                     playerSkillSet.skillReadyParticleFX = newVFX;
                 }
+
+                //Setting character Model
                 if (inputInfo.chosenCharacterData.characterPrefab != null)
                 {
                     GameObject newModel = Instantiate(inputInfo.chosenCharacterData.characterPrefab, transform.Find("Character Model"));
                     animator = newModel.GetComponent<Animator>();
                     defaultCharacterModel.SetActive(false);
+                }
+                //Shotgun particles on shoot
+                if (inputInfo.chosenCharacterData.shotgunVFX != null)
+                {
+                    GameObject newModel = Instantiate(inputInfo.chosenCharacterData.shotgunVFX);
+                    newModel.transform.parent = transform;
+                    newModel.transform.localPosition = new Vector3(0, 0, 3.77f);
+                    playerShoot.shotgunParticles = newModel.GetComponent<ParticleSystem>();
                 }
             }
 
