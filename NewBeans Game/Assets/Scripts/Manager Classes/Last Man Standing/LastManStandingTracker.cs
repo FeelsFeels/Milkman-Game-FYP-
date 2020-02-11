@@ -118,4 +118,14 @@ public class LastManStandingTracker : MonoBehaviour
         }
     }
 
+    public void UpdateHitUI(PlayerInputInfo playerToUpdate)
+    {
+        foreach (LastManStandingUI ui in lastManStandingUIs)
+        {
+            ui.UpdateHurtUI(playerToUpdate);
+        }
+    }
+
+
+
 }

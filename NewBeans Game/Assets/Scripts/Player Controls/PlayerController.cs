@@ -269,6 +269,9 @@ public class PlayerController : MonoBehaviour
         stunDuration = 0.25f;
         playerShoot.ForceStopChargingVFX();
         dizzyStars.SetActive(true);
+
+        //Update hurt ui
+        FindObjectOfType<LastManStandingTracker>().UpdateHitUI(inputInfo); //Might have a better way to code it :thinking:
     }
 
     public void Hit(float timeToStun)
@@ -278,6 +281,9 @@ public class PlayerController : MonoBehaviour
         stunnedTime = 0;
         stunDuration = timeToStun;
         dizzyStars.SetActive(true);
+
+        //Update hurt ui
+        FindObjectOfType<LastManStandingTracker>().UpdateHitUI(inputInfo);
     }
 
     /// *********************************

@@ -12,6 +12,9 @@ public class LastManStandingUI : MonoBehaviour
     public Slider ultiCharge;
     public bool UIOnLeft;
     GameObject auraObj;
+    GameObject hurtSprite;
+    bool hurt;
+
 
     private void Awake()
     {
@@ -73,6 +76,10 @@ public class LastManStandingUI : MonoBehaviour
             if(characterUI.transform.Find("Aura") != null)
             {
                 auraObj = characterUI.transform.Find("Aura").gameObject;
+            }
+            if (characterUI.transform.Find("Player_Hurt") != null)
+            {
+                hurtSprite = characterUI.transform.Find("Player_Hurt").gameObject;
             }
 
             gameObject.SetActive(true);
@@ -141,6 +148,31 @@ public class LastManStandingUI : MonoBehaviour
                 auraObj.SetActive(false);
             }
         }
+
+    }
+
+    public void UpdateHurtUI(PlayerInputInfo hurtPlayer)
+    {
+        if (trackedPlayer != hurtPlayer)
+            return;
+
+        if (hurtSprite != null)
+        {
+            hurtSprite.SetActive(true);
+
+            if (!hurt)
+                StartCoroutine(TurnOffSprite());
+        }
+    }
+
+
+    IEnumerator TurnOffSprite()
+    {
+        hurt = true;
+        yield return new WaitForSeconds(1); // Wait for 1 second
+
+        hurtSprite.SetActive(false);
+        hurt = false;
 
     }
 
