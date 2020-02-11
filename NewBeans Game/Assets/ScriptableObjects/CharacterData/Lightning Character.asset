@@ -18,7 +18,7 @@ MonoBehaviour:
     type: 3}
   hookProjectile: {fileID: 2992602490277621422, guid: b747d60811b640c49bd91c241c86f158,
     type: 3}
-  characterUltiReadyVFX: {fileID: 3932049978993134035, guid: 6bf6aa7df7221cb4e84b3cb44a343e24,
+  characterUltiReadyVFX: {fileID: 8408088902807078774, guid: 6bf6aa7df7221cb4e84b3cb44a343e24,
     type: 3}
   chargingPushModel: {fileID: 1747899710422237806, guid: dad92859b8c42d64c958e44f2bf48e39,
     type: 3}
