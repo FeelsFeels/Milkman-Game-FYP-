@@ -22,7 +22,7 @@ MonoBehaviour:
   RightVerticalAxis: RightVertical (Controller 4)
   RightBumper: RightBumper (Controller 4)
   LeftTrigger: LeftTrigger (Controller 4)
-  RightTrigger: RightTrigger (Controller 1)
+  RightTrigger: RightTrigger (Controller 4)
   chosenCharacterIndex: 0
   chosenCharacterData: {fileID: 11400000, guid: 34773c0ea191fa842bd8f64dc567869d,
     type: 2}

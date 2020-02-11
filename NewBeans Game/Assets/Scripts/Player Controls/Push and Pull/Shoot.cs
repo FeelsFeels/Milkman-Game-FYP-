@@ -46,6 +46,8 @@ public class Shoot : MonoBehaviour
 
     ///If we want to use the Input Manager
     public bool usingRightBumper = true;
+    bool leftTriggerDown;
+    bool rightTriggerDown;
     public string watergunInput;
     public string chargingInput;
     public string hookInput;
@@ -144,15 +146,20 @@ public class Shoot : MonoBehaviour
         //Charge Push Projectile
         if (Input.GetButtonDown(watergunInput) && pushCooldownTimer <= 0 || Input.GetAxis(playerScript.RightTrigger) > 0.5 && pushCooldownTimer <= 0)
         {
-            if(!chargingPushProjectile)
+            if (!chargingPushProjectile)
+            {
                 ChargePushProjectile();
+                if(Input.GetAxis(playerScript.RightTrigger) > 0.5)
+                    rightTriggerDown = true;
+            }
         }
         
-        if (Input.GetButtonUp(watergunInput) && chargingPushProjectile || Input.GetAxisRaw(playerScript.RightTrigger) == 0 && chargingPushProjectile)
+        if (Input.GetButtonUp(watergunInput) && chargingPushProjectile || Input.GetAxisRaw(playerScript.RightTrigger) == 0 && chargingPushProjectile && rightTriggerDown)
         {
             //Player anim
             playerAnim.SetBool("Charging", false);
             playerAnim.SetTrigger("Push");
+            rightTriggerDown = false;
 
             ShootPushProjectile();
         }
@@ -163,16 +170,19 @@ public class Shoot : MonoBehaviour
             if (hProjectile == null)
             {
                 ChargeHook();
+                if (Input.GetAxisRaw(playerScript.LeftTrigger) > 0.5)
+                    leftTriggerDown = true;
             }
         }
 
         //Shoot grappling hook
-        if (Input.GetButtonUp(hookInput) && chargingGrapplingHook || Input.GetAxisRaw(playerScript.LeftTrigger) == 0 && chargingGrapplingHook)
+        if (Input.GetButtonUp(hookInput) && chargingGrapplingHook || Input.GetAxisRaw(playerScript.LeftTrigger) == 0 && chargingGrapplingHook && leftTriggerDown)
         {
-            ShootHook();
-
             //Player anim
             playerAnim.SetTrigger("Pull");
+            leftTriggerDown = false;
+            ShootHook();
+
         }
 
         if (hProjectile != null)

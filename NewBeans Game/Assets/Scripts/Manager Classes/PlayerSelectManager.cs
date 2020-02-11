@@ -60,7 +60,13 @@ public class PlayerSelectManager : MonoBehaviour
         {
             if (Input.GetButtonDown("AButton (Controller " + playersJoined.First() + ")"))  //Take only player 1's input to start game
             {
-                SceneManager.LoadScene(SceneToLoad);           
+                SceneManagement sceneManagement = FindObjectOfType<SceneManagement>();
+                if (sceneManagement)
+                {
+                    sceneManagement.LoadSceneWithLoadingScreen(SceneToLoad);
+                }
+                else
+                    SceneManager.LoadScene(SceneToLoad);
             }
         }
     }

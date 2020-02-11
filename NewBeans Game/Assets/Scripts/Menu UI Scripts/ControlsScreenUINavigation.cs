@@ -24,10 +24,13 @@ public class ControlsScreenUINavigation : MonoBehaviour
     public string selectionInputString;
     public string cancelInputString;
 
+    AudioManager audioManager;
+
     private void Awake()
     {
         eventSystem = FindObjectOfType<EventSystem>();
         eventSystem.SetSelectedGameObject(selectableButtons[0]);
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     private void Update()
@@ -132,6 +135,7 @@ public class ControlsScreenUINavigation : MonoBehaviour
     {
         //selectableButtons[currentSelectedIndex].GetComponent<ControlsScreenUIPanel>().ShowPanel();
         selectableButtons[currentSelectedIndex].GetComponentInChildren<Button>().onClick.Invoke();
+        audioManager.Play("Button Selected");
     }
 
     public void Cancel()
@@ -141,6 +145,6 @@ public class ControlsScreenUINavigation : MonoBehaviour
 
     public void ReturnToMenu()
     {
-        SceneManager.LoadScene("TitleScreen");
+        SceneManager.LoadScene("MainMenu");
     }
 }

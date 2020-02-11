@@ -36,9 +36,15 @@ public class SkillSetManager : MonoBehaviour
     // For updating UI
     public UnityEvent<SkillSetManager> OnChargeUltimate = new ChargeUltiEvent();
 
+    public Animator playerAnim; //player animation
+
+
     // Start is called before the first frame update
     void Start()
     {
+        playerAnim = transform.Find("Character Model").GetComponentInChildren<Animator>();
+
+
         // Set the dictionary
         // I'm not sure if there's a better way to do this other than to hard code, but thankfull there's only 4 enums
         // Why doesn't dictionary have an add range function
@@ -85,6 +91,11 @@ public class SkillSetManager : MonoBehaviour
                     //Release unique ulti skill
                     Debug.Log("You have released the kraken");
                     ReleaseSpecialSkill();
+
+                    //Make sure anim is reset
+                    playerAnim.SetBool("Charging", false);
+                    playerAnim.SetTrigger("ResetCharge");
+
                 }
             }
         }
