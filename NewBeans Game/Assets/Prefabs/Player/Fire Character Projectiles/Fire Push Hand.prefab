@@ -5718,7 +5718,7 @@ MonoBehaviour:
   playerHit: {fileID: 0}
   exploding: 0
   rb: {fileID: 6176825336639038437}
-  hitParticles: {fileID: 3538716374814140137, guid: dfb8a09a906005b41b4b4ee29d6ba0a3,
+  hitParticles: {fileID: 7705307819961819572, guid: dfb8a09a906005b41b4b4ee29d6ba0a3,
     type: 3}
   trailRenderer: {fileID: 621585108608179119}
   audioManager: {fileID: 0}
@@ -5944,11 +5944,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5848959792455855942}
     m_Modifications:
-    - target: {fileID: 2536921192467149037, guid: dd2681b17c1f1d646bf990679eb0ed64,
-        type: 3}
-      propertyPath: m_Name
-      value: Particle Fire Ring
-      objectReference: {fileID: 0}
     - target: {fileID: 2536921192467149034, guid: dd2681b17c1f1d646bf990679eb0ed64,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6018,6 +6013,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536921192467149037, guid: dd2681b17c1f1d646bf990679eb0ed64,
+        type: 3}
+      propertyPath: m_Name
+      value: Particle Fire Ring
       objectReference: {fileID: 0}
     - target: {fileID: 2536921192467149032, guid: dd2681b17c1f1d646bf990679eb0ed64,
         type: 3}
