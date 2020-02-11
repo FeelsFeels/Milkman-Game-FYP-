@@ -1205,16 +1205,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5848959792455855942}
     m_Modifications:
-    - target: {fileID: 2536921192467149037, guid: dd2681b17c1f1d646bf990679eb0ed64,
-        type: 3}
-      propertyPath: m_Name
-      value: Particle Fire Ring
-      objectReference: {fileID: 0}
-    - target: {fileID: 2536921192467149037, guid: dd2681b17c1f1d646bf990679eb0ed64,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2536921192467149034, guid: dd2681b17c1f1d646bf990679eb0ed64,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1284,6 +1274,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536921192467149037, guid: dd2681b17c1f1d646bf990679eb0ed64,
+        type: 3}
+      propertyPath: m_Name
+      value: Particle Fire Ring
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536921192467149037, guid: dd2681b17c1f1d646bf990679eb0ed64,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2536921192467149032, guid: dd2681b17c1f1d646bf990679eb0ed64,
         type: 3}
