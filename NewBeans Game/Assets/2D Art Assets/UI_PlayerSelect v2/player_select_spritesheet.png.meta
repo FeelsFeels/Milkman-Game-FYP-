@@ -516,9 +516,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 197
-        y: 307
-        width: 38
-        height: 39
+        y: 138
+        width: 202
+        height: 208
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -528,27 +528,6 @@ TextureImporter:
       bones: []
       spriteID: 3272f45f57613014cb386df214dfce91
       internalID: -5006721903406736881
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_select_spritesheet_14
-      rect:
-        serializedVersion: 2
-        x: 361
-        y: 308
-        width: 38
-        height: 39
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4bd96a3b384304f4e9501254bb807157
-      internalID: -7408181735610082973
       vertices: []
       indices: 
       edges: []
@@ -680,48 +659,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_select_spritesheet_35
-      rect:
-        serializedVersion: 2
-        x: 197
-        y: 138
-        width: 39
-        height: 38
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e617e3c3ec6277249a2afdaec8dafd08
-      internalID: 4575375800183738921
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_select_spritesheet_36
-      rect:
-        serializedVersion: 2
-        x: 360
-        y: 139
-        width: 39
-        height: 38
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4254de2a630127e49bb333f6ff044878
-      internalID: -7238377382785927306
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: player_select_spritesheet_37
       rect:
         serializedVersion: 2
@@ -835,7 +772,7 @@ TextureImporter:
         width: 219
         height: 41
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -856,7 +793,7 @@ TextureImporter:
         width: 224
         height: 39
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -877,7 +814,7 @@ TextureImporter:
         width: 146
         height: 38
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -898,7 +835,7 @@ TextureImporter:
         width: 167
         height: 39
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
