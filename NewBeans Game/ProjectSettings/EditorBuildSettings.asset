@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TitleScreen.unity
-    guid: 28ba3efc9cd82b6439098a9e733eefd5
+    path: Assets/Scenes/MainMenu.unity
+    guid: b87dd0f1ae6baa64e82f192cccd9c865
   - enabled: 1
     path: Assets/Scenes/Controls Instructions Screen v2.unity
     guid: c83d9d03daf967a42a528f3730189a1f
@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/19 Jan 2020 - Eunice Audio.unity
     guid: 6f56669a4d433064f81923c65b12e752
+  - enabled: 1
+    path: Assets/Scenes/TitleScreen.unity
+    guid: 28ba3efc9cd82b6439098a9e733eefd5
   m_configObjects: {}

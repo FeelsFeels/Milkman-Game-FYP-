@@ -9,35 +9,49 @@ public class SceneManagement : MonoBehaviour
 
     public Animator anim;
 
+    [Header("Loading Scenes")]
+    public GameObject loadingPanel;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
         AudioPlayer audioPlayer = FindObjectOfType<AudioPlayer>();
         if (audioPlayer) audioPlayer.PlayMusic("MenuTrack");
     }
-    private void Update()
-    {
 
-    }
-
+    //Old
     public void TitleScreenReady()
     {
         anim.Play("TitleScreen_ReadyToPlay");
     }
 
     public void LoadScene(string sceneName)
-
     {
         if (FindObjectOfType<AudioManager>() != null)
         {
             FindObjectOfType<AudioManager>().Play("Button Selected");
         }
-
-        //       anim.Play("Screen_FadeIn");
-        //     anim.SetTrigger("FadeOut");
-        print("Fading out");
         SceneManager.LoadScene(sceneName);
-//        anim.Play("Screen_FadeOut");
+    }
+    public void LoadSceneWithLoadingScreen(string sceneName)
+    {
+        if (!loadingPanel)
+        {
+            LoadScene(sceneName);
+            return;
+        }
+        StartCoroutine(LoadSceneRoutine(sceneName));
+    }
+
+    IEnumerator LoadSceneRoutine(string sceneName)
+    {
+        loadingPanel.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        AsyncOperation async = SceneManager.LoadSceneAsync(sceneName);
+        while (!async.isDone)
+        {
+            yield return null;
+        }
     }
 
     public void QuitGame()
