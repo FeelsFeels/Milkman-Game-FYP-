@@ -345,6 +345,9 @@ public class PlayerController : MonoBehaviour
         playerShoot.ForceStopChargingVFX();
         Instantiate(playerDieEffect, gameObject.transform.position, gameObject.transform.rotation);
 
+        //Player is hit, make ui show
+        FindObjectOfType<LastManStandingTracker>().UpdateHitUI(inputInfo);
+
         // Makes player disappear
         HidePlayerWhenDead();
         OnPlayerDeath.Invoke(this, lastHitBy);

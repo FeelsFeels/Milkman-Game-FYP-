@@ -121,8 +121,6 @@ public class PushProjectile : MonoBehaviour
             player.GetComponent<Rigidbody>().AddForce(knockbackDirection * knockbackToUse);
             playerHit.lastHitBy = ownerPlayer.GetComponent<PlayerController>();
 
-            //Player is hit, make ui show
-            FindObjectOfType<LastManStandingTracker>().UpdateHitUI(playerHit.inputInfo);
 
 
             //Charging special skills

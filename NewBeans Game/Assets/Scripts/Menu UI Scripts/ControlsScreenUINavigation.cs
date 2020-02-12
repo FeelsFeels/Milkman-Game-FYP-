@@ -135,7 +135,8 @@ public class ControlsScreenUINavigation : MonoBehaviour
     {
         //selectableButtons[currentSelectedIndex].GetComponent<ControlsScreenUIPanel>().ShowPanel();
         selectableButtons[currentSelectedIndex].GetComponentInChildren<Button>().onClick.Invoke();
-        audioManager.Play("Button Selected");
+        if(audioManager)
+            audioManager.Play("Button Selected");
     }
 
     public void Cancel()

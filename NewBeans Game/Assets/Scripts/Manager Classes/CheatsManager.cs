@@ -6,18 +6,25 @@ public class CheatsManager : MonoBehaviour
 {
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (FindObjectOfType<CheatsManager>() != null && FindObjectOfType<CheatsManager>() != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            SceneManager.LoadScene("TitleScreen");
+            SceneManager.LoadScene("MainMenu");
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            SceneManager.LoadScene("Player Select");
+            SceneManager.LoadScene("Player Select v2");
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {

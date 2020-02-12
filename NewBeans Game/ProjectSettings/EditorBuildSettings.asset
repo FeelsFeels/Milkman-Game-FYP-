@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: b87dd0f1ae6baa64e82f192cccd9c865
   - enabled: 1
-    path: Assets/Scenes/Player Select.unity
-    guid: a0caaa6956852f4449c917ad705cfb1f
-  - enabled: 1
     path: Assets/Scenes/Player Select v2.unity
     guid: 96cf7d50ac1489742be7a795ac75c1bb
   - enabled: 1
@@ -21,18 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Credits.unity
     guid: a8f1e636163950049967d073b07bd992
   - enabled: 1
-    path: Assets/Scenes/Credits v2.unity
-    guid: 93029e62c25b62747b9d797aec5a4edb
-  - enabled: 1
     path: Assets/Scenes/4 Dec 19 - Earth Map.unity
     guid: 2d8851e0af1fed84284b2184f1c818ae
   - enabled: 1
     path: Assets/Scenes/16 Jan 20 - Beta Lightning Map.unity
     guid: 5e9f0a933b6ff6d4a885a873f5d0d1f3
-  - enabled: 0
-    path: Assets/Scenes/19 Jan 2020 - Eunice Audio.unity
-    guid: 6f56669a4d433064f81923c65b12e752
-  - enabled: 1
-    path: Assets/Scenes/TitleScreen.unity
-    guid: 28ba3efc9cd82b6439098a9e733eefd5
   m_configObjects: {}

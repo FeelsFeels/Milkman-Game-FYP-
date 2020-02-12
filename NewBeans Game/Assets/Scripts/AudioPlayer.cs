@@ -56,8 +56,15 @@ public class AudioPlayer : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(transform.gameObject);
-        sources = GetComponentsInChildren<AudioSource>();
+        if (FindObjectOfType<AudioPlayer>() != null && FindObjectOfType<AudioPlayer>() != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(transform.gameObject);
+            sources = GetComponentsInChildren<AudioSource>();
+        }
     }
 
     public void PlayMusic(string transformName)

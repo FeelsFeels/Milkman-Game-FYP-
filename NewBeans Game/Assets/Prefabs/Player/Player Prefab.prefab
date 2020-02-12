@@ -1445,7 +1445,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 8123fceb16ef687459fc73b21999d3bc, type: 3}
+      objectReference: {fileID: 8300000, guid: 5ea028700d8ef4a4ab92d8d3420bad4a, type: 3}
     - target: {fileID: 8158146501968221317, guid: cc0ca36aca72843498be6ca12852c19e,
         type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
@@ -1515,7 +1515,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 473ab72ae404a0d4b8825478def583b5, type: 3}
+      objectReference: {fileID: 8300000, guid: ae571fdd110a15948be4d328b8a6a468, type: 3}
     - target: {fileID: 9128016729337473303, guid: cc0ca36aca72843498be6ca12852c19e,
         type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
