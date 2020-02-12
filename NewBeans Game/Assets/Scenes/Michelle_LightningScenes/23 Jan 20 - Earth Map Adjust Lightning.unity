@@ -1167,7 +1167,7 @@ MonoBehaviour:
   continueButtonText: {fileID: 0}
   pauseScreen: {fileID: 1689008391}
   isPaused: 0
-  bgm: {fileID: 8300000, guid: 645c8893ae655724fb1e6d8c574a8a3b, type: 3}
+  bgmString: 
   killCountDownTimer: 0
   deathCountDownTimer: 0
 --- !u!4 &61573805
@@ -2099,7 +2099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c21f4ba4e627baa4cb01a59e41543505, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  commentaryText: {fileID: 0}
+  audienceHolders: []
 --- !u!1 &245644139
 GameObject:
   m_ObjectHideFlags: 0
@@ -13154,8 +13154,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 652168697532246865, guid: 0fc744938e362eb4e9fa99acf60aeb40,
+      objectReference: {fileID: 2100000, guid: 79160ee17cbd3b64db9aa8196d761fa7, type: 2}
+    - target: {fileID: -4423694231019705952, guid: 36e727caba83ee6478644ea74edf783c,
         type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a1eec47976608f549be30e2d76cdc91a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36e727caba83ee6478644ea74edf783c, type: 3}
 --- !u!4 &1119582561 stripped
