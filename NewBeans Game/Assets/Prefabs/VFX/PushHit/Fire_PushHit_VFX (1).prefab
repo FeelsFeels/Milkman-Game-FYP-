@@ -42,7 +42,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1591765196885531650}
   serializedVersion: 6
   lengthInSec: 2
-  simulationSpeed: 8
+  simulationSpeed: 5
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -4770,7 +4770,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7705307818918378290
 Transform:
   m_ObjectHideFlags: 0

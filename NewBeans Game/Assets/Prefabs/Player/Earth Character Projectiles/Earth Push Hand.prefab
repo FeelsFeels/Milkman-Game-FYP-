@@ -1266,6 +1266,106 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4388277513759355181, guid: 4f6252c0e64e7a642938cd86c0032e42,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 799606834433126120, guid: 4f6252c0e64e7a642938cd86c0032e42,
+        type: 3}
+      propertyPath: UVModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 799606834433126120, guid: 4f6252c0e64e7a642938cd86c0032e42,
+        type: 3}
+      propertyPath: UVModule.tilesY
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 799606834433126120, guid: 4f6252c0e64e7a642938cd86c0032e42,
+        type: 3}
+      propertyPath: UVModule.animationType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 799606834433126120, guid: 4f6252c0e64e7a642938cd86c0032e42,
+        type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 799606834433126120, guid: 4f6252c0e64e7a642938cd86c0032e42,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 799606834433126120, guid: 4f6252c0e64e7a642938cd86c0032e42,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 799606834433126120, guid: 4f6252c0e64e7a642938cd86c0032e42,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 799606834433126120, guid: 4f6252c0e64e7a642938cd86c0032e42,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.58280706
+      objectReference: {fileID: 0}
+    - target: {fileID: 799606834433126120, guid: 4f6252c0e64e7a642938cd86c0032e42,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 799606834433126120, guid: 4f6252c0e64e7a642938cd86c0032e42,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 799606834433126120, guid: 4f6252c0e64e7a642938cd86c0032e42,
+        type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 799606834433126120, guid: 4f6252c0e64e7a642938cd86c0032e42,
+        type: 3}
+      propertyPath: InitialModule.startColor.minColor.r
+      value: 0.094495155
+      objectReference: {fileID: 0}
+    - target: {fileID: 799606834433126120, guid: 4f6252c0e64e7a642938cd86c0032e42,
+        type: 3}
+      propertyPath: InitialModule.startColor.minColor.g
+      value: 0.5377358
+      objectReference: {fileID: 0}
+    - target: {fileID: 799606834433126120, guid: 4f6252c0e64e7a642938cd86c0032e42,
+        type: 3}
+      propertyPath: InitialModule.startColor.minColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 799606834433126120, guid: 4f6252c0e64e7a642938cd86c0032e42,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 799606834433126120, guid: 4f6252c0e64e7a642938cd86c0032e42,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 799606834433126120, guid: 4f6252c0e64e7a642938cd86c0032e42,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 799606834433126121, guid: 4f6252c0e64e7a642938cd86c0032e42,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 799606834433126121, guid: 4f6252c0e64e7a642938cd86c0032e42,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a86ed62fb5d5f44cb6c5d79b8d6aa25, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f6252c0e64e7a642938cd86c0032e42, type: 3}
 --- !u!4 &766177126041277570 stripped
