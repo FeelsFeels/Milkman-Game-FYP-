@@ -872,6 +872,7 @@ GameObject:
   - component: {fileID: 9217587417700564572}
   - component: {fileID: 9217587417700564573}
   - component: {fileID: 9217587417700564570}
+  - component: {fileID: 710018517107703293}
   m_Layer: 10
   m_Name: DizzyStars
   m_TagString: Untagged
@@ -887,8 +888,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9217587417700564568}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.2}
-  m_LocalScale: {x: 1, y: 1.5, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.85}
+  m_LocalScale: {x: 0.003204194, y: 0.006841595, z: 0.003204194}
   m_Children: []
   m_Father: {fileID: 9217587416420445605}
   m_RootOrder: 3
@@ -896,7 +897,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2, y: 2}
+  m_SizeDelta: {x: 409, y: 225}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9217587417700564572
 CanvasRenderer:
@@ -926,9 +927,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 172b71e0077cb234a9526133f6a5fa0b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 13bd127e9bdc99844a7ce8a88b51699a, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -947,6 +948,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26d3c2e70d43cac48b94ef162b507c0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &710018517107703293
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9217587417700564568}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: edc6a46a35481b7439750d02c013e874, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &9217587417708917555
 GameObject:
   m_ObjectHideFlags: 0
@@ -1206,6 +1226,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5387567645522836222, guid: 4abbe849fc2065d4ba62b3d358b17116,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5387567645414940042, guid: 4abbe849fc2065d4ba62b3d358b17116,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
