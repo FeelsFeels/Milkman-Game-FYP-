@@ -19627,6 +19627,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8482218770310119248, guid: e9ce11f96551a6148ad8c2c4c4fc0252,
         type: 3}
+    - target: {fileID: 149156786837219032, guid: 69f6df1a567038c40810273757fcd7e1,
+        type: 3}
+      propertyPath: knockbackStrength
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 149156786837219032, guid: 69f6df1a567038c40810273757fcd7e1,
+        type: 3}
+      propertyPath: skillDuration
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 149156786837219032, guid: 69f6df1a567038c40810273757fcd7e1,
+        type: 3}
+      propertyPath: skillLifetime
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 149156786837219032, guid: 69f6df1a567038c40810273757fcd7e1,
+        type: 3}
+      propertyPath: knockbackRadius
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69f6df1a567038c40810273757fcd7e1, type: 3}
 --- !u!1 &564118407
