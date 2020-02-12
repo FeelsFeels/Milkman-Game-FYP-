@@ -26,7 +26,7 @@ public class ChargingPushVFXController : MonoBehaviour
             GameObject gO = optionalInputInfo.chosenCharacterData.chargingPushModel;
             pushHandModel = Instantiate(gO, objectPosition.position, gO.transform.rotation);
             gO = optionalInputInfo.chosenCharacterData.chargingPushVFX;
-            vfxToPlay = Instantiate(gO, objectPosition.position, gO.transform.rotation).GetComponentInChildren<ParticleSystem>();
+            vfxToPlay = Instantiate(gO, playerController.transform.position, gO.transform.rotation).GetComponentInChildren<ParticleSystem>();
 
             pushHandModel.transform.parent = objectPosition.transform;
             vfxToPlay.gameObject.transform.parent = objectPosition.transform;
@@ -38,7 +38,7 @@ public class ChargingPushVFXController : MonoBehaviour
         GameObject go = playerController.inputInfo.chosenCharacterData.chargingPushModel;
         pushHandModel = Instantiate(go, objectPosition.position, go.transform.rotation);
         go = playerController.inputInfo.chosenCharacterData.chargingPushVFX;
-        vfxToPlay = Instantiate(go, objectPosition.position, go.transform.rotation).GetComponentInChildren<ParticleSystem>();
+        vfxToPlay = Instantiate(go, playerController.transform.position, go.transform.rotation).GetComponentInChildren<ParticleSystem>();
 
         pushHandModel.transform.parent = objectPosition.transform;
         vfxToPlay.gameObject.transform.parent = objectPosition.transform;
