@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 700120209}
   - component: {fileID: 700120208}
   - component: {fileID: 700120207}
+  - component: {fileID: 5339115886744127244}
   m_Layer: 5
   m_Name: Exclamation mark
   m_TagString: Untagged
@@ -162,6 +163,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8dcc681738b365488162373a135e0a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &5339115886744127244
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700120205}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 77fe5c4653b1f794dbc71475c50ada9f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1189723712
 GameObject:
   m_ObjectHideFlags: 0
