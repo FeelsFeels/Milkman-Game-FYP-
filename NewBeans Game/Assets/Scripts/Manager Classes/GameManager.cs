@@ -105,10 +105,6 @@ public class GameManager : MonoBehaviour
             }
         }
         playerScript.Sort(delegate (PlayerController p1, PlayerController p2) { return p1.playerNumber.CompareTo(p2.playerNumber); });
-
-        AudioPlayer audioPlayer = FindObjectOfType<AudioPlayer>();
-        if(audioPlayer)
-            audioPlayer.PlayMusic(bgmString);
     }
     
     void Start()
