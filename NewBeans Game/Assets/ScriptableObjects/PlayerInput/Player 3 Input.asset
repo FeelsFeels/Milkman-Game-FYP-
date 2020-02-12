@@ -24,6 +24,6 @@ MonoBehaviour:
   LeftTrigger: LeftTrigger (Controller 3)
   RightTrigger: RightTrigger (Controller 3)
   chosenCharacterIndex: 0
-  chosenCharacterData: {fileID: 11400000, guid: 6c949c186e315fb40912dc639e28fb16,
+  chosenCharacterData: {fileID: 11400000, guid: 34773c0ea191fa842bd8f64dc567869d,
     type: 2}
   forceActive: 0
