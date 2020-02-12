@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NewBeans.InstructionsScreen
 {
-    public class FireUltimateSimulation : BaseSimulation
+    public class EarthUltimateSimulation : BaseSimulation
     {
         public Transform player1ResetPos;
         public Transform player2ResetPos;
@@ -31,6 +31,7 @@ namespace NewBeans.InstructionsScreen
             ResetSimulation();
             StartCoroutine("RulesSimulationRoutine1");
             StartCoroutine("RulesSimulationRoutine2");
+            StartCoroutine("RulesSimulationRoutine3");
         }
 
         IEnumerator RulesSimulationRoutine1()
@@ -40,28 +41,38 @@ namespace NewBeans.InstructionsScreen
             player1.GetComponent<AIPlayerSkillSetManager>().ReleaseSpecialSkill();
             yield return new WaitForSeconds(1.0f);
             float timepassed = 0f;
-            while (timepassed < 3.0f)
+            while (timepassed < 5.0f)
             {
                 timepassed += Time.deltaTime;
                 player1.Move(AIPlayerInputController.Direction.E);
                 yield return null;
             }
+            player1.Move(AIPlayerInputController.Direction.Still);
             yield return new WaitForSeconds(1.0f);
             StartSimulation();
         }
         IEnumerator RulesSimulationRoutine2()
         {
             yield return new WaitForSeconds(0.5f);
-            float timepassed = 0f;
-            player2.HoldPullButton();
-            while (timepassed < 1.0f)
+            for(int i = 0; i <= 5; i++)
             {
-                timepassed += Time.deltaTime;
+                player2.HoldShootButton();
+                yield return new WaitForSeconds(0.2f);
+                player2.ReleaseShootButton();
+                yield return new WaitForSeconds(0.7f);
+            }
+        }
+        IEnumerator RulesSimulationRoutine3()
+        {
+            yield return new WaitForSeconds(0.5f);
+            float timepassed = 0f;
+            while (timepassed < 5.0f)
+            {
                 Vector3 turnDirection = (player1.transform.position - player2.transform.position).normalized;
                 player2.transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(turnDirection), 10);
                 yield return null;
             }
-            player2.ReleasePullButton();
         }
+
     }
 }

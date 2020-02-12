@@ -189,7 +189,8 @@ namespace NewBeans.InstructionsScreen
 
         public void ForceEndUltimateSkill()
         {
-            playerSkills[playerAvatar].EndUltimate(this);
+            if(playerSkills[playerAvatar])
+                playerSkills[playerAvatar].EndUltimate(this);
         }
 
         IEnumerator EndUltiTimer(float duration)
