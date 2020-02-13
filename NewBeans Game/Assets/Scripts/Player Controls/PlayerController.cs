@@ -283,7 +283,7 @@ public class PlayerController : MonoBehaviour
         dizzyStars.SetActive(true);
 
         //Update hurt ui
-        FindObjectOfType<LastManStandingTracker>().UpdateHitUI(inputInfo); //Might have a better way to code it :thinking:
+        //FindObjectOfType<LastManStandingTracker>().UpdateHitUI(inputInfo); //Might have a better way to code it :thinking:
     }
 
     public void Hit(float timeToStun)
