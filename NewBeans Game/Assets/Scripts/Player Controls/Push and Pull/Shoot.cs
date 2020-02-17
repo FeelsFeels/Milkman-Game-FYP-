@@ -255,6 +255,8 @@ public class Shoot : MonoBehaviour
         playerScript.rb.AddForce(1800 * direction);
         playerScript.Hit(3.0f);
 
+        playerScript.StartCoroutine("PlayDizzySound");
+
         //Reset states
         aimingArrows.SetActive(false);
         chargingPushProjectile = false;
@@ -267,11 +269,13 @@ public class Shoot : MonoBehaviour
     {
         //StartCoroutine(ShotgunFireLight());
 
+        FindObjectOfType<AudioManager>().Play("Shotgun");
+
         animator.SetBool("backToNull", true); // Stops the shoot charging animation
 
         playerAnim.SetBool("Charging", false); //Reset charging player anim
-        playerAnim.SetTrigger("ResetCharge"); 
-
+        playerAnim.SetTrigger("ResetCharge");
+        
 
         List<Collider> colliders = new List<Collider>();
         colliders.AddRange(Physics.OverlapSphere(transform.position, explodeRadius, playerLayer)); //Find all players in range
@@ -304,7 +308,6 @@ public class Shoot : MonoBehaviour
     //Shotgun indication
     IEnumerator ShotgunFireLight()
     {
-        FindObjectOfType<AudioManager>().Play("Shotgun");
         if (this.gameObject.transform.Find("Spotlight") != null)
         {
             this.gameObject.transform.Find("Spotlight").gameObject.SetActive(true);
@@ -355,6 +358,8 @@ public class Shoot : MonoBehaviour
 
         chargingGrapplingHook = false;
         aimingArrows.SetActive(false);
+
+        FindObjectOfType<AudioManager>().Play("Pull");
 
         GrapplingHook projectile = Instantiate(hookProjectile, new Vector3(shootOrigin.transform.position.x, shootOrigin.transform.position.y, shootOrigin.transform.position.z), Quaternion.identity).GetComponent<GrapplingHook>();
         projectile.transform.forward = transform.forward;

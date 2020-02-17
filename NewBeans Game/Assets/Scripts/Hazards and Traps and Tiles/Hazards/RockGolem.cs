@@ -17,6 +17,7 @@ public class RockGolem : MonoBehaviour
     [SerializeField] GolemStates golemState = GolemStates.Idle;
 
     public GolemSpawner golemSpawner;
+    AudioManager audiomanager;
     Rigidbody rb;
     Animator animator;
 
@@ -48,6 +49,7 @@ public class RockGolem : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         camera = FindObjectOfType<CameraControls>();
+        audiomanager = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -223,6 +225,7 @@ public class RockGolem : MonoBehaviour
         particles.DestroyWithTime(0.3f);
 
         camera.ShakeCamera(0.1f, 5f);
+        audiomanager.Play("RockStomp");
 
         //Gets all players in range of shockwave stomp
         int ignoreLayerMask =~ 1 << LayerMask.NameToLayer("Ground");    //Raycasts on everything but ground
@@ -288,6 +291,7 @@ public class RockGolem : MonoBehaviour
             }
             showInitialiseParticles = false;
             Shockwave();
+            audiomanager.Play("RockAppear");
             StartCoroutine(SetVelocityZeroNextFrame());
         }
 

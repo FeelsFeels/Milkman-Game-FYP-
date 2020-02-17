@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Object Components and References")]
     // Object's Components
+    AudioManager audioManager;
     public Shoot playerShoot;
     public SkillSetManager playerSkillSet;
     public Animator animator;
@@ -152,6 +153,7 @@ public class PlayerController : MonoBehaviour
         // Components
         if(animator == null)
             animator = transform.Find("Character Model").GetComponentInChildren<Animator>();
+        audioManager = FindObjectOfType<AudioManager>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         rb = GetComponent<Rigidbody>();
@@ -293,6 +295,7 @@ public class PlayerController : MonoBehaviour
         stunnedTime = 0;
         stunDuration = timeToStun;
         dizzyStars.SetActive(true);
+        StartCoroutine("PlayDizzySound");
 
         //Update hurt ui
         FindObjectOfType<LastManStandingTracker>().UpdateHitUI(inputInfo);
@@ -490,5 +493,14 @@ public class PlayerController : MonoBehaviour
             return false;
         else
             return true;
+    }
+
+    public IEnumerator PlayDizzySound()
+    {
+        while (playerStunned)
+        {
+            audioManager.Play("PlayerStun");
+            yield return new WaitForSeconds(0.217f);
+        }
     }
 }
