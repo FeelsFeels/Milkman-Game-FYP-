@@ -122,7 +122,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         // Pause & Resume Game.
-        if (Input.GetButtonDown("Start (All Controllers)"))
+        if (Input.GetButtonDown("Start (All Controllers)") || Input.GetKey(KeyCode.Escape))
         {
             // Pause game.
             if (isPaused == false)
