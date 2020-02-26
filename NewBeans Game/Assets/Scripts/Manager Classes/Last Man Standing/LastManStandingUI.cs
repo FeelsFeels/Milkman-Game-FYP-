@@ -98,13 +98,36 @@ public class LastManStandingUI : MonoBehaviour
         //Sprite update
         Transform livesContainer = characterUI.transform.Find("Lives_Sprites");
         //Debug.Log(livesContainer);
-         if(livesContainer.childCount > livesRemaining)
-         {
-            for (int i = livesContainer.childCount-1;  i > livesRemaining-1; i--)
+
+        //if (livesContainer.childCount > livesRemaining)
+        //{
+        //    for (int i = livesContainer.childCount - 1; i > livesRemaining - 1; i--)
+        //    {
+        //        livesContainer.GetChild(i).gameObject.SetActive(false);
+        //    }
+        //}
+
+        if (livesRemaining > -1) {
+            Transform lifeAffected = livesContainer.GetChild((int)livesRemaining); //Deduct largest child int
+            if (lifeAffected.GetComponent<Animator>())
             {
-                livesContainer.GetChild(i).gameObject.SetActive(false);
+                lifeAffected.GetComponent<Animator>().SetTrigger("Die");
             }
-         }
+            else
+            {
+                if (livesContainer.childCount > livesRemaining)
+                {
+                    for (int i = livesContainer.childCount - 1; i > livesRemaining - 1; i--)
+                    {
+                        livesContainer.GetChild(i).gameObject.SetActive(false);
+                    }
+                }
+            }
+
+        }
+
+        
+
 
         if (livesRemaining == 0) //Darken the images (not really greyscale) when player is out
         {

@@ -23,7 +23,8 @@ public class TimerManager : MonoBehaviour
     public void StartTimerCount()
     {
         timeLeftInSeconds = startingTime;
-        timerText.text = ("Time Left: 0:00");
+        if (timerText)
+            timerText.text = ("Time Left: 0:00");
         InvokeRepeating("UpdateTimer", 0.0f, 0.01667f);
 
     }

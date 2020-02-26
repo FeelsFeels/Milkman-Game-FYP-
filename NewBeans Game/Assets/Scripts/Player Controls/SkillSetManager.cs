@@ -236,6 +236,7 @@ public class SkillSetManager : MonoBehaviour
 
     public void ForceEndUltimateSkill()
     {
+        if (ultiIsActivated)
         playerSkills[playerAvatar].EndUltimate(this);
     }
 
