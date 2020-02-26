@@ -48,7 +48,7 @@ public class WaterSkills : SkillSetManager.SkillSet
     {
         base.EndUltimate(playerSkillManager);
         //StopAllCoroutines();
-        //storm.DestroyStorm();
+        storm.DestroyStorm();
     }
 
 }
