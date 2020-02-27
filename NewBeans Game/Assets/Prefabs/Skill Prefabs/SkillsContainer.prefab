@@ -270,17 +270,17 @@ PrefabInstance:
     - target: {fileID: 7229997704797784020, guid: a7194954bdecd4141ac650f5faf1dda9,
         type: 3}
       propertyPath: skillDuration
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7229997704797784020, guid: a7194954bdecd4141ac650f5faf1dda9,
         type: 3}
       propertyPath: knockbackRadius
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7229997704797784020, guid: a7194954bdecd4141ac650f5faf1dda9,
         type: 3}
       propertyPath: knockbackStrength
-      value: 1500
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7229997704797784020, guid: a7194954bdecd4141ac650f5faf1dda9,
         type: 3}
@@ -291,7 +291,7 @@ PrefabInstance:
     - target: {fileID: 7229997704797784020, guid: a7194954bdecd4141ac650f5faf1dda9,
         type: 3}
       propertyPath: skillLifetime
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7194954bdecd4141ac650f5faf1dda9, type: 3}

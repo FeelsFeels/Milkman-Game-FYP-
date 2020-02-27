@@ -27,12 +27,19 @@ public class SceneManagement : MonoBehaviour
     {
         if (FindObjectOfType<AudioManager>() != null)
         {
+            FindObjectOfType<AudioManager>().StopAllSounds();
             FindObjectOfType<AudioManager>().Play("Button Selected");
         }
         SceneManager.LoadScene(sceneName);
     }
     public void LoadSceneWithLoadingScreen(string sceneName)
     {
+        if (FindObjectOfType<AudioManager>() != null)
+        {
+            FindObjectOfType<AudioManager>().StopAllSounds();
+            FindObjectOfType<AudioManager>().Play("Button Selected");
+        }
+
         if (!loadingPanel)
         {
             LoadScene(sceneName);

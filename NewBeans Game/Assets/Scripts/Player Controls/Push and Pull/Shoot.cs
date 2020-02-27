@@ -270,8 +270,9 @@ public class Shoot : MonoBehaviour
         animator.SetBool("backToNull", true); // Stops the shoot charging animation
 
         playerAnim.SetBool("Charging", false); //Reset charging player anim
-        playerAnim.SetTrigger("ResetCharge"); 
+        playerAnim.SetTrigger("ResetCharge");
 
+        FindObjectOfType<AudioManager>().Play("Shotgun");
 
         List<Collider> colliders = new List<Collider>();
         colliders.AddRange(Physics.OverlapSphere(transform.position, explodeRadius, playerLayer)); //Find all players in range
@@ -304,7 +305,6 @@ public class Shoot : MonoBehaviour
     //Shotgun indication
     IEnumerator ShotgunFireLight()
     {
-        FindObjectOfType<AudioManager>().Play("Shotgun");
         if (this.gameObject.transform.Find("Spotlight") != null)
         {
             this.gameObject.transform.Find("Spotlight").gameObject.SetActive(true);
