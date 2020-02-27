@@ -491,4 +491,13 @@ public class PlayerController : MonoBehaviour
         else
             return true;
     }
+
+    public IEnumerator PlayDizzySound()
+    {
+        while (playerStunned)
+        {
+            audioManager.Play("PlayerStun");
+            yield return new WaitForSeconds(0.217f);
+        }
+    }
 }
