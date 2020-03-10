@@ -1214,7 +1214,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &195867565
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32266,7 +32266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2027638743}
   m_Layer: 0
-  m_Name: Particle System HOLDER
+  m_Name: Particle System Holder (Clouds)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

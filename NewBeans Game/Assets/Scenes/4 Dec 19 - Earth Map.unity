@@ -28621,6 +28621,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0f68672c76de4845b23a94845452f8a, type: 3}
+--- !u!1 &1692257817 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 877716511, guid: a0f68672c76de4845b23a94845452f8a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1692257816}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1692257818
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692257817}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 0.01, z: 10}
+  m_Center: {x: 0, y: -0.2, z: 0}
+--- !u!114 &1692257819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692257817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d2a9282c5fcac14bb0db55a66a38892, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioString: WaterSplash
 --- !u!1 &1694077318
 GameObject:
   m_ObjectHideFlags: 0
