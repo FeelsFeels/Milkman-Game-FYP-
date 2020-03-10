@@ -10,12 +10,7 @@ public class LightningSkills : SkillSetManager.SkillSet
     public GameObject lightningSkillsBeamToDestroy;
 
     Transform skillUser;
-
-    void Awake()
-    {
-        //directionalLight = GameObject.Find("Directional Light").GetComponent<Light>();
-        //StartCoroutine(DimLighting());
-    }
+    
 
     public override void SkillAttack(SkillSetManager playerSkillManager)
     {
